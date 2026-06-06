@@ -1,23 +1,32 @@
-# Nombre del proyecto
+# Mapa interactivo de la facultad
 
 ## Descripción
 
-Breve descripción del proyecto y del problema que busca resolver.
+Mapa interactivo del primer piso de la facultad que toma en cuenta las entradas de la facultad tanto aquellas con rampa como las gradas para tener una mejor idea de la distribución de la misma.
 
 ## Integrantes
 
-- Nombre Apellido
-- Nombre Apellido
+- Aby Sequeiros
+- Matias Miyawaki
+- Walter Lin
+- Lizbeth Sanchez
 
 ## Tecnologías utilizadas
 
-- Tecnología 1
-- Tecnología 2
+- Figma (para crear las capas, svg)
+- Gemini
+- Google IA Studio
 
 ## Instalación y ejecución
 
-Pasos necesarios para ejecutar el proyecto.
+Requisitos previos: Node.js
+
+Se debe instalar las dependencias:  npm install
+
+Configurar GEMINI_API_KEY en [.env.local](.env.local) con tu clave API de Gemini.
+
+Para ejecutar la app:  npm run dev
 
 ## Estado actual
 
-Descripción breve del estado del proyecto.
+Se tomo en cuenta el primer piso de la facultad, solo algunas zonas de importancia como biblioteca, aula 5, baños entre otros. Falta optimizar el svg para que siga una ruta mas exacta en el mapa.
