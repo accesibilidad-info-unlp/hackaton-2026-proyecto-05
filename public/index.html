@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa inteligente</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="map-area" aria-label="Mapa inteligente">
+        <div class="topbar">
+          <div>
+            <h1>Mapa inteligente</h1>
+            <p id="searchMode">Planta Baja - Facultad de Informatica</p>
+          </div>
+          <div class="controls">
+            <label class="toggle">
+              <input id="debugToggle" type="checkbox">
+              <span>Nodos ocultos</span>
+            </label>
+            <button id="clearRoute" type="button">Limpiar ruta</button>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <svg id="campusMap" role="img" aria-label="Mapa de planta baja"></svg>
+        </div>
+      </section>
+
+      <aside class="assistant-panel" aria-label="Asistente de mapa">
+        <div class="panel-header">
+          <h2>Asistente de mapa</h2>
+          <p>Escribe un aula, un lugar o un tramite; el sistema ubicara el destino y marcara la ruta.</p>
+        </div>
+
+        <div class="location-picker">
+          <label for="locationSelect">Ubicacion actual</label>
+          <select id="locationSelect" aria-label="Seleccionar ubicacion actual"></select>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <form id="chatForm" class="chat-form">
+          <input
+            id="messageInput"
+            name="message"
+            autocomplete="off"
+            aria-label="Consulta de destino o tramite"
+            placeholder="Ejemplo: quiero ir al bano"
+            required
+          >
+          <button type="submit">Enviar</button>
+        </form>
+
+        <div class="quick-actions">
+          <button type="button" data-example="quiero ir al bano de hombres">Bano H</button>
+          <button type="button" data-example="tengo que entregar papeles">Mesa</button>
+          <button type="button" data-example="quiero ir a biblioteca">Biblioteca</button>
+          <button type="button" data-example="aula 5">Aula 5</button>
+        </div>
+
+        <div id="matchInfo" class="match-info">Esperando consulta</div>
+      </aside>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
