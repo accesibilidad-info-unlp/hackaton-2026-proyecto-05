@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1274" height="848" viewBox="0 0 637 424" role="img" aria-label="Mapa completo de planta baja generado desde data/map.json">
+  <title>Mapa completo de planta baja</title>
+  <desc>SVG estatico generado desde data/map.json. Las rutas interactivas siguen funcionando en la aplicacion web.</desc>
+  <style>
+    .canvas { fill: #f6f7f3; }
+    .building-shell { fill: #e4e8c9; stroke: #20252b; stroke-width: 1.2; }
+    .corridor { fill: #b0b2ad; stroke: #252b31; stroke-width: 1.1; }
+    .entry-ramp { fill: #a5a7a3; stroke: #20252b; stroke-width: 1.1; }
+    .room { fill: rgba(255, 255, 255, 0.78); stroke: #3f4b55; stroke-width: 1.2; }
+    .room-code { fill: #1e252c; font-family: Arial, sans-serif; font-size: 10px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+  <rect class="canvas" x="0" y="0" width="637" height="424"/>
+  <g id="base-layer">
+    <image href="plano-v3.svg" x="0" y="0" width="637" height="424" preserveAspectRatio="none"/>
+  </g>
+  <g id="room-layer">
+    <polygon id="room-entrada-principal" class="room" data-room-id="entrada_principal" points="294.17,399.992 311.865,369.298 311.865,360.019 426.141,360.019 429.828,352.881 477.013,352.881 477.013,378.578 424.667,378.578 424.667,368.584 324.398,369.298 324.398,399.992"><title>PB-ENT - Entrada principal</title></polygon>
+    <text class="room-code" x="385.592" y="380.437">PB-ENT</text>
+    <polygon id="room-aula-1" class="room" data-room-id="aula_1" points="512.402,198.699 489.546,240.1 462.267,225.824 485.86,184.423"><title>1 - Aula 1</title></polygon>
+    <text class="room-code" x="487.335" y="216.262">1</text>
+    <polygon id="room-aula-2" class="room" data-room-id="aula_2" points="461.135,225.11 434.251,210.834 458.229,169.433 484.385,183.709 483.658,184.423"><title>2 - Aula 2</title></polygon>
+    <text class="room-code" x="459.318" y="201.272">2</text>
+    <polygon id="room-aula-3" class="room" data-room-id="aula_3" points="406.235,195.844 433.514,210.12 457.106,168.719 429.828,154.443"><title>3 - Aula 3</title></polygon>
+    <text class="room-code" x="431.671" y="186.282">3</text>
+    <polygon id="room-aula-4" class="room" data-room-id="aula_4" points="428.353,153.729 404.76,195.13 332.508,156.584 355.363,115.897"><title>4 - Aula 4</title></polygon>
+    <text class="room-code" x="380.431" y="159.514">4</text>
+    <polygon id="room-fotocopiadora" class="room" data-room-id="fotocopiadora" points="322.384,152.302 297.488,139.82 304.278,128.032 329.928,139.82"><title>5 - Fotocopiadora</title></polygon>
+    <text class="room-code" x="313.708" y="144.167">5</text>
+    <path id="room-banios-hombres" class="room" data-room-id="banios_hombres" d="M516.088 213.689L522.723 202.268L549.265 216.544L542.63 227.965L515.351 213.689Z"><title>5H - Baños hombres</title></path>
+    <text class="room-code" x="532.308" y="219.117">5H</text>
+    <path id="room-banios-mujeres" class="room" data-room-id="banios_mujeres" d="M569.909 242.955L543.367 228.679L550.74 217.258L576.544 231.534Z"><title>5M - Baños mujeres</title></path>
+    <text class="room-code" x="559.956" y="234.107">5M</text>
+    <path id="room-ascensor" class="room" data-room-id="ascensor" d="M526.41 235.103L517.563 230.82L524.198 220.113L533.045 224.396Z"><title>ASC - Ascensor</title></path>
+    <text class="room-code" x="525.304" y="231.608">ASC</text>
+    <polygon id="room-aula-6" class="room" data-room-id="aula_6" points="207.91,36.665 183.58,79.493 273.527,126.604 297.119,83.776"><title>6 - Aula 6</title></polygon>
+    <text class="room-code" x="240.35" y="85.635">6</text>
+    <polygon id="room-aula-7" class="room" data-room-id="aula_7" points="183.58,78.779 182.843,78.375 161.462,66.645 168.659,53.796 185.054,24.53 206.435,35.951 182.843,78.375"><title>7 - Aula 7</title></polygon>
+    <text class="room-code" x="183.949" y="55.655">7</text>
+    <polygon id="room-aula-8" class="room" data-room-id="aula_8" points="162.199,12.396 184.317,23.817 159.987,65.931 138.606,54.51"><title>8 - Aula 8</title></polygon>
+    <text class="room-code" x="161.462" y="43.164">8</text>
+    <polygon id="room-aula-9" class="room" data-room-id="aula_9" points="140.818,0.975 162.199,12.396 138.606,54.51 117.226,43.803"><title>9 - Aula 9</title></polygon>
+    <text class="room-code" x="139.713" y="31.743">9</text>
+    <polygon id="room-aula-10a" class="room" data-room-id="aula_10a" points="82.574,100.907 147.454,134.456 166.623,100.907 101.743,66.645"><title>10 - Aula 10A</title></polygon>
+    <text class="room-code" x="124.599" y="104.551">10</text>
+    <polygon id="room-aula-10b" class="room" data-room-id="aula_10b" points="81.837,103.049 58.244,144.45 121.649,178.712 145.979,136.598"><title>11 - Aula 10B</title></polygon>
+    <text class="room-code" x="102.112" y="144.88">11</text>
+    <polygon id="room-aula-11" class="room" data-room-id="aula_11" points="72.99,267.224 8.11,233.675 57.507,145.877 120.912,180.854"><title>12 - Aula 11</title></polygon>
+    <text class="room-code" x="64.511" y="210.551">12</text>
+    <polygon id="room-aula-14" class="room" data-room-id="aula_14" points="589.815,238.672 569.909,284.356 562.536,300.059 607.509,320.046 634.788,261.514"><title>13 - Aula 14</title></polygon>
+    <text class="room-code" x="598.662" y="283.359">13</text>
+    <polygon id="room-aula-15" class="room" data-room-id="aula_15" points="585.391,365.015 541.155,345.743 561.061,302.201 606.772,322.187"><title>14 - Aula 15</title></polygon>
+    <text class="room-code" x="573.964" y="337.608">14</text>
+    <path id="room-biblioteca" class="room" data-room-id="biblioteca" d="M401.074 222.968L356.101 302.914L451.208 302.914L471.852 266.51Z"><title>15 - Biblioteca</title></path>
+    <text class="room-code" x="413.977" y="266.941">15</text>
+    <path id="room-aula-5" class="room" data-room-id="aula_5" d="M252.146 247.951L301.543 159.44L369.372 195.13L319.237 283.642Z"><title>16 - Aula 5</title></path>
+    <text class="room-code" x="310.759" y="225.541">16</text>
+    <path id="room-buffet" class="room" data-room-id="buffet" d="M140.818 192.275L168.097 145.164L198.325 145.164L198.325 159.44L229.291 159.44L229.291 175.143L221.918 235.103Z"><title>17 - Buffet</title></path>
+    <text class="room-code" x="185.055" y="194.134">17</text>
+    <rect id="room-intendencia" class="room" data-room-id="intendencia" x="416.557" y="331.467" width="24.33" height="27.838" rx="2"><title>18 - Intendencia</title></rect>
+    <text class="room-code" x="428.722" y="349.386">18</text>
+    <rect id="room-mesa-entradas" class="room" data-room-id="mesa_entradas" x="364.211" y="331.467" width="50.871" height="27.838" rx="2"><title>19 - Mesa de Entradas</title></rect>
+    <text class="room-code" x="389.647" y="349.386">19</text>
+    <rect id="room-alumnos" class="room" data-room-id="alumnos" x="311.127" y="331.467" width="51.609" height="27.838" rx="2"><title>20 - Alumnos</title></rect>
+    <text class="room-code" x="336.932" y="349.386">20</text>
+    <rect id="room-economico-financiera" class="room" data-room-id="economico_financiera" x="258.044" y="331.467" width="52.346" height="36.404" rx="2"><title>21 - Dir. Económico Financiera</title></rect>
+    <text class="room-code" x="284.217" y="353.669">21</text>
+    <rect id="room-contable" class="room" data-room-id="contable" x="169.572" y="331.467" width="24.33" height="37.117" rx="2"><title>22 - Contable</title></rect>
+    <text class="room-code" x="181.737" y="354.025">22</text>
+    <rect id="room-compras-inventario" class="room" data-room-id="compras_inventario" x="155.564" y="331.467" width="12.533" height="37.117" rx="2"><title>23 - Compras e Inventario</title></rect>
+    <text class="room-code" x="161.831" y="354.025">23</text>
+    <rect id="room-secretaria-administrativa" class="room" data-room-id="secretaria_administrativa" x="142.293" y="331.467" width="11.796" height="37.117" rx="2"><title>24 - Secretaría Administrativa</title></rect>
+    <text class="room-code" x="148.191" y="354.025">24</text>
+    <rect id="room-personal" class="room" data-room-id="personal" x="116.488" y="331.467" width="24.33" height="37.117" rx="2"><title>25 - Personal</title></rect>
+    <text class="room-code" x="128.653" y="354.025">25</text>
+    <rect id="room-despacho" class="room" data-room-id="despacho" x="91.421" y="331.467" width="23.593" height="37.117" rx="2"><title>26 - Despacho</title></rect>
+    <text class="room-code" x="103.218" y="354.025">26</text>
+    <rect id="room-sala-profesores" class="room" data-room-id="sala_profesores_grado" x="77.413" y="331.467" width="11.796" height="37.117" rx="2"><title>27 - Sala de Profesores de Grado</title></rect>
+    <text class="room-code" x="83.311" y="354.025">27</text>
+    <rect id="room-area-rendiciones" class="room" data-room-id="area_rendiciones" x="64.142" y="331.467" width="11.797" height="37.117" rx="2"><title>28 - Área de Rendiciones</title></rect>
+    <text class="room-code" x="70.041" y="354.025">28</text>
+    <rect id="room-mantenimiento" class="room" data-room-id="mantenimiento" x="0.737" y="319.332" width="26.542" height="48.539" rx="2"><title>29 - Mantenimiento</title></rect>
+    <text class="room-code" x="14.008" y="347.602">29</text>
+  </g>
+</svg>

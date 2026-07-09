@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node -e \"eval(require('fs').readFileSync('server.js','utf8'))\"",
     "check": "node -e \"const fs=require('fs'); new Function(fs.readFileSync('src/graph.js','utf8')); new Function(fs.readFileSync('src/semantic-search.js','utf8')); process.env.CHECK_ONLY='1'; eval(fs.readFileSync('server.js','utf8'))\"",
-    "self-test": "node -e \"process.env.SELF_TEST='1'; eval(require('fs').readFileSync('server.js','utf8'))\""
+    "self-test": "node -e \"process.env.SELF_TEST='1'; eval(require('fs').readFileSync('server.js','utf8'))\"",
+    "export:svg": "node -e \"eval(require('fs').readFileSync('scripts/export-full-map-svg.js','utf8'))\""
   }
 }

@@ -143,6 +143,11 @@ button:hover {
   cursor: pointer;
 }
 
+#campusMap.uses-background-image .room {
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: rgba(63, 75, 85, 0.26);
+}
+
 .room.active {
   fill: #ff5a5a;
   stroke: var(--room-active);

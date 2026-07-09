@@ -104,13 +104,18 @@ function selectCurrentLocation(room) {
 function drawMap(map) {
   mapSvg.innerHTML = "";
   mapSvg.setAttribute("viewBox", map.viewBox);
+  mapSvg.classList.toggle("uses-background-image", Boolean(map.backgroundImage));
   state.roomElements.clear();
+
+  const [, , viewBoxWidth, viewBoxHeight] = String(map.viewBox)
+    .split(/\s+/)
+    .map(Number);
 
   const background = svgElement("rect", {
     x: 0,
     y: 0,
-    width: 637,
-    height: 424,
+    width: viewBoxWidth || 637,
+    height: viewBoxHeight || 424,
     fill: "#f6f7f3",
     "aria-hidden": "true"
   });
@@ -118,12 +123,24 @@ function drawMap(map) {
 
   const baseLayer = svgElement("g", { class: "base-layer", "aria-hidden": "true" });
   mapSvg.appendChild(baseLayer);
-  for (const item of map.backgroundPaths || []) {
-    baseLayer.appendChild(svgElement("path", {
-      id: item.id,
-      class: item.className || "map-base",
-      d: item.d
+
+  if (map.backgroundImage) {
+    baseLayer.appendChild(svgElement("image", {
+      href: map.backgroundImage.href,
+      x: 0,
+      y: 0,
+      width: viewBoxWidth || 637,
+      height: viewBoxHeight || 424,
+      preserveAspectRatio: map.backgroundImage.preserveAspectRatio || "xMidYMid meet"
     }));
+  } else {
+    for (const item of map.backgroundPaths || []) {
+      baseLayer.appendChild(svgElement("path", {
+        id: item.id,
+        class: item.className || "map-base",
+        d: item.d
+      }));
+    }
   }
 
   const roomLayer = svgElement("g", { class: "room-layer" });

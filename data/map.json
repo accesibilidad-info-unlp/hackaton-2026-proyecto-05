@@ -1,5 +1,9 @@
 {
   "viewBox": "0 0 637 424",
+  "backgroundImage": {
+    "href": "/assets/svg/plano-v3.svg",
+    "preserveAspectRatio": "none"
+  },
   "backgroundPaths": [
     {
       "id": "building-shell",
@@ -28,405 +32,1052 @@
       "svgId": "room-entrada-principal",
       "name": "Entrada principal",
       "code": "PB-ENT",
-      "aliases": ["entrada", "ingreso", "puerta principal", "大厅", "入口", "门口"],
+      "aliases": [
+        "entrada",
+        "ingreso",
+        "puerta principal"
+      ],
       "entranceNodeId": "n_entrada",
-      "shape": { "type": "polygon", "points": "500,357 542,357 542,392 506,393" },
-      "label": { "x": 524, "y": 376 }
+      "shape": {
+        "type": "polygon",
+        "points": "294.17,399.992 311.865,369.298 311.865,360.019 426.141,360.019 429.828,352.881 477.013,352.881 477.013,378.578 424.667,378.578 424.667,368.584 324.398,369.298 324.398,399.992"
+      },
+      "label": {
+        "x": 385.592,
+        "y": 376.437
+      }
     },
     {
       "id": "aula_1",
       "svgId": "room-aula-1",
       "name": "Aula 1",
       "code": "1",
-      "aliases": ["aula uno", "教室1", "classroom 1"],
+      "aliases": [
+        "aula uno",
+        "classroom 1"
+      ],
       "entranceNodeId": "n_aulas_derecha",
-      "shape": { "type": "polygon", "points": "516,237 539,250 528,269 505,256" },
-      "label": { "x": 523, "y": 253 }
+      "shape": {
+        "type": "polygon",
+        "points": "512.402,198.699 489.546,240.1 462.267,225.824 485.86,184.423"
+      },
+      "label": {
+        "x": 487.335,
+        "y": 212.262
+      }
     },
     {
       "id": "aula_2",
       "svgId": "room-aula-2",
       "name": "Aula 2",
       "code": "2",
-      "aliases": ["aula dos", "教室2", "classroom 2"],
+      "aliases": [
+        "aula dos",
+        "classroom 2"
+      ],
       "entranceNodeId": "n_aulas_derecha",
-      "shape": { "type": "polygon", "points": "492,224 516,237 505,256 481,243" },
-      "label": { "x": 499, "y": 240 }
+      "shape": {
+        "type": "polygon",
+        "points": "461.135,225.11 434.251,210.834 458.229,169.433 484.385,183.709 483.658,184.423"
+      },
+      "label": {
+        "x": 459.318,
+        "y": 197.272
+      }
     },
     {
       "id": "aula_3",
       "svgId": "room-aula-3",
       "name": "Aula 3",
       "code": "3",
-      "aliases": ["aula tres", "教室3", "classroom 3"],
+      "aliases": [
+        "aula tres",
+        "classroom 3"
+      ],
       "entranceNodeId": "n_aulas_derecha",
-      "shape": { "type": "polygon", "points": "466,210 492,224 481,243 455,229" },
-      "label": { "x": 473, "y": 226 }
+      "shape": {
+        "type": "polygon",
+        "points": "406.235,195.844 433.514,210.12 457.106,168.719 429.828,154.443"
+      },
+      "label": {
+        "x": 431.671,
+        "y": 182.282
+      }
     },
     {
       "id": "aula_4",
       "svgId": "room-aula-4",
       "name": "Aula 4",
       "code": "4",
-      "aliases": ["aula cuatro", "教室4", "classroom 4"],
+      "aliases": [
+        "aula cuatro",
+        "classroom 4"
+      ],
       "entranceNodeId": "n_aula_4_door",
-      "shape": { "type": "polygon", "points": "438,195 466,210 455,229 427,214" },
-      "label": { "x": 446, "y": 211 }
+      "shape": {
+        "type": "polygon",
+        "points": "428.353,153.729 404.76,195.13 332.508,156.584 355.363,115.897"
+      },
+      "label": {
+        "x": 380.431,
+        "y": 155.514
+      }
     },
     {
       "id": "fotocopiadora",
       "svgId": "room-fotocopiadora",
       "name": "Fotocopiadora",
       "code": "5",
-      "aliases": ["fotocopia", "copias", "impresiones", "复印", "打印"],
+      "aliases": [
+        "fotocopia",
+        "copias",
+        "impresiones"
+      ],
       "entranceNodeId": "n_fotocopiadora_door",
-      "shape": { "type": "polygon", "points": "394,174 421,189 408,212 381,197" },
-      "label": { "x": 401, "y": 194 }
+      "shape": {
+        "type": "polygon",
+        "points": "322.384,152.302 297.488,139.82 304.278,128.032 329.928,139.82"
+      },
+      "label": {
+        "x": 313.708,
+        "y": 140.167
+      }
     },
     {
       "id": "banios_hombres",
       "svgId": "room-banios-hombres",
       "name": "Baños hombres",
       "code": "5H",
-      "aliases": ["baño hombres", "banio hombres", "toilet men", "厕所", "男厕所", "卫生间"],
+      "aliases": [
+        "baño hombres",
+        "banio hombres",
+        "toilet men"
+      ],
       "entranceNodeId": "n_banio_hombres_door",
-      "shape": { "type": "path", "d": "M565.513 246.2L555.013 264.2L547.513 259.2L558.013 241.7L565.513 246.2Z" },
-      "label": { "x": 557, "y": 254 }
+      "shape": {
+        "type": "path",
+        "d": "M516.088 213.689L522.723 202.268L549.265 216.544L542.63 227.965L515.351 213.689Z"
+      },
+      "label": {
+        "x": 532.308,
+        "y": 215.117
+      }
     },
     {
       "id": "banios_mujeres",
       "svgId": "room-banios-mujeres",
       "name": "Baños mujeres",
       "code": "5M",
-      "aliases": ["baño mujeres", "banio mujeres", "toilet women", "女厕所", "卫生间"],
+      "aliases": [
+        "baño mujeres",
+        "banio mujeres",
+        "toilet women"
+      ],
       "entranceNodeId": "n_banio_mujeres_door",
-      "shape": { "type": "path", "d": "M589.513 260.2L578.513 253.7L569.013 271.2L579.513 276.7L589.513 260.2Z" },
-      "label": { "x": 579, "y": 265 }
+      "shape": {
+        "type": "path",
+        "d": "M569.909 242.955L543.367 228.679L550.74 217.258L576.544 231.534Z"
+      },
+      "label": {
+        "x": 559.956,
+        "y": 230.107
+      }
     },
     {
       "id": "ascensor",
       "svgId": "room-ascensor",
       "name": "Ascensor",
       "code": "ASC",
-      "aliases": ["elevator", "lift", "电梯"],
+      "aliases": [
+        "elevator",
+        "lift"
+      ],
       "entranceNodeId": "n_banios",
-      "shape": { "type": "path", "d": "M566.013 269.7L557.013 264.7L567.013 247.2L576.013 252.7L566.013 269.7Z" },
-      "label": { "x": 567, "y": 259 }
+      "shape": {
+        "type": "path",
+        "d": "M526.41 235.103L517.563 230.82L524.198 220.113L533.045 224.396Z"
+      },
+      "label": {
+        "x": 525.304,
+        "y": 227.608
+      }
     },
     {
       "id": "aula_6",
       "svgId": "room-aula-6",
       "name": "Aula 6",
       "code": "6",
-      "aliases": ["aula seis", "教室6"],
+      "aliases": [
+        "aula seis"
+      ],
       "entranceNodeId": "n_corredor_superior_3",
-      "shape": { "type": "polygon", "points": "352,146 387,166 372,194 337,174" },
-      "label": { "x": 362, "y": 171 }
+      "shape": {
+        "type": "polygon",
+        "points": "207.91,36.665 183.58,79.493 273.527,126.604 297.119,83.776"
+      },
+      "label": {
+        "x": 240.35,
+        "y": 81.635
+      }
     },
     {
       "id": "aula_7",
       "svgId": "room-aula-7",
       "name": "Aula 7",
       "code": "7",
-      "aliases": ["aula siete", "教室7"],
+      "aliases": [
+        "aula siete"
+      ],
       "entranceNodeId": "n_corredor_superior_2",
-      "shape": { "type": "polygon", "points": "320,128 352,146 337,174 305,156" },
-      "label": { "x": 330, "y": 152 }
+      "shape": {
+        "type": "polygon",
+        "points": "183.58,78.779 182.843,78.375 161.462,66.645 168.659,53.796 185.054,24.53 206.435,35.951 182.843,78.375"
+      },
+      "label": {
+        "x": 183.949,
+        "y": 51.655
+      }
     },
     {
       "id": "aula_8",
       "svgId": "room-aula-8",
       "name": "Aula 8",
       "code": "8",
-      "aliases": ["aula ocho", "教室8"],
+      "aliases": [
+        "aula ocho"
+      ],
       "entranceNodeId": "n_corredor_superior_2",
-      "shape": { "type": "polygon", "points": "285,108 320,128 305,156 270,136" },
-      "label": { "x": 295, "y": 132 }
+      "shape": {
+        "type": "polygon",
+        "points": "162.199,12.396 184.317,23.817 159.987,65.931 138.606,54.51"
+      },
+      "label": {
+        "x": 161.462,
+        "y": 39.164
+      }
     },
     {
       "id": "aula_9",
       "svgId": "room-aula-9",
       "name": "Aula 9",
       "code": "9",
-      "aliases": ["aula nueve", "教室9"],
+      "aliases": [
+        "aula nueve"
+      ],
       "entranceNodeId": "n_corredor_superior_1",
-      "shape": { "type": "polygon", "points": "235,80 285,108 270,136 220,108" },
-      "label": { "x": 252, "y": 109 }
+      "shape": {
+        "type": "polygon",
+        "points": "140.818,0.975 162.199,12.396 138.606,54.51 117.226,43.803"
+      },
+      "label": {
+        "x": 139.713,
+        "y": 27.743
+      }
     },
     {
       "id": "aula_10a",
       "svgId": "room-aula-10a",
       "name": "Aula 10A",
       "code": "10",
-      "aliases": ["aula 10", "aula diez a", "教室10a"],
+      "aliases": [
+        "aula 10",
+        "aula diez a"
+      ],
       "entranceNodeId": "n_aula_10a_door",
-      "shape": { "type": "polygon", "points": "110,120 149,142 132,176 93,154" },
-      "label": { "x": 120, "y": 149 }
+      "shape": {
+        "type": "polygon",
+        "points": "82.574,100.907 147.454,134.456 166.623,100.907 101.743,66.645"
+      },
+      "label": {
+        "x": 124.599,
+        "y": 100.551
+      }
     },
     {
       "id": "aula_10b",
       "svgId": "room-aula-10b",
       "name": "Aula 10B",
       "code": "11",
-      "aliases": ["aula diez b", "教室10b"],
+      "aliases": [
+        "aula diez b"
+      ],
       "entranceNodeId": "n_aula_10b_door",
-      "shape": { "type": "polygon", "points": "93,154 132,176 115,211 76,189" },
-      "label": { "x": 103, "y": 183 }
+      "shape": {
+        "type": "polygon",
+        "points": "81.837,103.049 58.244,144.45 121.649,178.712 145.979,136.598"
+      },
+      "label": {
+        "x": 102.112,
+        "y": 140.88
+      }
     },
     {
       "id": "aula_11",
       "svgId": "room-aula-11",
       "name": "Aula 11",
       "code": "12",
-      "aliases": ["aula once", "教室11"],
+      "aliases": [
+        "aula once"
+      ],
       "entranceNodeId": "n_aula_11_door",
-      "shape": { "type": "polygon", "points": "76,189 115,211 95,250 56,228" },
-      "label": { "x": 85, "y": 219 }
+      "shape": {
+        "type": "polygon",
+        "points": "72.99,267.224 8.11,233.675 57.507,145.877 120.912,180.854"
+      },
+      "label": {
+        "x": 64.511,
+        "y": 206.551
+      }
     },
     {
       "id": "aula_14",
       "svgId": "room-aula-14",
       "name": "Aula 14",
       "code": "13",
-      "aliases": ["aula catorce", "教室14"],
+      "aliases": [
+        "aula catorce"
+      ],
       "entranceNodeId": "n_corredor_salida_derecha",
-      "shape": { "type": "polygon", "points": "598,292 631,311 612,345 579,326" },
-      "label": { "x": 605, "y": 320 }
+      "shape": {
+        "type": "polygon",
+        "points": "589.815,238.672 569.909,284.356 562.536,300.059 607.509,320.046 634.788,261.514"
+      },
+      "label": {
+        "x": 598.662,
+        "y": 279.359
+      }
     },
     {
       "id": "aula_15",
       "svgId": "room-aula-15",
       "name": "Aula 15",
       "code": "14",
-      "aliases": ["aula quince", "教室15"],
+      "aliases": [
+        "aula quince"
+      ],
       "entranceNodeId": "n_corredor_salida_derecha",
-      "shape": { "type": "polygon", "points": "579,326 612,345 595,374 563,360" },
-      "label": { "x": 587, "y": 348 }
+      "shape": {
+        "type": "polygon",
+        "points": "585.391,365.015 541.155,345.743 561.061,302.201 606.772,322.187"
+      },
+      "label": {
+        "x": 573.964,
+        "y": 333.608
+      }
     },
     {
       "id": "biblioteca",
       "svgId": "room-biblioteca",
       "name": "Biblioteca",
       "code": "15",
-      "aliases": ["library", "图书馆", "图书室", "资料室"],
+      "aliases": [
+        "library"
+      ],
       "entranceNodeId": "n_biblioteca",
-      "shape": { "type": "path", "d": "M493.378 324.2H429.513L463.513 266.2L514.513 291.184L493.378 324.2Z" },
-      "label": { "x": 472, "y": 302 }
+      "shape": {
+        "type": "path",
+        "d": "M401.074 222.968L356.101 302.914L451.208 302.914L471.852 266.51Z"
+      },
+      "label": {
+        "x": 413.977,
+        "y": 262.941
+      }
     },
     {
       "id": "aula_5",
       "svgId": "room-aula-5",
       "name": "Aula 5",
       "code": "16",
-      "aliases": ["aula cinco", "教室5"],
+      "aliases": [
+        "aula cinco"
+      ],
       "entranceNodeId": "n_aula_5_door",
-      "shape": { "type": "path", "d": "M365.013 210.7L321.013 290.7L373.013 315.7L416.013 237.7L365.013 210.7Z" },
-      "label": { "x": 368, "y": 263 }
+      "shape": {
+        "type": "path",
+        "d": "M252.146 247.951L301.543 159.44L369.372 195.13L319.237 283.642Z"
+      },
+      "label": {
+        "x": 310.759,
+        "y": 221.541
+      }
     },
     {
       "id": "buffet",
       "svgId": "room-buffet",
       "name": "Buffet",
       "code": "17",
-      "aliases": ["comedor", "cafeteria", "cafe", "食堂", "咖啡", "餐厅"],
+      "aliases": [
+        "comedor",
+        "cafeteria",
+        "cafe"
+      ],
       "entranceNodeId": "n_buffet",
-      "shape": { "type": "path", "d": "M213.513 175.2L191.513 222.7L281.013 272.7L275.513 194.7H241.513V175.2H213.513Z" },
-      "label": { "x": 237, "y": 221 }
+      "shape": {
+        "type": "path",
+        "d": "M140.818 192.275L168.097 145.164L198.325 145.164L198.325 159.44L229.291 159.44L229.291 175.143L221.918 235.103Z"
+      },
+      "label": {
+        "x": 185.055,
+        "y": 190.134
+      }
     },
     {
       "id": "intendencia",
       "svgId": "room-intendencia",
       "name": "Intendencia",
       "code": "18",
-      "aliases": ["maintenance office", "管理处"],
+      "aliases": [
+        "maintenance office"
+      ],
       "entranceNodeId": "n_admin_5",
-      "shape": { "type": "rect", "x": 536, "y": 375, "width": 28, "height": 17 },
-      "label": { "x": 550, "y": 388 }
+      "shape": {
+        "type": "rect",
+        "x": 416.557,
+        "y": 331.467,
+        "width": 24.33,
+        "height": 27.838
+      },
+      "label": {
+        "x": 428.722,
+        "y": 345.386
+      }
     },
     {
       "id": "mesa_entradas",
       "svgId": "room-mesa-entradas",
       "name": "Mesa de Entradas",
       "code": "19",
-      "aliases": ["mesa entradas", "recepcion", "trámites", "tramites", "材料", "提交材料", "办手续"],
+      "aliases": [
+        "mesa entradas",
+        "recepcion",
+        "trámites",
+        "tramites"
+      ],
       "entranceNodeId": "n_admin_4",
-      "shape": { "type": "rect", "x": 494, "y": 370, "width": 29, "height": 17 },
-      "label": { "x": 509, "y": 383 }
+      "shape": {
+        "type": "rect",
+        "x": 364.211,
+        "y": 331.467,
+        "width": 50.871,
+        "height": 27.838
+      },
+      "label": {
+        "x": 389.647,
+        "y": 345.386
+      }
     },
     {
       "id": "alumnos",
       "svgId": "room-alumnos",
       "name": "Alumnos",
       "code": "20",
-      "aliases": ["student affairs", "estudiantes", "学生处", "学生事务", "学生证"],
+      "aliases": [
+        "student affairs",
+        "estudiantes"
+      ],
       "entranceNodeId": "n_admin_3",
-      "shape": { "type": "rect", "x": 444, "y": 372, "width": 43, "height": 17 },
-      "label": { "x": 466, "y": 385 }
+      "shape": {
+        "type": "rect",
+        "x": 311.127,
+        "y": 331.467,
+        "width": 51.609,
+        "height": 27.838
+      },
+      "label": {
+        "x": 336.932,
+        "y": 345.386
+      }
     },
     {
       "id": "economico_financiera",
       "svgId": "room-economico-financiera",
       "name": "Dir. Económico Financiera",
       "code": "21",
-      "aliases": ["financiera", "economico financiera", "tesoreria", "财务处", "缴费", "付款"],
+      "aliases": [
+        "financiera",
+        "economico financiera",
+        "tesoreria"
+      ],
       "entranceNodeId": "n_admin_2",
-      "shape": { "type": "rect", "x": 396, "y": 374, "width": 39, "height": 17 },
-      "label": { "x": 416, "y": 387 }
+      "shape": {
+        "type": "rect",
+        "x": 258.044,
+        "y": 331.467,
+        "width": 52.346,
+        "height": 36.404
+      },
+      "label": {
+        "x": 284.217,
+        "y": 349.669
+      }
     },
     {
       "id": "contable",
       "svgId": "room-contable",
       "name": "Contable",
       "code": "22",
-      "aliases": ["contabilidad", "会计"],
+      "aliases": [
+        "contabilidad"
+      ],
       "entranceNodeId": "n_admin_1",
-      "shape": { "type": "rect", "x": 340, "y": 358, "width": 32, "height": 18 },
-      "label": { "x": 356, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 169.572,
+        "y": 331.467,
+        "width": 24.33,
+        "height": 37.117
+      },
+      "label": {
+        "x": 181.737,
+        "y": 350.025
+      }
     },
     {
       "id": "compras_inventario",
       "svgId": "room-compras-inventario",
       "name": "Compras e Inventario",
       "code": "23",
-      "aliases": ["compras", "inventario", "采购", "库存"],
+      "aliases": [
+        "compras",
+        "inventario"
+      ],
       "entranceNodeId": "n_admin_1",
-      "shape": { "type": "rect", "x": 304, "y": 358, "width": 31, "height": 18 },
-      "label": { "x": 320, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 155.564,
+        "y": 331.467,
+        "width": 12.533,
+        "height": 37.117
+      },
+      "label": {
+        "x": 161.831,
+        "y": 350.025
+      }
     },
     {
       "id": "secretaria_administrativa",
       "svgId": "room-secretaria-administrativa",
       "name": "Secretaría Administrativa",
       "code": "24",
-      "aliases": ["secretaria administrativa", "行政秘书处", "行政"],
+      "aliases": [
+        "secretaria administrativa"
+      ],
       "entranceNodeId": "n_admin_1",
-      "shape": { "type": "rect", "x": 273, "y": 358, "width": 28, "height": 18 },
-      "label": { "x": 287, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 142.293,
+        "y": 331.467,
+        "width": 11.796,
+        "height": 37.117
+      },
+      "label": {
+        "x": 148.191,
+        "y": 350.025
+      }
     },
     {
       "id": "personal",
       "svgId": "room-personal",
       "name": "Personal",
       "code": "25",
-      "aliases": ["rrhh", "recursos humanos", "人事"],
+      "aliases": [
+        "rrhh",
+        "recursos humanos"
+      ],
       "entranceNodeId": "n_admin_0",
-      "shape": { "type": "rect", "x": 240, "y": 358, "width": 29, "height": 18 },
-      "label": { "x": 255, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 116.488,
+        "y": 331.467,
+        "width": 24.33,
+        "height": 37.117
+      },
+      "label": {
+        "x": 128.653,
+        "y": 350.025
+      }
     },
     {
       "id": "despacho",
       "svgId": "room-despacho",
       "name": "Despacho",
       "code": "26",
-      "aliases": ["office", "办公室"],
+      "aliases": [
+        "office"
+      ],
       "entranceNodeId": "n_admin_0",
-      "shape": { "type": "rect", "x": 207, "y": 358, "width": 29, "height": 18 },
-      "label": { "x": 222, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 91.421,
+        "y": 331.467,
+        "width": 23.593,
+        "height": 37.117
+      },
+      "label": {
+        "x": 103.218,
+        "y": 350.025
+      }
     },
     {
       "id": "sala_profesores_grado",
       "svgId": "room-sala-profesores",
       "name": "Sala de Profesores de Grado",
       "code": "27",
-      "aliases": ["sala profesores", "profesores", "教师休息室"],
+      "aliases": [
+        "sala profesores",
+        "profesores"
+      ],
       "entranceNodeId": "n_admin_0",
-      "shape": { "type": "rect", "x": 175, "y": 358, "width": 29, "height": 18 },
-      "label": { "x": 190, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 77.413,
+        "y": 331.467,
+        "width": 11.796,
+        "height": 37.117
+      },
+      "label": {
+        "x": 83.311,
+        "y": 350.025
+      }
     },
     {
       "id": "area_rendiciones",
       "svgId": "room-area-rendiciones",
       "name": "Área de Rendiciones",
       "code": "28",
-      "aliases": ["rendiciones", "报销", "结算"],
+      "aliases": [
+        "rendiciones"
+      ],
       "entranceNodeId": "n_admin_0",
-      "shape": { "type": "rect", "x": 143, "y": 358, "width": 29, "height": 18 },
-      "label": { "x": 158, "y": 371 }
+      "shape": {
+        "type": "rect",
+        "x": 64.142,
+        "y": 331.467,
+        "width": 11.797,
+        "height": 37.117
+      },
+      "label": {
+        "x": 70.041,
+        "y": 350.025
+      }
     },
     {
       "id": "mantenimiento",
       "svgId": "room-mantenimiento",
       "name": "Mantenimiento",
       "code": "29",
-      "aliases": ["maintenance", "维修", "维护"],
+      "aliases": [
+        "maintenance"
+      ],
       "entranceNodeId": "n_mantenimiento",
-      "shape": { "type": "rect", "x": 72, "y": 331, "width": 40, "height": 52 },
-      "label": { "x": 92, "y": 361 }
+      "shape": {
+        "type": "rect",
+        "x": 0.737,
+        "y": 319.332,
+        "width": 26.542,
+        "height": 48.539
+      },
+      "label": {
+        "x": 14.008,
+        "y": 343.602
+      }
     }
   ],
   "nodes": [
-    { "id": "n_entrada", "label": "Entrada principal", "aliases": ["entrada", "ingreso", "入口", "大厅"], "x": 520, "y": 374 },
-    { "id": "n_admin_5", "label": "Pasillo administrativo este", "x": 505, "y": 338 },
-    { "id": "n_admin_4", "label": "Pasillo Mesa de Entradas", "x": 470, "y": 337 },
-    { "id": "n_admin_3", "label": "Pasillo Alumnos", "x": 430, "y": 337 },
-    { "id": "n_admin_2", "label": "Pasillo Financiera", "x": 385, "y": 338 },
-    { "id": "n_admin_1", "label": "Pasillo contable", "x": 320, "y": 338 },
-    { "id": "n_admin_0", "label": "Pasillo oficinas oeste", "x": 210, "y": 322 },
-    { "id": "n_mantenimiento", "label": "Mantenimiento", "x": 115, "y": 322 },
-    { "id": "n_corredor_bajo_oeste", "label": "Pasillo bajo oeste", "x": 75, "y": 323 },
-    { "id": "n_aula_11_door", "label": "Puerta Aula 11", "aliases": ["aula 11", "aula once", "aula 12", "教室11"], "x": 132, "y": 266 },
-    { "id": "n_corredor_izquierdo_1", "label": "Pasillo aulas 11", "x": 126, "y": 292 },
-    { "id": "n_aula_10b_door", "label": "Puerta Aula 10B", "aliases": ["aula 10b"], "x": 147, "y": 224 },
-    { "id": "n_corredor_izquierdo_2", "label": "Pasillo aulas 10", "x": 150, "y": 248 },
-    { "id": "n_aula_10a_door", "label": "Puerta Aula 10A", "aliases": ["aula 10a"], "x": 165, "y": 185 },
-    { "id": "n_corredor_izquierdo_3", "label": "Pasillo aulas 9", "x": 190, "y": 188 },
-    { "id": "n_corredor_superior_1", "label": "Pasillo superior oeste", "x": 232, "y": 133 },
-    { "id": "n_corredor_superior_2", "label": "Pasillo superior centro", "x": 330, "y": 188 },
-    { "id": "n_corredor_superior_3", "label": "Pasillo superior servicios", "x": 410, "y": 232 },
-    { "id": "n_fotocopiadora_door", "label": "Puerta Fotocopiadora", "aliases": ["fotocopiadora", "copias", "imprimir"], "x": 410, "y": 218 },
-    { "id": "n_aula_4_door", "label": "Puerta Aula 4", "aliases": ["aula 4", "aula cuatro"], "x": 448, "y": 236 },
-    { "id": "n_corredor_aula_4", "label": "Pasillo Aula 4 y Fotocopiadora", "x": 456, "y": 244 },
-    { "id": "n_aula_5_door", "label": "Puerta Aula 5", "aliases": ["aula 5", "aula cinco"], "x": 420, "y": 246 },
-    { "id": "n_aula_5_lobby", "label": "Cruce Aula 5", "x": 448, "y": 256 },
-    { "id": "n_servicios_mid", "label": "Pasillo hacia baños", "x": 486, "y": 270 },
-    { "id": "n_servicios", "label": "Fotocopiadora y baños", "x": 520, "y": 283 },
-    { "id": "n_banios", "label": "Baños y ascensor", "aliases": ["baños", "banios", "厕所", "卫生间"], "x": 557, "y": 266 },
-    { "id": "n_banio_hombres_door", "label": "Puerta Baños hombres", "aliases": ["bano hombres", "banio hombres", "男厕所"], "x": 554, "y": 259 },
-    { "id": "n_banio_mujeres_door", "label": "Puerta Baños mujeres", "aliases": ["bano mujeres", "banio mujeres", "女厕所"], "x": 573, "y": 270 },
-    { "id": "n_aulas_derecha", "label": "Pasillo aulas 1 a 4", "x": 502, "y": 286 },
-    { "id": "n_corredor_salida_derecha", "label": "Pasillo aulas 14 y 15", "x": 548, "y": 330 },
-    { "id": "n_biblioteca", "label": "Biblioteca", "aliases": ["biblioteca", "图书馆"], "x": 506, "y": 318 },
-    { "id": "n_aula_5", "label": "Aula 5 centro", "x": 390, "y": 288 },
-    { "id": "n_buffet", "label": "Buffet", "aliases": ["buffet", "食堂"], "x": 285, "y": 305 }
+    {
+      "id": "n_entrada",
+      "label": "Entrada principal",
+      "aliases": [
+        "entrada",
+        "ingreso"
+      ],
+      "x": 520,
+      "y": 374
+    },
+    {
+      "id": "n_admin_5",
+      "label": "Pasillo administrativo este",
+      "x": 505,
+      "y": 338
+    },
+    {
+      "id": "n_admin_4",
+      "label": "Pasillo Mesa de Entradas",
+      "x": 470,
+      "y": 337
+    },
+    {
+      "id": "n_admin_3",
+      "label": "Pasillo Alumnos",
+      "x": 430,
+      "y": 337
+    },
+    {
+      "id": "n_admin_2",
+      "label": "Pasillo Financiera",
+      "x": 385,
+      "y": 338
+    },
+    {
+      "id": "n_admin_1",
+      "label": "Pasillo contable",
+      "x": 320,
+      "y": 338
+    },
+    {
+      "id": "n_admin_0",
+      "label": "Pasillo oficinas oeste",
+      "x": 210,
+      "y": 322
+    },
+    {
+      "id": "n_mantenimiento",
+      "label": "Mantenimiento",
+      "x": 115,
+      "y": 322
+    },
+    {
+      "id": "n_corredor_bajo_oeste",
+      "label": "Pasillo bajo oeste",
+      "x": 75,
+      "y": 323
+    },
+    {
+      "id": "n_aula_11_door",
+      "label": "Puerta Aula 11",
+      "aliases": [
+        "aula 11",
+        "aula once",
+        "aula 12"
+      ],
+      "x": 132,
+      "y": 266
+    },
+    {
+      "id": "n_corredor_izquierdo_1",
+      "label": "Pasillo aulas 11",
+      "x": 126,
+      "y": 292
+    },
+    {
+      "id": "n_aula_10b_door",
+      "label": "Puerta Aula 10B",
+      "aliases": [
+        "aula 10b"
+      ],
+      "x": 147,
+      "y": 224
+    },
+    {
+      "id": "n_corredor_izquierdo_2",
+      "label": "Pasillo aulas 10",
+      "x": 150,
+      "y": 248
+    },
+    {
+      "id": "n_aula_10a_door",
+      "label": "Puerta Aula 10A",
+      "aliases": [
+        "aula 10a"
+      ],
+      "x": 165,
+      "y": 185
+    },
+    {
+      "id": "n_corredor_izquierdo_3",
+      "label": "Pasillo aulas 9",
+      "x": 190,
+      "y": 188
+    },
+    {
+      "id": "n_corredor_superior_1",
+      "label": "Pasillo superior oeste",
+      "x": 232,
+      "y": 133
+    },
+    {
+      "id": "n_corredor_superior_2",
+      "label": "Pasillo superior centro",
+      "x": 330,
+      "y": 188
+    },
+    {
+      "id": "n_corredor_superior_3",
+      "label": "Pasillo superior servicios",
+      "x": 410,
+      "y": 232
+    },
+    {
+      "id": "n_fotocopiadora_door",
+      "label": "Puerta Fotocopiadora",
+      "aliases": [
+        "fotocopiadora",
+        "copias",
+        "imprimir"
+      ],
+      "x": 410,
+      "y": 218
+    },
+    {
+      "id": "n_aula_4_door",
+      "label": "Puerta Aula 4",
+      "aliases": [
+        "aula 4",
+        "aula cuatro"
+      ],
+      "x": 448,
+      "y": 236
+    },
+    {
+      "id": "n_corredor_aula_4",
+      "label": "Pasillo Aula 4 y Fotocopiadora",
+      "x": 456,
+      "y": 244
+    },
+    {
+      "id": "n_aula_5_door",
+      "label": "Puerta Aula 5",
+      "aliases": [
+        "aula 5",
+        "aula cinco"
+      ],
+      "x": 420,
+      "y": 246
+    },
+    {
+      "id": "n_aula_5_lobby",
+      "label": "Cruce Aula 5",
+      "x": 448,
+      "y": 256
+    },
+    {
+      "id": "n_servicios_mid",
+      "label": "Pasillo hacia baños",
+      "x": 486,
+      "y": 270
+    },
+    {
+      "id": "n_servicios",
+      "label": "Fotocopiadora y baños",
+      "x": 520,
+      "y": 283
+    },
+    {
+      "id": "n_banios",
+      "label": "Baños y ascensor",
+      "aliases": [
+        "baños",
+        "banios"
+      ],
+      "x": 557,
+      "y": 266
+    },
+    {
+      "id": "n_banio_hombres_door",
+      "label": "Puerta Baños hombres",
+      "aliases": [
+        "bano hombres",
+        "banio hombres"
+      ],
+      "x": 554,
+      "y": 259
+    },
+    {
+      "id": "n_banio_mujeres_door",
+      "label": "Puerta Baños mujeres",
+      "aliases": [
+        "bano mujeres",
+        "banio mujeres"
+      ],
+      "x": 573,
+      "y": 270
+    },
+    {
+      "id": "n_aulas_derecha",
+      "label": "Pasillo aulas 1 a 4",
+      "x": 502,
+      "y": 286
+    },
+    {
+      "id": "n_corredor_salida_derecha",
+      "label": "Pasillo aulas 14 y 15",
+      "x": 548,
+      "y": 330
+    },
+    {
+      "id": "n_biblioteca",
+      "label": "Biblioteca",
+      "aliases": [
+        "biblioteca"
+      ],
+      "x": 506,
+      "y": 318
+    },
+    {
+      "id": "n_aula_5",
+      "label": "Aula 5 centro",
+      "x": 390,
+      "y": 288
+    },
+    {
+      "id": "n_buffet",
+      "label": "Buffet",
+      "aliases": [
+        "buffet"
+      ],
+      "x": 285,
+      "y": 305
+    }
   ],
   "edges": [
-    { "from": "n_entrada", "to": "n_admin_5" },
-    { "from": "n_admin_5", "to": "n_admin_4" },
-    { "from": "n_admin_4", "to": "n_admin_3" },
-    { "from": "n_admin_3", "to": "n_admin_2" },
-    { "from": "n_admin_2", "to": "n_admin_1" },
-    { "from": "n_admin_1", "to": "n_admin_0" },
-    { "from": "n_admin_0", "to": "n_mantenimiento" },
-    { "from": "n_mantenimiento", "to": "n_corredor_bajo_oeste" },
-    { "from": "n_corredor_bajo_oeste", "to": "n_corredor_izquierdo_1" },
-    { "from": "n_aula_11_door", "to": "n_corredor_izquierdo_1" },
-    { "from": "n_corredor_izquierdo_1", "to": "n_corredor_izquierdo_2" },
-    { "from": "n_aula_10b_door", "to": "n_corredor_izquierdo_2" },
-    { "from": "n_aula_10a_door", "to": "n_corredor_izquierdo_3" },
-    { "from": "n_corredor_izquierdo_2", "to": "n_corredor_izquierdo_3" },
-    { "from": "n_corredor_izquierdo_3", "to": "n_corredor_superior_1" },
-    { "from": "n_corredor_superior_1", "to": "n_corredor_superior_2" },
-    { "from": "n_corredor_superior_2", "to": "n_corredor_superior_3" },
-    { "from": "n_corredor_superior_3", "to": "n_fotocopiadora_door" },
-    { "from": "n_fotocopiadora_door", "to": "n_corredor_aula_4" },
-    { "from": "n_corredor_aula_4", "to": "n_aula_4_door" },
-    { "from": "n_corredor_aula_4", "to": "n_servicios_mid" },
-    { "from": "n_corredor_superior_3", "to": "n_aula_5_door" },
-    { "from": "n_aula_5_door", "to": "n_aula_5_lobby" },
-    { "from": "n_aula_5_lobby", "to": "n_servicios_mid" },
-    { "from": "n_servicios_mid", "to": "n_servicios" },
-    { "from": "n_servicios", "to": "n_banios" },
-    { "from": "n_banios", "to": "n_banio_hombres_door" },
-    { "from": "n_banios", "to": "n_banio_mujeres_door" },
-    { "from": "n_servicios", "to": "n_aulas_derecha" },
-    { "from": "n_servicios", "to": "n_corredor_salida_derecha" },
-    { "from": "n_servicios", "to": "n_biblioteca" },
-    { "from": "n_biblioteca", "to": "n_admin_5" },
-    { "from": "n_biblioteca", "to": "n_aula_5_lobby" },
-    { "from": "n_aula_5_door", "to": "n_aula_5" },
-    { "from": "n_aula_5", "to": "n_buffet" },
-    { "from": "n_buffet", "to": "n_admin_1" },
-    { "from": "n_admin_5", "to": "n_corredor_salida_derecha" }
+    {
+      "from": "n_entrada",
+      "to": "n_admin_5"
+    },
+    {
+      "from": "n_admin_5",
+      "to": "n_admin_4"
+    },
+    {
+      "from": "n_admin_4",
+      "to": "n_admin_3"
+    },
+    {
+      "from": "n_admin_3",
+      "to": "n_admin_2"
+    },
+    {
+      "from": "n_admin_2",
+      "to": "n_admin_1"
+    },
+    {
+      "from": "n_admin_1",
+      "to": "n_admin_0"
+    },
+    {
+      "from": "n_admin_0",
+      "to": "n_mantenimiento"
+    },
+    {
+      "from": "n_mantenimiento",
+      "to": "n_corredor_bajo_oeste"
+    },
+    {
+      "from": "n_corredor_bajo_oeste",
+      "to": "n_corredor_izquierdo_1"
+    },
+    {
+      "from": "n_aula_11_door",
+      "to": "n_corredor_izquierdo_1"
+    },
+    {
+      "from": "n_corredor_izquierdo_1",
+      "to": "n_corredor_izquierdo_2"
+    },
+    {
+      "from": "n_aula_10b_door",
+      "to": "n_corredor_izquierdo_2"
+    },
+    {
+      "from": "n_aula_10a_door",
+      "to": "n_corredor_izquierdo_3"
+    },
+    {
+      "from": "n_corredor_izquierdo_2",
+      "to": "n_corredor_izquierdo_3"
+    },
+    {
+      "from": "n_corredor_izquierdo_3",
+      "to": "n_corredor_superior_1"
+    },
+    {
+      "from": "n_corredor_superior_1",
+      "to": "n_corredor_superior_2"
+    },
+    {
+      "from": "n_corredor_superior_2",
+      "to": "n_corredor_superior_3"
+    },
+    {
+      "from": "n_corredor_superior_3",
+      "to": "n_fotocopiadora_door"
+    },
+    {
+      "from": "n_fotocopiadora_door",
+      "to": "n_corredor_aula_4"
+    },
+    {
+      "from": "n_corredor_aula_4",
+      "to": "n_aula_4_door"
+    },
+    {
+      "from": "n_corredor_aula_4",
+      "to": "n_servicios_mid"
+    },
+    {
+      "from": "n_corredor_superior_3",
+      "to": "n_aula_5_door"
+    },
+    {
+      "from": "n_aula_5_door",
+      "to": "n_aula_5_lobby"
+    },
+    {
+      "from": "n_aula_5_lobby",
+      "to": "n_servicios_mid"
+    },
+    {
+      "from": "n_servicios_mid",
+      "to": "n_servicios"
+    },
+    {
+      "from": "n_servicios",
+      "to": "n_banios"
+    },
+    {
+      "from": "n_banios",
+      "to": "n_banio_hombres_door"
+    },
+    {
+      "from": "n_banios",
+      "to": "n_banio_mujeres_door"
+    },
+    {
+      "from": "n_servicios",
+      "to": "n_aulas_derecha"
+    },
+    {
+      "from": "n_servicios",
+      "to": "n_corredor_salida_derecha"
+    },
+    {
+      "from": "n_servicios",
+      "to": "n_biblioteca"
+    },
+    {
+      "from": "n_biblioteca",
+      "to": "n_admin_5"
+    },
+    {
+      "from": "n_biblioteca",
+      "to": "n_aula_5_lobby"
+    },
+    {
+      "from": "n_aula_5_door",
+      "to": "n_aula_5"
+    },
+    {
+      "from": "n_aula_5",
+      "to": "n_buffet"
+    },
+    {
+      "from": "n_buffet",
+      "to": "n_admin_1"
+    },
+    {
+      "from": "n_admin_5",
+      "to": "n_corredor_salida_derecha"
+    }
   ],
   "services": [
     {
@@ -434,72 +1085,158 @@
       "name": "Ir al baño de hombres",
       "roomId": "banios_hombres",
       "description": "Para ir al baño de hombres, sanitario, WC o toilette, dirígete al sector de baños junto al ascensor. También existe Baños mujeres al lado.",
-      "keywords": ["baño", "banio", "bano", "toilet", "wc", "sanitario", "baño hombres", "bano hombres", "banio hombres", "厕所", "男厕所", "卫生间", "洗手间"],
-      "examples": ["quiero ir al baño", "quiero ir al baño de hombres", "厕所在哪", "男厕所在哪", "where is the toilet"]
+      "keywords": [
+        "baño",
+        "banio",
+        "bano",
+        "toilet",
+        "wc",
+        "sanitario",
+        "baño hombres",
+        "bano hombres",
+        "banio hombres"
+      ],
+      "examples": [
+        "quiero ir al baño",
+        "quiero ir al baño de hombres",
+        "where is the toilet"
+      ]
     },
     {
       "id": "service_toilet_women",
       "name": "Ir al baño de mujeres",
       "roomId": "banios_mujeres",
       "description": "Para ir al baño de mujeres, sanitario, WC o toilette, dirígete al sector de baños junto al ascensor.",
-      "keywords": ["baño mujeres", "bano mujeres", "banio mujeres", "toilet women", "wc mujeres", "女厕所", "卫生间"],
-      "examples": ["quiero ir al baño de mujeres", "baño mujeres", "女厕所在哪", "where is the women's toilet"]
+      "keywords": [
+        "baño mujeres",
+        "bano mujeres",
+        "banio mujeres",
+        "toilet women",
+        "wc mujeres"
+      ],
+      "examples": [
+        "quiero ir al baño de mujeres",
+        "baño mujeres",
+        "where is the women's toilet"
+      ]
     },
     {
       "id": "service_copies",
       "name": "Fotocopias e impresiones",
       "roomId": "fotocopiadora",
       "description": "Para hacer fotocopias, imprimir apuntes o sacar copias, ve a la Fotocopiadora.",
-      "keywords": ["fotocopia", "copias", "impresion", "imprimir", "打印", "复印"],
-      "examples": ["necesito imprimir", "我要打印", "donde saco fotocopias"]
+      "keywords": [
+        "fotocopia",
+        "copias",
+        "impresion",
+        "imprimir"
+      ],
+      "examples": [
+        "necesito imprimir",
+        "donde saco fotocopias"
+      ]
     },
     {
       "id": "service_students",
       "name": "Trámites de alumnos",
       "roomId": "alumnos",
       "description": "Para trámites de estudiantes, constancias, credencial, carnet, libreta, legajo o consultas de alumnos, ve a Alumnos.",
-      "keywords": ["alumnos", "estudiantes", "constancia", "legajo", "libreta", "credencial", "carnet", "student card", "学生", "学生证", "证明"],
-      "examples": ["tengo que hacer un tramite de alumno", "quiero hacer mi credencial", "necesito el carnet de estudiante", "我要办学生证", "我要办学生证明", "donde esta alumnos"]
+      "keywords": [
+        "alumnos",
+        "estudiantes",
+        "constancia",
+        "legajo",
+        "libreta",
+        "credencial",
+        "carnet",
+        "student card"
+      ],
+      "examples": [
+        "tengo que hacer un tramite de alumno",
+        "quiero hacer mi credencial",
+        "necesito el carnet de estudiante",
+        "donde esta alumnos"
+      ]
     },
     {
       "id": "service_entry",
       "name": "Mesa de Entradas",
       "roomId": "mesa_entradas",
       "description": "Para presentar notas, entregar documentación o iniciar expedientes, ve a Mesa de Entradas.",
-      "keywords": ["mesa de entradas", "documentacion", "expediente", "entregar papeles", "提交材料", "交材料"],
-      "examples": ["tengo que entregar papeles", "我要交材料", "mesa de entradas donde queda"]
+      "keywords": [
+        "mesa de entradas",
+        "documentacion",
+        "expediente",
+        "entregar papeles"
+      ],
+      "examples": [
+        "tengo que entregar papeles",
+        "mesa de entradas donde queda"
+      ]
     },
     {
       "id": "service_finance",
       "name": "Consultas económicas",
       "roomId": "economico_financiera",
       "description": "Para pagos, consultas económicas o temas financieros, ve a Dirección Económico Financiera.",
-      "keywords": ["pago", "finanzas", "tesoreria", "economico", "financiera", "缴费", "付款", "财务"],
-      "examples": ["tengo que pagar", "我要缴费", "donde queda financiera"]
+      "keywords": [
+        "pago",
+        "finanzas",
+        "tesoreria",
+        "economico",
+        "financiera"
+      ],
+      "examples": [
+        "tengo que pagar",
+        "donde queda financiera"
+      ]
     },
     {
       "id": "service_library",
       "name": "Biblioteca",
       "roomId": "biblioteca",
       "description": "Para libros, lectura, consulta de material o biblioteca, ve a Biblioteca.",
-      "keywords": ["biblioteca", "libros", "material", "lectura", "图书馆", "资料"],
-      "examples": ["quiero ir a biblioteca", "图书馆在哪", "necesito buscar un libro"]
+      "keywords": [
+        "biblioteca",
+        "libros",
+        "material",
+        "lectura"
+      ],
+      "examples": [
+        "quiero ir a biblioteca",
+        "necesito buscar un libro"
+      ]
     },
     {
       "id": "service_food",
       "name": "Buffet",
       "roomId": "buffet",
       "description": "Para comprar comida, café o descansar, ve al Buffet.",
-      "keywords": ["buffet", "comida", "cafe", "cafeteria", "食堂", "咖啡"],
-      "examples": ["quiero comprar comida", "食堂在哪里", "donde hay cafe"]
+      "keywords": [
+        "buffet",
+        "comida",
+        "cafe",
+        "cafeteria"
+      ],
+      "examples": [
+        "quiero comprar comida",
+        "donde hay cafe"
+      ]
     },
     {
       "id": "service_classroom",
       "name": "Buscar aula",
       "roomId": "aula_1",
       "description": "Para encontrar un aula, indica el número: Aula 1, Aula 2, Aula 5, Aula 10A, Aula 15, etc.",
-      "keywords": ["aula", "clase", "classroom", "教室", "上课"],
-      "examples": ["tengo clase en aula 5", "我要去教室", "donde esta aula 10a"]
+      "keywords": [
+        "aula",
+        "clase",
+        "classroom"
+      ],
+      "examples": [
+        "tengo clase en aula 5",
+        "donde esta aula 10a"
+      ]
     }
   ]
 }

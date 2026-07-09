@@ -1,18 +1,55 @@
 # Logs
+work/
 work/*.log
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Dependencias
 node_modules/
 
-# Configuración local / agentes
+# Build / cache
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+coverage/
+outputs/
+
+# Configuracion local / agentes
 .agents/
 .codex/
+.vscode/
+.idea/
 
 # Variables de entorno
 .env
 .env.local
+.env.*.local
 
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Reportes locales de revision
+GITHUB_PREUPLOAD_REPORT.md
+*_REPORT.md
+
+# Temporales
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*~
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.png
+*.jpg
+*.jpeg
