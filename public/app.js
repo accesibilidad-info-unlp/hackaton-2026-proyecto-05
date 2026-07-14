@@ -214,7 +214,39 @@ function fillLocationSelect(map) {
   }
   locationSelect.value = state.currentLocationId;
 }
+/////
+function fillPlacesList(map) {
+  const list = document.getElementById("placesList");
+  list.innerHTML = "";
 
+  map.rooms
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach(room => {
+      const li = document.createElement("li");
+      li.textContent = `${room.code} - ${room.name}`;
+
+      li.addEventListener("click", () => {
+        selectCurrentLocation(room);
+        showPlaceDetails(room);
+      });
+
+      list.appendChild(li);
+    });
+}
+function showPlaceDetails(room) {
+  const details = document.getElementById("placeDetails");
+
+  const aliases = room.aliases?.length
+    ? `<ul>${room.aliases.map(alias => `<li>${alias}</li>`).join("")}</ul>`
+    : "<p>Este lugar no posee aliases.</p>";
+
+  details.innerHTML = `
+        <h4>${room.code} - ${room.name}</h4>
+        <strong>Aliases:</strong>
+        ${aliases}
+    `;
+}
+//////
 function clearRouteDisplay() {
   state.routeLayer.innerHTML = "";
   for (const element of state.roomElements.values()) {
@@ -309,6 +341,7 @@ async function init() {
   state.map = await response.json();
   drawMap(state.map);
   fillLocationSelect(state.map);
+  fillPlacesList(state.map);
   searchMode.textContent = "Planta Baja - Facultad de Informatica";
   addMessage("ai", "Hola. Puedes escribir \"quiero ir al bano\", \"quiero ir a biblioteca\", \"tengo que entregar papeles\" o \"aula 5\".");
 }
