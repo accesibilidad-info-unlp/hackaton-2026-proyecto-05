@@ -1,3 +1,124 @@
+/* ==========================================
+   1. CONTROLES Y ACCESIBILIDAD
+   ========================================== */
+const botonAbrir = document.getElementById("miBoton");
+const botonCerrar = document.getElementById("btnCerrar");
+const menu = document.getElementById("miMenu");
+
+// Control de apertura y cierre del menú
+if (botonAbrir && menu) {
+  botonAbrir.addEventListener("click", () => menu.classList.remove("oculto"));
+}
+if (botonCerrar && menu) {
+  botonCerrar.addEventListener("click", () => menu.classList.add("oculto"));
+}
+
+/* --- Control de Tamaño de Letra --- */
+const btnAgrandar = document.getElementById("agrandar");
+const btnAchicar = document.getElementById("achicar");
+let escalaTexto = 100;
+
+function ajustarTamaño(cambio) {
+  const nuevaEscala = escalaTexto + cambio;
+  if (nuevaEscala >= 80 && nuevaEscala <= 160) {
+    escalaTexto = nuevaEscala;
+    document.body.style.fontSize = escalaTexto + "%";
+  }
+}
+
+if (btnAgrandar) btnAgrandar.addEventListener("click", () => ajustarTamaño(10));
+if (btnAchicar) btnAchicar.addEventListener("click", () => ajustarTamaño(-10));
+
+/* --- Selector de Modos de Color --- */
+const selectorColor = document.getElementById("selectorColor");
+
+if (selectorColor) {
+  selectorColor.addEventListener("change", (event) => {
+    const temaSeleccionado = event.target.value;
+    if (temaSeleccionado === "defecto") {
+      document.documentElement.removeAttribute("data-theme");
+      document.body.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", temaSeleccionado);
+      document.body.setAttribute("data-theme", temaSeleccionado);
+    }
+  });
+}
+
+/* --- Control de Contraste --- */
+const btnSubirContraste = document.getElementById("subirContraste");
+const btnBajarContraste = document.getElementById("bajarContraste");
+let nivelContraste = 100;
+
+function ajustarContraste(cambio) {
+  const nuevoContraste = nivelContraste + cambio;
+  if (nuevoContraste >= 60 && nuevoContraste <= 200) {
+    nivelContraste = nuevoContraste;
+    document.documentElement.style.filter = `contrast(${nivelContraste}%)`;
+  }
+}
+
+if (btnSubirContraste) btnSubirContraste.addEventListener("click", () => ajustarContraste(20));
+if (btnBajarContraste) btnBajarContraste.addEventListener("click", () => ajustarContraste(-20));
+
+/* --- Lector de Voz (Text-to-Speech) - Solo Asistente --- */
+let lectura = null;
+const btnLeer = document.getElementById("btnLeer");
+const btnPausar = document.getElementById("btnPausar");
+const btnReanudar = document.getElementById("btnReanudar");
+const btnDetener = document.getElementById("btnDetener");
+
+if (btnLeer) {
+  btnLeer.addEventListener("click", () => {
+    speechSynthesis.cancel();
+
+    // 1. Buscamos el último mensaje devuelto por el asistente
+    const mensajesAI = document.querySelectorAll("#messages .message.ai");
+    const ultimoMensajeAI = mensajesAI.length > 0 ? mensajesAI[mensajesAI.length - 1].innerText : "";
+
+    // 2. Si todavía no hay mensajes, toma el placeholder del campo de texto
+    const inputMensaje = document.getElementById("messageInput");
+    const textoInput = inputMensaje ? inputMensaje.placeholder : "";
+
+    // Construimos la frase omitiendo totalmente el mapa y los encabezados
+    let textoAEnviar = ultimoMensajeAI;
+    if (!textoAEnviar) {
+      textoAEnviar = `Asistente de mapa listo. ${textoInput}`;
+    }
+
+    // 3. Reproducimos únicamente ese texto
+    lectura = new SpeechSynthesisUtterance(textoAEnviar);
+    lectura.lang = "es-ES";
+    lectura.rate = 0.95;
+    lectura.pitch = 1.0;
+    lectura.volume = 1.0;
+
+    speechSynthesis.speak(lectura);
+  });
+}
+
+if (btnPausar) {
+  btnPausar.addEventListener("click", () => {
+    if (speechSynthesis.speaking && !speechSynthesis.paused) {
+      speechSynthesis.pause();
+    }
+  });
+}
+
+if (btnReanudar) {
+  btnReanudar.addEventListener("click", () => {
+    if (speechSynthesis.paused) {
+      speechSynthesis.resume();
+    }
+  });
+}
+
+if (btnDetener) {
+  btnDetener.addEventListener("click", () => {
+    speechSynthesis.cancel();
+  });
+}
+
 const svgNs = "http://www.w3.org/2000/svg";
 
 const state = {

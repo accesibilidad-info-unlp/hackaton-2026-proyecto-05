@@ -11,6 +11,64 @@
 </head>
 
 <body>
+  <button id="miBoton" class="btn-abrir" aria-label="Abrir menú de accesibilidad">☰</button>
+
+
+   <!-- Menú Lateral de Accesibilidad -->
+   <aside id="miMenu" class="sidebar oculto" aria-label="Menú de Accesibilidad">
+     <div class="sidebar-header">
+       <span class="titulo">Accesibilidad</span>
+       <button id="btnCerrar" class="btn-cerrar" aria-label="Cerrar menú">✕</button>
+     </div>
+    
+     <div class="sidebar-contenido">
+       <!-- Control de Tamaño de Fuente -->
+       <div class="controles-fuente">
+         <p class="control-label">Tamaño de Texto:</p>
+         <div class="btn-group">
+           <button id="achicar" type="button">- Letra</button>
+           <button id="agrandar" type="button">+ Letra</button>
+         </div>
+       </div>
+
+
+       <!-- Control de Contraste -->
+       <div class="controles-contraste">
+         <p class="control-label">Contraste:</p>
+         <div class="btn-group">
+           <button id="bajarContraste" type="button">- Contraste</button>
+           <button id="subirContraste" type="button">+ Contraste</button>
+         </div>
+       </div>
+
+
+       <!-- Control de Modos de Color -->
+       <div class="control-tema">
+         <label for="selectorColor" class="label-tema">Modo de Color:</label>
+         <select id="selectorColor">
+           <option value="defecto">Predeterminado</option>
+           <option value="oscuro">Modo Oscuro</option>
+           <option value="daltonismo">Daltonismo (Protanopía/Deuteranopía)</option>
+           <option value="baja-vision">Alta Legibilidad (Texto amarillo/Fondo negro)</option>
+         </select>
+       </div>
+      
+       <!-- Lector de Voz -->
+       <div class="leer">
+         <span class="leer_texto">Lector de Voz:</span>
+         <button id="btnLeer" type="button" class="btn-bloque">🔊 Leer pantalla</button>
+        
+         <div class="controles-reproductor">
+           <button id="btnPausar" type="button">⏸ Pausar</button>
+           <button id="btnReanudar" type="button">▶ Reanudar</button>
+           <button id="btnDetener" type="button">⏹ Detener</button>
+         </div>
+       </div>
+     </div>
+   </aside>
+
+
+
   <main class="shell">
     <section class="map-area" aria-label="Mapa inteligente">
       <div class="topbar">

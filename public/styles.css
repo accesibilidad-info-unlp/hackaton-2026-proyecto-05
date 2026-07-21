@@ -1,35 +1,187 @@
+/* ==========================================
+   1. VARIABLES DE TEMA (Mapa + Accesibilidad)
+   ========================================== */
 :root {
   color-scheme: light;
-  --bg: #eef2f5;
-  --panel: #ffffff;
-  --ink: #1e252c;
-  --muted: #66717d;
-  --line: #cfd8df;
-  --room: #ffffff;
-  --room-active: #e94141;
-  --room-stroke: #768695;
-  --corridor: #dfe8ed;
-  --route: #0f9f8f;
-  --node: #1f6feb;
+  
+  /* Fondo general e interfaz */
+  --bg-color: #eef2f5;
+  --text-color: #1e252c;
+  --panel-bg: #ffffff;
+  --muted-text: #66717d;
+  --border-line: #cfd8df;
   --shadow: 0 18px 45px rgba(31, 45, 61, 0.14);
+
+  /* Menú Accesibilidad */
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #cfd8df;
+  --btn-bg: #f7fafc;
+  --btn-hover: #eef4f7;
+
+  /* Elementos del Mapa SVG */
+  --map-bg: #f7f9fb;
+  --map-shell: #e4e8c9;
+  --map-shell-stroke: #20252b;
+  --room-bg: #ffffff;
+  --room-stroke: #3f4b55;
+  --room-active: #e94141;
+  --corridor-bg: #b0b2ad;
+  --route-color: #0f9f8f;
+  --node-color: #1f6feb;
+
+  /* Mensajes */
+  --msg-user-bg: #dff3ef;
+  --msg-ai-bg: #f0f3f6;
 }
 
+/* --- MODO OSCURO --- */
+[data-theme="oscuro"] {
+  --bg-color: #0f1419;
+  --text-color: #f0f6fc;
+  --panel-bg: #161b22;
+  --muted-text: #8b949e;
+  --border-line: #30363d;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+
+  --sidebar-bg: #161b22;
+  --sidebar-border: #30363d;
+  --btn-bg: #21262d;
+  --btn-hover: #30363d;
+
+  --map-bg: #090d12;
+  --map-shell: #1b222d;
+  --map-shell-stroke: #58a6ff;
+  --room-bg: #212832;
+  --room-stroke: #8b949e;
+  --room-active: #ff5a5a;
+  --corridor-bg: #131920;
+  --route-color: #2ea043;
+  --node-color: #58a6ff;
+
+  --msg-user-bg: #183e35;
+  --msg-ai-bg: #21262d;
+}
+
+/* --- MODO DALTONISMO (Protanopía / Deuteranopía) --- */
+[data-theme="daltonismo"] {
+  --bg-color: #f0f4f8;
+  --text-color: #002244;
+  --panel-bg: #ffffff;
+  --muted-text: #4a607a;
+  --border-line: #b0c4de;
+  --shadow: 0 18px 45px rgba(0, 34, 68, 0.12);
+
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #b0c4de;
+  --btn-bg: #e6f0fa;
+  --btn-hover: #d0e2f5;
+
+  --map-bg: #eef5fc;
+  --map-shell: #d6e4f0;
+  --map-shell-stroke: #002244;
+  --room-bg: #ffffff;
+  --room-stroke: #003366;
+  --room-active: #d95f02;
+  --corridor-bg: #b8d0e8;
+  --route-color: #7570b3;
+  --node-color: #005ab5;
+
+  --msg-user-bg: #d0e2f5;
+  --msg-ai-bg: #e6f0fa;
+}
+
+/* --- MODO ALTA LEGIBILIDAD (Baja Visión) --- */
+[data-theme="baja-vision"] {
+  --bg-color: #000000;
+  --text-color: #ffff00;
+  --panel-bg: #000000;
+  --muted-text: #ffffff;
+  --border-line: #ffff00;
+  --shadow: none;
+
+  --sidebar-bg: #000000;
+  --sidebar-border: #ffff00;
+  --btn-bg: #000000;
+  --btn-hover: #222222;
+
+  --map-bg: #000000;
+  --map-shell: #111111;
+  --map-shell-stroke: #ffff00;
+  --room-bg: #1a1a1a;
+  --room-stroke: #ffff00;
+  --room-active: #ff0055;
+  --corridor-bg: #333333;
+  --route-color: #00ffff;
+  --node-color: #ffff00;
+
+  --msg-user-bg: #111111;
+  --msg-ai-bg: #222222;
+}
+
+/* Filtros de la imagen SVG según el tema activo */
+[data-theme="oscuro"] #campusMap image {
+  filter: invert(0.9) hue-rotate(180deg) brightness(0.8) contrast(1.2);
+}
+
+[data-theme="baja-vision"] #campusMap image {
+  filter: invert(1) contrast(2) grayscale(1);
+}
+
+[data-theme="daltonismo"] #campusMap image {
+  filter: saturate(1.5) contrast(1.1);
+}
+
+/* ==========================================
+   2. ESTILOS GENERALES Y ESTRUCTURA
+   ========================================== */
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
   min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: Arial, "Microsoft YaHei", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button,
-input,
-select {
+button, input, select {
   font: inherit;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+h1 { font-size: 24px; letter-spacing: 0; }
+.panel-header h2 { font-size: 20px; margin-bottom: 6px; letter-spacing: 0; }
+
+.topbar p,
+.panel-header p,
+.match-info,
+.location-picker label {
+  color: var(--muted-text);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Botón flotante para menú accesibilidad */
+.btn-abrir {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  font-size: 22px;
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-line);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .shell {
@@ -38,13 +190,15 @@ select {
   gap: 18px;
   min-height: 100vh;
   padding: 18px;
+  padding-top: 60px; /* Espacio para el botón flotante superior */
 }
 
 .map-area,
 .assistant-panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
+  background: var(--panel-bg);
+  border: 1px solid var(--border-line);
   box-shadow: var(--shadow);
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .map-area {
@@ -59,26 +213,7 @@ select {
   justify-content: space-between;
   gap: 16px;
   padding: 18px 20px;
-  border-bottom: 1px solid var(--line);
-}
-
-h1,
-h2,
-p {
-  margin: 0;
-}
-
-h1 {
-  font-size: 24px;
-  letter-spacing: 0;
-}
-
-.topbar p,
-.panel-header p,
-.match-info {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
+  border-bottom: 1px solid var(--border-line);
 }
 
 .controls {
@@ -91,24 +226,37 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--muted);
+  color: var(--muted-text);
   font-size: 14px;
 }
 
+/* Botones genéricos */
 button {
-  border: 1px solid #aebac4;
-  background: #f7fafc;
-  color: var(--ink);
+  border: 1px solid var(--border-line);
+  background: var(--btn-bg);
+  color: var(--text-color);
   border-radius: 6px;
   padding: 9px 12px;
   cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 button:hover {
-  border-color: #73808b;
-  background: #eef4f7;
+  background: var(--btn-hover);
 }
 
+select, input {
+  width: 100%;
+  border: 1px solid var(--border-line);
+  border-radius: 6px;
+  padding: 10px 11px;
+  color: var(--text-color);
+  background: var(--panel-bg);
+}
+
+/* ==========================================
+   3. ESTILOS DINÁMICOS DEL MAPA SVG
+   ========================================== */
 .map-frame {
   flex: 1;
   min-height: 560px;
@@ -119,14 +267,21 @@ button:hover {
   width: 100%;
   height: 100%;
   min-height: 530px;
-  border: 1px solid var(--line);
-  background: #f7f9fb;
+  border: 1px solid var(--border-line);
+  background-color: var(--map-bg) !important;
+  transition: background-color 0.3s;
+}
+
+/* Fondo del mapa */
+#campusMap rect[fill="#f6f7f3"],
+#campusMap > rect:first-child {
+  fill: var(--map-bg) !important;
 }
 
 .building-shell {
-  fill: #e4e8c9;
-  stroke: #20252b;
-  stroke-width: 1.2;
+  fill: var(--map-shell) !important;
+  stroke: var(--map-shell-stroke) !important;
+  stroke-width: 1.5;
 }
 
 .entry-ramp {
@@ -135,10 +290,17 @@ button:hover {
   stroke-width: 1.1;
 }
 
-.room {
-  fill: rgba(255, 255, 255, 0.78);
-  stroke: #3f4b55;
+.corridor,
+.map-base {
+  fill: var(--corridor-bg) !important;
+  stroke: var(--map-shell-stroke) !important;
   stroke-width: 1.2;
+}
+
+.room {
+  fill: var(--room-bg) !important;
+  stroke: var(--room-stroke) !important;
+  stroke-width: 1.5 !important;
   transition: fill 180ms ease, stroke 180ms ease;
   cursor: pointer;
 }
@@ -149,58 +311,53 @@ button:hover {
 }
 
 .room.active {
-  fill: #ff5a5a;
-  stroke: var(--room-active);
-  stroke-width: 2.6;
+  fill: var(--room-active) !important;
+  stroke: var(--room-active) !important;
+  stroke-width: 2.8 !important;
 }
 
 .room-code {
-  fill: #1e252c;
-  font-size: 10px;
-  font-weight: 700;
+  fill: var(--text-color) !important;
+  font-size: 11px;
+  font-weight: 800;
   text-anchor: middle;
   pointer-events: none;
 }
 
-.corridor {
-  fill: #b0b2ad;
-  stroke: #252b31;
-  stroke-width: 1.1;
-}
-
 .route-line {
   fill: none;
-  stroke: var(--route);
+  stroke: var(--route-color) !important;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 6;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .route-glow {
   fill: none;
-  stroke: rgba(15, 159, 143, 0.2);
+  stroke: var(--route-color) !important;
+  opacity: 0.25;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 14;
 }
 
 .route-point {
-  fill: #ffffff;
-  stroke: var(--route);
-  stroke-width: 2;
+  fill: var(--panel-bg) !important;
+  stroke: var(--route-color) !important;
+  stroke-width: 2.5;
 }
 
 .debug-edge {
-  stroke: #8aa2b2;
+  stroke: var(--muted-text);
   stroke-dasharray: 7 7;
   stroke-width: 2;
   opacity: 0;
 }
 
 .debug-node {
-  fill: var(--node);
-  stroke: #ffffff;
+  fill: var(--node-color);
+  stroke: var(--panel-bg);
   stroke-width: 2;
   opacity: 0;
 }
@@ -210,6 +367,62 @@ button:hover {
   opacity: 1;
 }
 
+/* ==========================================
+   4. PANEL DE LUGARES / DETALLES
+   ========================================== */
+.places-panel {
+  margin-top: 20px;
+  background: var(--panel-bg);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+
+.places-panel h3 {
+  margin-bottom: 10px;
+}
+
+#placesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+#placesList li {
+  padding: 8px 10px;
+  border: 1px solid var(--border-line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#placesList li:hover {
+  background: var(--btn-hover);
+}
+
+.place-details {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid var(--border-line);
+  border-radius: 6px;
+  background: var(--map-bg);
+}
+
+.place-details h4 {
+  margin: 0 0 10px 0;
+}
+
+.place-details ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* ==========================================
+   5. PANEL LATERAL DE ASISTENTE Y CHAT
+   ========================================== */
 .assistant-panel {
   display: flex;
   flex-direction: column;
@@ -220,13 +433,7 @@ button:hover {
 .location-picker,
 .match-info {
   padding: 16px;
-  border-bottom: 1px solid var(--line);
-}
-
-.panel-header h2 {
-  margin-bottom: 6px;
-  font-size: 20px;
-  letter-spacing: 0;
+  border-bottom: 1px solid var(--border-line);
 }
 
 .location-picker {
@@ -234,25 +441,10 @@ button:hover {
   gap: 8px;
 }
 
-.location-picker label {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-select,
-input {
-  width: 100%;
-  border: 1px solid #aebac4;
-  border-radius: 6px;
-  padding: 10px 11px;
-  color: var(--ink);
-  background: #ffffff;
-}
-
 .messages {
   flex: 1;
   min-height: 270px;
-  overflow: auto;
+  overflow-y: auto;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -269,12 +461,14 @@ input {
 
 .message.user {
   align-self: flex-end;
-  background: #dff3ef;
+  background: var(--msg-user-bg);
+  color: var(--text-color);
 }
 
 .message.ai {
   align-self: flex-start;
-  background: #f0f3f6;
+  background: var(--msg-ai-bg);
+  color: var(--text-color);
 }
 
 .chat-form {
@@ -282,12 +476,12 @@ input {
   grid-template-columns: minmax(0, 1fr) 72px;
   gap: 8px;
   padding: 12px 16px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border-line);
 }
 
 .chat-form button {
-  background: var(--route);
-  border-color: var(--route);
+  background: var(--route-color);
+  border-color: var(--route-color);
   color: #ffffff;
 }
 
@@ -303,24 +497,206 @@ input {
 }
 
 .match-info {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border-line);
   border-bottom: 0;
   min-height: 50px;
 }
 
+/* ==========================================
+   6. MENÚ LATERAL DE ACCESIBILIDAD (Sidebar)
+   ========================================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.oculto {
+  display: none;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-header .titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.sidebar-contenido {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.controles-fuente,
+.controles-contraste {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.control-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.btn-group,
+.btn-pair {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-group button,
+.btn-pair button {
+  flex: 1;
+  padding: 8px 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-group button:hover,
+.btn-pair button:hover {
+  background-color: var(--btn-hover);
+}
+
+.control-tema,
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label-tema {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.control-tema select,
+.select-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.leer,
+.voice-reader-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--sidebar-border);
+  padding-top: 14px;
+  width: 100%;
+}
+
+.leer_texto {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.btn-bloque,
+.btn-main-voice {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.btn-bloque:hover,
+.btn-main-voice:hover {
+  background-color: var(--btn-hover);
+}
+
+.controles-reproductor,
+.voice-controls-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.controles-reproductor button,
+.voice-controls-row button {
+  flex: 1;
+  padding: 8px 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  text-align: center;
+  cursor: pointer;
+}
+
+.controles-reproductor button:hover,
+.voice-controls-row button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* ==========================================
+   7. RESPONSIVE DESIGN
+   ========================================== */
 @media (max-width: 920px) {
   .shell {
     grid-template-columns: 1fr;
   }
 
   .assistant-panel {
-    min-height: 560px;
+    min-height: 500px;
   }
 }
 
 @media (max-width: 620px) {
   .shell {
     padding: 10px;
+    padding-top: 60px;
   }
 
   .topbar {
@@ -334,59 +710,11 @@ input {
   }
 
   .map-frame {
-    min-height: 420px;
-    padding: 8px;
+    min-height: 380px;
+    padding: 6px;
   }
 
   #campusMap {
-    min-height: 400px;
+    min-height: 360px;
   }
-}
-.places-panel{
-    margin-top:20px;
-    background:#fff;
-    border-radius:8px;
-    padding:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
-
-.places-panel h3{
-    margin-bottom:10px;
-}
-
-#placesList{
-    list-style:none;
-    padding:0;
-    margin:0;
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    gap:8px;
-}
-
-#placesList li{
-    padding:8px 10px;
-    border:1px solid #ddd;
-    border-radius:6px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-#placesList li:hover{
-    background:#eef5ff;
-}
-.place-details{
-    margin-top:15px;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:6px;
-    background:#f8f9fa;
-}
-
-.place-details h4{
-    margin:0 0 10px 0;
-}
-
-.place-details ul{
-    margin:0;
-    padding-left:20px;
 }
