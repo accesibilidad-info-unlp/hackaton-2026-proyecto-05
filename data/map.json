@@ -1067,123 +1067,13 @@
   ],
   "edges": [
     {
-      "from": "n_right-6",
-      "to": "n_right-5",
-      "accesible": true
-    },
-    {
-      "from": "n_right-5",
-      "to": "n_right-4",
-      "accesible": true
-    },
-    {
-      "from": "n_right-4",
-      "to": "n_right-3",
-      "accesible": true
-    },
-    {
-      "from": "n_right-3",
-      "to": "n_right-2",
-      "accesible": true
-    },
-    {
-      "from": "n_right-2",
-      "to": "n_right-1",
-      "accesible": true
-    },
-    {
-      "from": "n_right-1",
-      "to": "n_right-0",
-      "accesible": true
-    },
-    {
-      "from": "n_left-7",
-      "to": "n_left-6",
-      "accesible": true
-    },
-    {
-      "from": "n_left-6",
-      "to": "n_left-5",
-      "accesible": true
-    },
-    {
-      "from": "n_left-5",
-      "to": "n_left-4",
-      "accesible": true
-    },
-    {
-      "from": "n_left-4",
-      "to": "n_left-3",
-      "accesible": true
-    },
-    {
-      "from": "n_left-3",
-      "to": "n_left-2",
-      "accesible": true
-    },
-    {
-      "from": "n_left-2",
-      "to": "n_left-1",
-      "accesible": true
-    },
-    {
-      "from": "n_left-1",
-      "to": "n_left-0",
-      "accesible": true
-    },
-    {
-      "from": "n_central-1",
-      "to": "n_central-0",
-      "accesible": true
-    },
-    {
-      "from": "n_other-0",
-      "to": "n_other-1",
-      "accesible": true
-    },
-    {
-      "from": "n_right-0",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_right-6",
-      "to": "n_other-0",
-      "accesible": true
-    },
-    {
-      "from": "n_other-1",
-      "to": "n_left-6",
-      "accesible": true
-    },
-    {
-      "from": "n_central-0",
-      "to": "n_left-1",
-      "accesible": true
-    },
-    {
-      "from": "n_central-0",
-      "to": "n_entrada",
-      "accesible": true
-    },
-    {
-      "from": "n_buffet",
-      "to": "n_other-1",
-      "accesible": true
-    },
-    {
-      "from": "n_buffet",
-      "to": "n_entrada",
+      "from": "n_gradas-0",
+      "to": "n_gradas-1",
       "accesible": false
     },
     {
-      "from": "n_to-buffet-sin-rampa",
-      "to": "n_rampa-0",
-      "accesible": false
-    },
-    {
-      "from": "n_to-buffet-sin-rampa",
-      "to": "n_buffet",
+      "from": "n_gradas-1",
+      "to": "n_entrada",
       "accesible": false
     },
     {
@@ -1193,18 +1083,113 @@
     },
     {
       "from": "n_rampa-1",
-      "to": "n_entrada",
+      "to": "n_gradas-1",
       "accesible": true
     },
     {
-      "from": "n_gradas-0",
-      "to": "n_gradas-1",
+      "from": "n_entrada",
+      "to": "n_left-0",
+      "accesible": true
+    },
+    {
+      "from": "n_entrada",
+      "to": "n_central-0",
+      "accesible": true
+    },
+    {
+      "from": "n_central-0",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_central-1",
+      "to": "n_right-0",
+      "accesible": true
+    },
+    {
+      "from": "n_right-0",
+      "to": "n_right-1",
+      "accesible": true
+    },
+    {
+      "from": "n_right-1",
+      "to": "n_right-2",
+      "accesible": true
+    },
+    {
+      "from": "n_right-2",
+      "to": "n_right-3",
+      "accesible": true
+    },
+    {
+      "from": "n_right-3",
+      "to": "n_right-4",
+      "accesible": true
+    },
+    {
+      "from": "n_right-4",
+      "to": "n_right-5",
+      "accesible": true
+    },
+    {
+      "from": "n_right-5",
+      "to": "n_right-6",
+      "accesible": true
+    },
+    {
+      "from": "n_right-2",
+      "to": "n_other-0",
+      "accesible": true
+    },
+    {
+      "from": "n_other-0",
+      "to": "n_other-1",
+      "accesible": true
+    },
+    {
+      "from": "n_left-0",
+      "to": "n_left-1",
+      "accesible": true
+    },
+    {
+      "from": "n_left-1",
+      "to": "n_to-buffet-sin-rampa",
       "accesible": false
     },
     {
-      "from": "n_gradas-1",
-      "to": "n_entrada",
-      "accesible": false
+      "from": "n_left-1",
+      "to": "n_left-2",
+      "accesible": true
+    },
+    {
+      "from": "n_left-2",
+      "to": "n_left-3",
+      "accesible": true
+    },
+    {
+      "from": "n_left-3",
+      "to": "n_buffet",
+      "accesible": true
+    },
+    {
+      "from": "n_left-3",
+      "to": "n_left-4",
+      "accesible": true
+    },
+    {
+      "from": "n_left-4",
+      "to": "n_left-5",
+      "accesible": true
+    },
+    {
+      "from": "n_left-5",
+      "to": "n_left-6",
+      "accesible": true
+    },
+    {
+      "from": "n_left-6",
+      "to": "n_left-7",
+      "accesible": true
     },
     {
       "from": "n_aula_1_door",
@@ -1375,12 +1360,6 @@
       "from": "n_ascensor_door",
       "to": "n_central-1",
       "accesible": true
-    },
-    {
-      "from": "n_left-3",
-      "to": "n_buffet",
-      "accesible": true,
-      "nota": "Única vía accesible en silla de ruedas hacia el Buffet (debe haberlo indicado el usuario)."
     }
   ],
   "puntos_interes": {

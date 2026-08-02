@@ -421,7 +421,6 @@ async function main() {
 
   function buildRoute(startLocationId, targetRoomId) {
     const startNodeId = nodeForLocationId(startLocationId);
-    const startRoom = findRoom(startLocationId);
     const targetRoom = findRoom(targetRoomId);
 
     if (!startNodeId || !targetRoom) {
@@ -433,17 +432,10 @@ async function main() {
       return null;
     }
 
-    const graphPoints = result.nodeIds.map((nodeId) => {
+    const points = result.nodeIds.map((nodeId) => {
       const node = findNode(nodeId);
       return { id: node.id, x: node.x, y: node.y, label: node.label, type: "corridor-node" };
     });
-    const startPoint = startRoom ? roomPoint(startRoom) : null;
-    const targetPoint = roomPoint(targetRoom);
-    const points = [
-      ...(startPoint ? [startPoint] : []),
-      ...graphPoints,
-      ...(targetPoint ? [targetPoint] : [])
-    ];
 
     return {
       targetRoom,
