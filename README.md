@@ -28,7 +28,6 @@ La version actual no usa una imagen SVG externa como mapa principal. El plano vi
 - `public/styles.css`: estilos visuales del mapa y del panel lateral.
 - `data/map.json`: fuente principal de datos del mapa.
 - `server.js`: servidor local, busqueda de destinos y calculo de rutas.
-- `scripts/export-full-map-svg.js`: exporta el mapa JSON actual como un SVG estatico.
 - `public/assets/svg/full-map.svg`: mapa completo exportado desde `data/map.json`.
 - `public/assets/svg/plano-v3.svg`: plano SVG completo usado como fondo visual del mapa.
 - `public/assets/svg/plano-v2.svg`: recurso convertido desde `plano v2.txt`.

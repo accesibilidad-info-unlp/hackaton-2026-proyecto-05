@@ -20,9 +20,9 @@
 <circle id="left-2" cx="179.5" cy="200" r="2.5" fill="#1D1FB8"/>
 <circle id="left-1" cx="236.5" cy="200" r="2.5" fill="#1D1FB8"/>
 <circle id="left-0" cx="272.5" cy="200" r="2.5" fill="#1D1FB8"/>
-<circle id="central-2" cx="362.5" cy="156" r="2.5" fill="#1D1FB8"/>
-<circle id="central-1" cx="352.5" cy="177" r="2.5" fill="#1D1FB8"/>
-<circle id="central-0" cx="342.5" cy="200" r="2.5" fill="#1D1FB8"/>
+<circle id="central-1" cx="362.5" cy="156" r="2.5" fill="#1D1FB8"/>
+<circle id="central-0" cx="352.5" cy="177" r="2.5" fill="#1D1FB8"/>
+<circle id="entrada" cx="342.5" cy="200" r="2.5" fill="#1D1FB8"/>
 <circle id="rampa-1" cx="206.5" cy="231" r="2.5" fill="#1D1FB8"/>
 <circle id="rampa-0" cx="206.5" cy="252" r="2.5" fill="#1D1FB8"/>
 <circle id="gradas-1" cx="342.5" cy="231" r="2.5" fill="#1D1FB8"/>

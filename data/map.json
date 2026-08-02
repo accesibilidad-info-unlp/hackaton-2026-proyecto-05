@@ -1,52 +1,36 @@
 {
-  "viewBox": "0 0 637 424",
+  "viewBox": "0 0 476 398",
   "backgroundImage": {
-    "href": "/assets/svg/plano-v3.svg",
+    "href": "/assets/svg/svg-externo.svg",
     "preserveAspectRatio": "none"
   },
-  "backgroundPaths": [
-    {
-      "id": "building-shell",
-      "className": "building-shell",
-      "d": "M548.513 353.2L578.513 367.2L636.013 275.2L151.013 0.699768L0.513 317.7L12.513 422.7L301.513 414.2V358.2L496.513 353.2V344.2L287.013 348.2L280.013 328.7L57.513 333.2L183.513 80.1998L530.513 275.2L555.513 234.2L602.013 262.2L548.513 353.2Z"
-    },
-    {
-      "id": "camino",
-      "className": "corridor",
-      "d": "M541.513 346.7V369.7H531.013L523.013 314.2H508.513L523.013 293.2L231.513 133.2L139.013 314.2H300.513V325.7H518.013L523.013 369.7H502.013V338.2L290.013 343.2L289.013 321.2L70.013 325.7L185.513 89.1998L531.013 284.7L545.013 263.2L582.013 284.7L541.513 346.7Z"
-    },
-    {
-      "id": "rampa-entrada-principal",
-      "className": "entry-ramp",
-      "d": "M330.779 411.7H306.013V362.7L500.013 357.7V391.7L422.619 396.7V377.7L330.779 383.7V411.7Z"
-    },
-    {
-      "id": "gradas-entrada-principal",
-      "className": "entry-ramp",
-      "d": "M541.513 391.2L506.013 393.2V375.7H541.513V391.2Z"
-    }
-  ],
-  "rooms": [
-    {
-      "id": "entrada_principal",
-      "svgId": "room-entrada-principal",
-      "name": "Entrada principal",
-      "code": "PB-ENT",
-      "aliases": [
-        "entrada",
-        "ingreso",
-        "puerta principal"
+  "escala": {
+    "estado": "CALIBRADA",
+    "referencia": "Bloque 'Mesa de Entradas' = 35 unidades SVG = 10 metros reales (basado en el plano de la facu)",
+    "metros_por_unidad_svg": 0.285714,
+    "unidades_svg_por_metro": 3.5
+  },
+  "accesos_entrada_principal": {
+    "en_silla_ruedas": {
+      "via": "rampa",
+      "camino_nodos": [
+        "n_rampa-0",
+        "n_rampa-1",
+        "n_entrada"
       ],
-      "entranceNodeId": "n_entrada",
-      "shape": {
-        "type": "polygon",
-        "points": "294.17,399.992 311.865,369.298 311.865,360.019 426.141,360.019 429.828,352.881 477.013,352.881 477.013,378.578 424.667,378.578 424.667,368.584 324.398,369.298 324.398,399.992"
-      },
-      "label": {
-        "x": 385.592,
-        "y": 376.437
-      }
+      "descripcion": "Ingresar por la rampa accesible."
     },
+    "sin_silla_ruedas": {
+      "via": "gradas",
+      "camino_nodos": [
+        "n_gradas-0",
+        "n_gradas-1",
+        "n_entrada"
+      ],
+      "descripcion": "Ingresar por las gradas de acceso principal."
+    }
+  },
+  "rooms": [
     {
       "id": "aula_1",
       "svgId": "room-aula-1",
@@ -56,14 +40,14 @@
         "aula uno",
         "classroom 1"
       ],
-      "entranceNodeId": "n_aulas_derecha",
+      "entranceNodeId": "n_aula_1_door",
       "shape": {
-        "type": "polygon",
-        "points": "512.402,198.699 489.546,240.1 462.267,225.824 485.86,184.423"
+        "type": "path",
+        "d": "M381.649 137L405.336 150.13L386.886 183.415L363.199 170.285L381.649 137Z"
       },
       "label": {
-        "x": 487.335,
-        "y": 212.262
+        "x": 383.7,
+        "y": 155.6
       }
     },
     {
@@ -73,16 +57,17 @@
       "code": "2",
       "aliases": [
         "aula dos",
-        "classroom 2"
+        "classroom 2",
+        "apl"
       ],
-      "entranceNodeId": "n_aulas_derecha",
+      "entranceNodeId": "n_aula_2_door",
       "shape": {
-        "type": "polygon",
-        "points": "461.135,225.11 434.251,210.834 458.229,169.433 484.385,183.709 483.658,184.423"
+        "type": "path",
+        "d": "M361.649 126L381.291 136.888L362.841 170.173L343.199 159.285L361.649 126Z"
       },
       "label": {
-        "x": 459.318,
-        "y": 197.272
+        "x": 362.1,
+        "y": 143.7
       }
     },
     {
@@ -92,16 +77,17 @@
       "code": "3",
       "aliases": [
         "aula tres",
-        "classroom 3"
+        "classroom 3",
+        "cobol"
       ],
-      "entranceNodeId": "n_aulas_derecha",
+      "entranceNodeId": "n_aula_3_door",
       "shape": {
-        "type": "polygon",
-        "points": "406.235,195.844 433.514,210.12 457.106,168.719 429.828,154.443"
+        "type": "path",
+        "d": "M341.649 115L361.291 125.888L342.841 159.173L323.199 148.285L341.649 115Z"
       },
       "label": {
-        "x": 431.671,
-        "y": 182.282
+        "x": 342.1,
+        "y": 132.7
       }
     },
     {
@@ -111,23 +97,234 @@
       "code": "4",
       "aliases": [
         "aula cuatro",
-        "classroom 4"
+        "classroom 4",
+        "lisp"
       ],
       "entranceNodeId": "n_aula_4_door",
       "shape": {
-        "type": "polygon",
-        "points": "428.353,153.729 404.76,195.13 332.508,156.584 355.363,115.897"
+        "type": "path",
+        "d": "M285.716 84L340.946 114.614L322.495 147.899L267.266 117.285L276.491 100.643L285.716 84Z"
       },
       "label": {
-        "x": 380.431,
-        "y": 155.514
+        "x": 296.4,
+        "y": 108.1
+      }
+    },
+    {
+      "id": "aula_5",
+      "svgId": "room-aula-5",
+      "name": "Aula 5",
+      "code": "5",
+      "aliases": [
+        "aula cinco",
+        "fortran"
+      ],
+      "entranceNodeId": "n_aula_5_door",
+      "shape": {
+        "type": "path",
+        "d": "M205.219 189.257L245.012 117.31L295.956 145.487L256.163 217.434L205.219 189.257Z"
+      },
+      "label": {
+        "x": 241.5,
+        "y": 171.7
+      }
+    },
+    {
+      "id": "aula_6",
+      "svgId": "room-aula-6",
+      "name": "Aula 6",
+      "code": "6",
+      "aliases": [
+        "aula seis",
+        "smalltalk"
+      ],
+      "entranceNodeId": "n_aula_6_door",
+      "shape": {
+        "type": "polygon",
+        "points": "197.448,79.070 214.901,47.584 234.067,58.208 216.615,89.694"
+      },
+      "label": {
+        "x": 215.8,
+        "y": 68.6
+      }
+    },
+    {
+      "id": "aula_7",
+      "svgId": "room-aula-7",
+      "name": "Aula 7",
+      "code": "7",
+      "aliases": [
+        "aula siete",
+        "pascal"
+      ],
+      "entranceNodeId": "n_aula_7_door",
+      "shape": {
+        "type": "polygon",
+        "points": "177.407,68.047 194.860,36.561 214.067,47.208 196.615,78.694"
+      },
+      "label": {
+        "x": 195.7,
+        "y": 57.6
+      }
+    },
+    {
+      "id": "aula_8",
+      "svgId": "room-aula-8",
+      "name": "Aula 8",
+      "code": "8",
+      "aliases": [
+        "aula ocho",
+        "php"
+      ],
+      "entranceNodeId": "n_aula_8_door",
+      "shape": {
+        "type": "polygon",
+        "points": "158.199,57.486 175.652,26.000 194.068,36.208 176.615,67.694"
+      },
+      "label": {
+        "x": 176.1,
+        "y": 46.8
+      }
+    },
+    {
+      "id": "aula_9",
+      "svgId": "room-aula-9",
+      "name": "Aula 9",
+      "code": "9",
+      "aliases": [
+        "aula nueve",
+        "python"
+      ],
+      "entranceNodeId": "n_aula_9_door",
+      "shape": {
+        "type": "path",
+        "d": "M111.163 31.405L128.571 4.09141e-07L174.403 25.4053L156.995 56.8103L111.163 31.405Z"
+      },
+      "label": {
+        "x": 136.5,
+        "y": 29.0
+      }
+    },
+    {
+      "id": "aula_10a",
+      "svgId": "room-aula-10a",
+      "name": "Aula 10A",
+      "code": "10",
+      "aliases": [
+        "aula 10",
+        "aula diez a",
+        "objective c"
+      ],
+      "entranceNodeId": "n_aula_10a_door",
+      "shape": {
+        "type": "path",
+        "d": "M84.8625 78.142L101.571 48L147.403 73.4053L130.695 103.547L84.8625 78.142Z"
+      },
+      "label": {
+        "x": 109.9,
+        "y": 76.2
+      }
+    },
+    {
+      "id": "aula_10b",
+      "svgId": "room-aula-10b",
+      "name": "Aula 10B",
+      "code": "11",
+      "aliases": [
+        "aula diez b",
+        "lenguaje c"
+      ],
+      "entranceNodeId": "n_aula_10b_door",
+      "shape": {
+        "type": "path",
+        "d": "M68.0537 108.526L84.5705 78.7285L130.403 104.134L113.886 133.931L68.0537 108.526Z"
+      },
+      "label": {
+        "x": 93.0,
+        "y": 106.8
+      }
+    },
+    {
+      "id": "aula_11",
+      "svgId": "room-aula-11",
+      "name": "Aula 11",
+      "code": "12",
+      "aliases": [
+        "aula once",
+        "java"
+      ],
+      "entranceNodeId": "n_aula_11_door",
+      "shape": {
+        "type": "path",
+        "d": "M29.3669 177.499L67.2064 109.235L113.039 134.64L75.1994 202.904L29.3669 177.499Z"
+      },
+      "label": {
+        "x": 62.8,
+        "y": 160.4
+      }
+    },
+    {
+      "id": "aula_14",
+      "svgId": "room-aula-14",
+      "name": "Aula 14",
+      "code": "13",
+      "aliases": [
+        "aula catorce",
+        "xml"
+      ],
+      "entranceNodeId": "n_aula_14_door",
+      "shape": {
+        "type": "path",
+        "d": "M455.649 176L475.291 186.888L456.841 220.173L437.199 209.285L455.649 176Z"
+      },
+      "label": {
+        "x": 456.1,
+        "y": 193.7
+      }
+    },
+    {
+      "id": "aula_15",
+      "svgId": "room-aula-15",
+      "name": "Aula 15",
+      "code": "14",
+      "aliases": [
+        "aula quince",
+        "ruby"
+      ],
+      "entranceNodeId": "n_aula_15_door",
+      "shape": {
+        "type": "path",
+        "d": "M436.649 210L456.291 220.888L437.841 254.173L418.199 243.285L436.649 210Z"
+      },
+      "label": {
+        "x": 437.1,
+        "y": 227.7
+      }
+    },
+    {
+      "id": "cefi",
+      "svgId": "room-cefi",
+      "name": "CEFI",
+      "code": "CEFI",
+      "aliases": [
+        "centro de estudiantes",
+        "cefi"
+      ],
+      "entranceNodeId": "n_cefi_door",
+      "shape": {
+        "type": "path",
+        "d": "M101.978 47.7801L110.725 32L121.22 37.8177L112.473 53.5978L101.978 47.7801Z"
+      },
+      "label": {
+        "x": 109.7,
+        "y": 43.8
       }
     },
     {
       "id": "fotocopiadora",
       "svgId": "room-fotocopiadora",
       "name": "Fotocopiadora",
-      "code": "5",
+      "code": "F",
       "aliases": [
         "fotocopia",
         "copias",
@@ -135,12 +332,277 @@
       ],
       "entranceNodeId": "n_fotocopiadora_door",
       "shape": {
-        "type": "polygon",
-        "points": "322.384,152.302 297.488,139.82 304.278,128.032 329.928,139.82"
+        "type": "path",
+        "d": "M255.017 85L271.592 94.188L265.775 104.683L249.199 95.4954L255.017 85Z"
       },
       "label": {
-        "x": 313.708,
-        "y": 140.167
+        "x": 259.3,
+        "y": 92.9
+      }
+    },
+    {
+      "id": "biblioteca",
+      "svgId": "room-biblioteca",
+      "name": "Biblioteca",
+      "code": "B",
+      "aliases": [
+        "library"
+      ],
+      "entranceNodeId": "n_biblioteca_door",
+      "shape": {
+        "type": "path",
+        "d": "M281.199 231L320.7 159.107L383.082 192.737L364.138 230.591L281.199 231Z"
+      },
+      "label": {
+        "x": 326.1,
+        "y": 208.9
+      }
+    },
+    {
+      "id": "buffet",
+      "svgId": "room-buffet",
+      "name": "Buffet",
+      "code": "BU",
+      "aliases": [
+        "comedor",
+        "cafeteria",
+        "cafe"
+      ],
+      "entranceNodeId": "n_buffet_door",
+      "shape": {
+        "type": "path",
+        "d": "M144.048 109L123.199 147L172.83 173C175.171 168.62 191.199 138 191.199 138V118.748H166.379V109H144.048Z"
+      },
+      "label": {
+        "x": 166.6,
+        "y": 132.9
+      }
+    },
+    {
+      "id": "mantenimiento",
+      "svgId": "room-mantenimiento",
+      "name": "Mantenimiento",
+      "code": "M",
+      "aliases": [
+        "maintenance"
+      ],
+      "entranceNodeId": "n_mantenimiento_door",
+      "shape": {
+        "type": "path",
+        "d": "M19.6987 241.5H41.6987V280.5H19.6987V241.5Z"
+      },
+      "label": {
+        "x": 28.5,
+        "y": 257.1
+      }
+    },
+    {
+      "id": "area_rendiciones",
+      "svgId": "room-area-rendiciones",
+      "name": "Área de Rendiciones",
+      "code": "AR",
+      "aliases": [
+        "rendiciones"
+      ],
+      "entranceNodeId": "n_area_rendiciones_door",
+      "shape": {
+        "type": "polygon",
+        "points": "69.199,252.000 79.199,252.000 79.199,280.000 69.199,280.000"
+      },
+      "label": {
+        "x": 74.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "sala_profesores_grado",
+      "svgId": "room-sala-profesores",
+      "name": "Sala de Profesores de Grado",
+      "code": "SP",
+      "aliases": [
+        "sala profesores",
+        "profesores"
+      ],
+      "entranceNodeId": "n_sala_profesores_grado_door",
+      "shape": {
+        "type": "polygon",
+        "points": "80.199,252.000 90.199,252.000 90.199,280.000 80.199,280.000"
+      },
+      "label": {
+        "x": 85.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "despacho",
+      "svgId": "room-despacho",
+      "name": "Despacho",
+      "code": "D",
+      "aliases": [
+        "office"
+      ],
+      "entranceNodeId": "n_despacho_door",
+      "shape": {
+        "type": "polygon",
+        "points": "91.199,252.000 105.199,252.000 105.199,280.000 91.199,280.000"
+      },
+      "label": {
+        "x": 98.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "personal",
+      "svgId": "room-personal",
+      "name": "Personal",
+      "code": "P",
+      "aliases": [
+        "rrhh",
+        "recursos humanos"
+      ],
+      "entranceNodeId": "n_personal_door",
+      "shape": {
+        "type": "polygon",
+        "points": "106.199,252.000 122.199,252.000 122.199,280.000 106.199,280.000"
+      },
+      "label": {
+        "x": 114.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "secretaria_administrativa",
+      "svgId": "room-secretaria-administrativa",
+      "name": "Secretaría Administrativa",
+      "code": "SA",
+      "aliases": [
+        "secretaria administrativa"
+      ],
+      "entranceNodeId": "n_secretaria_administrativa_door",
+      "shape": {
+        "type": "polygon",
+        "points": "123.199,252.000 137.199,252.000 137.199,280.000 123.199,280.000"
+      },
+      "label": {
+        "x": 130.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "compras_inventario",
+      "svgId": "room-compras-inventario",
+      "name": "Compras e Inventario",
+      "code": "CI",
+      "aliases": [
+        "compras",
+        "inventario"
+      ],
+      "entranceNodeId": "n_compras_inventario_door",
+      "shape": {
+        "type": "polygon",
+        "points": "138.199,252.000 152.199,252.000 152.199,280.000 138.199,280.000"
+      },
+      "label": {
+        "x": 145.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "contable",
+      "svgId": "room-contable",
+      "name": "Contable",
+      "code": "C",
+      "aliases": [
+        "contabilidad"
+      ],
+      "entranceNodeId": "n_contable_door",
+      "shape": {
+        "type": "polygon",
+        "points": "153.199,252.000 175.199,252.000 175.199,280.000 153.199,280.000"
+      },
+      "label": {
+        "x": 164.2,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "economico_financiera",
+      "svgId": "room-economico-financiera",
+      "name": "Dir. Económico Financiera",
+      "code": "EF",
+      "aliases": [
+        "financiera",
+        "economico financiera",
+        "tesoreria"
+      ],
+      "entranceNodeId": "n_economico_financiera_door",
+      "shape": {
+        "type": "polygon",
+        "points": "210.199,252.000 253.199,252.000 253.199,280.000 210.199,280.000"
+      },
+      "label": {
+        "x": 231.7,
+        "y": 266.0
+      }
+    },
+    {
+      "id": "alumnos",
+      "svgId": "room-alumnos",
+      "name": "Alumnos",
+      "code": "AL",
+      "aliases": [
+        "student affairs",
+        "estudiantes",
+        "depto alumnos",
+        "departamento de alumnos"
+      ],
+      "entranceNodeId": "n_alumnos_door",
+      "shape": {
+        "type": "polygon",
+        "points": "254.199,252.000 293.199,252.000 293.199,273.000 254.199,273.000"
+      },
+      "label": {
+        "x": 273.7,
+        "y": 262.5
+      }
+    },
+    {
+      "id": "mesa_entradas",
+      "svgId": "room-mesa-entradas",
+      "name": "Mesa de Entradas",
+      "code": "ME",
+      "aliases": [
+        "mesa entradas",
+        "recepcion",
+        "tramites",
+        "trámites"
+      ],
+      "entranceNodeId": "n_mesa_entradas_door",
+      "shape": {
+        "type": "polygon",
+        "points": "294.199,252.000 329.199,252.000 329.199,273.000 294.199,273.000"
+      },
+      "label": {
+        "x": 311.7,
+        "y": 262.5
+      }
+    },
+    {
+      "id": "intendencia",
+      "svgId": "room-intendencia",
+      "name": "Intendencia",
+      "code": "IN",
+      "aliases": [
+        "maintenance office"
+      ],
+      "entranceNodeId": "n_intendencia_door",
+      "shape": {
+        "type": "path",
+        "d": "M330.199 252H353.199L342.221 273H330.199V252Z"
+      },
+      "label": {
+        "x": 337.2,
+        "y": 260.4
       }
     },
     {
@@ -153,14 +615,17 @@
         "banio hombres",
         "toilet men"
       ],
-      "entranceNodeId": "n_banio_hombres_door",
+      "entranceNodeId": "n_banios_hombres_door",
       "shape": {
-        "type": "path",
-        "d": "M516.088 213.689L522.723 202.268L549.265 216.544L542.63 227.965L515.351 213.689Z"
+        "type": "rect",
+        "x": 401.8,
+        "y": 151.4,
+        "width": 12.7,
+        "height": 18.0
       },
       "label": {
-        "x": 532.308,
-        "y": 215.117
+        "x": 409.1,
+        "y": 160.2
       }
     },
     {
@@ -173,14 +638,41 @@
         "banio mujeres",
         "toilet women"
       ],
-      "entranceNodeId": "n_banio_mujeres_door",
+      "entranceNodeId": "n_banios_mujeres_door",
       "shape": {
-        "type": "path",
-        "d": "M569.909 242.955L543.367 228.679L550.74 217.258L576.544 231.534Z"
+        "type": "rect",
+        "x": 438.6,
+        "y": 172.4,
+        "width": 12.8,
+        "height": 18.0
       },
       "label": {
-        "x": 559.956,
-        "y": 230.107
+        "x": 445.1,
+        "y": 182.6
+      }
+    },
+    {
+      "id": "banio_sin_genero",
+      "svgId": "room-banio-sin-genero",
+      "name": "Baño sin género",
+      "code": "5X",
+      "aliases": [
+        "baño accesible",
+        "baño neutro",
+        "gender neutral bathroom",
+        "banio inclusivo"
+      ],
+      "entranceNodeId": "n_banio_sin_genero_door",
+      "shape": {
+        "type": "rect",
+        "x": 225.4,
+        "y": 60.1,
+        "width": 33.0,
+        "height": 33.0
+      },
+      "label": {
+        "x": 243.4,
+        "y": 77.8
       }
     },
     {
@@ -192,891 +684,970 @@
         "elevator",
         "lift"
       ],
-      "entranceNodeId": "n_banios",
-      "shape": {
-        "type": "path",
-        "d": "M526.41 235.103L517.563 230.82L524.198 220.113L533.045 224.396Z"
-      },
-      "label": {
-        "x": 525.304,
-        "y": 227.608
-      }
-    },
-    {
-      "id": "aula_6",
-      "svgId": "room-aula-6",
-      "name": "Aula 6",
-      "code": "6",
-      "aliases": [
-        "aula seis"
-      ],
-      "entranceNodeId": "n_corredor_superior_3",
-      "shape": {
-        "type": "polygon",
-        "points": "207.91,36.665 183.58,79.493 273.527,126.604 297.119,83.776"
-      },
-      "label": {
-        "x": 240.35,
-        "y": 81.635
-      }
-    },
-    {
-      "id": "aula_7",
-      "svgId": "room-aula-7",
-      "name": "Aula 7",
-      "code": "7",
-      "aliases": [
-        "aula siete"
-      ],
-      "entranceNodeId": "n_corredor_superior_2",
-      "shape": {
-        "type": "polygon",
-        "points": "183.58,78.779 182.843,78.375 161.462,66.645 168.659,53.796 185.054,24.53 206.435,35.951 182.843,78.375"
-      },
-      "label": {
-        "x": 183.949,
-        "y": 51.655
-      }
-    },
-    {
-      "id": "aula_8",
-      "svgId": "room-aula-8",
-      "name": "Aula 8",
-      "code": "8",
-      "aliases": [
-        "aula ocho"
-      ],
-      "entranceNodeId": "n_corredor_superior_2",
-      "shape": {
-        "type": "polygon",
-        "points": "162.199,12.396 184.317,23.817 159.987,65.931 138.606,54.51"
-      },
-      "label": {
-        "x": 161.462,
-        "y": 39.164
-      }
-    },
-    {
-      "id": "aula_9",
-      "svgId": "room-aula-9",
-      "name": "Aula 9",
-      "code": "9",
-      "aliases": [
-        "aula nueve"
-      ],
-      "entranceNodeId": "n_corredor_superior_1",
-      "shape": {
-        "type": "polygon",
-        "points": "140.818,0.975 162.199,12.396 138.606,54.51 117.226,43.803"
-      },
-      "label": {
-        "x": 139.713,
-        "y": 27.743
-      }
-    },
-    {
-      "id": "aula_10a",
-      "svgId": "room-aula-10a",
-      "name": "Aula 10A",
-      "code": "10",
-      "aliases": [
-        "aula 10",
-        "aula diez a"
-      ],
-      "entranceNodeId": "n_aula_10a_door",
-      "shape": {
-        "type": "polygon",
-        "points": "82.574,100.907 147.454,134.456 166.623,100.907 101.743,66.645"
-      },
-      "label": {
-        "x": 124.599,
-        "y": 100.551
-      }
-    },
-    {
-      "id": "aula_10b",
-      "svgId": "room-aula-10b",
-      "name": "Aula 10B",
-      "code": "11",
-      "aliases": [
-        "aula diez b"
-      ],
-      "entranceNodeId": "n_aula_10b_door",
-      "shape": {
-        "type": "polygon",
-        "points": "81.837,103.049 58.244,144.45 121.649,178.712 145.979,136.598"
-      },
-      "label": {
-        "x": 102.112,
-        "y": 140.88
-      }
-    },
-    {
-      "id": "aula_11",
-      "svgId": "room-aula-11",
-      "name": "Aula 11",
-      "code": "12",
-      "aliases": [
-        "aula once"
-      ],
-      "entranceNodeId": "n_aula_11_door",
-      "shape": {
-        "type": "polygon",
-        "points": "72.99,267.224 8.11,233.675 57.507,145.877 120.912,180.854"
-      },
-      "label": {
-        "x": 64.511,
-        "y": 206.551
-      }
-    },
-    {
-      "id": "aula_14",
-      "svgId": "room-aula-14",
-      "name": "Aula 14",
-      "code": "13",
-      "aliases": [
-        "aula catorce"
-      ],
-      "entranceNodeId": "n_corredor_salida_derecha",
-      "shape": {
-        "type": "polygon",
-        "points": "589.815,238.672 569.909,284.356 562.536,300.059 607.509,320.046 634.788,261.514"
-      },
-      "label": {
-        "x": 598.662,
-        "y": 279.359
-      }
-    },
-    {
-      "id": "aula_15",
-      "svgId": "room-aula-15",
-      "name": "Aula 15",
-      "code": "14",
-      "aliases": [
-        "aula quince"
-      ],
-      "entranceNodeId": "n_corredor_salida_derecha",
-      "shape": {
-        "type": "polygon",
-        "points": "585.391,365.015 541.155,345.743 561.061,302.201 606.772,322.187"
-      },
-      "label": {
-        "x": 573.964,
-        "y": 333.608
-      }
-    },
-    {
-      "id": "biblioteca",
-      "svgId": "room-biblioteca",
-      "name": "Biblioteca",
-      "code": "15",
-      "aliases": [
-        "library"
-      ],
-      "entranceNodeId": "n_biblioteca",
-      "shape": {
-        "type": "path",
-        "d": "M401.074 222.968L356.101 302.914L451.208 302.914L471.852 266.51Z"
-      },
-      "label": {
-        "x": 413.977,
-        "y": 262.941
-      }
-    },
-    {
-      "id": "aula_5",
-      "svgId": "room-aula-5",
-      "name": "Aula 5",
-      "code": "16",
-      "aliases": [
-        "aula cinco"
-      ],
-      "entranceNodeId": "n_aula_5_door",
-      "shape": {
-        "type": "path",
-        "d": "M252.146 247.951L301.543 159.44L369.372 195.13L319.237 283.642Z"
-      },
-      "label": {
-        "x": 310.759,
-        "y": 221.541
-      }
-    },
-    {
-      "id": "buffet",
-      "svgId": "room-buffet",
-      "name": "Buffet",
-      "code": "17",
-      "aliases": [
-        "comedor",
-        "cafeteria",
-        "cafe"
-      ],
-      "entranceNodeId": "n_buffet",
-      "shape": {
-        "type": "path",
-        "d": "M140.818 192.275L168.097 145.164L198.325 145.164L198.325 159.44L229.291 159.44L229.291 175.143L221.918 235.103Z"
-      },
-      "label": {
-        "x": 185.055,
-        "y": 190.134
-      }
-    },
-    {
-      "id": "intendencia",
-      "svgId": "room-intendencia",
-      "name": "Intendencia",
-      "code": "18",
-      "aliases": [
-        "maintenance office"
-      ],
-      "entranceNodeId": "n_admin_5",
+      "entranceNodeId": "n_ascensor_door",
       "shape": {
         "type": "rect",
-        "x": 416.557,
-        "y": 331.467,
-        "width": 24.33,
-        "height": 27.838
+        "x": 409.1,
+        "y": 157.1,
+        "width": 16.1,
+        "height": 19.0
       },
       "label": {
-        "x": 428.722,
-        "y": 345.386
-      }
-    },
-    {
-      "id": "mesa_entradas",
-      "svgId": "room-mesa-entradas",
-      "name": "Mesa de Entradas",
-      "code": "19",
-      "aliases": [
-        "mesa entradas",
-        "recepcion",
-        "trámites",
-        "tramites"
-      ],
-      "entranceNodeId": "n_admin_4",
-      "shape": {
-        "type": "rect",
-        "x": 364.211,
-        "y": 331.467,
-        "width": 50.871,
-        "height": 27.838
-      },
-      "label": {
-        "x": 389.647,
-        "y": 345.386
-      }
-    },
-    {
-      "id": "alumnos",
-      "svgId": "room-alumnos",
-      "name": "Alumnos",
-      "code": "20",
-      "aliases": [
-        "student affairs",
-        "estudiantes"
-      ],
-      "entranceNodeId": "n_admin_3",
-      "shape": {
-        "type": "rect",
-        "x": 311.127,
-        "y": 331.467,
-        "width": 51.609,
-        "height": 27.838
-      },
-      "label": {
-        "x": 336.932,
-        "y": 345.386
-      }
-    },
-    {
-      "id": "economico_financiera",
-      "svgId": "room-economico-financiera",
-      "name": "Dir. Económico Financiera",
-      "code": "21",
-      "aliases": [
-        "financiera",
-        "economico financiera",
-        "tesoreria"
-      ],
-      "entranceNodeId": "n_admin_2",
-      "shape": {
-        "type": "rect",
-        "x": 258.044,
-        "y": 331.467,
-        "width": 52.346,
-        "height": 36.404
-      },
-      "label": {
-        "x": 284.217,
-        "y": 349.669
-      }
-    },
-    {
-      "id": "contable",
-      "svgId": "room-contable",
-      "name": "Contable",
-      "code": "22",
-      "aliases": [
-        "contabilidad"
-      ],
-      "entranceNodeId": "n_admin_1",
-      "shape": {
-        "type": "rect",
-        "x": 169.572,
-        "y": 331.467,
-        "width": 24.33,
-        "height": 37.117
-      },
-      "label": {
-        "x": 181.737,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "compras_inventario",
-      "svgId": "room-compras-inventario",
-      "name": "Compras e Inventario",
-      "code": "23",
-      "aliases": [
-        "compras",
-        "inventario"
-      ],
-      "entranceNodeId": "n_admin_1",
-      "shape": {
-        "type": "rect",
-        "x": 155.564,
-        "y": 331.467,
-        "width": 12.533,
-        "height": 37.117
-      },
-      "label": {
-        "x": 161.831,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "secretaria_administrativa",
-      "svgId": "room-secretaria-administrativa",
-      "name": "Secretaría Administrativa",
-      "code": "24",
-      "aliases": [
-        "secretaria administrativa"
-      ],
-      "entranceNodeId": "n_admin_1",
-      "shape": {
-        "type": "rect",
-        "x": 142.293,
-        "y": 331.467,
-        "width": 11.796,
-        "height": 37.117
-      },
-      "label": {
-        "x": 148.191,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "personal",
-      "svgId": "room-personal",
-      "name": "Personal",
-      "code": "25",
-      "aliases": [
-        "rrhh",
-        "recursos humanos"
-      ],
-      "entranceNodeId": "n_admin_0",
-      "shape": {
-        "type": "rect",
-        "x": 116.488,
-        "y": 331.467,
-        "width": 24.33,
-        "height": 37.117
-      },
-      "label": {
-        "x": 128.653,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "despacho",
-      "svgId": "room-despacho",
-      "name": "Despacho",
-      "code": "26",
-      "aliases": [
-        "office"
-      ],
-      "entranceNodeId": "n_admin_0",
-      "shape": {
-        "type": "rect",
-        "x": 91.421,
-        "y": 331.467,
-        "width": 23.593,
-        "height": 37.117
-      },
-      "label": {
-        "x": 103.218,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "sala_profesores_grado",
-      "svgId": "room-sala-profesores",
-      "name": "Sala de Profesores de Grado",
-      "code": "27",
-      "aliases": [
-        "sala profesores",
-        "profesores"
-      ],
-      "entranceNodeId": "n_admin_0",
-      "shape": {
-        "type": "rect",
-        "x": 77.413,
-        "y": 331.467,
-        "width": 11.796,
-        "height": 37.117
-      },
-      "label": {
-        "x": 83.311,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "area_rendiciones",
-      "svgId": "room-area-rendiciones",
-      "name": "Área de Rendiciones",
-      "code": "28",
-      "aliases": [
-        "rendiciones"
-      ],
-      "entranceNodeId": "n_admin_0",
-      "shape": {
-        "type": "rect",
-        "x": 64.142,
-        "y": 331.467,
-        "width": 11.797,
-        "height": 37.117
-      },
-      "label": {
-        "x": 70.041,
-        "y": 350.025
-      }
-    },
-    {
-      "id": "mantenimiento",
-      "svgId": "room-mantenimiento",
-      "name": "Mantenimiento",
-      "code": "29",
-      "aliases": [
-        "maintenance"
-      ],
-      "entranceNodeId": "n_mantenimiento",
-      "shape": {
-        "type": "rect",
-        "x": 0.737,
-        "y": 319.332,
-        "width": 26.542,
-        "height": 48.539
-      },
-      "label": {
-        "x": 14.008,
-        "y": 343.602
+        "x": 416.9,
+        "y": 166.8
       }
     }
   ],
   "nodes": [
     {
-      "id": "n_entrada",
-      "label": "Entrada principal",
-      "aliases": [
-        "entrada",
-        "ingreso"
-      ],
-      "x": 520,
-      "y": 374
+      "id": "n_right-3",
+      "label": "Pasillo superior (aula 5 / fotocopiadora)",
+      "x": 250.9,
+      "y": 113.0
     },
     {
-      "id": "n_admin_5",
+      "id": "n_right-2",
+      "label": "Pasillo aula 4",
+      "x": 302.8,
+      "y": 142.1
+    },
+    {
+      "id": "n_right-1",
+      "label": "Pasillo aulas 2-3",
+      "x": 353.7,
+      "y": 170.0
+    },
+    {
+      "id": "n_right-0",
+      "label": "Pasillo aula 1 / baños",
+      "x": 379.7,
+      "y": 184.0
+    },
+    {
+      "id": "n_right-6",
+      "label": "Pasillo superior (aulas 9-10-CEFI)",
+      "x": 121.7,
+      "y": 48.0
+    },
+    {
+      "id": "n_right-5",
+      "label": "Pasillo superior (aula 8)",
+      "x": 167.7,
+      "y": 70.0
+    },
+    {
+      "id": "n_right-4",
+      "label": "Pasillo superior (aulas 6-7)",
+      "x": 199.1,
+      "y": 86.2
+    },
+    {
+      "id": "n_left-7",
+      "label": "Pasillo administrativo (mantenimiento)",
+      "x": 42.9,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-6",
+      "label": "Pasillo administrativo (rendiciones/profesores)",
+      "x": 71.0,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-5",
+      "label": "Pasillo administrativo (despacho/personal)",
+      "x": 103.8,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-4",
+      "label": "Pasillo administrativo (secretaria/compras)",
+      "x": 141.2,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-3",
+      "label": "Pasillo administrativo (contable)",
+      "x": 173.9,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-2",
+      "label": "Pasillo administrativo (financiera/alumnos)",
+      "x": 249.9,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-1",
+      "label": "Pasillo administrativo (mesa entradas/intendencia)",
+      "x": 316.6,
+      "y": 245.0
+    },
+    {
+      "id": "n_left-0",
       "label": "Pasillo administrativo este",
-      "x": 505,
-      "y": 338
+      "x": 358.7,
+      "y": 245.0
     },
     {
-      "id": "n_admin_4",
-      "label": "Pasillo Mesa de Entradas",
-      "x": 470,
-      "y": 337
+      "id": "n_other-1",
+      "label": "Cruce medio izquierdo (aula 11)",
+      "x": 83.7,
+      "y": 202.0
     },
     {
-      "id": "n_admin_3",
-      "label": "Pasillo Alumnos",
-      "x": 430,
-      "y": 337
-    },
-    {
-      "id": "n_admin_2",
-      "label": "Pasillo Financiera",
-      "x": 385,
-      "y": 338
-    },
-    {
-      "id": "n_admin_1",
-      "label": "Pasillo contable",
-      "x": 320,
-      "y": 338
-    },
-    {
-      "id": "n_admin_0",
-      "label": "Pasillo oficinas oeste",
-      "x": 210,
-      "y": 322
-    },
-    {
-      "id": "n_mantenimiento",
-      "label": "Mantenimiento",
-      "x": 115,
-      "y": 322
-    },
-    {
-      "id": "n_corredor_bajo_oeste",
-      "label": "Pasillo bajo oeste",
-      "x": 75,
-      "y": 323
-    },
-    {
-      "id": "n_aula_11_door",
-      "label": "Puerta Aula 11",
-      "aliases": [
-        "aula 11",
-        "aula once",
-        "aula 12"
-      ],
-      "x": 132,
-      "y": 266
-    },
-    {
-      "id": "n_corredor_izquierdo_1",
-      "label": "Pasillo aulas 11",
-      "x": 126,
-      "y": 292
-    },
-    {
-      "id": "n_aula_10b_door",
-      "label": "Puerta Aula 10B",
-      "aliases": [
-        "aula 10b"
-      ],
-      "x": 147,
-      "y": 224
-    },
-    {
-      "id": "n_corredor_izquierdo_2",
-      "label": "Pasillo aulas 10",
-      "x": 150,
-      "y": 248
-    },
-    {
-      "id": "n_aula_10a_door",
-      "label": "Puerta Aula 10A",
-      "aliases": [
-        "aula 10a"
-      ],
-      "x": 165,
-      "y": 185
-    },
-    {
-      "id": "n_corredor_izquierdo_3",
-      "label": "Pasillo aulas 9",
-      "x": 190,
-      "y": 188
-    },
-    {
-      "id": "n_corredor_superior_1",
-      "label": "Pasillo superior oeste",
-      "x": 232,
-      "y": 133
-    },
-    {
-      "id": "n_corredor_superior_2",
-      "label": "Pasillo superior centro",
-      "x": 330,
-      "y": 188
-    },
-    {
-      "id": "n_corredor_superior_3",
-      "label": "Pasillo superior servicios",
-      "x": 410,
-      "y": 232
-    },
-    {
-      "id": "n_fotocopiadora_door",
-      "label": "Puerta Fotocopiadora",
-      "aliases": [
-        "fotocopiadora",
-        "copias",
-        "imprimir"
-      ],
-      "x": 410,
-      "y": 218
-    },
-    {
-      "id": "n_aula_4_door",
-      "label": "Puerta Aula 4",
-      "aliases": [
-        "aula 4",
-        "aula cuatro"
-      ],
-      "x": 448,
-      "y": 236
-    },
-    {
-      "id": "n_corredor_aula_4",
-      "label": "Pasillo Aula 4 y Fotocopiadora",
-      "x": 456,
-      "y": 244
-    },
-    {
-      "id": "n_aula_5_door",
-      "label": "Puerta Aula 5",
-      "aliases": [
-        "aula 5",
-        "aula cinco"
-      ],
-      "x": 420,
-      "y": 246
-    },
-    {
-      "id": "n_aula_5_lobby",
-      "label": "Cruce Aula 5",
-      "x": 448,
-      "y": 256
-    },
-    {
-      "id": "n_servicios_mid",
-      "label": "Pasillo hacia baños",
-      "x": 486,
-      "y": 270
-    },
-    {
-      "id": "n_servicios",
-      "label": "Fotocopiadora y baños",
-      "x": 520,
-      "y": 283
-    },
-    {
-      "id": "n_banios",
-      "label": "Baños y ascensor",
-      "aliases": [
-        "baños",
-        "banios"
-      ],
-      "x": 557,
-      "y": 266
-    },
-    {
-      "id": "n_banio_hombres_door",
-      "label": "Puerta Baños hombres",
-      "aliases": [
-        "bano hombres",
-        "banio hombres"
-      ],
-      "x": 554,
-      "y": 259
-    },
-    {
-      "id": "n_banio_mujeres_door",
-      "label": "Puerta Baños mujeres",
-      "aliases": [
-        "bano mujeres",
-        "banio mujeres"
-      ],
-      "x": 573,
-      "y": 270
-    },
-    {
-      "id": "n_aulas_derecha",
-      "label": "Pasillo aulas 1 a 4",
-      "x": 502,
-      "y": 286
-    },
-    {
-      "id": "n_corredor_salida_derecha",
-      "label": "Pasillo aulas 14 y 15",
-      "x": 548,
-      "y": 330
-    },
-    {
-      "id": "n_biblioteca",
-      "label": "Biblioteca",
-      "aliases": [
-        "biblioteca"
-      ],
-      "x": 506,
-      "y": 318
-    },
-    {
-      "id": "n_aula_5",
-      "label": "Aula 5 centro",
-      "x": 390,
-      "y": 288
+      "id": "n_other-0",
+      "label": "Cruce superior izquierdo (CEFI)",
+      "x": 158.2,
+      "y": 81.5
     },
     {
       "id": "n_buffet",
-      "label": "Buffet",
+      "label": "Cruce Buffet",
+      "x": 161.6,
+      "y": 167.9
+    },
+    {
+      "id": "n_to-buffet-sin-rampa",
+      "label": "Cruce alternativo Buffet (sin rampa)",
+      "x": 216.0,
+      "y": 231.0
+    },
+    {
+      "id": "n_rampa-0",
+      "label": "Rampa accesible - pie",
+      "x": 194.0,
+      "y": 236.8
+    },
+    {
+      "id": "n_rampa-1",
+      "label": "Rampa accesible - inicio",
+      "x": 228.0,
+      "y": 236.8
+    },
+    {
+      "id": "n_gradas-0",
+      "label": "Gradas entrada - pie",
+      "x": 411.0,
+      "y": 293.0
+    },
+    {
+      "id": "n_gradas-1",
+      "label": "Gradas entrada - inicio",
+      "x": 395.0,
+      "y": 290.0
+    },
+    {
+      "id": "n_central-0",
+      "label": "Pasillo central (biblioteca)",
+      "x": 342.7,
+      "y": 231.9
+    },
+    {
+      "id": "n_central-1",
+      "label": "Pasillo central (baños/ascensor/aula14-15)",
+      "x": 434.2,
+      "y": 177.0
+    },
+    {
+      "id": "n_entrada",
+      "label": "Entrada principal",
+      "x": 251.2,
+      "y": 292.0,
       "aliases": [
-        "buffet"
-      ],
-      "x": 285,
-      "y": 305
+        "entrada",
+        "ingreso",
+        "puerta principal"
+      ]
+    },
+    {
+      "id": "n_aula_1_door",
+      "label": "Puerta aula_1",
+      "x": 381.5,
+      "y": 171.2
+    },
+    {
+      "id": "n_aula_2_door",
+      "label": "Puerta aula_2",
+      "x": 357.5,
+      "y": 158.2
+    },
+    {
+      "id": "n_aula_3_door",
+      "label": "Puerta aula_3",
+      "x": 348.5,
+      "y": 153.2
+    },
+    {
+      "id": "n_aula_4_door",
+      "label": "Puerta aula_4",
+      "x": 299.9,
+      "y": 126.8
+    },
+    {
+      "id": "n_aula_5_door",
+      "label": "Puerta aula_5",
+      "x": 246.7,
+      "y": 139.4
+    },
+    {
+      "id": "n_aula_6_door",
+      "label": "Puerta aula_6",
+      "x": 206.6,
+      "y": 78.3
+    },
+    {
+      "id": "n_aula_7_door",
+      "label": "Puerta aula_7",
+      "x": 197.6,
+      "y": 73.3
+    },
+    {
+      "id": "n_aula_8_door",
+      "label": "Puerta aula_8",
+      "x": 171.5,
+      "y": 59.6
+    },
+    {
+      "id": "n_aula_9_door",
+      "label": "Puerta aula_9",
+      "x": 128.3,
+      "y": 39.5
+    },
+    {
+      "id": "n_aula_10a_door",
+      "label": "Puerta aula_10a",
+      "x": 116.4,
+      "y": 60.7
+    },
+    {
+      "id": "n_aula_10b_door",
+      "label": "Puerta aula_10b",
+      "x": 108.8,
+      "y": 74.4
+    },
+    {
+      "id": "n_aula_11_door",
+      "label": "Puerta aula_11",
+      "x": 74.3,
+      "y": 183.3
+    },
+    {
+      "id": "n_aula_14_door",
+      "label": "Puerta aula_14",
+      "x": 444.1,
+      "y": 184.5
+    },
+    {
+      "id": "n_aula_15_door",
+      "label": "Puerta aula_15",
+      "x": 435.5,
+      "y": 199.8
+    },
+    {
+      "id": "n_cefi_door",
+      "label": "Puerta cefi",
+      "x": 116.3,
+      "y": 46.1
+    },
+    {
+      "id": "n_fotocopiadora_door",
+      "label": "Puerta fotocopiadora",
+      "x": 254.7,
+      "y": 103.9
+    },
+    {
+      "id": "n_biblioteca_door",
+      "label": "Puerta biblioteca",
+      "x": 335.2,
+      "y": 221.5
+    },
+    {
+      "id": "n_buffet_door",
+      "label": "Puerta buffet",
+      "x": 163.8,
+      "y": 152.2
+    },
+    {
+      "id": "n_mantenimiento_door",
+      "label": "Puerta mantenimiento",
+      "x": 36.4,
+      "y": 250.4
+    },
+    {
+      "id": "n_area_rendiciones_door",
+      "label": "Puerta area_rendiciones",
+      "x": 72.4,
+      "y": 254.4
+    },
+    {
+      "id": "n_sala_profesores_grado_door",
+      "label": "Puerta sala_profesores_grado",
+      "x": 77.4,
+      "y": 254.4
+    },
+    {
+      "id": "n_despacho_door",
+      "label": "Puerta despacho",
+      "x": 101.3,
+      "y": 254.4
+    },
+    {
+      "id": "n_personal_door",
+      "label": "Puerta personal",
+      "x": 108.5,
+      "y": 254.4
+    },
+    {
+      "id": "n_secretaria_administrativa_door",
+      "label": "Puerta secretaria_administrativa",
+      "x": 136.2,
+      "y": 254.4
+    },
+    {
+      "id": "n_compras_inventario_door",
+      "label": "Puerta compras_inventario",
+      "x": 143.0,
+      "y": 254.4
+    },
+    {
+      "id": "n_contable_door",
+      "label": "Puerta contable",
+      "x": 169.5,
+      "y": 254.4
+    },
+    {
+      "id": "n_economico_financiera_door",
+      "label": "Puerta economico_financiera",
+      "x": 241.7,
+      "y": 254.4
+    },
+    {
+      "id": "n_alumnos_door",
+      "label": "Puerta alumnos",
+      "x": 260.6,
+      "y": 252.9
+    },
+    {
+      "id": "n_mesa_entradas_door",
+      "label": "Puerta mesa_entradas",
+      "x": 314.4,
+      "y": 252.9
+    },
+    {
+      "id": "n_intendencia_door",
+      "label": "Puerta intendencia",
+      "x": 325.9,
+      "y": 251.9
+    },
+    {
+      "id": "n_banios_hombres_door",
+      "label": "Puerta banios_hombres",
+      "x": 422.9,
+      "y": 169.4
+    },
+    {
+      "id": "n_banios_mujeres_door",
+      "label": "Puerta banios_mujeres",
+      "x": 439.1,
+      "y": 179.5
+    },
+    {
+      "id": "n_banio_sin_genero_door",
+      "label": "Puerta banio_sin_genero",
+      "x": 247.5,
+      "y": 97.2
+    },
+    {
+      "id": "n_ascensor_door",
+      "label": "Puerta ascensor",
+      "x": 426.4,
+      "y": 172.4
     }
   ],
   "edges": [
     {
-      "from": "n_entrada",
-      "to": "n_admin_5"
+      "from": "n_right-6",
+      "to": "n_right-5",
+      "accesible": true
     },
     {
-      "from": "n_admin_5",
-      "to": "n_admin_4"
+      "from": "n_right-5",
+      "to": "n_right-4",
+      "accesible": true
     },
     {
-      "from": "n_admin_4",
-      "to": "n_admin_3"
+      "from": "n_right-4",
+      "to": "n_right-3",
+      "accesible": true
     },
     {
-      "from": "n_admin_3",
-      "to": "n_admin_2"
+      "from": "n_right-3",
+      "to": "n_right-2",
+      "accesible": true
     },
     {
-      "from": "n_admin_2",
-      "to": "n_admin_1"
+      "from": "n_right-2",
+      "to": "n_right-1",
+      "accesible": true
     },
     {
-      "from": "n_admin_1",
-      "to": "n_admin_0"
+      "from": "n_right-1",
+      "to": "n_right-0",
+      "accesible": true
     },
     {
-      "from": "n_admin_0",
-      "to": "n_mantenimiento"
+      "from": "n_left-7",
+      "to": "n_left-6",
+      "accesible": true
     },
     {
-      "from": "n_mantenimiento",
-      "to": "n_corredor_bajo_oeste"
+      "from": "n_left-6",
+      "to": "n_left-5",
+      "accesible": true
     },
     {
-      "from": "n_corredor_bajo_oeste",
-      "to": "n_corredor_izquierdo_1"
+      "from": "n_left-5",
+      "to": "n_left-4",
+      "accesible": true
     },
     {
-      "from": "n_aula_11_door",
-      "to": "n_corredor_izquierdo_1"
+      "from": "n_left-4",
+      "to": "n_left-3",
+      "accesible": true
     },
     {
-      "from": "n_corredor_izquierdo_1",
-      "to": "n_corredor_izquierdo_2"
+      "from": "n_left-3",
+      "to": "n_left-2",
+      "accesible": true
     },
     {
-      "from": "n_aula_10b_door",
-      "to": "n_corredor_izquierdo_2"
+      "from": "n_left-2",
+      "to": "n_left-1",
+      "accesible": true
     },
     {
-      "from": "n_aula_10a_door",
-      "to": "n_corredor_izquierdo_3"
+      "from": "n_left-1",
+      "to": "n_left-0",
+      "accesible": true
     },
     {
-      "from": "n_corredor_izquierdo_2",
-      "to": "n_corredor_izquierdo_3"
+      "from": "n_central-1",
+      "to": "n_central-0",
+      "accesible": true
     },
     {
-      "from": "n_corredor_izquierdo_3",
-      "to": "n_corredor_superior_1"
+      "from": "n_other-0",
+      "to": "n_other-1",
+      "accesible": true
     },
     {
-      "from": "n_corredor_superior_1",
-      "to": "n_corredor_superior_2"
+      "from": "n_right-0",
+      "to": "n_central-1",
+      "accesible": true
     },
     {
-      "from": "n_corredor_superior_2",
-      "to": "n_corredor_superior_3"
+      "from": "n_right-6",
+      "to": "n_other-0",
+      "accesible": true
     },
     {
-      "from": "n_corredor_superior_3",
-      "to": "n_fotocopiadora_door"
+      "from": "n_other-1",
+      "to": "n_left-6",
+      "accesible": true
     },
     {
-      "from": "n_fotocopiadora_door",
-      "to": "n_corredor_aula_4"
+      "from": "n_central-0",
+      "to": "n_left-1",
+      "accesible": true
     },
     {
-      "from": "n_corredor_aula_4",
-      "to": "n_aula_4_door"
-    },
-    {
-      "from": "n_corredor_aula_4",
-      "to": "n_servicios_mid"
-    },
-    {
-      "from": "n_corredor_superior_3",
-      "to": "n_aula_5_door"
-    },
-    {
-      "from": "n_aula_5_door",
-      "to": "n_aula_5_lobby"
-    },
-    {
-      "from": "n_aula_5_lobby",
-      "to": "n_servicios_mid"
-    },
-    {
-      "from": "n_servicios_mid",
-      "to": "n_servicios"
-    },
-    {
-      "from": "n_servicios",
-      "to": "n_banios"
-    },
-    {
-      "from": "n_banios",
-      "to": "n_banio_hombres_door"
-    },
-    {
-      "from": "n_banios",
-      "to": "n_banio_mujeres_door"
-    },
-    {
-      "from": "n_servicios",
-      "to": "n_aulas_derecha"
-    },
-    {
-      "from": "n_servicios",
-      "to": "n_corredor_salida_derecha"
-    },
-    {
-      "from": "n_servicios",
-      "to": "n_biblioteca"
-    },
-    {
-      "from": "n_biblioteca",
-      "to": "n_admin_5"
-    },
-    {
-      "from": "n_biblioteca",
-      "to": "n_aula_5_lobby"
-    },
-    {
-      "from": "n_aula_5_door",
-      "to": "n_aula_5"
-    },
-    {
-      "from": "n_aula_5",
-      "to": "n_buffet"
+      "from": "n_central-0",
+      "to": "n_entrada",
+      "accesible": true
     },
     {
       "from": "n_buffet",
-      "to": "n_admin_1"
+      "to": "n_other-1",
+      "accesible": true
     },
     {
-      "from": "n_admin_5",
-      "to": "n_corredor_salida_derecha"
+      "from": "n_buffet",
+      "to": "n_entrada",
+      "accesible": false
+    },
+    {
+      "from": "n_to-buffet-sin-rampa",
+      "to": "n_rampa-0",
+      "accesible": false
+    },
+    {
+      "from": "n_to-buffet-sin-rampa",
+      "to": "n_buffet",
+      "accesible": false
+    },
+    {
+      "from": "n_rampa-0",
+      "to": "n_rampa-1",
+      "accesible": true
+    },
+    {
+      "from": "n_rampa-1",
+      "to": "n_entrada",
+      "accesible": true
+    },
+    {
+      "from": "n_gradas-0",
+      "to": "n_gradas-1",
+      "accesible": false
+    },
+    {
+      "from": "n_gradas-1",
+      "to": "n_entrada",
+      "accesible": false
+    },
+    {
+      "from": "n_aula_1_door",
+      "to": "n_right-0",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_2_door",
+      "to": "n_right-1",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_3_door",
+      "to": "n_right-1",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_4_door",
+      "to": "n_right-2",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_5_door",
+      "to": "n_right-3",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_6_door",
+      "to": "n_right-4",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_7_door",
+      "to": "n_right-4",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_8_door",
+      "to": "n_right-5",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_9_door",
+      "to": "n_right-6",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_10a_door",
+      "to": "n_right-6",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_10b_door",
+      "to": "n_right-6",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_11_door",
+      "to": "n_other-1",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_14_door",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_aula_15_door",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_cefi_door",
+      "to": "n_right-6",
+      "accesible": true
+    },
+    {
+      "from": "n_fotocopiadora_door",
+      "to": "n_right-3",
+      "accesible": true
+    },
+    {
+      "from": "n_biblioteca_door",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_buffet_door",
+      "to": "n_buffet",
+      "accesible": true
+    },
+    {
+      "from": "n_mantenimiento_door",
+      "to": "n_left-7",
+      "accesible": true
+    },
+    {
+      "from": "n_area_rendiciones_door",
+      "to": "n_left-6",
+      "accesible": true
+    },
+    {
+      "from": "n_sala_profesores_grado_door",
+      "to": "n_left-6",
+      "accesible": true
+    },
+    {
+      "from": "n_despacho_door",
+      "to": "n_left-5",
+      "accesible": true
+    },
+    {
+      "from": "n_personal_door",
+      "to": "n_left-5",
+      "accesible": true
+    },
+    {
+      "from": "n_secretaria_administrativa_door",
+      "to": "n_left-4",
+      "accesible": true
+    },
+    {
+      "from": "n_compras_inventario_door",
+      "to": "n_left-4",
+      "accesible": true
+    },
+    {
+      "from": "n_contable_door",
+      "to": "n_left-3",
+      "accesible": true
+    },
+    {
+      "from": "n_economico_financiera_door",
+      "to": "n_left-2",
+      "accesible": true
+    },
+    {
+      "from": "n_alumnos_door",
+      "to": "n_left-2",
+      "accesible": true
+    },
+    {
+      "from": "n_mesa_entradas_door",
+      "to": "n_left-1",
+      "accesible": true
+    },
+    {
+      "from": "n_intendencia_door",
+      "to": "n_left-1",
+      "accesible": true
+    },
+    {
+      "from": "n_banios_hombres_door",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_banios_mujeres_door",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_banio_sin_genero_door",
+      "to": "n_right-3",
+      "accesible": true
+    },
+    {
+      "from": "n_ascensor_door",
+      "to": "n_central-1",
+      "accesible": true
+    },
+    {
+      "from": "n_left-3",
+      "to": "n_buffet",
+      "accesible": true,
+      "nota": "Única vía accesible en silla de ruedas hacia el Buffet (debe haberlo indicado el usuario)."
+    }
+  ],
+  "puntos_interes": {
+    "entrada_principal": {
+      "id": "entrada",
+      "nombre": "Puerta de Entrada Principal"
+    },
+    "aula_1-1": {
+      "id": "1-1",
+      "nombre": "Aula 1-1 (Planta Alta)"
+    },
+    "aula_1": {
+      "id": "aula_1",
+      "nombre": "Aula 1 PL/1"
+    },
+    "aula_2": {
+      "id": "aula_2",
+      "nombre": "Aula 2 APL"
+    },
+    "aula_3": {
+      "id": "aula_3",
+      "nombre": "Aula 3 Cobol"
+    },
+    "aula_4": {
+      "id": "aula_4",
+      "nombre": "Aula 4 Lisp"
+    },
+    "aula_5": {
+      "id": "aula_5",
+      "nombre": "Aula 5 Fortran"
+    },
+    "aula_6": {
+      "id": "aula_6",
+      "nombre": "Aula 6 Smalltalk"
+    },
+    "aula_7": {
+      "id": "aula_7",
+      "nombre": "Aula 7 Pascal"
+    },
+    "aula_8": {
+      "id": "aula_8",
+      "nombre": "Aula 8 Php"
+    },
+    "aula_9": {
+      "id": "aula_9",
+      "nombre": "Aula 9 Python"
+    },
+    "aula_10a": {
+      "id": "aula_10a",
+      "nombre": "Aula 10a Objetive C"
+    },
+    "aula_10b": {
+      "id": "aula_10b",
+      "nombre": "Aula 10b C"
+    },
+    "aula_11": {
+      "id": "aula_11",
+      "nombre": "Aula 11 Java"
+    },
+    "aula_14": {
+      "id": "aula_14",
+      "nombre": "Aula 14 XML"
+    },
+    "aula_15": {
+      "id": "aula_15",
+      "nombre": "Aula 15 Ruby"
+    },
+    "buffet": {
+      "id": "buffet",
+      "nombre": "Buffet"
+    },
+    "cefi": {
+      "id": "cefi",
+      "nombre": "CEFI (Centro de Estudiantes)"
+    },
+    "intendencia": {
+      "id": "intendencia",
+      "nombre": "Intendencia"
+    },
+    "depto_alumnos": {
+      "id": "depto_alumnos",
+      "nombre": "Departamento de Alumnos"
+    }
+  },
+  "rutas": [
+    {
+      "origen": "entrada",
+      "destino": "1-1",
+      "pasos": [
+        "Avanzar 10 metros en línea recta por el pasillo principal.",
+        "Tomar el ascensor hasta el Piso 1.",
+        "Al salir del ascensor, caminar hacia la derecha 5 metros; el Aula 1-1 está a mano derecha."
+      ],
+      "accesible": true,
+      "alertas": [
+        "Requiere uso de ascensor"
+      ]
+    },
+    {
+      "origen": "entrada",
+      "destino": "buffet",
+      "roomId": "buffet",
+      "ruta_estandar": {
+        "distancia_metros": 48.3,
+        "camino_nodos": [
+          "n_entrada",
+          "n_buffet",
+          "n_buffet_door"
+        ],
+        "pasos": [
+          "Avanzar 43.7 metros desde Entrada principal hacia Cruce Buffet.",
+          "Avanzar 4.5 metros hasta llegar a Buffet."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 107.2,
+        "camino_nodos": [
+          "n_entrada",
+          "n_central-0",
+          "n_left-1",
+          "n_left-2",
+          "n_left-3",
+          "n_buffet",
+          "n_buffet_door"
+        ],
+        "pasos": [
+          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
+          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
+          "Avanzar 19.1 metros desde Pasillo administrativo (mesa entradas/intendencia) hacia Pasillo administrativo (financiera/alumnos).",
+          "Avanzar 21.7 metros desde Pasillo administrativo (financiera/alumnos) hacia Pasillo administrativo (contable).",
+          "Avanzar 22.3 metros desde Pasillo administrativo (contable) hacia Cruce Buffet.",
+          "Avanzar 4.5 metros hasta llegar a Buffet."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "cefi",
+      "roomId": "cefi",
+      "ruta_estandar": {
+        "distancia_metros": 124.3,
+        "camino_nodos": [
+          "n_entrada",
+          "n_buffet",
+          "n_other-1",
+          "n_other-0",
+          "n_right-6",
+          "n_cefi_door"
+        ],
+        "pasos": [
+          "Avanzar 43.7 metros desde Entrada principal hacia Cruce Buffet.",
+          "Avanzar 24.3 metros desde Cruce Buffet hacia Cruce medio izquierdo (aula 11).",
+          "Avanzar 40.5 metros desde Cruce medio izquierdo (aula 11) hacia Cruce superior izquierdo (CEFI).",
+          "Avanzar 14.2 metros desde Cruce superior izquierdo (CEFI) hacia Pasillo superior (aulas 9-10-CEFI).",
+          "Avanzar 1.6 metros hasta llegar a CEFI."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 162.4,
+        "camino_nodos": [
+          "n_entrada",
+          "n_central-0",
+          "n_central-1",
+          "n_right-0",
+          "n_right-1",
+          "n_right-2",
+          "n_right-3",
+          "n_right-4",
+          "n_right-5",
+          "n_right-6",
+          "n_cefi_door"
+        ],
+        "pasos": [
+          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
+          "Avanzar 30.5 metros desde Pasillo central (biblioteca) hacia Pasillo central (baños/ascensor/aula14-15).",
+          "Avanzar 15.7 metros desde Pasillo central (baños/ascensor/aula14-15) hacia Pasillo aula 1 / baños.",
+          "Avanzar 8.4 metros desde Pasillo aula 1 / baños hacia Pasillo aulas 2-3.",
+          "Avanzar 16.6 metros desde Pasillo aulas 2-3 hacia Pasillo aula 4.",
+          "Avanzar 17.0 metros desde Pasillo aula 4 hacia Pasillo superior (aula 5 / fotocopiadora).",
+          "Avanzar 16.7 metros desde Pasillo superior (aula 5 / fotocopiadora) hacia Pasillo superior (aulas 6-7).",
+          "Avanzar 10.1 metros desde Pasillo superior (aulas 6-7) hacia Pasillo superior (aula 8).",
+          "Avanzar 14.6 metros desde Pasillo superior (aula 8) hacia Pasillo superior (aulas 9-10-CEFI).",
+          "Avanzar 1.6 metros hasta llegar a CEFI."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "intendencia",
+      "roomId": "intendencia",
+      "ruta_estandar": {
+        "distancia_metros": 42.9,
+        "camino_nodos": [
+          "n_entrada",
+          "n_central-0",
+          "n_left-1",
+          "n_intendencia_door"
+        ],
+        "pasos": [
+          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
+          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
+          "Avanzar 3.3 metros hasta llegar a Intendencia."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 42.9,
+        "camino_nodos": [
+          "n_entrada",
+          "n_central-0",
+          "n_left-1",
+          "n_intendencia_door"
+        ],
+        "pasos": [
+          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
+          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
+          "Avanzar 3.3 metros hasta llegar a Intendencia."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "depto_alumnos",
+      "roomId": "alumnos",
+      "ruta_estandar": {
+        "distancia_metros": 62.5,
+        "camino_nodos": [
+          "n_entrada",
+          "n_central-0",
+          "n_left-1",
+          "n_left-2",
+          "n_alumnos_door"
+        ],
+        "pasos": [
+          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
+          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
+          "Avanzar 19.1 metros desde Pasillo administrativo (mesa entradas/intendencia) hacia Pasillo administrativo (financiera/alumnos).",
+          "Avanzar 3.8 metros hasta llegar a Alumnos."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 62.5,
+        "camino_nodos": [
+          "n_entrada",
+          "n_central-0",
+          "n_left-1",
+          "n_left-2",
+          "n_alumnos_door"
+        ],
+        "pasos": [
+          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
+          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
+          "Avanzar 19.1 metros desde Pasillo administrativo (mesa entradas/intendencia) hacia Pasillo administrativo (financiera/alumnos).",
+          "Avanzar 3.8 metros hasta llegar a Alumnos."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
     }
   ],
   "services": [
@@ -1084,7 +1655,7 @@
       "id": "service_toilet",
       "name": "Ir al baño de hombres",
       "roomId": "banios_hombres",
-      "description": "Para ir al baño de hombres, sanitario, WC o toilette, dirígete al sector de baños junto al ascensor. También existe Baños mujeres al lado.",
+      "description": "Para ir al baño de hombres, sanitario, WC o toilette, dirígete al sector de baños.",
       "keywords": [
         "baño",
         "banio",
@@ -1106,7 +1677,7 @@
       "id": "service_toilet_women",
       "name": "Ir al baño de mujeres",
       "roomId": "banios_mujeres",
-      "description": "Para ir al baño de mujeres, sanitario, WC o toilette, dirígete al sector de baños junto al ascensor.",
+      "description": "Para ir al baño de mujeres, sanitario, WC o toilette, dirígete al sector de baños.",
       "keywords": [
         "baño mujeres",
         "bano mujeres",
@@ -1118,6 +1689,23 @@
         "quiero ir al baño de mujeres",
         "baño mujeres",
         "where is the women's toilet"
+      ]
+    },
+    {
+      "id": "service_toilet_neutral",
+      "name": "Ir al baño sin género",
+      "roomId": "banio_sin_genero",
+      "description": "Para ir al baño accesible o sin género, dirígete al sector de baños.",
+      "keywords": [
+        "baño sin genero",
+        "banio sin genero",
+        "baño neutro",
+        "baño accesible",
+        "gender neutral bathroom"
+      ],
+      "examples": [
+        "quiero ir al baño accesible",
+        "hay un baño sin genero"
       ]
     },
     {
@@ -1149,7 +1737,8 @@
         "libreta",
         "credencial",
         "carnet",
-        "student card"
+        "student card",
+        "departamento de alumnos"
       ],
       "examples": [
         "tengo que hacer un tramite de alumno",
@@ -1224,10 +1813,39 @@
       ]
     },
     {
+      "id": "service_cefi",
+      "name": "CEFI - Centro de Estudiantes",
+      "roomId": "cefi",
+      "description": "Para actividades del centro de estudiantes, apuntes o consultas gremiales, ve al CEFI.",
+      "keywords": [
+        "cefi",
+        "centro de estudiantes",
+        "apuntes"
+      ],
+      "examples": [
+        "donde esta el cefi",
+        "quiero ir al centro de estudiantes"
+      ]
+    },
+    {
+      "id": "service_maintenance",
+      "name": "Mantenimiento",
+      "roomId": "mantenimiento",
+      "description": "Para reportar un desperfecto o hablar con Mantenimiento, dirígete a esa oficina.",
+      "keywords": [
+        "mantenimiento",
+        "desperfecto",
+        "arreglo"
+      ],
+      "examples": [
+        "donde queda mantenimiento"
+      ]
+    },
+    {
       "id": "service_classroom",
       "name": "Buscar aula",
       "roomId": "aula_1",
-      "description": "Para encontrar un aula, indica el número: Aula 1, Aula 2, Aula 5, Aula 10A, Aula 15, etc.",
+      "description": "Para encontrar un aula, indica el número o el lenguaje asociado: Aula 5 (Fortran), Aula 9 (Python), Aula 11 (Java), etc.",
       "keywords": [
         "aula",
         "clase",
@@ -1235,7 +1853,8 @@
       ],
       "examples": [
         "tengo clase en aula 5",
-        "donde esta aula 10a"
+        "donde esta aula 10a",
+        "quiero ir al aula de python"
       ]
     }
   ]
