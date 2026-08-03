@@ -216,7 +216,7 @@ function euclidean(a, b) {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-function findShortestPath(nodes, edges, startNodeId, targetNodeId) {
+function findShortestPath(nodes, edges, startNodeId, targetNodeId, accessibleOnly = false) {
   const nodeById = new Map(nodes.map((node) => [node.id, node]));
   if (!nodeById.has(startNodeId) || !nodeById.has(targetNodeId)) {
     return null;
@@ -224,6 +224,8 @@ function findShortestPath(nodes, edges, startNodeId, targetNodeId) {
 
   const adjacency = new Map(nodes.map((node) => [node.id, []]));
   for (const edge of edges) {
+    if (accessibleOnly && edge.accesible === false) continue;
+
     const from = nodeById.get(edge.from);
     const to = nodeById.get(edge.to);
     if (!from || !to) continue;
@@ -419,7 +421,7 @@ async function main() {
     return best && best.score >= 0.25 ? best : null;
   }
 
-  function buildRoute(startLocationId, targetRoomId) {
+  function buildRoute(startLocationId, targetRoomId, accessibleOnly = false) {
     const startNodeId = nodeForLocationId(startLocationId);
     const targetRoom = findRoom(targetRoomId);
 
@@ -427,7 +429,13 @@ async function main() {
       return null;
     }
 
-    const result = findShortestPath(mapData.nodes, mapData.edges, startNodeId, targetRoom.entranceNodeId);
+    const result = findShortestPath(
+      mapData.nodes,
+      mapData.edges,
+      startNodeId,
+      targetRoom.entranceNodeId,
+      accessibleOnly
+    );
     if (!result) {
       return null;
     }
@@ -445,127 +453,90 @@ async function main() {
     };
   }
 
+  // El origen del recorrido ya no lo elige el usuario a mano: siempre es la
+  // entrada del edificio, y el único parámetro es si necesita rampa o gradas.
+  function startLocationForAccess(necesitaRampa) {
+    return necesitaRampa ? "rampa-0" : "gradas-0";
+  }
+
+  function buildChatReply(targetRoom, match, necesitaRampa) {
+    const servicioObj = mapData.services.find((s) => s.id === match.serviceId);
+    let textoRespuesta = servicioObj
+      ? `${servicioObj.description}\n\n`
+      : `Encontré ${targetRoom.name} ${targetRoom.code}.\n\n`;
+
+    const rutaPredefinida = mapData.rutas?.find(
+      (r) => r.roomId === targetRoom.id || r.destino === targetRoom.id
+    );
+
+    if (rutaPredefinida) {
+      let pasos = [];
+      if (necesitaRampa && rutaPredefinida.ruta_accesible_silla_ruedas?.disponible) {
+        pasos = rutaPredefinida.ruta_accesible_silla_ruedas.pasos;
+      } else if (rutaPredefinida.ruta_estandar?.pasos) {
+        pasos = rutaPredefinida.ruta_estandar.pasos;
+      }
+
+      if (pasos.length > 0) {
+        textoRespuesta += "Sigue estas instrucciones:\n";
+        pasos.forEach((paso, index) => {
+          textoRespuesta += `${index + 1}. ${paso}\n`;
+        });
+      }
+    } else {
+      textoRespuesta += "La ruta ya está dibujada en el mapa.";
+    }
+
+    return textoRespuesta;
+  }
+
   async function handleChat(req, res) {
     const body = await readJsonBody(req);
-    const message = String(body.message || "").trim();
-    const currentLocationId = body.currentLocationId || null;
-    const pendingTargetRoomId = body.pendingTargetRoomId || null;
-    
-    // trabajamos con la var que envía el checkbox desde app.js
     const necesitaRampa = body.necesitaRampa === true;
+    const startLocationId = startLocationForAccess(necesitaRampa);
 
-    if (!message) {
-      sendJson(res, 400, { error: "message is required" });
-      return;
-    }
+    let targetRoom = null;
+    let match = null;
 
-    if (pendingTargetRoomId && !currentLocationId) {
-      const location = resolveLocation(message);
-      if (!location) {
-        sendJson(res, 200, {
-          reply: "Todavía no pude identificar tu ubicación. Puedes escribir “estoy en la entrada”, “estoy en biblioteca” o seleccionar tu ubicación en la lista.",
-          action: { type: "ask_location", targetRoomId: pendingTargetRoomId }
-        });
+    // Click directo en un bloque del mapa / lista de lugares: viene con el id exacto.
+    if (body.targetRoomId) {
+      targetRoom = findRoom(body.targetRoomId);
+      if (targetRoom) {
+        match = {
+          serviceId: "direct_room_match",
+          roomId: targetRoom.id,
+          serviceName: targetRoom.name,
+          score: 1,
+          source: "room-click"
+        };
+      }
+    } else {
+      const message = String(body.message || "").trim();
+      if (!message) {
+        sendJson(res, 400, { error: "message is required" });
         return;
       }
 
-      const route = buildRoute(location.id, pendingTargetRoomId);
-      if (!route) {
-        sendJson(res, 200, {
-          reply: "Encontré tu ubicación, pero todavía no hay una ruta disponible entre esos dos puntos.",
-          action: { type: "show_message" }
-        });
-        return;
-      }
-
-        // 1. Buscamos el servicio original en mapData para extraer su descripción
-      const servicioObj = mapData.services.find(s => s.id === searchResult.serviceId);
-      let textoRespuesta = servicioObj ? (servicioObj.description + "\n\n") : `Encontré ${targetRoom.name} ${targetRoom.code}.\n\n`;
-
-      // 2. Buscamos las instrucciones en el arreglo de rutas
-      const rutaPredefinida = mapData.rutas?.find(r => r.roomId === targetRoom.id || r.destino === targetRoom.id);
-
-      if (rutaPredefinida) {
-        // 3. Elegimos qué pasos usar en base al checkbox de la interfaz
-        let pasos = [];
-        if (necesitaRampa && rutaPredefinida.ruta_accesible_silla_ruedas?.disponible) {
-          pasos = rutaPredefinida.ruta_accesible_silla_ruedas.pasos;
-        } else if (rutaPredefinida.ruta_estandar?.pasos) {
-          pasos = rutaPredefinida.ruta_estandar.pasos;
-        }
-
-        // 4. Armamos la lista numerada
-        if (pasos.length > 0) {
-          textoRespuesta += "Sigue estas instrucciones:\n";
-          pasos.forEach((paso, index) => {
-            textoRespuesta += `${index + 1}. ${paso}\n`;
-          });
-        }
+      const directTarget = resolveLocation(message);
+      if (directTarget?.type === "room" && directTarget.score >= 0.55) {
+        targetRoom = findRoom(directTarget.id);
+        match = {
+          serviceId: "direct_room_match",
+          roomId: targetRoom.id,
+          serviceName: targetRoom.name,
+          score: directTarget.score,
+          source: "room-alias"
+        };
       } else {
-        // Por si la ruta aún no tiene pasos documentados
-        textoRespuesta += "La ruta ya está dibujada en el mapa.";
-      }
-
-      // 5. Enviamos la respuesta final a app.js
-      sendJson(res, 200, {
-        reply: textoRespuesta,
-        match: searchResult,
-        action: {
-          type: "highlight_route",
-          route,
-          targetRoomId: targetRoom.id,
-          targetSvgId: targetRoom.svgId
+        const searchResult = await semanticSearch.search(message);
+        if (searchResult) {
+          targetRoom = findRoom(searchResult.roomId);
+          match = searchResult;
         }
-      });
-      return;
-    }
-
-    const directTarget = resolveLocation(message);
-    if (directTarget?.type === "room" && directTarget.id !== currentLocationId && directTarget.score >= 0.55) {
-      const targetRoom = findRoom(directTarget.id);
-      if (!currentLocationId) {
-        sendJson(res, 200, {
-          reply: `Entiendo que quieres ir a ${targetRoom.name} ${targetRoom.code}. ¿Dónde estás ahora?`,
-          match: {
-            serviceId: "direct_room_match",
-            roomId: targetRoom.id,
-            serviceName: targetRoom.name,
-            score: directTarget.score,
-            source: "room-alias"
-          },
-          action: {
-            type: "ask_location",
-            targetRoomId: targetRoom.id,
-            targetSvgId: targetRoom.svgId
-          }
-        });
-        return;
-      }
-
-      const route = buildRoute(currentLocationId, targetRoom.id);
-      if (route) {
-        sendJson(res, 200, {
-          reply: `Identifiqué ${targetRoom.name} ${targetRoom.code}. La ruta ya está marcada.`,
-          match: {
-            serviceId: "direct_room_match",
-            roomId: targetRoom.id,
-            serviceName: targetRoom.name,
-            score: directTarget.score,
-            source: "room-alias"
-          },
-          action: {
-            type: "highlight_route",
-            route,
-            targetRoomId: targetRoom.id,
-            targetSvgId: targetRoom.svgId
-          }
-        });
-        return;
       }
     }
 
-    const searchResult = await semanticSearch.search(message);
-    if (!searchResult) {
+    if (!targetRoom) {
       sendJson(res, 200, {
         reply: "No encontré un destino relacionado. Puedes probar con “quiero ir al baño”, “aula 5”, “biblioteca” o “tengo que entregar papeles”.",
         action: { type: "show_message" }
@@ -573,41 +544,21 @@ async function main() {
       return;
     }
 
-    const targetRoom = findRoom(searchResult.roomId);
-    if (!targetRoom) {
-      sendJson(res, 200, {
-        reply: "Encontré el trámite, pero todavía no está vinculado a un lugar del mapa.",
-        action: { type: "show_message" }
-      });
-      return;
-    }
-
-    if (!currentLocationId) {
-      sendJson(res, 200, {
-        reply: `Entiendo que quieres ir a ${targetRoom.name} ${targetRoom.code}. ¿Dónde estás ahora?`,
-        match: searchResult,
-        action: {
-          type: "ask_location",
-          targetRoomId: targetRoom.id,
-          targetSvgId: targetRoom.svgId
-        }
-      });
-      return;
-    }
-
-    const route = buildRoute(currentLocationId, targetRoom.id);
+    const route = buildRoute(startLocationId, targetRoom.id, necesitaRampa);
     if (!route) {
       sendJson(res, 200, {
-        reply: "Encontré el destino, pero todavía no hay una ruta disponible entre los nodos del mapa.",
-        match: searchResult,
+        reply: necesitaRampa
+          ? "Encontré el destino, pero todavía no hay una ruta accesible en silla de ruedas para ese tramo."
+          : "Encontré el destino, pero todavía no hay una ruta disponible entre los nodos del mapa.",
+        match,
         action: { type: "show_message" }
       });
       return;
     }
 
     sendJson(res, 200, {
-      reply: `Encontré ${targetRoom.name} ${targetRoom.code}. La ruta ya está marcada.`,
-      match: searchResult,
+      reply: buildChatReply(targetRoom, match, necesitaRampa),
+      match,
       action: {
         type: "highlight_route",
         route,
@@ -621,7 +572,8 @@ async function main() {
     const body = await readJsonBody(req);
     const startLocationId = body.startLocationId || body.startNodeId;
     const targetRoomId = body.targetRoomId;
-    const route = buildRoute(startLocationId, targetRoomId);
+    const accessibleOnly = body.accessibleOnly === true;
+    const route = buildRoute(startLocationId, targetRoomId, accessibleOnly);
 
     if (!route) {
       sendJson(res, 404, { error: "route not found" });
@@ -692,51 +644,74 @@ async function main() {
           const baseUrl = `http://localhost:${port}`;
           const mapResponse = await fetch(`${baseUrl}/api/map`);
           const mapPayload = await mapResponse.json();
+
+          // Chat por texto, arrancando por gradas (checkbox sin marcar)
           const chatResponse = await fetch(`${baseUrl}/api/chat`, {
             method: "POST",
             headers: { "content-type": "application/json; charset=utf-8" },
             body: JSON.stringify({
               message: "tengo que entregar papeles",
-              currentLocationId: "entrada_principal"
+              necesitaRampa: false
             })
           });
           const chatPayload = await chatResponse.json();
+
+          // Ruta directa desde el nodo real de entrada (antes se probaba con
+          // "entrada_principal", que no existe como nodo/sala y siempre daba vacío)
           const routeResponse = await fetch(`${baseUrl}/api/route`, {
             method: "POST",
             headers: { "content-type": "application/json; charset=utf-8" },
             body: JSON.stringify({
-              startLocationId: "entrada_principal",
+              startLocationId: "entrada",
               targetRoomId: "banios_hombres"
             })
           });
           const routePayload = await routeResponse.json();
-          const aula5RouteResponse = await fetch(`${baseUrl}/api/route`, {
+
+          // Recorrido completo arrancando desde gradas-0, sin filtro de accesibilidad
+          const gradasRouteResponse = await fetch(`${baseUrl}/api/route`, {
             method: "POST",
             headers: { "content-type": "application/json; charset=utf-8" },
             body: JSON.stringify({
-              startLocationId: "aula_5",
+              startLocationId: "gradas-0",
               targetRoomId: "banios_hombres"
             })
           });
-          const aula5RoutePayload = await aula5RouteResponse.json();
+          const gradasRoutePayload = await gradasRouteResponse.json();
+
+          // Mismo recorrido pero exigiendo ruta accesible en silla de ruedas desde rampa-0
+          const rampaRouteResponse = await fetch(`${baseUrl}/api/route`, {
+            method: "POST",
+            headers: { "content-type": "application/json; charset=utf-8" },
+            body: JSON.stringify({
+              startLocationId: "rampa-0",
+              targetRoomId: "banios_hombres",
+              accessibleOnly: true
+            })
+          });
+          const rampaRoutePayload = await rampaRouteResponse.json();
+
+          // Chat por texto "aula 5", con necesitaRampa true (debe arrancar en rampa-0)
           const aula5ChatResponse = await fetch(`${baseUrl}/api/chat`, {
             method: "POST",
             headers: { "content-type": "application/json; charset=utf-8" },
             body: JSON.stringify({
               message: "aula 5",
-              currentLocationId: "entrada_principal"
+              necesitaRampa: true
             })
           });
           const aula5ChatPayload = await aula5ChatResponse.json();
-          const aula4ToCopyResponse = await fetch(`${baseUrl}/api/route`, {
+
+          // Click directo en un bloque del mapa (sin pasar por matching de texto)
+          const clickChatResponse = await fetch(`${baseUrl}/api/chat`, {
             method: "POST",
             headers: { "content-type": "application/json; charset=utf-8" },
             body: JSON.stringify({
-              startLocationId: "aula_4",
-              targetRoomId: "fotocopiadora"
+              targetRoomId: "fotocopiadora",
+              necesitaRampa: false
             })
           });
-          const aula4ToCopyPayload = await aula4ToCopyResponse.json();
+          const clickChatPayload = await clickChatResponse.json();
 
           console.log(
             JSON.stringify({
@@ -744,9 +719,11 @@ async function main() {
               chatAction: chatPayload.action?.type,
               chatTarget: chatPayload.action?.targetRoomId,
               routeNodes: routePayload.route?.nodeIds || [],
-              aula5ToBanios: aula5RoutePayload.route?.nodeIds || [],
+              gradasToBanios: gradasRoutePayload.route?.nodeIds || [],
+              rampaAccesibleToBanios: rampaRoutePayload.route?.nodeIds || rampaRoutePayload.error,
               aula5ChatTarget: aula5ChatPayload.action?.targetRoomId,
-              aula4ToFotocopiadora: aula4ToCopyPayload.route?.nodeIds || []
+              aula5ChatStartsAccessible: aula5ChatPayload.action?.route?.nodeIds?.[0],
+              clickChatTarget: clickChatPayload.action?.targetRoomId
             })
           );
         } finally {

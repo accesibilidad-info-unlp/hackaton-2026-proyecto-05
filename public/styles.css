@@ -321,14 +321,6 @@ select, input {
   stroke-width: 2.8 !important;
 }
 
-.room-code {
-  fill: var(--text-color) !important;
-  font-size: 11px;
-  font-weight: 800;
-  text-anchor: middle;
-  pointer-events: none;
-}
-
 .route-line {
   fill: none;
   stroke: var(--route-color) !important;
@@ -741,8 +733,5 @@ select, input {
 
   #campusMap {
     min-height: 360px;
-  }
-  .room-code {
-  display: none !important;
   }
 }

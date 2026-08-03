@@ -203,7 +203,7 @@
       },
       "label": {
         "x": 136.5,
-        "y": 29.0
+        "y": 29
       }
     },
     {
@@ -241,7 +241,7 @@
         "d": "M68.0537 108.526L84.5705 78.7285L130.403 104.134L113.886 133.931L68.0537 108.526Z"
       },
       "label": {
-        "x": 93.0,
+        "x": 93,
         "y": 106.8
       }
     },
@@ -412,7 +412,7 @@
       },
       "label": {
         "x": 74.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -431,7 +431,7 @@
       },
       "label": {
         "x": 85.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -449,7 +449,7 @@
       },
       "label": {
         "x": 98.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -468,7 +468,7 @@
       },
       "label": {
         "x": 114.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -486,7 +486,7 @@
       },
       "label": {
         "x": 130.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -505,7 +505,7 @@
       },
       "label": {
         "x": 145.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -523,7 +523,7 @@
       },
       "label": {
         "x": 164.2,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -543,7 +543,7 @@
       },
       "label": {
         "x": 231.7,
-        "y": 266.0
+        "y": 266
       }
     },
     {
@@ -622,7 +622,7 @@
         "x": 401.8,
         "y": 151.4,
         "width": 12.7,
-        "height": 18.0
+        "height": 18
       },
       "label": {
         "x": 409.1,
@@ -645,7 +645,7 @@
         "x": 438.6,
         "y": 172.4,
         "width": 12.8,
-        "height": 18.0
+        "height": 18
       },
       "label": {
         "x": 445.1,
@@ -668,8 +668,8 @@
         "type": "rect",
         "x": 225.4,
         "y": 60.1,
-        "width": 33.0,
-        "height": 33.0
+        "width": 33,
+        "height": 33
       },
       "label": {
         "x": 243.4,
@@ -691,7 +691,7 @@
         "x": 409.1,
         "y": 157.1,
         "width": 16.1,
-        "height": 19.0
+        "height": 19
       },
       "label": {
         "x": 416.9,
@@ -700,58 +700,299 @@
     }
   ],
   "nodes": [
-    { "id": "buffet", "label": "Cruce Buffet", "x": 97.5, "y": 118 },
-    { "id": "to-buffet-sin-rampa", "label": "Cruce sin rampa al buffet", "x": 216.5, "y": 190 },
-    { "id": "other-1", "label": "Pasillo aula 11", "x": 56.5, "y": 111 },
-    { "id": "other-0", "label": "Cruce superior", "x": 84.5, "y": 63 },
-    { "id": "right-6", "label": "Pasillo aulas 9-10-CEFI", "x": 71, "y": 2.5 },
-    { "id": "right-5", "label": "Pasillo aula 8", "x": 113.5, "y": 23 },
-    { "id": "right-4", "label": "Pasillo aulas 6-7", "x": 142.5, "y": 38 },
-    { "id": "right-3", "label": "Pasillo aula 5 / Fotocopiadora", "x": 190.5, "y": 63 },
-    { "id": "right-2", "label": "Pasillo aula 4", "x": 238.5, "y": 90 },
-    { "id": "right-1", "label": "Pasillo aulas 2-3", "x": 285.5, "y": 116 },
-    { "id": "right-0", "label": "Pasillo aula 1", "x": 309.5, "y": 129 },
-    { "id": "left-7", "label": "Pasillo Mantenimiento", "x": 2.5, "y": 200 },
-    { "id": "left-6", "label": "Pasillo Rendiciones", "x": 26.5, "y": 200 },
-    { "id": "left-5", "label": "Pasillo Despacho", "x": 54.5, "y": 200 },
-    { "id": "left-4", "label": "Pasillo Secretaria", "x": 86.5, "y": 200 },
-    { "id": "left-3", "label": "Pasillo Contable", "x": 114.5, "y": 200 },
-    { "id": "left-2", "label": "Pasillo Financiera/Alumnos", "x": 179.5, "y": 200 },
-    { "id": "left-1", "label": "Pasillo Entradas/Intendencia", "x": 236.5, "y": 200 },
-    { "id": "left-0", "label": "Pasillo admin este", "x": 272.5, "y": 200 },
-    { "id": "central-1", "label": "Pasillo Aulas 14-15 / Baños", "x": 362.5, "y": 156 },
-    { "id": "central-0", "label": "Pasillo Biblioteca", "x": 352.5, "y": 177 },
-    { "id": "entrada", "label": "Entrada", "x": 342.5, "y": 200 },
-    { "id": "rampa-1", "label": "Rampa inicio", "x": 206.5, "y": 231 },
-    { "id": "rampa-0", "label": "Rampa fin", "x": 206.5, "y": 252 },
-    { "id": "gradas-1", "label": "Gradas inicio", "x": 342.5, "y": 231 },
-    { "id": "gradas-0", "label": "Gradas fin", "x": 342.5, "y": 252 }
-  ],"edges": [
-    { "from": "gradas-0", "to": "gradas-1", "accesible": false },
-    { "from": "gradas-1", "to": "entrada", "accesible": false },
-    { "from": "rampa-0", "to": "rampa-1", "accesible": true },
-    { "from": "rampa-1", "to": "gradas-1", "accesible": true },
-    { "from": "entrada", "to": "left-0", "accesible": true },
-    { "from": "entrada", "to": "central-0", "accesible": true },
-    { "from": "central-0", "to": "central-1", "accesible": true },
-    { "from": "central-1", "to": "right-0", "accesible": true },
-    { "from": "right-0", "to": "right-1", "accesible": true },
-    { "from": "right-1", "to": "right-2", "accesible": true },
-    { "from": "right-2", "to": "right-3", "accesible": true },
-    { "from": "right-3", "to": "right-4", "accesible": true },
-    { "from": "right-4", "to": "right-5", "accesible": true },
-    { "from": "right-5", "to": "right-6", "accesible": true },
-    { "from": "right-2", "to": "other-0", "accesible": true },
-    { "from": "other-0", "to": "other-1", "accesible": true },
-    { "from": "left-0", "to": "left-1", "accesible": true },
-    { "from": "left-1", "to": "to-buffet-sin-rampa", "accesible": false },
-    { "from": "left-1", "to": "left-2", "accesible": true },
-    { "from": "left-2", "to": "left-3", "accesible": true },
-    { "from": "left-3", "to": "buffet", "accesible": true },
-    { "from": "left-3", "to": "left-4", "accesible": true },
-    { "from": "left-4", "to": "left-5", "accesible": true },
-    { "from": "left-5", "to": "left-6", "accesible": true },
-    { "from": "left-6", "to": "left-7", "accesible": true }
+    {
+      "id": "buffet",
+      "label": "Cruce Buffet",
+      "x": 148.5,
+      "y": 166.5
+    },
+    {
+      "id": "to-buffet-sin-rampa",
+      "label": "Cruce sin rampa al buffet",
+      "x": 268.5,
+      "y": 236.5
+    },
+    {
+      "id": "other-1",
+      "label": "Pasillo aula 11",
+      "x": 107.5,
+      "y": 159.5
+    },
+    {
+      "id": "other-0",
+      "label": "Cruce superior",
+      "x": 135.5,
+      "y": 109.5
+    },
+    {
+      "id": "right-6",
+      "label": "Pasillo aulas 9-10-CEFI",
+      "x": 124,
+      "y": 50
+    },
+    {
+      "id": "right-5",
+      "label": "Pasillo aula 8",
+      "x": 159.5,
+      "y": 70.5
+    },
+    {
+      "id": "right-4",
+      "label": "Pasillo aulas 6-7",
+      "x": 194.5,
+      "y": 84.5
+    },
+    {
+      "id": "right-3",
+      "label": "Pasillo aula 5 / Fotocopiadora",
+      "x": 244.5,
+      "y": 109.5
+    },
+    {
+      "id": "right-2",
+      "label": "Pasillo aula 4",
+      "x": 290.5,
+      "y": 135.5
+    },
+    {
+      "id": "right-1",
+      "label": "Pasillo aulas 2-3",
+      "x": 337.5,
+      "y": 161.5
+    },
+    {
+      "id": "right-0",
+      "label": "Pasillo aula 1",
+      "x": 362.5,
+      "y": 175.5
+    },
+    {
+      "id": "left-7",
+      "label": "Pasillo Mantenimiento",
+      "x": 54.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-6",
+      "label": "Pasillo Rendiciones",
+      "x": 78.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-5",
+      "label": "Pasillo Despacho",
+      "x": 106.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-4",
+      "label": "Pasillo Secretaria",
+      "x": 138.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-3",
+      "label": "Pasillo Contable",
+      "x": 166.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-2",
+      "label": "Pasillo Financiera/Alumnos",
+      "x": 231.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-1",
+      "label": "Pasillo Entradas/Intendencia",
+      "x": 288.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-0",
+      "label": "Pasillo admin este",
+      "x": 324.5,
+      "y": 246.5
+    },
+    {
+      "id": "central-1",
+      "label": "Pasillo Aulas 14-15 / Baños",
+      "x": 413.5,
+      "y": 201.5
+    },
+    {
+      "id": "central-0",
+      "label": "Pasillo Biblioteca",
+      "x": 404.5,
+      "y": 223.5
+    },
+    {
+      "id": "entrada",
+      "label": "Entrada",
+      "x": 394.5,
+      "y": 248.5
+    },
+    {
+      "id": "rampa-1",
+      "label": "Rampa inicio",
+      "x": 258.5,
+      "y": 278.5
+    },
+    {
+      "id": "rampa-0",
+      "label": "Rampa fin",
+      "x": 258.5,
+      "y": 299.5
+    },
+    {
+      "id": "gradas-1",
+      "label": "Gradas inicio",
+      "x": 394.5,
+      "y": 276.5
+    },
+    {
+      "id": "gradas-0",
+      "label": "Gradas fin",
+      "x": 394.5,
+      "y": 299.5
+    }
+  ],
+  "edges": [
+    {
+      "from": "gradas-0",
+      "to": "gradas-1",
+      "accesible": false
+    },
+    {
+      "from": "gradas-1",
+      "to": "entrada",
+      "accesible": true
+    },
+    {
+      "from": "rampa-0",
+      "to": "rampa-1",
+      "accesible": true
+    },
+    {
+      "from": "rampa-1",
+      "to": "gradas-1",
+      "accesible": true
+    },
+    {
+      "from": "entrada",
+      "to": "left-0",
+      "accesible": true
+    },
+    {
+      "from": "entrada",
+      "to": "central-0",
+      "accesible": true
+    },
+    {
+      "from": "central-0",
+      "to": "central-1",
+      "accesible": true
+    },
+    {
+      "from": "central-1",
+      "to": "right-0",
+      "accesible": true
+    },
+    {
+      "from": "right-0",
+      "to": "right-1",
+      "accesible": true
+    },
+    {
+      "from": "right-1",
+      "to": "right-2",
+      "accesible": true
+    },
+    {
+      "from": "right-2",
+      "to": "right-3",
+      "accesible": true
+    },
+    {
+      "from": "right-3",
+      "to": "right-4",
+      "accesible": true
+    },
+    {
+      "from": "right-4",
+      "to": "right-5",
+      "accesible": true
+    },
+    {
+      "from": "right-5",
+      "to": "right-6",
+      "accesible": true
+    },
+    {
+      "from": "right-5",
+      "to": "other-0",
+      "accesible": true
+    },
+    {
+      "from": "right-2",
+      "to": "other-0",
+      "accesible": false
+    },
+    {
+      "from": "other-0",
+      "to": "other-1",
+      "accesible": true
+    },
+    {
+      "from": "left-0",
+      "to": "left-1",
+      "accesible": true
+    },
+    {
+      "from": "left-1",
+      "to": "to-buffet-sin-rampa",
+      "accesible": false
+    },
+    {
+      "from": "to-buffet-sin-rampa",
+      "to": "buffet",
+      "accesible": false
+    },
+    {
+      "from": "left-1",
+      "to": "left-2",
+      "accesible": true
+    },
+    {
+      "from": "left-2",
+      "to": "left-3",
+      "accesible": true
+    },
+    {
+      "from": "left-3",
+      "to": "buffet",
+      "accesible": true
+    },
+    {
+      "from": "left-3",
+      "to": "left-4",
+      "accesible": true
+    },
+    {
+      "from": "left-4",
+      "to": "left-5",
+      "accesible": true
+    },
+    {
+      "from": "left-5",
+      "to": "left-6",
+      "accesible": true
+    },
+    {
+      "from": "left-6",
+      "to": "left-7",
+      "accesible": true
+    }
   ],
   "puntos_interes": {
     "entrada_principal": {

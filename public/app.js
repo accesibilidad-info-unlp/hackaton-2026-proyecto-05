@@ -125,8 +125,6 @@ const svgNs = "http://www.w3.org/2000/svg";
 
 const state = {
   map: null,
-  currentLocationId: "entrada",
-  pendingTargetRoomId: null,
   routeLayer: null,
   debugLayer: null,
   roomElements: new Map()
@@ -217,11 +215,20 @@ function createRoomShape(room) {
   });
 }
 
-function selectCurrentLocation(room) {
-  state.currentLocationId = room.id;
-  state.pendingTargetRoomId = null;
-  matchInfo.textContent = `Lugar seleccionado: ${room.name} (${room.code})`;
+async function chooseDestination(room) {
+  showPlaceDetails(room);
+  addMessage("user", `${room.name} ${room.code}`);
+
+  const necesitaRampa = checkboxAccesibilidad ? checkboxAccesibilidad.checked : false;
+
+  try {
+    const result = await postJson("/api/chat", { targetRoomId: room.id, necesitaRampa });
+    applyChatResult(result);
+  } catch (error) {
+    addMessage("ai", `Error en la consulta: ${error.message}`);
+  }
 }
+
 
 function drawMap(map) {
   mapSvg.innerHTML = "";
@@ -274,28 +281,16 @@ function drawMap(map) {
     title.textContent = `${room.code} - ${room.name}`;
     shape.appendChild(title);
     shape.addEventListener("click", () => {
-      selectCurrentLocation(room);
-      showPlaceDetails(room);
+      chooseDestination(room);
     });
     shape.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        selectCurrentLocation(room);
-        showPlaceDetails(room);
+        chooseDestination(room);
       }
     });
     roomLayer.appendChild(shape);
     state.roomElements.set(room.id, shape);
-
-    const center = shapeCenter(room);
-    const code = svgElement("text", {
-      class: "room-code",
-      x: center.x,
-      y: center.y + 4,
-      "aria-hidden": "true"
-    });
-    code.textContent = room.code;
-    roomLayer.appendChild(code);
   }
 
   state.debugLayer = svgElement("g", { class: "debug-layer", "aria-hidden": "true" });
@@ -340,8 +335,7 @@ function fillPlacesList(map) {
       li.textContent = `${room.code} - ${room.name}`;
 
       li.addEventListener("click", () => {
-        selectCurrentLocation(room);
-        showPlaceDetails(room);
+        chooseDestination(room);
       });
 
       list.appendChild(li);
@@ -418,33 +412,8 @@ async function postJson(url, payload) {
   return response.json();
 }
 
-async function sendMessage(message) {
-  addMessage("user", message);
-  messageInput.value = "";
-
-  const necesitaRampa = checkboxAccesibilidad ? checkboxAccesibilidad.checked : false;
-
-  const payload = {
-    message,
-    currentLocationId: state.pendingTargetRoomId ? null : "entrada",
-    necesitaRampa: necesitaRampa,
-    pendingTargetRoomId: state.pendingTargetRoomId
-  };
-
-  const result = await postJson("/api/chat", payload);
+function applyChatResult(result) {
   addMessage("ai", result.reply);
-
-  if (result.currentLocationId) {
-    state.currentLocationId = result.currentLocationId;
-  }
-
-  if (result.action?.type === "ask_location") {
-    state.pendingTargetRoomId = result.action.targetRoomId;
-    matchInfo.textContent = result.match ? `Destino: ${result.match.serviceName}` : "Esperando ubicación actual";
-    return;
-  }
-
-  state.pendingTargetRoomId = null;
 
   if (result.action?.type === "highlight_route") {
     drawRoute(result.action.route, result.action.targetRoomId);
@@ -453,6 +422,16 @@ async function sendMessage(message) {
   } else {
     matchInfo.textContent = "Sin cambios de ruta";
   }
+}
+
+async function sendMessage(message) {
+  addMessage("user", message);
+  messageInput.value = "";
+
+  const necesitaRampa = checkboxAccesibilidad ? checkboxAccesibilidad.checked : false;
+
+  const result = await postJson("/api/chat", { message, necesitaRampa });
+  applyChatResult(result);
 }
 
 async function init() {
@@ -484,7 +463,6 @@ debugToggle.addEventListener("change", () => {
 });
 
 clearRoute.addEventListener("click", () => {
-  state.pendingTargetRoomId = null;
   clearRouteDisplay();
 });
 
