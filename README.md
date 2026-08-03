@@ -45,15 +45,9 @@ La ruta no conecta habitaciones por el centro. La logica esperada es:
 
 Los pasillos y puntos ocultos tambien estan en `data/map.json`. Por eso las correcciones de ubicacion, puertas y recorridos deben hacerse en ese archivo, no solo en CSS.
 
-## Plano V2
+## SVG -interno
 
-`public/assets/svg/plano-v2.svg` queda dentro del proyecto como recurso de consulta. Proviene de un archivo de trabajo que contenia fragmentos SVG separados, por eso no se usa como mapa principal.
-
-Si mas adelante se recibe un SVG completo y correctamente posicionado de toda la planta, se puede integrar como fondo visual del mapa manteniendo encima las capas interactivas generadas desde JSON.
-
-## Plano V3
-
-Se agrego `public/assets/svg/plano-v3.svg` como fondo visual del mapa. La aplicacion mantiene las habitaciones, etiquetas, nodos y rutas desde `data/map.json`; el SVG V3 reemplaza la capa base visual sin eliminar la logica interactiva.
+Se agrego `public/assets/svg/svg-interno` como puntos a ser usados en el grafo para obtener las rutas.
 
 ## Instalacion y ejecucion
 

@@ -22,7 +22,7 @@ function ajustarTamaño(cambio) {
   const nuevaEscala = escalaTexto + cambio;
   if (nuevaEscala >= 80 && nuevaEscala <= 160) {
     escalaTexto = nuevaEscala;
-    document.body.style.fontSize = escalaTexto + "%";
+    document.documentElement.style.fontSize = escalaTexto + "%";
   }
 }
 
@@ -80,7 +80,6 @@ if (btnLeer) {
     const inputMensaje = document.getElementById("messageInput");
     const textoInput = inputMensaje ? inputMensaje.placeholder : "";
 
-    // Construimos la frase omitiendo totalmente el mapa y los encabezados
     let textoAEnviar = ultimoMensajeAI;
     if (!textoAEnviar) {
       textoAEnviar = `Asistente de mapa listo. ${textoInput}`;
@@ -119,11 +118,14 @@ if (btnDetener) {
   });
 }
 
+/* ==========================================
+   2. LÓGICA DEL MAPA Y RUTEOS
+   ========================================== */
 const svgNs = "http://www.w3.org/2000/svg";
 
 const state = {
   map: null,
-  currentLocationId: "entrada_principal",
+  currentLocationId: "entrada",
   pendingTargetRoomId: null,
   routeLayer: null,
   debugLayer: null,
@@ -134,7 +136,7 @@ const mapSvg = document.querySelector("#campusMap");
 const messages = document.querySelector("#messages");
 const chatForm = document.querySelector("#chatForm");
 const messageInput = document.querySelector("#messageInput");
-const locationSelect = document.querySelector("#locationSelect");
+const checkboxAccesibilidad = document.querySelector("#check-accesibilidad");
 const matchInfo = document.querySelector("#matchInfo");
 const searchMode = document.querySelector("#searchMode");
 const debugToggle = document.querySelector("#debugToggle");
@@ -194,7 +196,7 @@ function createRoomShape(room) {
     "data-room-id": room.id,
     role: "button",
     tabindex: "0",
-    "aria-label": `${room.code} - ${room.name}. Seleccionar como ubicacion actual.`
+    "aria-label": `${room.code} - ${room.name}.`
   };
 
   if (room.shape.type === "path") {
@@ -216,10 +218,9 @@ function createRoomShape(room) {
 }
 
 function selectCurrentLocation(room) {
-  locationSelect.value = room.id;
   state.currentLocationId = room.id;
   state.pendingTargetRoomId = null;
-  matchInfo.textContent = `Ubicacion actual: ${room.name} (${room.code})`;
+  matchInfo.textContent = `Lugar seleccionado: ${room.name} (${room.code})`;
 }
 
 function drawMap(map) {
@@ -235,8 +236,8 @@ function drawMap(map) {
   const background = svgElement("rect", {
     x: 0,
     y: 0,
-    width: viewBoxWidth || 637,
-    height: viewBoxHeight || 424,
+    width: viewBoxWidth || 476,
+    height: viewBoxHeight || 398,
     fill: "#f6f7f3",
     "aria-hidden": "true"
   });
@@ -250,8 +251,8 @@ function drawMap(map) {
       href: map.backgroundImage.href,
       x: 0,
       y: 0,
-      width: viewBoxWidth || 637,
-      height: viewBoxHeight || 424,
+      width: viewBoxWidth || 476,
+      height: viewBoxHeight || 398,
       preserveAspectRatio: map.backgroundImage.preserveAspectRatio || "xMidYMid meet"
     }));
   } else {
@@ -274,11 +275,13 @@ function drawMap(map) {
     shape.appendChild(title);
     shape.addEventListener("click", () => {
       selectCurrentLocation(room);
+      showPlaceDetails(room);
     });
     shape.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         selectCurrentLocation(room);
+        showPlaceDetails(room);
       }
     });
     roomLayer.appendChild(shape);
@@ -325,19 +328,9 @@ function drawMap(map) {
   mapSvg.appendChild(state.routeLayer);
 }
 
-function fillLocationSelect(map) {
-  locationSelect.innerHTML = "";
-  for (const room of map.rooms) {
-    const option = document.createElement("option");
-    option.value = room.id;
-    option.textContent = `${room.code} - ${room.name}`;
-    locationSelect.appendChild(option);
-  }
-  locationSelect.value = state.currentLocationId;
-}
-/////
 function fillPlacesList(map) {
   const list = document.getElementById("placesList");
+  if (!list) return;
   list.innerHTML = "";
 
   map.rooms
@@ -354,8 +347,10 @@ function fillPlacesList(map) {
       list.appendChild(li);
     });
 }
+
 function showPlaceDetails(room) {
   const details = document.getElementById("placeDetails");
+  if (!details) return;
 
   const aliases = room.aliases?.length
     ? `<ul>${room.aliases.map(alias => `<li>${alias}</li>`).join("")}</ul>`
@@ -367,9 +362,9 @@ function showPlaceDetails(room) {
         ${aliases}
     `;
 }
-//////
+
 function clearRouteDisplay() {
-  state.routeLayer.innerHTML = "";
+  if (state.routeLayer) state.routeLayer.innerHTML = "";
   for (const element of state.roomElements.values()) {
     element.classList.remove("active");
   }
@@ -378,6 +373,8 @@ function clearRouteDisplay() {
 
 function drawRoute(route, targetRoomId) {
   clearRouteDisplay();
+  if (!route || !route.points) return;
+
   const points = route.points.map((point) => `${point.x},${point.y}`).join(" ");
   state.routeLayer.appendChild(svgElement("polyline", {
     class: "route-glow",
@@ -425,9 +422,12 @@ async function sendMessage(message) {
   addMessage("user", message);
   messageInput.value = "";
 
+  const necesitaRampa = checkboxAccesibilidad ? checkboxAccesibilidad.checked : false;
+
   const payload = {
     message,
-    currentLocationId: state.pendingTargetRoomId ? null : state.currentLocationId,
+    currentLocationId: state.pendingTargetRoomId ? null : "entrada",
+    necesitaRampa: necesitaRampa,
     pendingTargetRoomId: state.pendingTargetRoomId
   };
 
@@ -436,12 +436,11 @@ async function sendMessage(message) {
 
   if (result.currentLocationId) {
     state.currentLocationId = result.currentLocationId;
-    locationSelect.value = result.currentLocationId;
   }
 
   if (result.action?.type === "ask_location") {
     state.pendingTargetRoomId = result.action.targetRoomId;
-    matchInfo.textContent = result.match ? `Destino: ${result.match.serviceName}` : "Esperando ubicacion actual";
+    matchInfo.textContent = result.match ? `Destino: ${result.match.serviceName}` : "Esperando ubicación actual";
     return;
   }
 
@@ -449,9 +448,8 @@ async function sendMessage(message) {
 
   if (result.action?.type === "highlight_route") {
     drawRoute(result.action.route, result.action.targetRoomId);
-    const distance = Math.round(result.action.route.distance);
     const matchText = result.match ? `Destino: ${result.match.serviceName}. ` : "";
-    matchInfo.textContent = `${matchText}Longitud aproximada: ${distance} unidades del mapa.`;
+    matchInfo.textContent = `${matchText}Ruta dibujada en el mapa.`;
   } else {
     matchInfo.textContent = "Sin cambios de ruta";
   }
@@ -459,12 +457,14 @@ async function sendMessage(message) {
 
 async function init() {
   const response = await fetch("/api/map");
+  if (!response.ok) {
+    throw new Error(`Server returned ${response.status}`);
+  }
   state.map = await response.json();
   drawMap(state.map);
-  fillLocationSelect(state.map);
   fillPlacesList(state.map);
-  searchMode.textContent = "Planta Baja - Facultad de Informatica";
-  addMessage("ai", "Hola. Puedes escribir \"quiero ir al bano\", \"quiero ir a biblioteca\", \"tengo que entregar papeles\" o \"aula 5\".");
+  searchMode.textContent = "Planta Baja - Facultad de Informática";
+  addMessage("ai", "Hola. Puedes escribir \"quiero ir al baño\", \"quiero ir a biblioteca\", \"tengo que entregar papeles\" o \"aula 5\".");
 }
 
 chatForm.addEventListener("submit", async (event) => {
@@ -477,13 +477,6 @@ chatForm.addEventListener("submit", async (event) => {
   } catch (error) {
     addMessage("ai", `Error en la consulta: ${error.message}`);
   }
-});
-
-locationSelect.addEventListener("change", () => {
-  state.currentLocationId = locationSelect.value;
-  state.pendingTargetRoomId = null;
-  const label = locationSelect.options[locationSelect.selectedIndex].textContent;
-  matchInfo.textContent = `Ubicacion actual: ${label}`;
 });
 
 debugToggle.addEventListener("change", () => {

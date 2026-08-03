@@ -2,7 +2,7 @@
   "viewBox": "0 0 476 398",
   "backgroundImage": {
     "href": "/assets/svg/svg-externo.svg",
-    "preserveAspectRatio": "none"
+    "preserveAspectRatio": "xMidYMid meet"
   },
   "escala": {
     "estado": "CALIBRADA",
@@ -1002,7 +1002,7 @@
       },
       "accesible": null,
       "alertas": []
-    }
+    },
     {
       "origen": "entrada",
       "destino": "banios_hombres",

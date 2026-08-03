@@ -156,15 +156,14 @@ h1, h2, h3, h4, p {
   margin: 0;
 }
 
-h1 { font-size: 24px; letter-spacing: 0; }
-.panel-header h2 { font-size: 20px; margin-bottom: 6px; letter-spacing: 0; }
+h1 { font-size: 1.5rem; letter-spacing: 0; }
+.panel-header h2 { font-size: 1.25rem; margin-bottom: 6px; letter-spacing: 0; }
 
 .topbar p,
 .panel-header p,
-.match-info,
-.location-picker label {
+.match-info {
   color: var(--muted-text);
-  font-size: 13px;
+  font-size: 0.85rem;
   line-height: 1.45;
 }
 
@@ -227,7 +226,7 @@ h1 { font-size: 24px; letter-spacing: 0; }
   align-items: center;
   gap: 6px;
   color: var(--muted-text);
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 /* Botones genéricos */
@@ -306,8 +305,14 @@ select, input {
 }
 
 #campusMap.uses-background-image .room {
-  fill: rgba(255, 255, 255, 0.08);
-  stroke: rgba(63, 75, 85, 0.26);
+  fill: transparent !important;
+  stroke: transparent !important;
+}
+
+/* Resalta el bloque dejando ver el color de fondo */
+#campusMap.uses-background-image .room.active {
+  fill: var(--room-active) !important;
+  opacity: 0.5;
 }
 
 .room.active {
@@ -430,15 +435,35 @@ select, input {
 }
 
 .panel-header,
-.location-picker,
+.accessibility-picker,
 .match-info {
   padding: 16px;
   border-bottom: 1px solid var(--border-line);
 }
 
-.location-picker {
-  display: grid;
-  gap: 8px;
+.accessibility-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem; /* Usa rem para accesibilidad */
+  font-weight: 600;
+  padding: 12px;
+  background-color: var(--btn-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-line);
+  color: var(--text-color);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.accessibility-label:hover {
+  background-color: var(--btn-hover);
+}
+
+.accessibility-checkbox {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 .messages {
@@ -456,7 +481,7 @@ select, input {
   padding: 10px 12px;
   border-radius: 8px;
   line-height: 1.45;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 .message.user {
@@ -716,5 +741,8 @@ select, input {
 
   #campusMap {
     min-height: 360px;
+  }
+  .room-code {
+  display: none !important;
   }
 }
