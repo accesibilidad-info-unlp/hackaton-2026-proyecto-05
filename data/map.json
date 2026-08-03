@@ -934,11 +934,6 @@
       "accesible": true
     },
     {
-      "from": "right-2",
-      "to": "other-0",
-      "accesible": false
-    },
-    {
       "from": "other-0",
       "to": "other-1",
       "accesible": true
