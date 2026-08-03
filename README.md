@@ -26,11 +26,10 @@ La version actual no usa una imagen SVG externa como mapa principal. El plano vi
 - `public/index.html`: estructura de la pagina y contenedor del mapa.
 - `public/app.js`: renderiza el SVG, pinta habitaciones, muestra rutas y gestiona la interaccion.
 - `public/styles.css`: estilos visuales del mapa y del panel lateral.
-- `data/map.json`: fuente principal de datos del mapa.
+- `data/map.json`: fuente principal de datos del mapa conectado con nodos del svg interno.
 - `server.js`: servidor local, busqueda de destinos y calculo de rutas.
-- `public/assets/svg/full-map.svg`: mapa completo exportado desde `data/map.json`.
-- `public/assets/svg/plano-v3.svg`: plano SVG completo usado como fondo visual del mapa.
-- `public/assets/svg/plano-v2.svg`: recurso convertido desde `plano v2.txt`.
+- `public/assets/svg/svg-externo`: mapa completo exportado desde `data/map.json`.
+- `public/assets/svg/svg-interno`: plano SVG interno usado como puntos para los nodos de los grafos.
 
 ## Como funciona el mapa
 

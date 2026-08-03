@@ -450,6 +450,9 @@ async function main() {
     const message = String(body.message || "").trim();
     const currentLocationId = body.currentLocationId || null;
     const pendingTargetRoomId = body.pendingTargetRoomId || null;
+    
+    // trabajamos con la var que envía el checkbox desde app.js
+    const necesitaRampa = body.necesitaRampa === true;
 
     if (!message) {
       sendJson(res, 400, { error: "message is required" });
@@ -475,14 +478,43 @@ async function main() {
         return;
       }
 
+        // 1. Buscamos el servicio original en mapData para extraer su descripción
+      const servicioObj = mapData.services.find(s => s.id === searchResult.serviceId);
+      let textoRespuesta = servicioObj ? (servicioObj.description + "\n\n") : `Encontré ${targetRoom.name} ${targetRoom.code}.\n\n`;
+
+      // 2. Buscamos las instrucciones en el arreglo de rutas
+      const rutaPredefinida = mapData.rutas?.find(r => r.roomId === targetRoom.id || r.destino === targetRoom.id);
+
+      if (rutaPredefinida) {
+        // 3. Elegimos qué pasos usar en base al checkbox de la interfaz
+        let pasos = [];
+        if (necesitaRampa && rutaPredefinida.ruta_accesible_silla_ruedas?.disponible) {
+          pasos = rutaPredefinida.ruta_accesible_silla_ruedas.pasos;
+        } else if (rutaPredefinida.ruta_estandar?.pasos) {
+          pasos = rutaPredefinida.ruta_estandar.pasos;
+        }
+
+        // 4. Armamos la lista numerada
+        if (pasos.length > 0) {
+          textoRespuesta += "Sigue estas instrucciones:\n";
+          pasos.forEach((paso, index) => {
+            textoRespuesta += `${index + 1}. ${paso}\n`;
+          });
+        }
+      } else {
+        // Por si la ruta aún no tiene pasos documentados
+        textoRespuesta += "La ruta ya está dibujada en el mapa.";
+      }
+
+      // 5. Enviamos la respuesta final a app.js
       sendJson(res, 200, {
-        reply: `Listo. Ya marqué la ruta desde ${location.label} hasta ${route.targetRoom.name} ${route.targetRoom.code}.`,
-        currentLocationId: location.id,
+        reply: textoRespuesta,
+        match: searchResult,
         action: {
           type: "highlight_route",
           route,
-          targetRoomId: route.targetRoom.id,
-          targetSvgId: route.targetRoom.svgId
+          targetRoomId: targetRoom.id,
+          targetSvgId: targetRoom.svgId
         }
       });
       return;

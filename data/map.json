@@ -14,20 +14,21 @@
     "en_silla_ruedas": {
       "via": "rampa",
       "camino_nodos": [
-        "n_rampa-0",
-        "n_rampa-1",
-        "n_entrada"
+        "rampa-0",
+        "rampa-1",
+        "gradas-1",
+        "entrada"
       ],
       "descripcion": "Ingresar por la rampa accesible."
     },
     "sin_silla_ruedas": {
       "via": "gradas",
       "camino_nodos": [
-        "n_gradas-0",
-        "n_gradas-1",
-        "n_entrada"
+        "gradas-0",
+        "gradas-1",
+        "entrada"
       ],
-      "descripcion": "Ingresar por las gradas de acceso principal."
+      "descripcion": "Ingresar por las gradas de la entrada principal."
     }
   },
   "rooms": [
@@ -40,7 +41,7 @@
         "aula uno",
         "classroom 1"
       ],
-      "entranceNodeId": "n_aula_1_door",
+      "entranceNodeId": "right-0",
       "shape": {
         "type": "path",
         "d": "M381.649 137L405.336 150.13L386.886 183.415L363.199 170.285L381.649 137Z"
@@ -60,7 +61,7 @@
         "classroom 2",
         "apl"
       ],
-      "entranceNodeId": "n_aula_2_door",
+      "entranceNodeId": "right-0",
       "shape": {
         "type": "path",
         "d": "M361.649 126L381.291 136.888L362.841 170.173L343.199 159.285L361.649 126Z"
@@ -80,7 +81,7 @@
         "classroom 3",
         "cobol"
       ],
-      "entranceNodeId": "n_aula_3_door",
+      "entranceNodeId": "right-1",
       "shape": {
         "type": "path",
         "d": "M341.649 115L361.291 125.888L342.841 159.173L323.199 148.285L341.649 115Z"
@@ -100,7 +101,7 @@
         "classroom 4",
         "lisp"
       ],
-      "entranceNodeId": "n_aula_4_door",
+      "entranceNodeId": "right-2",
       "shape": {
         "type": "path",
         "d": "M285.716 84L340.946 114.614L322.495 147.899L267.266 117.285L276.491 100.643L285.716 84Z"
@@ -119,7 +120,7 @@
         "aula cinco",
         "fortran"
       ],
-      "entranceNodeId": "n_aula_5_door",
+      "entranceNodeId": "right-2",
       "shape": {
         "type": "path",
         "d": "M205.219 189.257L245.012 117.31L295.956 145.487L256.163 217.434L205.219 189.257Z"
@@ -138,7 +139,7 @@
         "aula seis",
         "smalltalk"
       ],
-      "entranceNodeId": "n_aula_6_door",
+      "entranceNodeId": "right-4",
       "shape": {
         "type": "polygon",
         "points": "197.448,79.070 214.901,47.584 234.067,58.208 216.615,89.694"
@@ -157,7 +158,7 @@
         "aula siete",
         "pascal"
       ],
-      "entranceNodeId": "n_aula_7_door",
+      "entranceNodeId": "right-5",
       "shape": {
         "type": "polygon",
         "points": "177.407,68.047 194.860,36.561 214.067,47.208 196.615,78.694"
@@ -176,7 +177,7 @@
         "aula ocho",
         "php"
       ],
-      "entranceNodeId": "n_aula_8_door",
+      "entranceNodeId": "right-5",
       "shape": {
         "type": "polygon",
         "points": "158.199,57.486 175.652,26.000 194.068,36.208 176.615,67.694"
@@ -195,7 +196,7 @@
         "aula nueve",
         "python"
       ],
-      "entranceNodeId": "n_aula_9_door",
+      "entranceNodeId": "right-6",
       "shape": {
         "type": "path",
         "d": "M111.163 31.405L128.571 4.09141e-07L174.403 25.4053L156.995 56.8103L111.163 31.405Z"
@@ -215,7 +216,7 @@
         "aula diez a",
         "objective c"
       ],
-      "entranceNodeId": "n_aula_10a_door",
+      "entranceNodeId": "other-0",
       "shape": {
         "type": "path",
         "d": "M84.8625 78.142L101.571 48L147.403 73.4053L130.695 103.547L84.8625 78.142Z"
@@ -234,7 +235,7 @@
         "aula diez b",
         "lenguaje c"
       ],
-      "entranceNodeId": "n_aula_10b_door",
+      "entranceNodeId": "other-0",
       "shape": {
         "type": "path",
         "d": "M68.0537 108.526L84.5705 78.7285L130.403 104.134L113.886 133.931L68.0537 108.526Z"
@@ -253,7 +254,7 @@
         "aula once",
         "java"
       ],
-      "entranceNodeId": "n_aula_11_door",
+      "entranceNodeId": "other-1",
       "shape": {
         "type": "path",
         "d": "M29.3669 177.499L67.2064 109.235L113.039 134.64L75.1994 202.904L29.3669 177.499Z"
@@ -272,7 +273,7 @@
         "aula catorce",
         "xml"
       ],
-      "entranceNodeId": "n_aula_14_door",
+      "entranceNodeId": "central-1",
       "shape": {
         "type": "path",
         "d": "M455.649 176L475.291 186.888L456.841 220.173L437.199 209.285L455.649 176Z"
@@ -291,7 +292,7 @@
         "aula quince",
         "ruby"
       ],
-      "entranceNodeId": "n_aula_15_door",
+      "entranceNodeId": "central-0",
       "shape": {
         "type": "path",
         "d": "M436.649 210L456.291 220.888L437.841 254.173L418.199 243.285L436.649 210Z"
@@ -310,7 +311,7 @@
         "centro de estudiantes",
         "cefi"
       ],
-      "entranceNodeId": "n_cefi_door",
+      "entranceNodeId": "right-6",
       "shape": {
         "type": "path",
         "d": "M101.978 47.7801L110.725 32L121.22 37.8177L112.473 53.5978L101.978 47.7801Z"
@@ -330,7 +331,7 @@
         "copias",
         "impresiones"
       ],
-      "entranceNodeId": "n_fotocopiadora_door",
+      "entranceNodeId": "right-3",
       "shape": {
         "type": "path",
         "d": "M255.017 85L271.592 94.188L265.775 104.683L249.199 95.4954L255.017 85Z"
@@ -348,7 +349,7 @@
       "aliases": [
         "library"
       ],
-      "entranceNodeId": "n_biblioteca_door",
+      "entranceNodeId": "central-0",
       "shape": {
         "type": "path",
         "d": "M281.199 231L320.7 159.107L383.082 192.737L364.138 230.591L281.199 231Z"
@@ -368,7 +369,7 @@
         "cafeteria",
         "cafe"
       ],
-      "entranceNodeId": "n_buffet_door",
+      "entranceNodeId": "buffet",
       "shape": {
         "type": "path",
         "d": "M144.048 109L123.199 147L172.83 173C175.171 168.62 191.199 138 191.199 138V118.748H166.379V109H144.048Z"
@@ -386,7 +387,7 @@
       "aliases": [
         "maintenance"
       ],
-      "entranceNodeId": "n_mantenimiento_door",
+      "entranceNodeId": "left-7",
       "shape": {
         "type": "path",
         "d": "M19.6987 241.5H41.6987V280.5H19.6987V241.5Z"
@@ -404,7 +405,7 @@
       "aliases": [
         "rendiciones"
       ],
-      "entranceNodeId": "n_area_rendiciones_door",
+      "entranceNodeId": "left-6",
       "shape": {
         "type": "polygon",
         "points": "69.199,252.000 79.199,252.000 79.199,280.000 69.199,280.000"
@@ -423,7 +424,7 @@
         "sala profesores",
         "profesores"
       ],
-      "entranceNodeId": "n_sala_profesores_grado_door",
+      "entranceNodeId": "left-6",
       "shape": {
         "type": "polygon",
         "points": "80.199,252.000 90.199,252.000 90.199,280.000 80.199,280.000"
@@ -441,7 +442,7 @@
       "aliases": [
         "office"
       ],
-      "entranceNodeId": "n_despacho_door",
+      "entranceNodeId": "left-5",
       "shape": {
         "type": "polygon",
         "points": "91.199,252.000 105.199,252.000 105.199,280.000 91.199,280.000"
@@ -460,7 +461,7 @@
         "rrhh",
         "recursos humanos"
       ],
-      "entranceNodeId": "n_personal_door",
+      "entranceNodeId": "left-5",
       "shape": {
         "type": "polygon",
         "points": "106.199,252.000 122.199,252.000 122.199,280.000 106.199,280.000"
@@ -478,7 +479,7 @@
       "aliases": [
         "secretaria administrativa"
       ],
-      "entranceNodeId": "n_secretaria_administrativa_door",
+      "entranceNodeId": "left-4",
       "shape": {
         "type": "polygon",
         "points": "123.199,252.000 137.199,252.000 137.199,280.000 123.199,280.000"
@@ -497,7 +498,7 @@
         "compras",
         "inventario"
       ],
-      "entranceNodeId": "n_compras_inventario_door",
+      "entranceNodeId": "left-4",
       "shape": {
         "type": "polygon",
         "points": "138.199,252.000 152.199,252.000 152.199,280.000 138.199,280.000"
@@ -515,7 +516,7 @@
       "aliases": [
         "contabilidad"
       ],
-      "entranceNodeId": "n_contable_door",
+      "entranceNodeId": "left-3",
       "shape": {
         "type": "polygon",
         "points": "153.199,252.000 175.199,252.000 175.199,280.000 153.199,280.000"
@@ -535,7 +536,7 @@
         "economico financiera",
         "tesoreria"
       ],
-      "entranceNodeId": "n_economico_financiera_door",
+      "entranceNodeId": "left-2",
       "shape": {
         "type": "polygon",
         "points": "210.199,252.000 253.199,252.000 253.199,280.000 210.199,280.000"
@@ -556,7 +557,7 @@
         "depto alumnos",
         "departamento de alumnos"
       ],
-      "entranceNodeId": "n_alumnos_door",
+      "entranceNodeId": "left-1",
       "shape": {
         "type": "polygon",
         "points": "254.199,252.000 293.199,252.000 293.199,273.000 254.199,273.000"
@@ -577,7 +578,7 @@
         "tramites",
         "trámites"
       ],
-      "entranceNodeId": "n_mesa_entradas_door",
+      "entranceNodeId": "left-0",
       "shape": {
         "type": "polygon",
         "points": "294.199,252.000 329.199,252.000 329.199,273.000 294.199,273.000"
@@ -595,7 +596,7 @@
       "aliases": [
         "maintenance office"
       ],
-      "entranceNodeId": "n_intendencia_door",
+      "entranceNodeId": "left-0",
       "shape": {
         "type": "path",
         "d": "M330.199 252H353.199L342.221 273H330.199V252Z"
@@ -615,7 +616,7 @@
         "banio hombres",
         "toilet men"
       ],
-      "entranceNodeId": "n_banios_hombres_door",
+      "entranceNodeId": "central-1",
       "shape": {
         "type": "rect",
         "x": 401.8,
@@ -638,7 +639,7 @@
         "banio mujeres",
         "toilet women"
       ],
-      "entranceNodeId": "n_banios_mujeres_door",
+      "entranceNodeId": "central-1",
       "shape": {
         "type": "rect",
         "x": 438.6,
@@ -662,7 +663,7 @@
         "gender neutral bathroom",
         "banio inclusivo"
       ],
-      "entranceNodeId": "n_banio_sin_genero_door",
+      "entranceNodeId": "right-3",
       "shape": {
         "type": "rect",
         "x": 225.4,
@@ -684,7 +685,7 @@
         "elevator",
         "lift"
       ],
-      "entranceNodeId": "n_ascensor_door",
+      "entranceNodeId": "central-1",
       "shape": {
         "type": "rect",
         "x": 409.1,
@@ -699,668 +700,58 @@
     }
   ],
   "nodes": [
-    {
-      "id": "n_right-3",
-      "label": "Pasillo superior (aula 5 / fotocopiadora)",
-      "x": 250.9,
-      "y": 113.0
-    },
-    {
-      "id": "n_right-2",
-      "label": "Pasillo aula 4",
-      "x": 302.8,
-      "y": 142.1
-    },
-    {
-      "id": "n_right-1",
-      "label": "Pasillo aulas 2-3",
-      "x": 353.7,
-      "y": 170.0
-    },
-    {
-      "id": "n_right-0",
-      "label": "Pasillo aula 1 / baños",
-      "x": 379.7,
-      "y": 184.0
-    },
-    {
-      "id": "n_right-6",
-      "label": "Pasillo superior (aulas 9-10-CEFI)",
-      "x": 121.7,
-      "y": 48.0
-    },
-    {
-      "id": "n_right-5",
-      "label": "Pasillo superior (aula 8)",
-      "x": 167.7,
-      "y": 70.0
-    },
-    {
-      "id": "n_right-4",
-      "label": "Pasillo superior (aulas 6-7)",
-      "x": 199.1,
-      "y": 86.2
-    },
-    {
-      "id": "n_left-7",
-      "label": "Pasillo administrativo (mantenimiento)",
-      "x": 42.9,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-6",
-      "label": "Pasillo administrativo (rendiciones/profesores)",
-      "x": 71.0,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-5",
-      "label": "Pasillo administrativo (despacho/personal)",
-      "x": 103.8,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-4",
-      "label": "Pasillo administrativo (secretaria/compras)",
-      "x": 141.2,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-3",
-      "label": "Pasillo administrativo (contable)",
-      "x": 173.9,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-2",
-      "label": "Pasillo administrativo (financiera/alumnos)",
-      "x": 249.9,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-1",
-      "label": "Pasillo administrativo (mesa entradas/intendencia)",
-      "x": 316.6,
-      "y": 245.0
-    },
-    {
-      "id": "n_left-0",
-      "label": "Pasillo administrativo este",
-      "x": 358.7,
-      "y": 245.0
-    },
-    {
-      "id": "n_other-1",
-      "label": "Cruce medio izquierdo (aula 11)",
-      "x": 83.7,
-      "y": 202.0
-    },
-    {
-      "id": "n_other-0",
-      "label": "Cruce superior izquierdo (CEFI)",
-      "x": 158.2,
-      "y": 81.5
-    },
-    {
-      "id": "n_buffet",
-      "label": "Cruce Buffet",
-      "x": 161.6,
-      "y": 167.9
-    },
-    {
-      "id": "n_to-buffet-sin-rampa",
-      "label": "Cruce alternativo Buffet (sin rampa)",
-      "x": 216.0,
-      "y": 231.0
-    },
-    {
-      "id": "n_rampa-0",
-      "label": "Rampa accesible - pie",
-      "x": 194.0,
-      "y": 236.8
-    },
-    {
-      "id": "n_rampa-1",
-      "label": "Rampa accesible - inicio",
-      "x": 228.0,
-      "y": 236.8
-    },
-    {
-      "id": "n_gradas-0",
-      "label": "Gradas entrada - pie",
-      "x": 411.0,
-      "y": 293.0
-    },
-    {
-      "id": "n_gradas-1",
-      "label": "Gradas entrada - inicio",
-      "x": 395.0,
-      "y": 290.0
-    },
-    {
-      "id": "n_central-0",
-      "label": "Pasillo central (biblioteca)",
-      "x": 342.7,
-      "y": 231.9
-    },
-    {
-      "id": "n_central-1",
-      "label": "Pasillo central (baños/ascensor/aula14-15)",
-      "x": 434.2,
-      "y": 177.0
-    },
-    {
-      "id": "n_entrada",
-      "label": "Entrada principal",
-      "x": 251.2,
-      "y": 292.0,
-      "aliases": [
-        "entrada",
-        "ingreso",
-        "puerta principal"
-      ]
-    },
-    {
-      "id": "n_aula_1_door",
-      "label": "Puerta aula_1",
-      "x": 381.5,
-      "y": 171.2
-    },
-    {
-      "id": "n_aula_2_door",
-      "label": "Puerta aula_2",
-      "x": 357.5,
-      "y": 158.2
-    },
-    {
-      "id": "n_aula_3_door",
-      "label": "Puerta aula_3",
-      "x": 348.5,
-      "y": 153.2
-    },
-    {
-      "id": "n_aula_4_door",
-      "label": "Puerta aula_4",
-      "x": 299.9,
-      "y": 126.8
-    },
-    {
-      "id": "n_aula_5_door",
-      "label": "Puerta aula_5",
-      "x": 246.7,
-      "y": 139.4
-    },
-    {
-      "id": "n_aula_6_door",
-      "label": "Puerta aula_6",
-      "x": 206.6,
-      "y": 78.3
-    },
-    {
-      "id": "n_aula_7_door",
-      "label": "Puerta aula_7",
-      "x": 197.6,
-      "y": 73.3
-    },
-    {
-      "id": "n_aula_8_door",
-      "label": "Puerta aula_8",
-      "x": 171.5,
-      "y": 59.6
-    },
-    {
-      "id": "n_aula_9_door",
-      "label": "Puerta aula_9",
-      "x": 128.3,
-      "y": 39.5
-    },
-    {
-      "id": "n_aula_10a_door",
-      "label": "Puerta aula_10a",
-      "x": 116.4,
-      "y": 60.7
-    },
-    {
-      "id": "n_aula_10b_door",
-      "label": "Puerta aula_10b",
-      "x": 108.8,
-      "y": 74.4
-    },
-    {
-      "id": "n_aula_11_door",
-      "label": "Puerta aula_11",
-      "x": 74.3,
-      "y": 183.3
-    },
-    {
-      "id": "n_aula_14_door",
-      "label": "Puerta aula_14",
-      "x": 444.1,
-      "y": 184.5
-    },
-    {
-      "id": "n_aula_15_door",
-      "label": "Puerta aula_15",
-      "x": 435.5,
-      "y": 199.8
-    },
-    {
-      "id": "n_cefi_door",
-      "label": "Puerta cefi",
-      "x": 116.3,
-      "y": 46.1
-    },
-    {
-      "id": "n_fotocopiadora_door",
-      "label": "Puerta fotocopiadora",
-      "x": 254.7,
-      "y": 103.9
-    },
-    {
-      "id": "n_biblioteca_door",
-      "label": "Puerta biblioteca",
-      "x": 335.2,
-      "y": 221.5
-    },
-    {
-      "id": "n_buffet_door",
-      "label": "Puerta buffet",
-      "x": 163.8,
-      "y": 152.2
-    },
-    {
-      "id": "n_mantenimiento_door",
-      "label": "Puerta mantenimiento",
-      "x": 36.4,
-      "y": 250.4
-    },
-    {
-      "id": "n_area_rendiciones_door",
-      "label": "Puerta area_rendiciones",
-      "x": 72.4,
-      "y": 254.4
-    },
-    {
-      "id": "n_sala_profesores_grado_door",
-      "label": "Puerta sala_profesores_grado",
-      "x": 77.4,
-      "y": 254.4
-    },
-    {
-      "id": "n_despacho_door",
-      "label": "Puerta despacho",
-      "x": 101.3,
-      "y": 254.4
-    },
-    {
-      "id": "n_personal_door",
-      "label": "Puerta personal",
-      "x": 108.5,
-      "y": 254.4
-    },
-    {
-      "id": "n_secretaria_administrativa_door",
-      "label": "Puerta secretaria_administrativa",
-      "x": 136.2,
-      "y": 254.4
-    },
-    {
-      "id": "n_compras_inventario_door",
-      "label": "Puerta compras_inventario",
-      "x": 143.0,
-      "y": 254.4
-    },
-    {
-      "id": "n_contable_door",
-      "label": "Puerta contable",
-      "x": 169.5,
-      "y": 254.4
-    },
-    {
-      "id": "n_economico_financiera_door",
-      "label": "Puerta economico_financiera",
-      "x": 241.7,
-      "y": 254.4
-    },
-    {
-      "id": "n_alumnos_door",
-      "label": "Puerta alumnos",
-      "x": 260.6,
-      "y": 252.9
-    },
-    {
-      "id": "n_mesa_entradas_door",
-      "label": "Puerta mesa_entradas",
-      "x": 314.4,
-      "y": 252.9
-    },
-    {
-      "id": "n_intendencia_door",
-      "label": "Puerta intendencia",
-      "x": 325.9,
-      "y": 251.9
-    },
-    {
-      "id": "n_banios_hombres_door",
-      "label": "Puerta banios_hombres",
-      "x": 422.9,
-      "y": 169.4
-    },
-    {
-      "id": "n_banios_mujeres_door",
-      "label": "Puerta banios_mujeres",
-      "x": 439.1,
-      "y": 179.5
-    },
-    {
-      "id": "n_banio_sin_genero_door",
-      "label": "Puerta banio_sin_genero",
-      "x": 247.5,
-      "y": 97.2
-    },
-    {
-      "id": "n_ascensor_door",
-      "label": "Puerta ascensor",
-      "x": 426.4,
-      "y": 172.4
-    }
-  ],
-  "edges": [
-    {
-      "from": "n_gradas-0",
-      "to": "n_gradas-1",
-      "accesible": false
-    },
-    {
-      "from": "n_gradas-1",
-      "to": "n_entrada",
-      "accesible": false
-    },
-    {
-      "from": "n_rampa-0",
-      "to": "n_rampa-1",
-      "accesible": true
-    },
-    {
-      "from": "n_rampa-1",
-      "to": "n_gradas-1",
-      "accesible": true
-    },
-    {
-      "from": "n_entrada",
-      "to": "n_left-0",
-      "accesible": true
-    },
-    {
-      "from": "n_entrada",
-      "to": "n_central-0",
-      "accesible": true
-    },
-    {
-      "from": "n_central-0",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_central-1",
-      "to": "n_right-0",
-      "accesible": true
-    },
-    {
-      "from": "n_right-0",
-      "to": "n_right-1",
-      "accesible": true
-    },
-    {
-      "from": "n_right-1",
-      "to": "n_right-2",
-      "accesible": true
-    },
-    {
-      "from": "n_right-2",
-      "to": "n_right-3",
-      "accesible": true
-    },
-    {
-      "from": "n_right-3",
-      "to": "n_right-4",
-      "accesible": true
-    },
-    {
-      "from": "n_right-4",
-      "to": "n_right-5",
-      "accesible": true
-    },
-    {
-      "from": "n_right-5",
-      "to": "n_right-6",
-      "accesible": true
-    },
-    {
-      "from": "n_right-2",
-      "to": "n_other-0",
-      "accesible": true
-    },
-    {
-      "from": "n_other-0",
-      "to": "n_other-1",
-      "accesible": true
-    },
-    {
-      "from": "n_left-0",
-      "to": "n_left-1",
-      "accesible": true
-    },
-    {
-      "from": "n_left-1",
-      "to": "n_to-buffet-sin-rampa",
-      "accesible": false
-    },
-    {
-      "from": "n_left-1",
-      "to": "n_left-2",
-      "accesible": true
-    },
-    {
-      "from": "n_left-2",
-      "to": "n_left-3",
-      "accesible": true
-    },
-    {
-      "from": "n_left-3",
-      "to": "n_buffet",
-      "accesible": true
-    },
-    {
-      "from": "n_left-3",
-      "to": "n_left-4",
-      "accesible": true
-    },
-    {
-      "from": "n_left-4",
-      "to": "n_left-5",
-      "accesible": true
-    },
-    {
-      "from": "n_left-5",
-      "to": "n_left-6",
-      "accesible": true
-    },
-    {
-      "from": "n_left-6",
-      "to": "n_left-7",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_1_door",
-      "to": "n_right-0",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_2_door",
-      "to": "n_right-1",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_3_door",
-      "to": "n_right-1",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_4_door",
-      "to": "n_right-2",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_5_door",
-      "to": "n_right-3",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_6_door",
-      "to": "n_right-4",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_7_door",
-      "to": "n_right-4",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_8_door",
-      "to": "n_right-5",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_9_door",
-      "to": "n_right-6",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_10a_door",
-      "to": "n_right-6",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_10b_door",
-      "to": "n_right-6",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_11_door",
-      "to": "n_other-1",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_14_door",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_aula_15_door",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_cefi_door",
-      "to": "n_right-6",
-      "accesible": true
-    },
-    {
-      "from": "n_fotocopiadora_door",
-      "to": "n_right-3",
-      "accesible": true
-    },
-    {
-      "from": "n_biblioteca_door",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_buffet_door",
-      "to": "n_buffet",
-      "accesible": true
-    },
-    {
-      "from": "n_mantenimiento_door",
-      "to": "n_left-7",
-      "accesible": true
-    },
-    {
-      "from": "n_area_rendiciones_door",
-      "to": "n_left-6",
-      "accesible": true
-    },
-    {
-      "from": "n_sala_profesores_grado_door",
-      "to": "n_left-6",
-      "accesible": true
-    },
-    {
-      "from": "n_despacho_door",
-      "to": "n_left-5",
-      "accesible": true
-    },
-    {
-      "from": "n_personal_door",
-      "to": "n_left-5",
-      "accesible": true
-    },
-    {
-      "from": "n_secretaria_administrativa_door",
-      "to": "n_left-4",
-      "accesible": true
-    },
-    {
-      "from": "n_compras_inventario_door",
-      "to": "n_left-4",
-      "accesible": true
-    },
-    {
-      "from": "n_contable_door",
-      "to": "n_left-3",
-      "accesible": true
-    },
-    {
-      "from": "n_economico_financiera_door",
-      "to": "n_left-2",
-      "accesible": true
-    },
-    {
-      "from": "n_alumnos_door",
-      "to": "n_left-2",
-      "accesible": true
-    },
-    {
-      "from": "n_mesa_entradas_door",
-      "to": "n_left-1",
-      "accesible": true
-    },
-    {
-      "from": "n_intendencia_door",
-      "to": "n_left-1",
-      "accesible": true
-    },
-    {
-      "from": "n_banios_hombres_door",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_banios_mujeres_door",
-      "to": "n_central-1",
-      "accesible": true
-    },
-    {
-      "from": "n_banio_sin_genero_door",
-      "to": "n_right-3",
-      "accesible": true
-    },
-    {
-      "from": "n_ascensor_door",
-      "to": "n_central-1",
-      "accesible": true
-    }
+    { "id": "buffet", "label": "Cruce Buffet", "x": 97.5, "y": 118 },
+    { "id": "to-buffet-sin-rampa", "label": "Cruce sin rampa al buffet", "x": 216.5, "y": 190 },
+    { "id": "other-1", "label": "Pasillo aula 11", "x": 56.5, "y": 111 },
+    { "id": "other-0", "label": "Cruce superior", "x": 84.5, "y": 63 },
+    { "id": "right-6", "label": "Pasillo aulas 9-10-CEFI", "x": 71, "y": 2.5 },
+    { "id": "right-5", "label": "Pasillo aula 8", "x": 113.5, "y": 23 },
+    { "id": "right-4", "label": "Pasillo aulas 6-7", "x": 142.5, "y": 38 },
+    { "id": "right-3", "label": "Pasillo aula 5 / Fotocopiadora", "x": 190.5, "y": 63 },
+    { "id": "right-2", "label": "Pasillo aula 4", "x": 238.5, "y": 90 },
+    { "id": "right-1", "label": "Pasillo aulas 2-3", "x": 285.5, "y": 116 },
+    { "id": "right-0", "label": "Pasillo aula 1", "x": 309.5, "y": 129 },
+    { "id": "left-7", "label": "Pasillo Mantenimiento", "x": 2.5, "y": 200 },
+    { "id": "left-6", "label": "Pasillo Rendiciones", "x": 26.5, "y": 200 },
+    { "id": "left-5", "label": "Pasillo Despacho", "x": 54.5, "y": 200 },
+    { "id": "left-4", "label": "Pasillo Secretaria", "x": 86.5, "y": 200 },
+    { "id": "left-3", "label": "Pasillo Contable", "x": 114.5, "y": 200 },
+    { "id": "left-2", "label": "Pasillo Financiera/Alumnos", "x": 179.5, "y": 200 },
+    { "id": "left-1", "label": "Pasillo Entradas/Intendencia", "x": 236.5, "y": 200 },
+    { "id": "left-0", "label": "Pasillo admin este", "x": 272.5, "y": 200 },
+    { "id": "central-1", "label": "Pasillo Aulas 14-15 / Baños", "x": 362.5, "y": 156 },
+    { "id": "central-0", "label": "Pasillo Biblioteca", "x": 352.5, "y": 177 },
+    { "id": "entrada", "label": "Entrada", "x": 342.5, "y": 200 },
+    { "id": "rampa-1", "label": "Rampa inicio", "x": 206.5, "y": 231 },
+    { "id": "rampa-0", "label": "Rampa fin", "x": 206.5, "y": 252 },
+    { "id": "gradas-1", "label": "Gradas inicio", "x": 342.5, "y": 231 },
+    { "id": "gradas-0", "label": "Gradas fin", "x": 342.5, "y": 252 }
+  ],"edges": [
+    { "from": "gradas-0", "to": "gradas-1", "accesible": false },
+    { "from": "gradas-1", "to": "entrada", "accesible": false },
+    { "from": "rampa-0", "to": "rampa-1", "accesible": true },
+    { "from": "rampa-1", "to": "gradas-1", "accesible": true },
+    { "from": "entrada", "to": "left-0", "accesible": true },
+    { "from": "entrada", "to": "central-0", "accesible": true },
+    { "from": "central-0", "to": "central-1", "accesible": true },
+    { "from": "central-1", "to": "right-0", "accesible": true },
+    { "from": "right-0", "to": "right-1", "accesible": true },
+    { "from": "right-1", "to": "right-2", "accesible": true },
+    { "from": "right-2", "to": "right-3", "accesible": true },
+    { "from": "right-3", "to": "right-4", "accesible": true },
+    { "from": "right-4", "to": "right-5", "accesible": true },
+    { "from": "right-5", "to": "right-6", "accesible": true },
+    { "from": "right-2", "to": "other-0", "accesible": true },
+    { "from": "other-0", "to": "other-1", "accesible": true },
+    { "from": "left-0", "to": "left-1", "accesible": true },
+    { "from": "left-1", "to": "to-buffet-sin-rampa", "accesible": false },
+    { "from": "left-1", "to": "left-2", "accesible": true },
+    { "from": "left-2", "to": "left-3", "accesible": true },
+    { "from": "left-3", "to": "buffet", "accesible": true },
+    { "from": "left-3", "to": "left-4", "accesible": true },
+    { "from": "left-4", "to": "left-5", "accesible": true },
+    { "from": "left-5", "to": "left-6", "accesible": true },
+    { "from": "left-6", "to": "left-7", "accesible": true }
   ],
   "puntos_interes": {
     "entrada_principal": {
@@ -1465,34 +856,34 @@
       "ruta_estandar": {
         "distancia_metros": 48.3,
         "camino_nodos": [
-          "n_entrada",
-          "n_buffet",
-          "n_buffet_door"
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2",
+          "left-3",
+          "buffet"
         ],
         "pasos": [
-          "Avanzar 43.7 metros desde Entrada principal hacia Cruce Buffet.",
-          "Avanzar 4.5 metros hasta llegar a Buffet."
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "Continuar derecho hasta llegar a oficina de alumnos, salir hacia el patio",
+          "Dirigirse recto hasta el fondo, el Buffet esta a mano derecha."
         ]
       },
       "ruta_accesible_silla_ruedas": {
         "disponible": true,
-        "distancia_metros": 107.2,
+        "distancia_metros": 48.3,
         "camino_nodos": [
-          "n_entrada",
-          "n_central-0",
-          "n_left-1",
-          "n_left-2",
-          "n_left-3",
-          "n_buffet",
-          "n_buffet_door"
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2",
+          "left-3",
+          "buffet"
         ],
         "pasos": [
-          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
-          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
-          "Avanzar 19.1 metros desde Pasillo administrativo (mesa entradas/intendencia) hacia Pasillo administrativo (financiera/alumnos).",
-          "Avanzar 21.7 metros desde Pasillo administrativo (financiera/alumnos) hacia Pasillo administrativo (contable).",
-          "Avanzar 22.3 metros desde Pasillo administrativo (contable) hacia Cruce Buffet.",
-          "Avanzar 4.5 metros hasta llegar a Buffet."
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "Continuar derecho hasta Contable, salir al patio",
+          "Encontrara el Buffet al frente a solo unos pasos."
         ]
       },
       "accesible": null,
@@ -1505,48 +896,42 @@
       "ruta_estandar": {
         "distancia_metros": 124.3,
         "camino_nodos": [
-          "n_entrada",
-          "n_buffet",
-          "n_other-1",
-          "n_other-0",
-          "n_right-6",
-          "n_cefi_door"
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3",
+          "right-4",
+          "right-5",
+          "right-6"
         ],
         "pasos": [
-          "Avanzar 43.7 metros desde Entrada principal hacia Cruce Buffet.",
-          "Avanzar 24.3 metros desde Cruce Buffet hacia Cruce medio izquierdo (aula 11).",
-          "Avanzar 40.5 metros desde Cruce medio izquierdo (aula 11) hacia Cruce superior izquierdo (CEFI).",
-          "Avanzar 14.2 metros desde Cruce superior izquierdo (CEFI) hacia Pasillo superior (aulas 9-10-CEFI).",
-          "Avanzar 1.6 metros hasta llegar a CEFI."
+          "Avanzar desde la Entrada por el pasillo central.",
+          "Girar a la izquierda en el pasillo de aulas y avanzar hasta el final.",
+          "El CEFI se encuentra al fondo, a lado de Aula 9."
         ]
       },
       "ruta_accesible_silla_ruedas": {
         "disponible": true,
-        "distancia_metros": 162.4,
+        "distancia_metros": 124.3,
         "camino_nodos": [
-          "n_entrada",
-          "n_central-0",
-          "n_central-1",
-          "n_right-0",
-          "n_right-1",
-          "n_right-2",
-          "n_right-3",
-          "n_right-4",
-          "n_right-5",
-          "n_right-6",
-          "n_cefi_door"
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3",
+          "right-4",
+          "right-5",
+          "right-6"
         ],
         "pasos": [
-          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
-          "Avanzar 30.5 metros desde Pasillo central (biblioteca) hacia Pasillo central (baños/ascensor/aula14-15).",
-          "Avanzar 15.7 metros desde Pasillo central (baños/ascensor/aula14-15) hacia Pasillo aula 1 / baños.",
-          "Avanzar 8.4 metros desde Pasillo aula 1 / baños hacia Pasillo aulas 2-3.",
-          "Avanzar 16.6 metros desde Pasillo aulas 2-3 hacia Pasillo aula 4.",
-          "Avanzar 17.0 metros desde Pasillo aula 4 hacia Pasillo superior (aula 5 / fotocopiadora).",
-          "Avanzar 16.7 metros desde Pasillo superior (aula 5 / fotocopiadora) hacia Pasillo superior (aulas 6-7).",
-          "Avanzar 10.1 metros desde Pasillo superior (aulas 6-7) hacia Pasillo superior (aula 8).",
-          "Avanzar 14.6 metros desde Pasillo superior (aula 8) hacia Pasillo superior (aulas 9-10-CEFI).",
-          "Avanzar 1.6 metros hasta llegar a CEFI."
+          "Avanzar desde la Entrada por el pasillo central.",
+          "Girar a la izquierda en el pasillo de aulas y avanzar hasta el final.",
+          "El CEFI se encuentra al fondo, a lado de Aula 9."
         ]
       },
       "accesible": null,
@@ -1559,30 +944,26 @@
       "ruta_estandar": {
         "distancia_metros": 42.9,
         "camino_nodos": [
-          "n_entrada",
-          "n_central-0",
-          "n_left-1",
-          "n_intendencia_door"
+          "entrada",
+          "left-0",
+          "left-1"
         ],
         "pasos": [
-          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
-          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
-          "Avanzar 3.3 metros hasta llegar a Intendencia."
+          "Avanzar desde la Entrada hacia el pasillo de la izquierda.",
+          "Intendencia se encuentra casi al inicio del pasillo."
         ]
       },
       "ruta_accesible_silla_ruedas": {
         "disponible": true,
         "distancia_metros": 42.9,
         "camino_nodos": [
-          "n_entrada",
-          "n_central-0",
-          "n_left-1",
-          "n_intendencia_door"
+          "entrada",
+          "left-0",
+          "left-1"
         ],
         "pasos": [
-          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
-          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
-          "Avanzar 3.3 metros hasta llegar a Intendencia."
+          "Avanzar desde la Entrada hacia el pasillo de la izquierda.",
+          "Intendencia se encuentra casi al inicio del pasillo."
         ]
       },
       "accesible": null,
@@ -1595,34 +976,134 @@
       "ruta_estandar": {
         "distancia_metros": 62.5,
         "camino_nodos": [
-          "n_entrada",
-          "n_central-0",
-          "n_left-1",
-          "n_left-2",
-          "n_alumnos_door"
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2"
         ],
         "pasos": [
-          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
-          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
-          "Avanzar 19.1 metros desde Pasillo administrativo (mesa entradas/intendencia) hacia Pasillo administrativo (financiera/alumnos).",
-          "Avanzar 3.8 metros hasta llegar a Alumnos."
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "El Departamento de Alumnos está a mitad del pasillo a mano izquierda."
         ]
       },
       "ruta_accesible_silla_ruedas": {
         "disponible": true,
         "distancia_metros": 62.5,
         "camino_nodos": [
-          "n_entrada",
-          "n_central-0",
-          "n_left-1",
-          "n_left-2",
-          "n_alumnos_door"
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2"
         ],
         "pasos": [
-          "Avanzar 31.3 metros desde Entrada principal hacia Pasillo central (biblioteca).",
-          "Avanzar 8.3 metros desde Pasillo central (biblioteca) hacia Pasillo administrativo (mesa entradas/intendencia).",
-          "Avanzar 19.1 metros desde Pasillo administrativo (mesa entradas/intendencia) hacia Pasillo administrativo (financiera/alumnos).",
-          "Avanzar 3.8 metros hasta llegar a Alumnos."
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "El Departamento de Alumnos está a mitad del pasillo a mano izquierda."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    }
+    {
+      "origen": "entrada",
+      "destino": "banios_hombres",
+      "roomId": "banios_hombres",
+      "ruta_estandar": {
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de hombres estarán a mano izquierda."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de hombres estarán a mano izquierda."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "banios_mujeres",
+      "roomId": "banios_mujeres",
+      "ruta_estandar": {
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de mujeres estarán a mano derecha."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de mujeres estarán a mano derecha."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "banio_sin_genero",
+      "roomId": "banio_sin_genero",
+      "ruta_estandar": {
+        "distancia_metros": 90.5,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo central hasta el fondo.",
+          "Girar a la izquierda en el pasillo de las aulas y avanzar.",
+          "Los baños accesibles o sin género se encuentran pasando la fotocopiadora a mano derecha."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 90.5,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo central hasta el fondo.",
+          "Girar a la izquierda en el pasillo de las aulas y avanzar.",
+          "Los baños accesibles o sin género se encuentran pasando la fotocopiadora a mano derecha."
         ]
       },
       "accesible": null,
