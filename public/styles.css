@@ -24,9 +24,10 @@
   --map-shell-stroke: #20252b;
   --room-bg: #ffffff;
   --room-stroke: #3f4b55;
-  --room-active: #e94141;
+  --room-active: #00e5ff;
   --corridor-bg: #b0b2ad;
   --route-color: #0f9f8f;
+  --route-outline: #ffffff;
   --node-color: #1f6feb;
 
   /* Mensajes */
@@ -53,9 +54,10 @@
   --map-shell-stroke: #58a6ff;
   --room-bg: #212832;
   --room-stroke: #8b949e;
-  --room-active: #ff5a5a;
+  --room-active: #00e5ff;
   --corridor-bg: #131920;
   --route-color: #2ea043;
+  --route-outline: #0a0d11;
   --node-color: #58a6ff;
 
   --msg-user-bg: #183e35;
@@ -81,9 +83,10 @@
   --map-shell-stroke: #002244;
   --room-bg: #ffffff;
   --room-stroke: #003366;
-  --room-active: #d95f02;
+  --room-active: #f59e0b;
   --corridor-bg: #b8d0e8;
   --route-color: #7570b3;
+  --route-outline: #ffffff;
   --node-color: #005ab5;
 
   --msg-user-bg: #d0e2f5;
@@ -109,9 +112,10 @@
   --map-shell-stroke: #ffff00;
   --room-bg: #1a1a1a;
   --room-stroke: #ffff00;
-  --room-active: #ff0055;
+  --room-active: #00ffff;
   --corridor-bg: #333333;
   --route-color: #00ffff;
+  --route-outline: #ffff00;
   --node-color: #ffff00;
 
   --msg-user-bg: #111111;
@@ -120,15 +124,15 @@
 
 /* Filtros de la imagen SVG según el tema activo */
 [data-theme="oscuro"] #campusMap image {
-  filter: invert(0.9) hue-rotate(180deg) brightness(0.8) contrast(1.2);
+  filter: brightness(0.65) contrast(1.1);
 }
 
 [data-theme="baja-vision"] #campusMap image {
-  filter: invert(1) contrast(2) grayscale(1);
+  filter: grayscale(1) contrast(1.5) brightness(0.8);
 }
 
 [data-theme="daltonismo"] #campusMap image {
-  filter: saturate(1.5) contrast(1.1);
+  filter: none;
 }
 
 /* ==========================================
@@ -187,9 +191,10 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 18px;
-  min-height: 100vh;
+  height: 100vh; /* alto fijo: nada empuja la página, todo lo interno scrollea por su cuenta */
   padding: 18px;
-  padding-top: 60px; /* Espacio para el botón flotante superior */
+  padding-top: 54px; /* apenas lo justo para no tapar el botón flotante superior */
+  overflow: hidden;
 }
 
 .map-area,
@@ -198,12 +203,11 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   border: 1px solid var(--border-line);
   box-shadow: var(--shadow);
   transition: background-color 0.3s, border-color 0.3s;
-}
-
-.map-area {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 0; /* imprescindible: permite que el overflow interno funcione dentro de un grid item */
+  overflow: hidden;
 }
 
 .topbar {
@@ -211,8 +215,14 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 20px;
+  padding: 14px 20px; /* mismo padding que .panel-header */
   border-bottom: 1px solid var(--border-line);
+}
+
+.topbar h1 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .controls {
@@ -258,14 +268,14 @@ select, input {
    ========================================== */
 .map-frame {
   flex: 1;
-  min-height: 560px;
+  min-height: 240px;
   padding: 14px;
 }
 
 #campusMap {
   width: 100%;
   height: 100%;
-  min-height: 530px;
+  min-height: 240px;
   border: 1px solid var(--border-line);
   background-color: var(--map-bg) !important;
   transition: background-color 0.3s;
@@ -312,13 +322,22 @@ select, input {
 /* Resalta el bloque dejando ver el color de fondo */
 #campusMap.uses-background-image .room.active {
   fill: var(--room-active) !important;
-  opacity: 0.5;
+  opacity: 0.85;
 }
 
 .room.active {
   fill: var(--room-active) !important;
   stroke: var(--room-active) !important;
-  stroke-width: 2.8 !important;
+  stroke-width: 3px !important;
+}
+
+.room:focus-visible {
+  outline: 3px solid var(--node-color);
+  outline-offset: 2px;
+}
+
+.room:focus {
+  outline: none;
 }
 
 .route-line {
@@ -327,16 +346,18 @@ select, input {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 6;
-  opacity: 0.9;
+  opacity: 1;
 }
 
+/* Ahora es el CONTORNO sólido de la ruta (se dibuja debajo de .route-line,
+   más ancho, en un color de alto contraste por tema) en vez de un glow difuso. */
 .route-glow {
   fill: none;
-  stroke: var(--route-color) !important;
-  opacity: 0.25;
+  stroke: var(--route-outline) !important;
+  opacity: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 14;
+  stroke-width: 10;
 }
 
 .route-point {
@@ -346,7 +367,7 @@ select, input {
 }
 
 .debug-edge {
-  stroke: var(--muted-text);
+  stroke: var(--node-color);
   stroke-dasharray: 7 7;
   stroke-width: 2;
   opacity: 0;
@@ -365,18 +386,22 @@ select, input {
 }
 
 /* ==========================================
-   4. PANEL DE LUGARES / DETALLES
+   4. DIRECTORIO RÁPIDO INFERIOR
    ========================================== */
 .places-panel {
   margin-top: 20px;
   background: var(--panel-bg);
   border-radius: 8px;
-  padding: 15px;
+  padding: 20px;
   box-shadow: var(--shadow);
 }
 
 .places-panel h3 {
-  margin-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--text-color);
 }
 
 #placesList {
@@ -384,49 +409,38 @@ select, input {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 8px;
+  /* Crea columnas automáticas que miden mínimo 140px */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
 }
 
-#placesList li {
-  padding: 8px 10px;
-  border: 1px solid var(--border-line);
-  border-radius: 6px;
+.place-chip {
+  background-color: var(--msg-user-bg);
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-#placesList li:hover {
-  background: var(--btn-hover);
-}
-
-.place-details {
-  margin-top: 15px;
-  padding: 12px;
   border: 1px solid var(--border-line);
-  border-radius: 6px;
-  background: var(--map-bg);
+  transition: all 0.2s ease;
+  text-align: center;
 }
 
-.place-details h4 {
-  margin: 0 0 10px 0;
-}
-
-.place-details ul {
-  margin: 0;
-  padding-left: 20px;
+.place-chip:hover {
+  background-color: var(--route-color);
+  color: #ffffff;
+  border-color: var(--route-color);
 }
 
 /* ==========================================
    5. PANEL LATERAL DE ASISTENTE Y CHAT
    ========================================== */
-.assistant-panel {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+.panel-header {
+  padding: 14px 20px; /* mismo padding que .topbar, para que ambos títulos queden a la misma altura */
+  border-bottom: 1px solid var(--border-line);
 }
 
-.panel-header,
 .accessibility-picker,
 .match-info {
   padding: 16px;
@@ -460,7 +474,7 @@ select, input {
 
 .messages {
   flex: 1;
-  min-height: 270px;
+  min-height: 120px;
   overflow-y: auto;
   padding: 16px;
   display: flex;
@@ -514,9 +528,13 @@ select, input {
 }
 
 .match-info {
-  border-top: 1px solid var(--border-line);
-  border-bottom: 0;
-  min-height: 50px;
+  border-bottom: 1px solid var(--border-line); 
+  background-color: var(--msg-user-bg);
+  color: var(--text-color);
+  font-weight: 600; 
+  text-align: center; 
+  padding: 12px 16px;
+  min-height: auto;
 }
 
 /* ==========================================
@@ -703,6 +721,13 @@ select, input {
 @media (max-width: 920px) {
   .shell {
     grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .map-area,
+  .assistant-panel {
+    overflow: visible;
   }
 
   .assistant-panel {
@@ -734,4 +759,30 @@ select, input {
   #campusMap {
     min-height: 360px;
   }
+}
+
+/* ==========================================
+   8. TOOLTIP PROPIO DEL MAPA (reemplaza al <title> nativo)
+   ========================================== */
+.map-tooltip {
+  position: fixed;
+  z-index: 10001;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: #1a1f26;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  max-width: 240px;
+  transition: opacity 80ms ease;
+}
+
+.map-tooltip[hidden] {
+  display: none;
 }

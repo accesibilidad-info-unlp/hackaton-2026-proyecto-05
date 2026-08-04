@@ -306,7 +306,7 @@
       "id": "cefi",
       "svgId": "room-cefi",
       "name": "CEFI",
-      "code": "CEFI",
+      "code": "15",
       "aliases": [
         "centro de estudiantes",
         "cefi"
@@ -325,7 +325,7 @@
       "id": "fotocopiadora",
       "svgId": "room-fotocopiadora",
       "name": "Fotocopiadora",
-      "code": "F",
+      "code": "16",
       "aliases": [
         "fotocopia",
         "copias",
@@ -345,7 +345,7 @@
       "id": "biblioteca",
       "svgId": "room-biblioteca",
       "name": "Biblioteca",
-      "code": "B",
+      "code": "17",
       "aliases": [
         "library"
       ],
@@ -363,7 +363,7 @@
       "id": "buffet",
       "svgId": "room-buffet",
       "name": "Buffet",
-      "code": "BU",
+      "code": "18",
       "aliases": [
         "comedor",
         "cafeteria",
@@ -383,7 +383,7 @@
       "id": "mantenimiento",
       "svgId": "room-mantenimiento",
       "name": "Mantenimiento",
-      "code": "M",
+      "code": "19",
       "aliases": [
         "maintenance"
       ],
@@ -401,7 +401,7 @@
       "id": "area_rendiciones",
       "svgId": "room-area-rendiciones",
       "name": "Área de Rendiciones",
-      "code": "AR",
+      "code": "20",
       "aliases": [
         "rendiciones"
       ],
@@ -419,9 +419,9 @@
       "id": "sala_profesores_grado",
       "svgId": "room-sala-profesores",
       "name": "Sala de Profesores de Grado",
-      "code": "SP",
+      "code": "21",
       "aliases": [
-        "sala profesores",
+        "sala de profesores",
         "profesores"
       ],
       "entranceNodeId": "left-6",
@@ -438,7 +438,7 @@
       "id": "despacho",
       "svgId": "room-despacho",
       "name": "Despacho",
-      "code": "D",
+      "code": "22",
       "aliases": [
         "office"
       ],
@@ -456,7 +456,7 @@
       "id": "personal",
       "svgId": "room-personal",
       "name": "Personal",
-      "code": "P",
+      "code": "23",
       "aliases": [
         "rrhh",
         "recursos humanos"
@@ -475,7 +475,7 @@
       "id": "secretaria_administrativa",
       "svgId": "room-secretaria-administrativa",
       "name": "Secretaría Administrativa",
-      "code": "SA",
+      "code": "24",
       "aliases": [
         "secretaria administrativa"
       ],
@@ -493,7 +493,7 @@
       "id": "compras_inventario",
       "svgId": "room-compras-inventario",
       "name": "Compras e Inventario",
-      "code": "CI",
+      "code": "25",
       "aliases": [
         "compras",
         "inventario"
@@ -512,7 +512,7 @@
       "id": "contable",
       "svgId": "room-contable",
       "name": "Contable",
-      "code": "C",
+      "code": "26",
       "aliases": [
         "contabilidad"
       ],
@@ -530,7 +530,7 @@
       "id": "economico_financiera",
       "svgId": "room-economico-financiera",
       "name": "Dir. Económico Financiera",
-      "code": "EF",
+      "code": "27",
       "aliases": [
         "financiera",
         "economico financiera",
@@ -550,9 +550,9 @@
       "id": "alumnos",
       "svgId": "room-alumnos",
       "name": "Alumnos",
-      "code": "AL",
+      "code": "28",
       "aliases": [
-        "student affairs",
+        "oficina de alumnos",
         "estudiantes",
         "depto alumnos",
         "departamento de alumnos"
@@ -571,7 +571,7 @@
       "id": "mesa_entradas",
       "svgId": "room-mesa-entradas",
       "name": "Mesa de Entradas",
-      "code": "ME",
+      "code": "29",
       "aliases": [
         "mesa entradas",
         "recepcion",
@@ -592,7 +592,7 @@
       "id": "intendencia",
       "svgId": "room-intendencia",
       "name": "Intendencia",
-      "code": "IN",
+      "code": "30",
       "aliases": [
         "maintenance office"
       ],
@@ -610,7 +610,7 @@
       "id": "banios_hombres",
       "svgId": "room-banios-hombres",
       "name": "Baños hombres",
-      "code": "5H",
+      "code": "A",
       "aliases": [
         "baño hombres",
         "banio hombres",
@@ -633,7 +633,7 @@
       "id": "banios_mujeres",
       "svgId": "room-banios-mujeres",
       "name": "Baños mujeres",
-      "code": "5M",
+      "code": "B",
       "aliases": [
         "baño mujeres",
         "banio mujeres",
@@ -656,7 +656,7 @@
       "id": "banio_sin_genero",
       "svgId": "room-banio-sin-genero",
       "name": "Baño sin género",
-      "code": "5X",
+      "code": "C",
       "aliases": [
         "baño accesible",
         "baño neutro",
@@ -680,7 +680,7 @@
       "id": "ascensor",
       "svgId": "room-ascensor",
       "name": "Ascensor",
-      "code": "ASC",
+      "code": "D",
       "aliases": [
         "elevator",
         "lift"
@@ -990,14 +990,6 @@
     }
   ],
   "puntos_interes": {
-    "entrada_principal": {
-      "id": "entrada",
-      "nombre": "Puerta de Entrada Principal"
-    },
-    "aula_1-1": {
-      "id": "1-1",
-      "nombre": "Aula 1-1 (Planta Alta)"
-    },
     "aula_1": {
       "id": "aula_1",
       "nombre": "Aula 1 PL/1"
@@ -1072,19 +1064,6 @@
     }
   },
   "rutas": [
-    {
-      "origen": "entrada",
-      "destino": "1-1",
-      "pasos": [
-        "Avanzar 10 metros en línea recta por el pasillo principal.",
-        "Tomar el ascensor hasta el Piso 1.",
-        "Al salir del ascensor, caminar hacia la derecha 5 metros; el Aula 1-1 está a mano derecha."
-      ],
-      "accesible": true,
-      "alertas": [
-        "Requiere uso de ascensor"
-      ]
-    },
     {
       "origen": "entrada",
       "destino": "buffet",
@@ -1364,7 +1343,7 @@
         "banio hombres"
       ],
       "examples": [
-        "quiero ir al baño",
+        "baño hombres",
         "quiero ir al baño de hombres",
         "where is the toilet"
       ]
@@ -1538,20 +1517,116 @@
       ]
     },
     {
-      "id": "service_classroom",
-      "name": "Buscar aula",
+      "id": "service_aula_1",
+      "name": "Aula 1 (PL/1)",
       "roomId": "aula_1",
-      "description": "Para encontrar un aula, indica el número o el lenguaje asociado: Aula 5 (Fortran), Aula 9 (Python), Aula 11 (Java), etc.",
-      "keywords": [
-        "aula",
-        "clase",
-        "classroom"
-      ],
-      "examples": [
-        "tengo clase en aula 5",
-        "donde esta aula 10a",
-        "quiero ir al aula de python"
-      ]
+      "description": "Para ir al Aula 1 (PL/1), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 1", "aula uno", "classroom 1", "pl/1", "pl1", "clase 1"],
+      "examples": ["quiero ir al aula 1", "donde esta el aula uno", "tengo clase en pl/1"]
+    },
+    {
+      "id": "service_aula_2",
+      "name": "Aula 2 (APL)",
+      "roomId": "aula_2",
+      "description": "Para ir al Aula 2 (APL), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 2", "aula dos", "classroom 2", "apl", "clase 2"],
+      "examples": ["quiero ir al aula 2", "donde esta apl", "tengo clase en aula 2"]
+    },
+    {
+      "id": "service_aula_3",
+      "name": "Aula 3 (Cobol)",
+      "roomId": "aula_3",
+      "description": "Para ir al Aula 3 (Cobol), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 3", "aula tres", "classroom 3", "cobol", "clase 3"],
+      "examples": ["quiero ir al aula 3", "donde esta cobol", "tengo clase en aula 3"]
+    },
+    {
+      "id": "service_aula_4",
+      "name": "Aula 4 (Lisp)",
+      "roomId": "aula_4",
+      "description": "Para ir al Aula 4 (Lisp), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 4", "aula cuatro", "classroom 4", "lisp", "clase 4"],
+      "examples": ["quiero ir al aula 4", "donde esta lisp", "tengo clase en aula 4"]
+    },
+    {
+      "id": "service_aula_5",
+      "name": "Aula 5 (Fortran)",
+      "roomId": "aula_5",
+      "description": "Para ir al Aula 5 (Fortran), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 5", "aula cinco", "fortran", "clase 5"],
+      "examples": ["quiero ir al aula 5", "donde esta fortran", "tengo clase en aula 5"]
+    },
+    {
+      "id": "service_aula_6",
+      "name": "Aula 6 (Smalltalk)",
+      "roomId": "aula_6",
+      "description": "Para ir al Aula 6 (Smalltalk), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 6", "aula seis", "smalltalk", "clase 6"],
+      "examples": ["quiero ir al aula 6", "donde esta smalltalk", "tengo clase en aula 6"]
+    },
+    {
+      "id": "service_aula_7",
+      "name": "Aula 7 (Pascal)",
+      "roomId": "aula_7",
+      "description": "Para ir al Aula 7 (Pascal), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 7", "aula siete", "pascal", "clase 7"],
+      "examples": ["quiero ir al aula 7", "donde esta pascal", "tengo clase en aula 7"]
+    },
+    {
+      "id": "service_aula_8",
+      "name": "Aula 8 (PHP)",
+      "roomId": "aula_8",
+      "description": "Para ir al Aula 8 (PHP), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 8", "aula ocho", "php", "clase 8"],
+      "examples": ["quiero ir al aula 8", "donde esta php", "tengo clase en aula 8"]
+    },
+    {
+      "id": "service_aula_9",
+      "name": "Aula 9 (Python)",
+      "roomId": "aula_9",
+      "description": "Para ir al Aula 9 (Python), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 9", "aula nueve", "python", "clase 9"],
+      "examples": ["quiero ir al aula 9", "donde esta python", "tengo clase en aula 9"]
+    },
+    {
+      "id": "service_aula_10a",
+      "name": "Aula 10A (Objective C)",
+      "roomId": "aula_10a",
+      "description": "Para ir al Aula 10A (Objective C), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 10", "aula 10a", "aula diez a", "objective c", "clase 10a"],
+      "examples": ["donde esta el aula 10a", "quiero ir a objective c", "tengo clase en aula 10"]
+    },
+    {
+      "id": "service_aula_10b",
+      "name": "Aula 10B (C)",
+      "roomId": "aula_10b",
+      "description": "Para ir al Aula 10B (C), dirígete al pasillo de aulas a la derecha.",
+      "keywords": ["aula 11", "aula 10b", "aula diez b", "lenguaje c", "c", "clase 10b"],
+      "examples": ["donde esta el aula 10b", "quiero ir a lenguaje c"]
+    },
+    {
+      "id": "service_aula_11",
+      "name": "Aula 11 (Java)",
+      "roomId": "aula_11",
+      "description": "Para ir al Aula 11 (Java), dirígete al pasillo transversal.",
+      "keywords": ["aula 12", "aula 11", "aula once", "java", "clase 11"],
+      "examples": ["quiero ir al aula 11", "donde esta java"]
+    },
+    {
+      "id": "service_aula_14",
+      "name": "Aula 14 (XML)",
+      "roomId": "aula_14",
+      "description": "Para ir al Aula 14 (XML), dirígete al pasillo central pasando la biblioteca.",
+      "keywords": ["aula 13", "aula 14", "aula catorce", "xml", "clase 14"],
+      "examples": ["quiero ir al aula 14", "donde esta xml"]
+    },
+    {
+      "id": "service_aula_15",
+      "name": "Aula 15 (Ruby)",
+      "roomId": "aula_15",
+      "description": "Para ir al Aula 15 (Ruby), dirígete al pasillo central antes de la biblioteca.",
+      "keywords": ["aula 14", "aula 15", "aula quince", "ruby", "clase 15"],
+      "examples": ["quiero ir al aula 15", "donde esta ruby"]
     }
   ]
 }

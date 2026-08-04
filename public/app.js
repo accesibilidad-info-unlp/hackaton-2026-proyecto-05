@@ -125,6 +125,8 @@ const svgNs = "http://www.w3.org/2000/svg";
 
 const state = {
   map: null,
+  currentLocationId: "entrada",
+  pendingTargetRoomId: null,
   routeLayer: null,
   debugLayer: null,
   roomElements: new Map()
@@ -135,10 +137,59 @@ const messages = document.querySelector("#messages");
 const chatForm = document.querySelector("#chatForm");
 const messageInput = document.querySelector("#messageInput");
 const checkboxAccesibilidad = document.querySelector("#check-accesibilidad");
-const matchInfo = document.querySelector("#matchInfo");
+const panelTitle = document.querySelector("#panelTitle");
 const searchMode = document.querySelector("#searchMode");
 const debugToggle = document.querySelector("#debugToggle");
 const clearRoute = document.querySelector("#clearRoute");
+
+const mapTooltip = document.createElement("div");
+mapTooltip.className = "map-tooltip";
+mapTooltip.hidden = true;
+document.body.appendChild(mapTooltip);
+
+function showRoomTooltip(room, event, anchorElement) {
+  mapTooltip.textContent = `${room.code} - ${room.name}`;
+  mapTooltip.hidden = false;
+
+  if (event) {
+    positionTooltipAtCursor(event);
+  } else if (anchorElement) {
+    positionTooltipAtElement(anchorElement);
+  }
+}
+
+function moveRoomTooltip(event) {
+  positionTooltipAtCursor(event);
+}
+
+function positionTooltipAtCursor(event) {
+  const offset = 16;
+  let left = event.clientX + offset;
+  let top = event.clientY + offset;
+
+  const rect = mapTooltip.getBoundingClientRect();
+  if (left + rect.width > window.innerWidth - 8) {
+    left = event.clientX - rect.width - offset;
+  }
+  if (top + rect.height > window.innerHeight - 8) {
+    top = event.clientY - rect.height - offset;
+  }
+
+  mapTooltip.style.left = `${left}px`;
+  mapTooltip.style.top = `${top}px`;
+}
+
+function positionTooltipAtElement(element) {
+  const rect = element.getBoundingClientRect();
+  mapTooltip.style.left = `${rect.left + rect.width / 2}px`;
+  mapTooltip.style.top = `${rect.top - 10}px`;
+  mapTooltip.style.transform = "translate(-50%, -100%)";
+}
+
+function hideRoomTooltip() {
+  mapTooltip.hidden = true;
+  mapTooltip.style.transform = "";
+}
 
 function svgElement(name, attrs = {}) {
   const element = document.createElementNS(svgNs, name);
@@ -215,20 +266,11 @@ function createRoomShape(room) {
   });
 }
 
-async function chooseDestination(room) {
-  showPlaceDetails(room);
-  addMessage("user", `${room.name} ${room.code}`);
-
-  const necesitaRampa = checkboxAccesibilidad ? checkboxAccesibilidad.checked : false;
-
-  try {
-    const result = await postJson("/api/chat", { targetRoomId: room.id, necesitaRampa });
-    applyChatResult(result);
-  } catch (error) {
+function requestRouteToRoom(room) {
+  sendMessage(room.name).catch((error) => {
     addMessage("ai", `Error en la consulta: ${error.message}`);
-  }
+  });
 }
-
 
 function drawMap(map) {
   mapSvg.innerHTML = "";
@@ -277,18 +319,20 @@ function drawMap(map) {
 
   for (const room of map.rooms) {
     const shape = createRoomShape(room);
-    const title = svgElement("title");
-    title.textContent = `${room.code} - ${room.name}`;
-    shape.appendChild(title);
     shape.addEventListener("click", () => {
-      chooseDestination(room);
+      requestRouteToRoom(room);
     });
     shape.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        chooseDestination(room);
+        requestRouteToRoom(room);
       }
     });
+    shape.addEventListener("mouseenter", (event) => showRoomTooltip(room, event));
+    shape.addEventListener("mousemove", moveRoomTooltip);
+    shape.addEventListener("mouseleave", hideRoomTooltip);
+    shape.addEventListener("focus", () => showRoomTooltip(room, null, shape));
+    shape.addEventListener("blur", hideRoomTooltip);
     roomLayer.appendChild(shape);
     state.roomElements.set(room.id, shape);
   }
@@ -328,33 +372,22 @@ function fillPlacesList(map) {
   if (!list) return;
   list.innerHTML = "";
 
+  // Ordenamos por 'code' de forma numérica y alfabética
   map.rooms
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .forEach(room => {
+    .sort((a, b) => (a.code || "").localeCompare(b.code || "", undefined, { numeric: true }))
+    .forEach((room) => {
       const li = document.createElement("li");
+      li.className = "place-chip";
+      
+      // Mostramos Código - Nombre
       li.textContent = `${room.code} - ${room.name}`;
 
       li.addEventListener("click", () => {
-        chooseDestination(room);
+        requestRouteToRoom(room);
       });
 
       list.appendChild(li);
     });
-}
-
-function showPlaceDetails(room) {
-  const details = document.getElementById("placeDetails");
-  if (!details) return;
-
-  const aliases = room.aliases?.length
-    ? `<ul>${room.aliases.map(alias => `<li>${alias}</li>`).join("")}</ul>`
-    : "<p>Este lugar no posee aliases.</p>";
-
-  details.innerHTML = `
-        <h4>${room.code} - ${room.name}</h4>
-        <strong>Aliases:</strong>
-        ${aliases}
-    `;
 }
 
 function clearRouteDisplay() {
@@ -362,7 +395,7 @@ function clearRouteDisplay() {
   for (const element of state.roomElements.values()) {
     element.classList.remove("active");
   }
-  matchInfo.textContent = "Ruta limpiada";
+  if (panelTitle) panelTitle.textContent = "¿A dónde quieres ir?";
 }
 
 function drawRoute(route, targetRoomId) {
@@ -412,26 +445,40 @@ async function postJson(url, payload) {
   return response.json();
 }
 
-function applyChatResult(result) {
-  addMessage("ai", result.reply);
-
-  if (result.action?.type === "highlight_route") {
-    drawRoute(result.action.route, result.action.targetRoomId);
-    const matchText = result.match ? `Destino: ${result.match.serviceName}. ` : "";
-    matchInfo.textContent = `${matchText}Ruta dibujada en el mapa.`;
-  } else {
-    matchInfo.textContent = "Sin cambios de ruta";
-  }
-}
-
 async function sendMessage(message) {
   addMessage("user", message);
   messageInput.value = "";
 
   const necesitaRampa = checkboxAccesibilidad ? checkboxAccesibilidad.checked : false;
 
-  const result = await postJson("/api/chat", { message, necesitaRampa });
-  applyChatResult(result);
+  const payload = {
+    message,
+    currentLocationId: state.pendingTargetRoomId ? null : "entrada",
+    necesitaRampa: necesitaRampa,
+    pendingTargetRoomId: state.pendingTargetRoomId
+  };
+
+  const result = await postJson("/api/chat", payload);
+  addMessage("ai", result.reply);
+
+  if (result.currentLocationId) {
+    state.currentLocationId = result.currentLocationId;
+  }
+
+  if (result.action?.type === "ask_location") {
+    state.pendingTargetRoomId = result.action.targetRoomId;
+    if (panelTitle) panelTitle.textContent = result.match ? `Destino: ${result.match.serviceName}` : "Esperando ubicación actual";
+    return;
+  }
+
+  state.pendingTargetRoomId = null;
+
+  if (result.action?.type === "highlight_route") {
+    drawRoute(result.action.route, result.action.targetRoomId);
+    if (panelTitle) panelTitle.textContent = result.match ? `Destino: ${result.match.serviceName}` : "Destino encontrado";
+  } else {
+    if (panelTitle) panelTitle.textContent = "¿A dónde quieres ir?";
+  }
 }
 
 async function init() {
@@ -442,8 +489,7 @@ async function init() {
   state.map = await response.json();
   drawMap(state.map);
   fillPlacesList(state.map);
-  searchMode.textContent = "Planta Baja - Facultad de Informática";
-  addMessage("ai", "Hola. Puedes escribir \"quiero ir al baño\", \"quiero ir a biblioteca\", \"tengo que entregar papeles\" o \"aula 5\".");
+  searchMode.textContent = "Planta Baja";
 }
 
 chatForm.addEventListener("submit", async (event) => {
@@ -463,6 +509,7 @@ debugToggle.addEventListener("change", () => {
 });
 
 clearRoute.addEventListener("click", () => {
+  state.pendingTargetRoomId = null;
   clearRouteDisplay();
 });
 

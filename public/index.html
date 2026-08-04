@@ -52,7 +52,16 @@
            <option value="baja-vision">Alta Legibilidad (Texto amarillo/Fondo negro)</option>
          </select>
        </div>
-      
+
+       <!-- Visor nodos y pasillos del mapa -->
+       <div class="controles-fuente">
+         <p class="control-label">Mapa:</p>
+         <label class="accessibility-label">
+           <input type="checkbox" id="debugToggle" class="accessibility-checkbox">
+            Ver nodos y pasillos ocultos
+         </label>
+       </div>
+
        <!-- Lector de Voz -->
        <div class="leer">
          <span class="leer_texto">Lector de Voz:</span>
@@ -73,14 +82,10 @@
     <section class="map-area" aria-label="Mapa inteligente">
       <div class="topbar">
         <div>
-          <h1>Mapa inteligente</h1>
-          <p id="searchMode">Planta Baja - Facultad de Informatica</p>
+          <h1>Mapa de la Facultad de Informática</h1>
+          <p id="searchMode">Planta Baja</p>
         </div>
         <div class="controls">
-          <label class="toggle">
-            <input id="debugToggle" type="checkbox">
-            <span>Nodos ocultos</span>
-          </label>
           <button id="clearRoute" type="button">Limpiar ruta</button>
         </div>
       </div>
@@ -92,14 +97,13 @@
 
     <aside class="assistant-panel" aria-label="Asistente de mapa">
       <div class="panel-header">
-        <h2>Asistente de mapa</h2>
-        <p>Escribe un aula, un lugar o un tramite; el sistema ubicara el destino y marcara la ruta.</p>
+        <h2 id="panelTitle">¿A dónde quieres ir?</h2>
       </div>
 
       <div class="accessibility-picker">
         <label class="accessibility-label">
           <input type="checkbox" id="check-accesibilidad" class="accessibility-checkbox">
-          ♿ Requiero una ruta accesible sin gradas (solo rampas)
+          Activar rutas accesibles (sin gradas)
         </label>
       </div>
 
@@ -107,26 +111,22 @@
 
       <form id="chatForm" class="chat-form">
         <input id="messageInput" name="message" autocomplete="off" aria-label="Consulta de destino o tramite"
-          placeholder="Ejemplo: quiero ir al bano" required>
-        <button type="submit">Enviar</button>
+          placeholder="Ej: Buscar Aula, oficina, baño" required>
+        <button type="submit">➜</button>
       </form>
 
       <div class="quick-actions">
-        <button type="button" data-example="quiero ir al bano de hombres">Bano H</button>
-        <button type="button" data-example="tengo que entregar papeles">Mesa</button>
-        <button type="button" data-example="quiero ir a biblioteca">Biblioteca</button>
-        <button type="button" data-example="aula 5">Aula 5</button>
+        <button type="button" data-example="Quiero ir al buffet">Buffet</button>
+        <button type="button" data-example="Quiero ir a la oficina de alumnos">Alumnos</button>
+        <button type="button" data-example="Quiero ir a biblioteca">Biblioteca</button>
+        <button type="button" data-example="Quiero ir a la fotocopiadora">Fotocopiadora</button>
       </div>
 
-      <div id="matchInfo" class="match-info">Esperando consulta</div>
     </aside>
   </main>
   <div class="places-panel">
-    <h3>Lugares disponibles</h3>
+    <h3>Directorio de Lugares</h3>
     <ul id="placesList"></ul>
-    <div id="placeDetails" class="place-details">
-      <p>Seleccione un lugar para ver sus alias.</p>
-    </div>
   </div>
   <script type="module" src="/app.js"></script>
 </body>

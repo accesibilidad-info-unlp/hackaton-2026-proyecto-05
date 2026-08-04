@@ -381,21 +381,34 @@ async function main() {
     const query = normalizeText(message);
     let best = null;
 
+    // Buscar en aulas (rooms)
     for (const room of mapData.rooms) {
       const names = [room.name, ...(room.aliases || [])].filter(Boolean);
       let score = names.reduce((current, name) => {
         const normalized = normalizeText(name);
         if (!normalized) return current;
-        if (query.includes(normalized) || normalized.includes(query)) return Math.max(current, 1.2);
+        
+        // 1. Coincidencia exacta 
+        if (query === normalized) return Math.max(current, 2.0);
+        
+        // 2. Coincidencia de palabra completa (Evita que "aula 1" pise a "aula 10")
+        const regex = new RegExp(`\\b${normalized}\\b`);
+        if (regex.test(query)) return Math.max(current, 1.2);
+        
+        // 3. Coincidencia parcial (por tokens)
         return Math.max(current, sharedTokenScore(query, normalized));
       }, 0);
 
       const code = normalizeText(room.code);
       if (code) {
         if (query === code) {
-          score = Math.max(score, 0.95);
-        } else if (query.includes(code)) {
-          score = Math.max(score, 0.35);
+          score = Math.max(score, 1.5);
+        } else {
+          // Evitamos que el código "1" tambien entre con el código "10"
+          const codeRegex = new RegExp(`\\b${code}\\b`);
+          if (codeRegex.test(query)) {
+            score = Math.max(score, 0.8);
+          }
         }
       }
 
@@ -404,12 +417,18 @@ async function main() {
       }
     }
 
+    // Buscar en nodos
     for (const node of mapData.nodes) {
       const names = [node.label, ...(node.aliases || [])].filter(Boolean);
       const score = names.reduce((current, name) => {
         const normalized = normalizeText(name);
         if (!normalized) return current;
-        if (query.includes(normalized) || normalized.includes(query)) return Math.max(current, 1);
+        
+        if (query === normalized) return Math.max(current, 2.0);
+        
+        const regex = new RegExp(`\\b${normalized}\\b`);
+        if (regex.test(query)) return Math.max(current, 1.2);
+        
         return Math.max(current, sharedTokenScore(query, normalized));
       }, 0);
 
@@ -454,16 +473,21 @@ async function main() {
   }
 
   // El origen del recorrido ya no lo elige el usuario a mano: siempre es la
-  // entrada del edificio, y el único parámetro es si necesita rampa o gradas.
+  // entrada del edificio, y el único parámetro es si necesita entrar por la rampa o usar las gradas.
   function startLocationForAccess(necesitaRampa) {
     return necesitaRampa ? "rampa-0" : "gradas-0";
   }
 
   function buildChatReply(targetRoom, match, necesitaRampa) {
-    const servicioObj = mapData.services.find((s) => s.id === match.serviceId);
+    // 1. Buscamos el servicio por su ID, pero si fue un clic directo, lo buscamos por el roomId
+    let servicioObj = mapData.services.find((s) => s.id === match.serviceId);
+    if (!servicioObj) {
+      servicioObj = mapData.services.find((s) => s.roomId === targetRoom.id);
+    }
+
     let textoRespuesta = servicioObj
       ? `${servicioObj.description}\n\n`
-      : `Encontré ${targetRoom.name} ${targetRoom.code}.\n\n`;
+      : `Para llegar a ${targetRoom.name} sigue la ruta trazada en el mapa.\n\n`;
 
     const rutaPredefinida = mapData.rutas?.find(
       (r) => r.roomId === targetRoom.id || r.destino === targetRoom.id
@@ -484,11 +508,13 @@ async function main() {
         });
       }
     } else {
-      textoRespuesta += "La ruta ya está dibujada en el mapa.";
+      if (servicioObj) {
+        textoRespuesta += "La ruta ya está trazada en el mapa.";
+      }
     }
 
-    return textoRespuesta;
-  }
+    return textoRespuesta.trim();
+  }  
 
   async function handleChat(req, res) {
     const body = await readJsonBody(req);
