@@ -5,14 +5,14 @@
   color-scheme: light;
   
   /* Fondo general e interfaz */
-  --bg-color: #eef2f5;
+  --bg-color: #c2c6ca;
   --text-color: #1e252c;
   --panel-bg: #ffffff;
   --muted-text: #66717d;
   --border-line: #cfd8df;
   --shadow: 0 18px 45px rgba(31, 45, 61, 0.14);
 
-  /* Menú Accesibilidad */
+  /* Menu Accesibilidad */
   --sidebar-bg: #ffffff;
   --sidebar-border: #cfd8df;
   --btn-bg: #f7fafc;
