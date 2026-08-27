@@ -152,7 +152,8 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  margin-left: 4rem; /* esto corre la imagen hacia la derecha, ajustá el valor */
+ /* esto corre la imagen hacia la derecha, ajustá el valor */
+  justify-content: center;
 }
 
 .logo img {     
@@ -202,7 +203,7 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background-color: white;
   color: var(--text-color);
   font-family: Arial, "Microsoft YaHei", sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
