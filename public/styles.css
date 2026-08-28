@@ -141,6 +141,63 @@
 * {
   box-sizing: border-box;
 }
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo a la izq, botón a la derecha */
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+ /* esto corre la imagen hacia la derecha, ajustá el valor */
+  justify-content: center;
+}
+
+.logo img {     
+  height: auto;
+  display: block;
+}
+
+.buttonConf {
+  position: fixed;
+  top: 0.5rem;      /* debe coincidir con el padding vertical del header */      /* debe coincidir con el padding horizontal del header */
+  z-index: 1000;      /* para que quede por encima de otros elementos */
+}
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    padding: 0.5rem;
+  }
+  .logo {
+    margin-left: 0.8rem;
+  }
+  .logo img {
+    max-width: 100px;
+  }
+  .btn-abrir {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .logo {
+    margin-left: 0;
+  }
+  .logo img {
+    max-width: 70px;
+  }
+}
+
+/* FIN HEADER*/
+
 
 html, body {
   margin: 0;
@@ -251,7 +308,7 @@ button {
 }
 
 button:hover {
-  background: var(--btn-hover);
+  background: gray;
 }
 
 select, input {
