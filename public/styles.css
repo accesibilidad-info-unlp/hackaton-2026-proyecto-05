@@ -11,6 +11,7 @@
   --muted-text: #66717d;
   --border-line: #cfd8df;
   --shadow: 0 18px 45px rgba(31, 45, 61, 0.14);
+  --header-height: 64px; /* alto fijo de la seccion sup logo+título */
 
   /* Menu Accesibilidad */
   --sidebar-bg: #ffffff;
@@ -145,59 +146,59 @@
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* logo a la izq, botón a la derecha */
-  padding: 0.5rem 1rem;
+  gap: 14px;
+  height: var(--header-height);
+  min-height: var(--header-height);
+  flex-shrink: 0; /* tamaño fijo */
+  padding: 0 20px 0 76px; /* el botón ☰ sigue flotando */
+  background-color: var(--panel-bg); /* cambia con el tema */
+  border-bottom: 1px solid var(--border-line);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .logo {
   display: flex;
   align-items: center;
- /* esto corre la imagen hacia la derecha, ajustá el valor */
-  justify-content: center;
+  flex-shrink: 0;
 }
 
-.logo img {     
-  height: auto;
+.logo img {
+  height: 44px;  /* tamaño fijo del logo */
+  width: auto;
   display: block;
+}
+
+.header-title h1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.4px;
+  color: var(--text-color);
+  white-space: nowrap;
 }
 
 .buttonConf {
   position: fixed;
-  top: 0.5rem;      /* debe coincidir con el padding vertical del header */      /* debe coincidir con el padding horizontal del header */
-  z-index: 1000;      /* para que quede por encima de otros elementos */
+  top: 0.5rem;
+  left: 0.5rem;  
+  z-index: 1000;
 }
+
 /* Responsive */
 @media (max-width: 768px) {
-  header {
-    padding: 0.5rem;
-  }
-  .logo {
-    margin-left: 0.8rem;
-  }
-  .logo img {
-    max-width: 100px;
-  }
-  .btn-abrir {
-    font-size: 1.3rem;
-  }
+  :root { --header-height: 60px; }
+  header { padding-left: 64px; gap: 10px; }
+  .logo img { height: 34px; }
+  .header-title h1 { font-size: 1rem; }
+  .btn-abrir { font-size: 1.3rem; }
 }
 
 @media (max-width: 480px) {
-  header {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .logo {
-    margin-left: 0;
-  }
-  .logo img {
-    max-width: 70px;
-  }
+  :root { --header-height: 54px; }
+  header { padding-left: 56px; gap: 8px; }
+  .logo img { height: 28px; }
+  .header-title h1 { font-size: 0.85rem; }
 }
-
 /* FIN HEADER*/
-
 
 html, body {
   margin: 0;
@@ -235,6 +236,9 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   left: 12px;
   z-index: 9999;
   font-size: 22px;
+  display: inline-flex;      
+  align-items: center;       
+  justify-content: center;   
   background-color: var(--panel-bg);
   color: var(--text-color);
   border: 1px solid var(--border-line);
@@ -244,13 +248,18 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.icono-menu {
+  width: 22px;
+  height: 22px;
+  fill: var(--text-color); 
+}
+
 .shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 18px;
-  height: 100vh; /* alto fijo: nada empuja la página, todo lo interno scrollea por su cuenta */
+  height: calc(100vh - var(--header-height)); 
   padding: 18px;
-  padding-top: 54px; /* apenas lo justo para no tapar el botón flotante superior */
   overflow: hidden;
 }
 
@@ -274,12 +283,6 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   gap: 16px;
   padding: 14px 20px; /* mismo padding que .panel-header */
   border-bottom: 1px solid var(--border-line);
-}
-
-.topbar h1 {
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
 }
 
 .controls {
@@ -498,10 +501,14 @@ select, input {
   border-bottom: 1px solid var(--border-line);
 }
 
-.accessibility-picker,
 .match-info {
   padding: 16px;
   border-bottom: 1px solid var(--border-line);
+}
+
+.accessibility-picker {
+  display: flex;
+  align-items: center;
 }
 
 .accessibility-label {
@@ -842,14 +849,5 @@ select, input {
 
 .map-tooltip[hidden] {
   display: none;
-}
-.logo{
-  top: 2px;
-  position: absolute;
-  left: 60px;
-  width: 180px;
-  height: 50px;
-
-
 }
 

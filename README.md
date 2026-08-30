@@ -80,6 +80,7 @@ public/app.js               Dibuja el SVG, gestiona clics, chat y trazado de rut
 public/styles.css           Estilos del mapa, temas de accesibilidad y panel lateral
 public/assets/svg/svg-externo.svg   Plano visual del edificio (fondo del mapa)
 public/assets/svg/svg-interno.svg   Plano de referencia con los nodos ocultos del grafo
+public/img/images.png       Logo de la facultad
 server.js                   Servidor Node.js: API, búsqueda de destinos y cálculo de rutas (Dijkstra)
 src/graph.js                 Implementación auxiliar de Dijkstra
 src/semantic-search.js       Motor de búsqueda local (con soporte opcional para Chroma)

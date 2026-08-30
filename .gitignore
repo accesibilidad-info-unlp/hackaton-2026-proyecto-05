@@ -50,6 +50,3 @@ GITHUB_PREUPLOAD_REPORT.md
 *.7z
 *.tar
 *.gz
-*.png
-*.jpg
-*.jpeg

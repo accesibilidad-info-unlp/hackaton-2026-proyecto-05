@@ -138,7 +138,6 @@ const chatForm = document.querySelector("#chatForm");
 const messageInput = document.querySelector("#messageInput");
 const checkboxAccesibilidad = document.querySelector("#check-accesibilidad");
 const panelTitle = document.querySelector("#panelTitle");
-const searchMode = document.querySelector("#searchMode");
 const debugToggle = document.querySelector("#debugToggle");
 const clearRoute = document.querySelector("#clearRoute");
 
@@ -489,7 +488,6 @@ async function init() {
   state.map = await response.json();
   drawMap(state.map);
   fillPlacesList(state.map);
-  searchMode.textContent = "Planta Baja";
 }
 
 chatForm.addEventListener("submit", async (event) => {
@@ -522,6 +520,5 @@ for (const button of document.querySelectorAll("[data-example]")) {
 }
 
 init().catch((error) => {
-  searchMode.textContent = "Error al cargar";
   addMessage("ai", `No se pudo cargar el mapa: ${error.message}`);
 });
