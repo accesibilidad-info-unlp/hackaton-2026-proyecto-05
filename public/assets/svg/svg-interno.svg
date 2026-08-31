@@ -1,0 +1,31 @@
+<svg width="476" height="398" viewBox="0 0 476 398" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="476" height="398" fill="white"/>
+<g id="svg-interno">
+<circle id="buffet" cx="148.5" cy="166.5" r="2.5" fill="#1D1FB8"/>
+<circle id="to-buffet-sin-rampa" cx="268.5" cy="236.5" r="2.5" fill="#1D1FB8"/>
+<circle id="other-1" cx="107.5" cy="159.5" r="2.5" fill="#1D1FB8"/>
+<circle id="other-0" cx="135.5" cy="109.5" r="2.5" fill="#1D1FB8"/>
+<path id="right-6" d="M126.5 50C126.5 51.3807 125.381 52.5 124 52.5C122.619 52.5 121.5 51.3807 121.5 50C121.5 48.6193 122.619 47.5 124 47.5C125.381 47.5 126.5 48.6193 126.5 50Z" fill="#1D1FB8"/>
+<path id="right-5" d="M162 70.5C162 71.8807 160.881 73 159.5 73C158.119 73 157 71.8807 157 70.5C157 69.1193 158.119 68 159.5 68C160.881 68 162 69.1193 162 70.5Z" fill="#1D1FB8"/>
+<path id="right-4" d="M197 84.5C197 85.8807 195.881 87 194.5 87C193.119 87 192 85.8807 192 84.5C192 83.1193 193.119 82 194.5 82C195.881 82 197 83.1193 197 84.5Z" fill="#1D1FB8"/>
+<circle id="right-3" cx="244.5" cy="109.5" r="2.5" fill="#1D1FB8"/>
+<circle id="right-2" cx="290.5" cy="135.5" r="2.5" fill="#1D1FB8"/>
+<circle id="right-1" cx="337.5" cy="161.5" r="2.5" fill="#1D1FB8"/>
+<circle id="right-0" cx="362.5" cy="175.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-7" cx="54.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-6" cx="78.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-5" cx="106.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-4" cx="138.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-3" cx="166.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-2" cx="231.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-1" cx="288.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="left-0" cx="324.5" cy="246.5" r="2.5" fill="#1D1FB8"/>
+<circle id="central-1" cx="413.5" cy="201.5" r="2.5" fill="#1D1FB8"/>
+<circle id="central-0" cx="404.5" cy="223.5" r="2.5" fill="#1D1FB8"/>
+<circle id="entrada" cx="394.5" cy="248.5" r="2.5" fill="#1D1FB8"/>
+<circle id="rampa-1" cx="258.5" cy="278.5" r="2.5" fill="#1D1FB8"/>
+<circle id="rampa-0" cx="258.5" cy="299.5" r="2.5" fill="#1D1FB8"/>
+<circle id="gradas-1" cx="394.5" cy="276.5" r="2.5" fill="#1D1FB8"/>
+<circle id="gradas-0" cx="394.5" cy="299.5" r="2.5" fill="#1D1FB8"/>
+</g>
+</svg>

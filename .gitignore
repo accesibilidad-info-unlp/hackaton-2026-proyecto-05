@@ -1,0 +1,58 @@
+# Logs y salidas locales
+work/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencias
+node_modules/
+
+# Build / cache / cobertura
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+coverage/
+.nyc_output/
+.eslintcache
+outputs/
+
+# Configuracion local / agentes
+.agents/
+.codex/
+.vscode/
+.idea/
+*.local
+
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Reportes locales de revision
+GITHUB_PREUPLOAD_REPORT.md
+*_REPORT.md
+
+# Temporales y comprimidos
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*.swo
+*~
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz

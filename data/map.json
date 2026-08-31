@@ -1,0 +1,2192 @@
+{
+  "viewBox": "0 0 476 398",
+  "backgroundImage": {
+    "href": "/assets/svg/svg-externo.svg",
+    "preserveAspectRatio": "xMidYMid meet"
+  },
+  "escala": {
+    "estado": "CALIBRADA",
+    "referencia": "Bloque 'Mesa de Entradas' = 35 unidades SVG = 10 metros reales (basado en el plano de la facu)",
+    "metros_por_unidad_svg": 0.285714,
+    "unidades_svg_por_metro": 3.5
+  },
+  "accesos_entrada_principal": {
+    "en_silla_ruedas": {
+      "via": "rampa",
+      "camino_nodos": [
+        "rampa-0",
+        "rampa-1",
+        "gradas-1",
+        "entrada"
+      ],
+      "descripcion": "Ingresar por la rampa accesible."
+    },
+    "sin_silla_ruedas": {
+      "via": "gradas",
+      "camino_nodos": [
+        "gradas-0",
+        "gradas-1",
+        "entrada"
+      ],
+      "descripcion": "Ingresar por las gradas de la entrada principal."
+    }
+  },
+  "rooms": [
+    {
+      "id": "aula_1",
+      "svgId": "room-aula-1",
+      "name": "Aula 1",
+      "code": "1",
+      "aliases": [
+        "aula uno",
+        "classroom 1"
+      ],
+      "entranceNodeId": "right-0",
+      "shape": {
+        "type": "path",
+        "d": "M381.649 137L405.336 150.13L386.886 183.415L363.199 170.285L381.649 137Z"
+      },
+      "label": {
+        "x": 383.7,
+        "y": 155.6
+      }
+    },
+    {
+      "id": "aula_2",
+      "svgId": "room-aula-2",
+      "name": "Aula 2",
+      "code": "2",
+      "aliases": [
+        "aula dos",
+        "classroom 2",
+        "apl"
+      ],
+      "entranceNodeId": "right-0",
+      "shape": {
+        "type": "path",
+        "d": "M361.649 126L381.291 136.888L362.841 170.173L343.199 159.285L361.649 126Z"
+      },
+      "label": {
+        "x": 362.1,
+        "y": 143.7
+      }
+    },
+    {
+      "id": "aula_3",
+      "svgId": "room-aula-3",
+      "name": "Aula 3",
+      "code": "3",
+      "aliases": [
+        "aula tres",
+        "classroom 3",
+        "cobol"
+      ],
+      "entranceNodeId": "right-1",
+      "shape": {
+        "type": "path",
+        "d": "M341.649 115L361.291 125.888L342.841 159.173L323.199 148.285L341.649 115Z"
+      },
+      "label": {
+        "x": 342.1,
+        "y": 132.7
+      }
+    },
+    {
+      "id": "aula_4",
+      "svgId": "room-aula-4",
+      "name": "Aula 4",
+      "code": "4",
+      "aliases": [
+        "aula cuatro",
+        "classroom 4",
+        "lisp"
+      ],
+      "entranceNodeId": "right-2",
+      "shape": {
+        "type": "path",
+        "d": "M285.716 84L340.946 114.614L322.495 147.899L267.266 117.285L276.491 100.643L285.716 84Z"
+      },
+      "label": {
+        "x": 296.4,
+        "y": 108.1
+      }
+    },
+    {
+      "id": "aula_5",
+      "svgId": "room-aula-5",
+      "name": "Aula 5",
+      "code": "5",
+      "aliases": [
+        "aula cinco",
+        "fortran"
+      ],
+      "entranceNodeId": "right-2",
+      "shape": {
+        "type": "path",
+        "d": "M205.219 189.257L245.012 117.31L295.956 145.487L256.163 217.434L205.219 189.257Z"
+      },
+      "label": {
+        "x": 241.5,
+        "y": 171.7
+      }
+    },
+    {
+      "id": "aula_6",
+      "svgId": "room-aula-6",
+      "name": "Aula 6",
+      "code": "6",
+      "aliases": [
+        "aula seis",
+        "smalltalk"
+      ],
+      "entranceNodeId": "right-4",
+      "shape": {
+        "type": "polygon",
+        "points": "197.448,79.070 214.901,47.584 234.067,58.208 216.615,89.694"
+      },
+      "label": {
+        "x": 215.8,
+        "y": 68.6
+      }
+    },
+    {
+      "id": "aula_7",
+      "svgId": "room-aula-7",
+      "name": "Aula 7",
+      "code": "7",
+      "aliases": [
+        "aula siete",
+        "pascal"
+      ],
+      "entranceNodeId": "right-4",
+      "shape": {
+        "type": "polygon",
+        "points": "177.407,68.047 194.860,36.561 214.067,47.208 196.615,78.694"
+      },
+      "label": {
+        "x": 195.7,
+        "y": 57.6
+      }
+    },
+    {
+      "id": "aula_8",
+      "svgId": "room-aula-8",
+      "name": "Aula 8",
+      "code": "8",
+      "aliases": [
+        "aula ocho",
+        "php"
+      ],
+      "entranceNodeId": "right-5",
+      "shape": {
+        "type": "polygon",
+        "points": "158.199,57.486 175.652,26.000 194.068,36.208 176.615,67.694"
+      },
+      "label": {
+        "x": 176.1,
+        "y": 46.8
+      }
+    },
+    {
+      "id": "aula_9",
+      "svgId": "room-aula-9",
+      "name": "Aula 9",
+      "code": "9",
+      "aliases": [
+        "aula nueve",
+        "python"
+      ],
+      "entranceNodeId": "right-6",
+      "shape": {
+        "type": "path",
+        "d": "M111.163 31.405L128.571 4.09141e-07L174.403 25.4053L156.995 56.8103L111.163 31.405Z"
+      },
+      "label": {
+        "x": 136.5,
+        "y": 29
+      }
+    },
+    {
+      "id": "aula_10a",
+      "svgId": "room-aula-10a",
+      "name": "Aula 10A",
+      "code": "10",
+      "aliases": [
+        "aula 10",
+        "aula diez a",
+        "objective c"
+      ],
+      "entranceNodeId": "other-0",
+      "shape": {
+        "type": "path",
+        "d": "M84.8625 78.142L101.571 48L147.403 73.4053L130.695 103.547L84.8625 78.142Z"
+      },
+      "label": {
+        "x": 109.9,
+        "y": 76.2
+      }
+    },
+    {
+      "id": "aula_10b",
+      "svgId": "room-aula-10b",
+      "name": "Aula 10B",
+      "code": "11",
+      "aliases": [
+        "aula diez b",
+        "lenguaje c"
+      ],
+      "entranceNodeId": "other-0",
+      "shape": {
+        "type": "path",
+        "d": "M68.0537 108.526L84.5705 78.7285L130.403 104.134L113.886 133.931L68.0537 108.526Z"
+      },
+      "label": {
+        "x": 93,
+        "y": 106.8
+      }
+    },
+    {
+      "id": "aula_11",
+      "svgId": "room-aula-11",
+      "name": "Aula 11",
+      "code": "12",
+      "aliases": [
+        "aula once",
+        "java"
+      ],
+      "entranceNodeId": "other-1",
+      "shape": {
+        "type": "path",
+        "d": "M29.3669 177.499L67.2064 109.235L113.039 134.64L75.1994 202.904L29.3669 177.499Z"
+      },
+      "label": {
+        "x": 62.8,
+        "y": 160.4
+      }
+    },
+    {
+      "id": "aula_14",
+      "svgId": "room-aula-14",
+      "name": "Aula 14",
+      "code": "13",
+      "aliases": [
+        "aula catorce",
+        "xml"
+      ],
+      "entranceNodeId": "central-1",
+      "shape": {
+        "type": "path",
+        "d": "M455.649 176L475.291 186.888L456.841 220.173L437.199 209.285L455.649 176Z"
+      },
+      "label": {
+        "x": 456.1,
+        "y": 193.7
+      }
+    },
+    {
+      "id": "aula_15",
+      "svgId": "room-aula-15",
+      "name": "Aula 15",
+      "code": "14",
+      "aliases": [
+        "aula quince",
+        "ruby"
+      ],
+      "entranceNodeId": "central-0",
+      "shape": {
+        "type": "path",
+        "d": "M436.649 210L456.291 220.888L437.841 254.173L418.199 243.285L436.649 210Z"
+      },
+      "label": {
+        "x": 437.1,
+        "y": 227.7
+      }
+    },
+    {
+      "id": "cefi",
+      "svgId": "room-cefi",
+      "name": "CEFI",
+      "code": "15",
+      "aliases": [
+        "centro de estudiantes",
+        "cefi"
+      ],
+      "entranceNodeId": "right-6",
+      "shape": {
+        "type": "path",
+        "d": "M101.978 47.7801L110.725 32L121.22 37.8177L112.473 53.5978L101.978 47.7801Z"
+      },
+      "label": {
+        "x": 109.7,
+        "y": 43.8
+      }
+    },
+    {
+      "id": "fotocopiadora",
+      "svgId": "room-fotocopiadora",
+      "name": "Fotocopiadora",
+      "code": "16",
+      "aliases": [
+        "fotocopia",
+        "copias",
+        "impresiones"
+      ],
+      "entranceNodeId": "right-3",
+      "shape": {
+        "type": "path",
+        "d": "M255.017 85L271.592 94.188L265.775 104.683L249.199 95.4954L255.017 85Z"
+      },
+      "label": {
+        "x": 259.3,
+        "y": 92.9
+      }
+    },
+    {
+      "id": "biblioteca",
+      "svgId": "room-biblioteca",
+      "name": "Biblioteca",
+      "code": "17",
+      "aliases": [
+        "library"
+      ],
+      "entranceNodeId": "central-0",
+      "shape": {
+        "type": "path",
+        "d": "M281.199 231L320.7 159.107L383.082 192.737L364.138 230.591L281.199 231Z"
+      },
+      "label": {
+        "x": 326.1,
+        "y": 208.9
+      }
+    },
+    {
+      "id": "buffet",
+      "svgId": "room-buffet",
+      "name": "Buffet",
+      "code": "18",
+      "aliases": [
+        "comedor",
+        "cafeteria",
+        "cafe"
+      ],
+      "entranceNodeId": "buffet",
+      "shape": {
+        "type": "path",
+        "d": "M144.048 109L123.199 147L172.83 173C175.171 168.62 191.199 138 191.199 138V118.748H166.379V109H144.048Z"
+      },
+      "label": {
+        "x": 166.6,
+        "y": 132.9
+      }
+    },
+    {
+      "id": "mantenimiento",
+      "svgId": "room-mantenimiento",
+      "name": "Mantenimiento",
+      "code": "19",
+      "aliases": [
+        "maintenance"
+      ],
+      "entranceNodeId": "left-7",
+      "shape": {
+        "type": "path",
+        "d": "M19.6987 241.5H41.6987V280.5H19.6987V241.5Z"
+      },
+      "label": {
+        "x": 28.5,
+        "y": 257.1
+      }
+    },
+    {
+      "id": "area_rendiciones",
+      "svgId": "room-area-rendiciones",
+      "name": "Área de Rendiciones",
+      "code": "20",
+      "aliases": [
+        "rendiciones"
+      ],
+      "entranceNodeId": "left-6",
+      "shape": {
+        "type": "polygon",
+        "points": "69.199,252.000 79.199,252.000 79.199,280.000 69.199,280.000"
+      },
+      "label": {
+        "x": 74.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "sala_profesores_grado",
+      "svgId": "room-sala-profesores",
+      "name": "Sala de Profesores de Grado",
+      "code": "21",
+      "aliases": [
+        "sala de profesores",
+        "profesores"
+      ],
+      "entranceNodeId": "left-6",
+      "shape": {
+        "type": "polygon",
+        "points": "80.199,252.000 90.199,252.000 90.199,280.000 80.199,280.000"
+      },
+      "label": {
+        "x": 85.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "despacho",
+      "svgId": "room-despacho",
+      "name": "Despacho",
+      "code": "22",
+      "aliases": [
+        "office"
+      ],
+      "entranceNodeId": "left-5",
+      "shape": {
+        "type": "polygon",
+        "points": "91.199,252.000 105.199,252.000 105.199,280.000 91.199,280.000"
+      },
+      "label": {
+        "x": 98.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "personal",
+      "svgId": "room-personal",
+      "name": "Personal",
+      "code": "23",
+      "aliases": [
+        "rrhh",
+        "recursos humanos"
+      ],
+      "entranceNodeId": "left-5",
+      "shape": {
+        "type": "polygon",
+        "points": "106.199,252.000 122.199,252.000 122.199,280.000 106.199,280.000"
+      },
+      "label": {
+        "x": 114.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "secretaria_administrativa",
+      "svgId": "room-secretaria-administrativa",
+      "name": "Secretaría Administrativa",
+      "code": "24",
+      "aliases": [
+        "secretaria administrativa"
+      ],
+      "entranceNodeId": "left-4",
+      "shape": {
+        "type": "polygon",
+        "points": "123.199,252.000 137.199,252.000 137.199,280.000 123.199,280.000"
+      },
+      "label": {
+        "x": 130.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "compras_inventario",
+      "svgId": "room-compras-inventario",
+      "name": "Compras e Inventario",
+      "code": "25",
+      "aliases": [
+        "compras",
+        "inventario"
+      ],
+      "entranceNodeId": "left-4",
+      "shape": {
+        "type": "polygon",
+        "points": "138.199,252.000 152.199,252.000 152.199,280.000 138.199,280.000"
+      },
+      "label": {
+        "x": 145.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "contable",
+      "svgId": "room-contable",
+      "name": "Contable",
+      "code": "26",
+      "aliases": [
+        "contabilidad"
+      ],
+      "entranceNodeId": "left-3",
+      "shape": {
+        "type": "polygon",
+        "points": "153.199,252.000 175.199,252.000 175.199,280.000 153.199,280.000"
+      },
+      "label": {
+        "x": 164.2,
+        "y": 266
+      }
+    },
+    {
+      "id": "economico_financiera",
+      "svgId": "room-economico-financiera",
+      "name": "Dir. Económico Financiera",
+      "code": "27",
+      "aliases": [
+        "financiera",
+        "economico financiera",
+        "tesoreria"
+      ],
+      "entranceNodeId": "left-2",
+      "shape": {
+        "type": "polygon",
+        "points": "210.199,252.000 253.199,252.000 253.199,280.000 210.199,280.000"
+      },
+      "label": {
+        "x": 231.7,
+        "y": 266
+      }
+    },
+    {
+      "id": "alumnos",
+      "svgId": "room-alumnos",
+      "name": "Alumnos",
+      "code": "28",
+      "aliases": [
+        "oficina de alumnos",
+        "estudiantes",
+        "depto alumnos",
+        "departamento de alumnos"
+      ],
+      "entranceNodeId": "left-1",
+      "shape": {
+        "type": "polygon",
+        "points": "254.199,252.000 293.199,252.000 293.199,273.000 254.199,273.000"
+      },
+      "label": {
+        "x": 273.7,
+        "y": 262.5
+      }
+    },
+    {
+      "id": "mesa_entradas",
+      "svgId": "room-mesa-entradas",
+      "name": "Mesa de Entradas",
+      "code": "29",
+      "aliases": [
+        "mesa entradas",
+        "recepcion",
+        "tramites",
+        "trámites"
+      ],
+      "entranceNodeId": "left-0",
+      "shape": {
+        "type": "polygon",
+        "points": "294.199,252.000 329.199,252.000 329.199,273.000 294.199,273.000"
+      },
+      "label": {
+        "x": 311.7,
+        "y": 262.5
+      }
+    },
+    {
+      "id": "intendencia",
+      "svgId": "room-intendencia",
+      "name": "Intendencia",
+      "code": "30",
+      "aliases": [
+        "maintenance office"
+      ],
+      "entranceNodeId": "left-0",
+      "shape": {
+        "type": "path",
+        "d": "M330.199 252H353.199L342.221 273H330.199V252Z"
+      },
+      "label": {
+        "x": 337.2,
+        "y": 260.4
+      }
+    },
+    {
+      "id": "banios_hombres",
+      "svgId": "room-banios-hombres",
+      "name": "Baños hombres",
+      "code": "A",
+      "aliases": [
+        "baño hombres",
+        "banio hombres",
+        "toilet men"
+      ],
+      "entranceNodeId": "central-1",
+      "shape": {
+        "type": "rect",
+        "x": 401.8,
+        "y": 151.4,
+        "width": 12.7,
+        "height": 18
+      },
+      "label": {
+        "x": 409.1,
+        "y": 160.2
+      }
+    },
+    {
+      "id": "banios_mujeres",
+      "svgId": "room-banios-mujeres",
+      "name": "Baños mujeres",
+      "code": "B",
+      "aliases": [
+        "baño mujeres",
+        "banio mujeres",
+        "toilet women"
+      ],
+      "entranceNodeId": "central-1",
+      "shape": {
+        "type": "rect",
+        "x": 438.6,
+        "y": 172.4,
+        "width": 12.8,
+        "height": 18
+      },
+      "label": {
+        "x": 445.1,
+        "y": 182.6
+      }
+    },
+    {
+      "id": "banio_sin_genero",
+      "svgId": "room-banio-sin-genero",
+      "name": "Baño sin género",
+      "code": "C",
+      "aliases": [
+        "baño accesible",
+        "baño neutro",
+        "gender neutral bathroom",
+        "banio inclusivo"
+      ],
+      "entranceNodeId": "right-3",
+      "shape": {
+        "type": "rect",
+        "x": 225.4,
+        "y": 60.1,
+        "width": 33,
+        "height": 33
+      },
+      "label": {
+        "x": 243.4,
+        "y": 77.8
+      }
+    },
+    {
+      "id": "ascensor",
+      "svgId": "room-ascensor",
+      "name": "Ascensor",
+      "code": "D",
+      "aliases": [
+        "elevator",
+        "lift"
+      ],
+      "entranceNodeId": "central-1",
+      "shape": {
+        "type": "rect",
+        "x": 409.1,
+        "y": 157.1,
+        "width": 16.1,
+        "height": 19
+      },
+      "label": {
+        "x": 416.9,
+        "y": 166.8
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "buffet",
+      "label": "Cruce Buffet",
+      "x": 148.5,
+      "y": 166.5
+    },
+    {
+      "id": "to-buffet-sin-rampa",
+      "label": "Cruce sin rampa al buffet",
+      "x": 268.5,
+      "y": 236.5
+    },
+    {
+      "id": "other-1",
+      "label": "Pasillo aula 11",
+      "x": 107.5,
+      "y": 159.5
+    },
+    {
+      "id": "other-0",
+      "label": "Cruce superior",
+      "x": 135.5,
+      "y": 109.5
+    },
+    {
+      "id": "right-6",
+      "label": "Pasillo aulas 9-10-CEFI",
+      "x": 124,
+      "y": 50
+    },
+    {
+      "id": "right-5",
+      "label": "Pasillo aula 8",
+      "x": 159.5,
+      "y": 70.5
+    },
+    {
+      "id": "right-4",
+      "label": "Pasillo aulas 6-7",
+      "x": 194.5,
+      "y": 84.5
+    },
+    {
+      "id": "right-3",
+      "label": "Pasillo aula 5 / Fotocopiadora",
+      "x": 244.5,
+      "y": 109.5
+    },
+    {
+      "id": "right-2",
+      "label": "Pasillo aula 4",
+      "x": 290.5,
+      "y": 135.5
+    },
+    {
+      "id": "right-1",
+      "label": "Pasillo aulas 2-3",
+      "x": 337.5,
+      "y": 161.5
+    },
+    {
+      "id": "right-0",
+      "label": "Pasillo aula 1",
+      "x": 362.5,
+      "y": 175.5
+    },
+    {
+      "id": "left-7",
+      "label": "Pasillo Mantenimiento",
+      "x": 54.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-6",
+      "label": "Pasillo Rendiciones",
+      "x": 78.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-5",
+      "label": "Pasillo Despacho",
+      "x": 106.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-4",
+      "label": "Pasillo Secretaria",
+      "x": 138.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-3",
+      "label": "Pasillo Contable",
+      "x": 166.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-2",
+      "label": "Pasillo Financiera/Alumnos",
+      "x": 231.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-1",
+      "label": "Pasillo Entradas/Intendencia",
+      "x": 288.5,
+      "y": 246.5
+    },
+    {
+      "id": "left-0",
+      "label": "Pasillo admin este",
+      "x": 324.5,
+      "y": 246.5
+    },
+    {
+      "id": "central-1",
+      "label": "Pasillo Aulas 14-15 / Baños",
+      "x": 413.5,
+      "y": 201.5
+    },
+    {
+      "id": "central-0",
+      "label": "Pasillo Biblioteca",
+      "x": 404.5,
+      "y": 223.5
+    },
+    {
+      "id": "entrada",
+      "label": "Entrada",
+      "x": 394.5,
+      "y": 248.5
+    },
+    {
+      "id": "rampa-1",
+      "label": "Rampa inicio",
+      "x": 258.5,
+      "y": 278.5
+    },
+    {
+      "id": "rampa-0",
+      "label": "Rampa fin",
+      "x": 258.5,
+      "y": 299.5
+    },
+    {
+      "id": "gradas-1",
+      "label": "Gradas inicio",
+      "x": 394.5,
+      "y": 276.5
+    },
+    {
+      "id": "gradas-0",
+      "label": "Gradas fin",
+      "x": 394.5,
+      "y": 299.5
+    }
+  ],
+  "edges": [
+    {
+      "from": "gradas-0",
+      "to": "gradas-1",
+      "accesible": false
+    },
+    {
+      "from": "gradas-1",
+      "to": "entrada",
+      "accesible": true
+    },
+    {
+      "from": "rampa-0",
+      "to": "rampa-1",
+      "accesible": true
+    },
+    {
+      "from": "rampa-1",
+      "to": "gradas-1",
+      "accesible": true
+    },
+    {
+      "from": "entrada",
+      "to": "left-0",
+      "accesible": true
+    },
+    {
+      "from": "entrada",
+      "to": "central-0",
+      "accesible": true
+    },
+    {
+      "from": "central-0",
+      "to": "central-1",
+      "accesible": true
+    },
+    {
+      "from": "central-1",
+      "to": "right-0",
+      "accesible": true
+    },
+    {
+      "from": "right-0",
+      "to": "right-1",
+      "accesible": true
+    },
+    {
+      "from": "right-1",
+      "to": "right-2",
+      "accesible": true
+    },
+    {
+      "from": "right-2",
+      "to": "right-3",
+      "accesible": true
+    },
+    {
+      "from": "right-3",
+      "to": "right-4",
+      "accesible": true
+    },
+    {
+      "from": "right-4",
+      "to": "right-5",
+      "accesible": true
+    },
+    {
+      "from": "right-5",
+      "to": "right-6",
+      "accesible": true
+    },
+    {
+      "from": "right-5",
+      "to": "other-0",
+      "accesible": true
+    },
+    {
+      "from": "other-0",
+      "to": "other-1",
+      "accesible": true
+    },
+    {
+      "from": "left-0",
+      "to": "left-1",
+      "accesible": true
+    },
+    {
+      "from": "left-1",
+      "to": "to-buffet-sin-rampa",
+      "accesible": false
+    },
+    {
+      "from": "to-buffet-sin-rampa",
+      "to": "buffet",
+      "accesible": false
+    },
+    {
+      "from": "left-1",
+      "to": "left-2",
+      "accesible": true
+    },
+    {
+      "from": "left-2",
+      "to": "left-3",
+      "accesible": true
+    },
+    {
+      "from": "left-3",
+      "to": "buffet",
+      "accesible": true
+    },
+    {
+      "from": "left-3",
+      "to": "left-4",
+      "accesible": true
+    },
+    {
+      "from": "left-4",
+      "to": "left-5",
+      "accesible": true
+    },
+    {
+      "from": "left-5",
+      "to": "left-6",
+      "accesible": true
+    },
+    {
+      "from": "left-6",
+      "to": "left-7",
+      "accesible": true
+    }
+  ],
+  "puntos_interes": {
+    "aula_1": {
+      "id": "aula_1",
+      "nombre": "Aula 1 PL/1"
+    },
+    "aula_2": {
+      "id": "aula_2",
+      "nombre": "Aula 2 APL"
+    },
+    "aula_3": {
+      "id": "aula_3",
+      "nombre": "Aula 3 Cobol"
+    },
+    "aula_4": {
+      "id": "aula_4",
+      "nombre": "Aula 4 Lisp"
+    },
+    "aula_5": {
+      "id": "aula_5",
+      "nombre": "Aula 5 Fortran"
+    },
+    "aula_6": {
+      "id": "aula_6",
+      "nombre": "Aula 6 Smalltalk"
+    },
+    "aula_7": {
+      "id": "aula_7",
+      "nombre": "Aula 7 Pascal"
+    },
+    "aula_8": {
+      "id": "aula_8",
+      "nombre": "Aula 8 Php"
+    },
+    "aula_9": {
+      "id": "aula_9",
+      "nombre": "Aula 9 Python"
+    },
+    "aula_10a": {
+      "id": "aula_10a",
+      "nombre": "Aula 10a Objetive C"
+    },
+    "aula_10b": {
+      "id": "aula_10b",
+      "nombre": "Aula 10b C"
+    },
+    "aula_11": {
+      "id": "aula_11",
+      "nombre": "Aula 11 Java"
+    },
+    "aula_14": {
+      "id": "aula_14",
+      "nombre": "Aula 14 XML"
+    },
+    "aula_15": {
+      "id": "aula_15",
+      "nombre": "Aula 15 Ruby"
+    },
+    "buffet": {
+      "id": "buffet",
+      "nombre": "Buffet"
+    },
+    "cefi": {
+      "id": "cefi",
+      "nombre": "CEFI (Centro de Estudiantes)"
+    },
+    "intendencia": {
+      "id": "intendencia",
+      "nombre": "Intendencia"
+    },
+    "depto_alumnos": {
+      "id": "depto_alumnos",
+      "nombre": "Departamento de Alumnos"
+    }
+  },
+  "rutas": [
+    {
+      "origen": "entrada",
+      "destino": "buffet",
+      "roomId": "buffet",
+      "ruta_estandar": {
+        "distancia_metros": 48.3,
+        "camino_nodos": [
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2",
+          "left-3",
+          "buffet"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "Continuar derecho hasta llegar a oficina de alumnos, salir hacia el patio",
+          "Dirigirse recto hasta el fondo, el Buffet esta a mano derecha."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 48.3,
+        "camino_nodos": [
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2",
+          "left-3",
+          "buffet"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "Continuar derecho hasta Contable, salir al patio",
+          "Encontrara el Buffet al frente a solo unos pasos."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "cefi",
+      "roomId": "cefi",
+      "ruta_estandar": {
+        "distancia_metros": 124.3,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3",
+          "right-4",
+          "right-5",
+          "right-6"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo central.",
+          "Girar a la izquierda en el pasillo de aulas y avanzar hasta el final.",
+          "El CEFI se encuentra al fondo, a lado de Aula 9."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 124.3,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3",
+          "right-4",
+          "right-5",
+          "right-6"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo central.",
+          "Girar a la izquierda en el pasillo de aulas y avanzar hasta el final.",
+          "El CEFI se encuentra al fondo, a lado de Aula 9."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "intendencia",
+      "roomId": "intendencia",
+      "ruta_estandar": {
+        "distancia_metros": 42.9,
+        "camino_nodos": [
+          "entrada",
+          "left-0",
+          "left-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada hacia el pasillo de la izquierda.",
+          "Intendencia se encuentra casi al inicio del pasillo."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 42.9,
+        "camino_nodos": [
+          "entrada",
+          "left-0",
+          "left-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada hacia el pasillo de la izquierda.",
+          "Intendencia se encuentra casi al inicio del pasillo."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "depto_alumnos",
+      "roomId": "alumnos",
+      "ruta_estandar": {
+        "distancia_metros": 62.5,
+        "camino_nodos": [
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "El Departamento de Alumnos está a mitad del pasillo a mano izquierda."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 62.5,
+        "camino_nodos": [
+          "entrada",
+          "left-0",
+          "left-1",
+          "left-2"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo de la izquierda.",
+          "El Departamento de Alumnos está a mitad del pasillo a mano izquierda."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "banios_hombres",
+      "roomId": "banios_hombres",
+      "ruta_estandar": {
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de hombres estarán a mano izquierda."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de hombres estarán a mano izquierda."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "banios_mujeres",
+      "roomId": "banios_mujeres",
+      "ruta_estandar": {
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de mujeres estarán a mano derecha."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 61.8,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada en línea recta por el pasillo central.",
+          "Pasar la Biblioteca; los baños de mujeres estarán a mano derecha."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    },
+    {
+      "origen": "entrada",
+      "destino": "banio_sin_genero",
+      "roomId": "banio_sin_genero",
+      "ruta_estandar": {
+        "distancia_metros": 90.5,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo central hasta el fondo.",
+          "Girar a la izquierda en el pasillo de las aulas y avanzar.",
+          "Los baños accesibles o sin género se encuentran pasando la fotocopiadora a mano derecha."
+        ]
+      },
+      "ruta_accesible_silla_ruedas": {
+        "disponible": true,
+        "distancia_metros": 90.5,
+        "camino_nodos": [
+          "entrada",
+          "central-0",
+          "central-1",
+          "right-0",
+          "right-1",
+          "right-2",
+          "right-3"
+        ],
+        "pasos": [
+          "Avanzar desde la Entrada por el pasillo central hasta el fondo.",
+          "Girar a la izquierda en el pasillo de las aulas y avanzar.",
+          "Los baños accesibles o sin género se encuentran pasando la fotocopiadora a mano derecha."
+        ]
+      },
+      "accesible": null,
+      "alertas": []
+    }
+  ],
+  "services": [
+    {
+      "id": "service_toilet",
+      "name": "Ir al baño de hombres",
+      "roomId": "banios_hombres",
+      "description": "Para ir al baño de hombres, sanitario, WC o toilette, dirígete al sector de baños.",
+      "keywords": [
+        "baño",
+        "banio",
+        "bano",
+        "toilet",
+        "wc",
+        "sanitario",
+        "baño hombres",
+        "bano hombres",
+        "banio hombres"
+      ],
+      "examples": [
+        "baño hombres",
+        "quiero ir al baño de hombres",
+        "where is the toilet"
+      ]
+    },
+    {
+      "id": "service_toilet_women",
+      "name": "Ir al baño de mujeres",
+      "roomId": "banios_mujeres",
+      "description": "Para ir al baño de mujeres, sanitario, WC o toilette, dirígete al sector de baños.",
+      "keywords": [
+        "baño mujeres",
+        "bano mujeres",
+        "banio mujeres",
+        "toilet women",
+        "wc mujeres"
+      ],
+      "examples": [
+        "quiero ir al baño de mujeres",
+        "baño mujeres",
+        "where is the women's toilet"
+      ]
+    },
+    {
+      "id": "service_toilet_neutral",
+      "name": "Ir al baño sin género",
+      "roomId": "banio_sin_genero",
+      "description": "Para ir al baño accesible o sin género, dirígete al sector de baños.",
+      "keywords": [
+        "baño sin genero",
+        "banio sin genero",
+        "baño neutro",
+        "baño accesible",
+        "gender neutral bathroom"
+      ],
+      "examples": [
+        "quiero ir al baño accesible",
+        "hay un baño sin genero"
+      ]
+    },
+    {
+      "id": "service_copies",
+      "name": "Fotocopias e impresiones",
+      "roomId": "fotocopiadora",
+      "description": "Para hacer fotocopias, imprimir apuntes o sacar copias, ve a la Fotocopiadora.",
+      "keywords": [
+        "fotocopia",
+        "copias",
+        "impresion",
+        "imprimir"
+      ],
+      "examples": [
+        "necesito imprimir",
+        "donde saco fotocopias"
+      ]
+    },
+    {
+      "id": "service_students",
+      "name": "Trámites de alumnos",
+      "roomId": "alumnos",
+      "description": "Para trámites de estudiantes, constancias, credencial, carnet, libreta, legajo o consultas de alumnos, ve a la Oficina de Alumnos.",
+      "keywords": [
+        "alumnos",
+        "estudiantes",
+        "constancia",
+        "legajo",
+        "libreta",
+        "credencial",
+        "carnet",
+        "student card",
+        "departamento de alumnos",
+        "oficina de alumnos",
+        "oficina de enseñanza",
+        "ventanilla de alumnos",
+        "horario alumnos"
+      ],
+      "examples": [
+        "tengo que hacer un tramite de alumno",
+        "quiero hacer mi credencial",
+        "necesito el carnet de estudiante",
+        "donde esta alumnos",
+        "horario de alumnos",
+        "contacto alumnos"
+      ],
+      "horario": "8.30 a 12 hs. y 14 a 17 hs.",
+      "formaAcceso": [
+        "Atención presencial por ventanilla de alumnos para trámites que lo requieran."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Oficina de Enseñanza - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/acceso-alumnos/oficina-alumnos-articulo/"
+    },
+    {
+      "id": "service_entry",
+      "name": "Mesa de Entradas",
+      "roomId": "mesa_entradas",
+      "description": "Para presentar notas, entregar documentación o iniciar expedientes, ve a Mesa de Entradas.",
+      "keywords": [
+        "mesa de entradas",
+        "documentacion",
+        "documentación",
+        "expediente",
+        "expedientes",
+        "entregar papeles",
+        "notas",
+        "mesa entrada",
+        "recepcion"
+      ],
+      "examples": [
+        "tengo que entregar papeles",
+        "mesa de entradas donde queda",
+        "quiero presentar una nota",
+        "donde inicio un expediente"
+      ],
+      "horario": "8 a 19 hs.",
+      "formaAcceso": [
+        "Atención presencial para notas, documentación, expedientes y trámites generales."
+      ],
+      "contacto": {
+        "area": "Mesa de Entradas",
+        "email": "mesa_entrada@info.unlp.edu.ar",
+        "telefono": "(0221) 427-7270 | 427-7271 Int. 3080"
+      },
+      "fuenteTitulo": "Contacto - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/contacto/"
+    },
+    {
+      "id": "service_finance",
+      "name": "Consultas económicas",
+      "roomId": "economico_financiera",
+      "description": "Para pagos, consultas económicas o temas financieros, ve a Dirección Económico Financiera.",
+      "keywords": [
+        "pago",
+        "finanzas",
+        "tesoreria",
+        "economico",
+        "financiera"
+      ],
+      "examples": [
+        "tengo que pagar",
+        "donde queda financiera"
+      ]
+    },
+    {
+      "id": "service_library",
+      "name": "Biblioteca",
+      "roomId": "biblioteca",
+      "description": "Para consulta de material, lectura, préstamo de libros o servicios de biblioteca, ve a Biblioteca.",
+      "keywords": [
+        "biblioteca",
+        "libros",
+        "material",
+        "lectura",
+        "prestamo",
+        "préstamo",
+        "catalogo",
+        "catálogo",
+        "consulta en sala",
+        "referencia especializada"
+      ],
+      "examples": [
+        "quiero ir a biblioteca",
+        "necesito buscar un libro",
+        "necesito pedir un préstamo",
+        "horario biblioteca",
+        "contacto biblioteca"
+      ],
+      "horario": "Lunes a viernes de 8:00 a 19:00 horas.",
+      "formaAcceso": [
+        "Consulta en sala con DNI.",
+        "Préstamos para usuarios asociados.",
+        "Referencia especializada y búsquedas bibliográficas presenciales o por correo."
+      ],
+      "requisitos": [
+        "Para consulta en sala se debe presentar DNI.",
+        "Para préstamos se requiere ser socio/a de la biblioteca."
+      ],
+      "contacto": {
+        "area": "Biblioteca",
+        "email": "biblioteca@info.unlp.edu.ar",
+        "telefono": "+54 221 4230124 / Int. 3090"
+      },
+      "fuenteTitulo": "Biblioteca: contacto - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/biblioteca-contacto/"
+    },
+    {
+      "id": "service_food",
+      "name": "Buffet",
+      "roomId": "buffet",
+      "description": "Para comprar comida, café o descansar, ve al Buffet.",
+      "keywords": [
+        "buffet",
+        "comida",
+        "cafe",
+        "cafeteria"
+      ],
+      "examples": [
+        "quiero comprar comida",
+        "donde hay cafe"
+      ]
+    },
+    {
+      "id": "service_cefi",
+      "name": "CEFI - Centro de Estudiantes",
+      "roomId": "cefi",
+      "description": "Para actividades del centro de estudiantes, apuntes o contacto con agrupaciones estudiantiles, ve al CEFI.",
+      "keywords": [
+        "cefi",
+        "centro de estudiantes",
+        "apuntes",
+        "agrupaciones estudiantiles",
+        "franja morada",
+        "la fuente"
+      ],
+      "examples": [
+        "donde esta el cefi",
+        "quiero ir al centro de estudiantes",
+        "contacto centro de estudiantes"
+      ],
+      "formaAcceso": [
+        "El sitio de la Facultad publica contactos de agrupaciones estudiantiles con representación en el HCD."
+      ],
+      "contacto": {
+        "area": "Centro de Estudiantes / agrupaciones estudiantiles"
+      },
+      "fuenteTitulo": "Contacto Centro de Estudiantes y agrupaciones - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/contacto-centro-de-estudiantes-y-agrupaciones-con-representacion-en-el-hcd/"
+    },
+    {
+      "id": "service_maintenance",
+      "name": "Mantenimiento",
+      "roomId": "mantenimiento",
+      "description": "Para reportar un desperfecto o hablar con Mantenimiento, dirígete a esa oficina.",
+      "keywords": [
+        "mantenimiento",
+        "desperfecto",
+        "arreglo"
+      ],
+      "examples": [
+        "donde queda mantenimiento"
+      ]
+    },
+    {
+      "id": "service_aula_1",
+      "name": "Aula 1 (PL/1)",
+      "roomId": "aula_1",
+      "description": "Para ir al Aula 1 (PL/1), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 1",
+        "aula uno",
+        "classroom 1",
+        "pl/1",
+        "pl1",
+        "clase 1"
+      ],
+      "examples": [
+        "quiero ir al aula 1",
+        "donde esta el aula uno",
+        "tengo clase en pl/1"
+      ]
+    },
+    {
+      "id": "service_aula_2",
+      "name": "Aula 2 (APL)",
+      "roomId": "aula_2",
+      "description": "Para ir al Aula 2 (APL), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 2",
+        "aula dos",
+        "classroom 2",
+        "apl",
+        "clase 2"
+      ],
+      "examples": [
+        "quiero ir al aula 2",
+        "donde esta apl",
+        "tengo clase en aula 2"
+      ]
+    },
+    {
+      "id": "service_aula_3",
+      "name": "Aula 3 (Cobol)",
+      "roomId": "aula_3",
+      "description": "Para ir al Aula 3 (Cobol), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 3",
+        "aula tres",
+        "classroom 3",
+        "cobol",
+        "clase 3"
+      ],
+      "examples": [
+        "quiero ir al aula 3",
+        "donde esta cobol",
+        "tengo clase en aula 3"
+      ]
+    },
+    {
+      "id": "service_aula_4",
+      "name": "Aula 4 (Lisp)",
+      "roomId": "aula_4",
+      "description": "Para ir al Aula 4 (Lisp), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 4",
+        "aula cuatro",
+        "classroom 4",
+        "lisp",
+        "clase 4"
+      ],
+      "examples": [
+        "quiero ir al aula 4",
+        "donde esta lisp",
+        "tengo clase en aula 4"
+      ]
+    },
+    {
+      "id": "service_aula_5",
+      "name": "Aula 5 (Fortran)",
+      "roomId": "aula_5",
+      "description": "Para ir al Aula 5 (Fortran), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 5",
+        "aula cinco",
+        "fortran",
+        "clase 5"
+      ],
+      "examples": [
+        "quiero ir al aula 5",
+        "donde esta fortran",
+        "tengo clase en aula 5"
+      ]
+    },
+    {
+      "id": "service_aula_6",
+      "name": "Aula 6 (Smalltalk)",
+      "roomId": "aula_6",
+      "description": "Para ir al Aula 6 (Smalltalk), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 6",
+        "aula seis",
+        "smalltalk",
+        "clase 6"
+      ],
+      "examples": [
+        "quiero ir al aula 6",
+        "donde esta smalltalk",
+        "tengo clase en aula 6"
+      ]
+    },
+    {
+      "id": "service_aula_7",
+      "name": "Aula 7 (Pascal)",
+      "roomId": "aula_7",
+      "description": "Para ir al Aula 7 (Pascal), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 7",
+        "aula siete",
+        "pascal",
+        "clase 7"
+      ],
+      "examples": [
+        "quiero ir al aula 7",
+        "donde esta pascal",
+        "tengo clase en aula 7"
+      ]
+    },
+    {
+      "id": "service_aula_8",
+      "name": "Aula 8 (PHP)",
+      "roomId": "aula_8",
+      "description": "Para ir al Aula 8 (PHP), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 8",
+        "aula ocho",
+        "php",
+        "clase 8"
+      ],
+      "examples": [
+        "quiero ir al aula 8",
+        "donde esta php",
+        "tengo clase en aula 8"
+      ]
+    },
+    {
+      "id": "service_aula_9",
+      "name": "Aula 9 (Python)",
+      "roomId": "aula_9",
+      "description": "Para ir al Aula 9 (Python), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 9",
+        "aula nueve",
+        "python",
+        "clase 9"
+      ],
+      "examples": [
+        "quiero ir al aula 9",
+        "donde esta python",
+        "tengo clase en aula 9"
+      ]
+    },
+    {
+      "id": "service_aula_10a",
+      "name": "Aula 10A (Objective C)",
+      "roomId": "aula_10a",
+      "description": "Para ir al Aula 10A (Objective C), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 10",
+        "aula 10a",
+        "aula diez a",
+        "objective c",
+        "clase 10a"
+      ],
+      "examples": [
+        "donde esta el aula 10a",
+        "quiero ir a objective c",
+        "tengo clase en aula 10"
+      ]
+    },
+    {
+      "id": "service_aula_10b",
+      "name": "Aula 10B (C)",
+      "roomId": "aula_10b",
+      "description": "Para ir al Aula 10B (C), dirígete al pasillo de aulas a la derecha.",
+      "keywords": [
+        "aula 11",
+        "aula 10b",
+        "aula diez b",
+        "lenguaje c",
+        "c",
+        "clase 10b"
+      ],
+      "examples": [
+        "donde esta el aula 10b",
+        "quiero ir a lenguaje c"
+      ]
+    },
+    {
+      "id": "service_aula_11",
+      "name": "Aula 11 (Java)",
+      "roomId": "aula_11",
+      "description": "Para ir al Aula 11 (Java), dirígete al pasillo transversal.",
+      "keywords": [
+        "aula 12",
+        "aula 11",
+        "aula once",
+        "java",
+        "clase 11"
+      ],
+      "examples": [
+        "quiero ir al aula 11",
+        "donde esta java"
+      ]
+    },
+    {
+      "id": "service_aula_14",
+      "name": "Aula 14 (XML)",
+      "roomId": "aula_14",
+      "description": "Para ir al Aula 14 (XML), dirígete al pasillo central pasando la biblioteca.",
+      "keywords": [
+        "aula 13",
+        "aula 14",
+        "aula catorce",
+        "xml",
+        "clase 14"
+      ],
+      "examples": [
+        "quiero ir al aula 14",
+        "donde esta xml"
+      ]
+    },
+    {
+      "id": "service_aula_15",
+      "name": "Aula 15 (Ruby)",
+      "roomId": "aula_15",
+      "description": "Para ir al Aula 15 (Ruby), dirígete al pasillo central antes de la biblioteca.",
+      "keywords": [
+        "aula 14",
+        "aula 15",
+        "aula quince",
+        "ruby",
+        "clase 15"
+      ],
+      "examples": [
+        "quiero ir al aula 15",
+        "donde esta ruby"
+      ]
+    },
+    {
+      "id": "service_siu_guarani",
+      "name": "SIU Guaraní Alumnos",
+      "roomId": "alumnos",
+      "description": "Para inscribirte a materias o finales, consultar historia académica y realizar trámites online, usa SIU Guaraní. Si no tienes usuario o contraseña, consulta en Oficina de Alumnos.",
+      "keywords": [
+        "siu",
+        "siu guarani",
+        "guaraní",
+        "guarani",
+        "autogestion",
+        "autogestión",
+        "inscripcion a materias",
+        "inscripción a materias",
+        "inscripcion a finales",
+        "historia academica",
+        "historia académica",
+        "usuario siu",
+        "contraseña siu"
+      ],
+      "examples": [
+        "necesito entrar al SIU",
+        "no tengo usuario de guarani",
+        "quiero inscribirme a materias",
+        "quiero consultar mi historia academica"
+      ],
+      "formaAcceso": [
+        "LI, LS, APU y ATIC usan SIU Guaraní Informática.",
+        "Ingeniería en Computación usa SIU Guaraní Facultad Virtual de Informática e Ingeniería."
+      ],
+      "requisitos": [
+        "Se necesita usuario y contraseña de SIU Guaraní.",
+        "Si no tienes acceso, debes dirigirte a Oficina de Alumnos."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "SIU Guaraní Alumnos - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/todos/siu-guarani-alumnos/"
+    },
+    {
+      "id": "service_regular_certificate",
+      "name": "Certificado de Alumno Regular",
+      "roomId": "alumnos",
+      "description": "Los alumnos pueden solicitar certificado de alumno regular.",
+      "keywords": [
+        "certificado alumno regular",
+        "alumno regular",
+        "regularidad",
+        "certificado de regularidad",
+        "constancia alumno regular",
+        "constancia de alumno regular"
+      ],
+      "examples": [
+        "necesito certificado de alumno regular",
+        "donde pido una constancia de alumno regular",
+        "quiero retirar certificado de regularidad"
+      ],
+      "formaAcceso": [
+        "Se puede pedir por SIU Guaraní o personalmente.",
+        "El certificado se retira en el momento por ventanilla de alumnos."
+      ],
+      "requisitos": [
+        "Es indispensable concurrir con DNI.",
+        "Ingresantes no pueden solicitarlo hasta completar todos los módulos del curso introductorio; se les otorga certificado de inscripción a carrera."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Certificado de Alumno Regular - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/certificado-de-alumno-regular/"
+    },
+    {
+      "id": "service_analytical_certificate",
+      "name": "Certificado Analítico",
+      "roomId": "alumnos",
+      "description": "Los alumnos pueden solicitar un certificado analítico con materias aprobadas, calificaciones y fechas de aprobación.",
+      "keywords": [
+        "certificado analitico",
+        "certificado analítico",
+        "analitico",
+        "analítico",
+        "materias aprobadas",
+        "calificaciones",
+        "historial academico",
+        "historial académico"
+      ],
+      "examples": [
+        "necesito un certificado analitico",
+        "donde pido mi analitico",
+        "quiero retirar certificado analítico"
+      ],
+      "formaAcceso": [
+        "Se solicita personalmente por ventanilla de alumnos."
+      ],
+      "requisitos": [
+        "Lo puede solicitar el interesado o un tercero.",
+        "Para retirarlo es indispensable que el interesado concurra con DNI."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Certificado Analítico - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/certificado-analitico/"
+    },
+    {
+      "id": "service_special_certifications",
+      "name": "Certificaciones Especiales y Legalizaciones",
+      "roomId": "alumnos",
+      "description": "Permite solicitar certificaciones especiales para equivalencias, homologación de título en el exterior y otros trámites.",
+      "keywords": [
+        "certificaciones especiales",
+        "legalizaciones",
+        "legalizacion",
+        "legalización",
+        "programas de materias",
+        "plan de estudios",
+        "carga horaria",
+        "escala de calificaciones",
+        "no sancion",
+        "no sanción",
+        "homologacion",
+        "homologación"
+      ],
+      "examples": [
+        "necesito legalizar programas",
+        "quiero pedir plan de estudios",
+        "necesito certificaciones especiales",
+        "como pido carga horaria"
+      ],
+      "formaAcceso": [
+        "Se solicitan personalmente por ventanilla de alumnos."
+      ],
+      "requisitos": [
+        "Completar una solicitud con datos del solicitante, certificaciones a incluir y ante quién serán presentadas.",
+        "La entrega demora de una semana a quince días, según la documentación solicitada.",
+        "Para retirar las certificaciones es indispensable concurrir con DNI."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Certificaciones Especiales - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/certificaciones-especiales/"
+    },
+    {
+      "id": "service_altas_pases",
+      "name": "Altas y Pases de Carrera",
+      "roomId": "alumnos",
+      "description": "La Facultad establece dos fechas al año, según calendario académico, para solicitar altas y pases de carrera.",
+      "keywords": [
+        "altas y pases",
+        "alta de carrera",
+        "pase de carrera",
+        "cambio de carrera",
+        "pase de plan",
+        "formulario de alta",
+        "planilla alta carrera"
+      ],
+      "examples": [
+        "quiero hacer pase de carrera",
+        "necesito alta de carrera",
+        "donde llevo la planilla de pase"
+      ],
+      "formaAcceso": [
+        "Se realiza personalmente por ventanilla de alumnos en el período habilitado."
+      ],
+      "requisitos": [
+        "Descargar la planilla correspondiente, completarla y acercarse a Oficina de Alumnos con DNI y la planilla impresa completa."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Altas y Pases de Carrera - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/altas-y-pases-de-carrera/"
+    },
+    {
+      "id": "service_equivalencias",
+      "name": "Solicitud de Equivalencias",
+      "roomId": "mesa_entradas",
+      "description": "Los alumnos pueden solicitar equivalencias con materias aprobadas en otra facultad o universidad.",
+      "keywords": [
+        "equivalencias",
+        "solicitud de equivalencias",
+        "materias aprobadas",
+        "equivalencia",
+        "programas aprobados",
+        "certificado analitico equivalencias"
+      ],
+      "examples": [
+        "quiero pedir equivalencias",
+        "donde presento equivalencias",
+        "tengo materias aprobadas de otra universidad"
+      ],
+      "formaAcceso": [
+        "Debe presentarse una nota dirigida a la Decana por Mesa de Entradas junto a la documentación correspondiente."
+      ],
+      "requisitos": [
+        "Sólo se puede solicitar equivalencias con materias aprobadas por examen final.",
+        "Presentar plan de estudios, certificado analítico y programas de las materias aprobadas, firmados por la institución correspondiente."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Solicitud de Equivalencias - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/solicitud-de-equivalencias/"
+    },
+    {
+      "id": "service_readmission",
+      "name": "Solicitud de Readmisión",
+      "roomId": "mesa_entradas",
+      "description": "Permite solicitar readmisión cuando se pierde la condición de alumno regular según la normativa de la Facultad.",
+      "keywords": [
+        "readmision",
+        "readmisión",
+        "reincorporacion",
+        "reincorporación",
+        "perdi regularidad",
+        "perdí regularidad",
+        "cancelado",
+        "resolucion 365"
+      ],
+      "examples": [
+        "necesito readmision",
+        "perdi la regularidad que hago",
+        "quiero pedir reincorporacion"
+      ],
+      "formaAcceso": [
+        "Se realiza personalmente por Mesa de Entradas."
+      ],
+      "requisitos": [
+        "Presentar una nota dirigida a la Decana por Mesa de Entradas."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Solicitud de Readmisión - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/solicitud-de-readmision/"
+    },
+    {
+      "id": "service_degree_processing",
+      "name": "Tramitación de título",
+      "roomId": "alumnos",
+      "description": "Al finalizar la carrera, los alumnos interesados deben iniciar el trámite de título en la Facultad.",
+      "keywords": [
+        "titulo",
+        "título",
+        "tramitacion de titulo",
+        "tramitación de título",
+        "solicitar titulo",
+        "solicitar título",
+        "graduado",
+        "libre deuda",
+        "encuesta graduados"
+      ],
+      "examples": [
+        "quiero tramitar mi titulo",
+        "como solicito el título",
+        "donde inicio la tramitacion de titulo"
+      ],
+      "formaAcceso": [
+        "Primero se solicita por SIU Guaraní en Trámites - Solicitar Títulos.",
+        "Después hay que dirigirse personalmente a Oficina de Alumnos."
+      ],
+      "requisitos": [
+        "Certificado de libre deuda de la Biblioteca Central.",
+        "Certificado de libre deuda de la Biblioteca de la Facultad.",
+        "Certificado sobre uso de bicicletas.",
+        "DNI en mano.",
+        "Certificado de encuesta online de graduados.",
+        "En algunos apellidos con artículos, preposiciones o apóstrofes se solicita copia de partida de nacimiento."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Tramitación de título - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/tramitacion-de-titulo/"
+    },
+    {
+      "id": "service_library_catalog",
+      "name": "Catálogo de biblioteca",
+      "roomId": "biblioteca",
+      "description": "La Facultad ofrece un catálogo online para consultar documentos disponibles en la Biblioteca.",
+      "keywords": [
+        "catalogo biblioteca",
+        "catálogo biblioteca",
+        "catalogo de biblioteca",
+        "catálogo de biblioteca",
+        "buscar libro",
+        "documentos disponibles",
+        "koha"
+      ],
+      "examples": [
+        "quiero consultar el catalogo de biblioteca",
+        "donde busco libros disponibles",
+        "catalogo online biblioteca"
+      ],
+      "formaAcceso": [
+        "El catálogo se consulta online. Si necesitas ayuda, puedes acercarte a Biblioteca."
+      ],
+      "contacto": {
+        "area": "Biblioteca",
+        "email": "biblioteca@info.unlp.edu.ar",
+        "telefono": "+54 221 4230124 / Int. 3090"
+      },
+      "fuenteTitulo": "Catálogo de biblioteca - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/todos/catalogo-de-biblioteca/"
+    },
+    {
+      "id": "service_virtual_board",
+      "name": "Cartelera Virtual",
+      "roomId": null,
+      "description": "La Facultad pone a disposición de alumnos y docentes un sistema de cartelera virtual.",
+      "keywords": [
+        "cartelera virtual",
+        "cartelera",
+        "gestion docente",
+        "gestión docente",
+        "avisos",
+        "anuncios"
+      ],
+      "examples": [
+        "donde esta la cartelera virtual",
+        "quiero ver avisos de la facultad",
+        "necesito la cartelera"
+      ],
+      "formaAcceso": [
+        "Se accede mediante el Sistema de Gestión Docente - Cartelera Virtual."
+      ],
+      "requisitos": [
+        "No se informan requisitos específicos en el portal."
+      ],
+      "contacto": {
+        "area": "Dirección de Modernización de la Gestión",
+        "email": "sistemas@info.unlp.edu.ar"
+      },
+      "fuenteTitulo": "Cartelera Virtual - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/todos/cartelera-virtual/"
+    }
+  ]
+}
