@@ -140,6 +140,11 @@ const checkboxAccesibilidad = document.querySelector("#check-accesibilidad");
 const panelTitle = document.querySelector("#panelTitle");
 const debugToggle = document.querySelector("#debugToggle");
 const clearRoute = document.querySelector("#clearRoute");
+const detalleLugar = document.querySelector("#detalleLugar");
+const detalleLugarTitulo = document.querySelector("#detalleLugarTitulo");
+const detalleLugarCodigo = document.querySelector("#detalleLugarCodigo");
+const detalleLugarContenido = document.querySelector("#detalleLugarContenido");
+const detalleLugarCerrar = document.querySelector("#detalleLugarCerrar");
 
 const mapTooltip = document.createElement("div");
 mapTooltip.className = "map-tooltip";
@@ -201,11 +206,162 @@ function svgElement(name, attrs = {}) {
 }
 
 function addMessage(role, text) {
+  const claseUltimoMensaje = role === "user" ? "mensaje-ultimo-usuario" : "mensaje-ultimo-asistente";
+  messages.querySelectorAll(`.${claseUltimoMensaje}`).forEach((mensaje) => {
+    mensaje.classList.remove(claseUltimoMensaje);
+  });
+
   const bubble = document.createElement("div");
-  bubble.className = `message ${role}`;
+  bubble.className = `message ${role} ${claseUltimoMensaje}`;
   bubble.textContent = text;
   messages.appendChild(bubble);
   messages.scrollTop = messages.scrollHeight;
+}
+
+function serviciosDelLugar(roomId) {
+  if (!state.map?.services) {
+    return [];
+  }
+
+  return state.map.services.filter((servicio) => servicio.roomId === roomId);
+}
+
+function cerrarDetalleLugar() {
+  if (detalleLugar) {
+    detalleLugar.classList.add("oculto");
+  }
+}
+
+function clickDentroDelDetalle(event) {
+  if (!detalleLugar || detalleLugar.classList.contains("oculto")) {
+    return false;
+  }
+
+  return detalleLugar.contains(event.target);
+}
+
+function clickEnOtroLugarDelMapa(event) {
+  return Boolean(event.target.closest(".room, .place-chip"));
+}
+
+function cerrarDetalleConClickExterno(event) {
+  if (clickDentroDelDetalle(event) || clickEnOtroLugarDelMapa(event)) {
+    return;
+  }
+
+  cerrarDetalleLugar();
+}
+
+function agregarSeccionDetalle(contenedor, titulo, valor) {
+  if (!valor) {
+    return;
+  }
+
+  const seccion = document.createElement("div");
+  seccion.className = "seccion-detalle";
+
+  const subtitulo = document.createElement("h4");
+  subtitulo.textContent = titulo;
+  seccion.appendChild(subtitulo);
+
+  const valores = Array.isArray(valor) ? valor : [valor];
+  valores.filter(Boolean).forEach((texto) => {
+    const parrafo = document.createElement("p");
+    parrafo.textContent = texto;
+    seccion.appendChild(parrafo);
+  });
+
+  contenedor.appendChild(seccion);
+}
+
+function agregarContactoDetalle(contenedor, contacto) {
+  if (!contacto) {
+    return;
+  }
+
+  if (typeof contacto === "string") {
+    agregarSeccionDetalle(contenedor, "Contacto", contacto);
+    return;
+  }
+
+  const datosContacto = [
+    contacto.area,
+    contacto.email ? `Mail: ${contacto.email}` : "",
+    contacto.telefono ? `Teléfono: ${contacto.telefono}` : ""
+  ].filter(Boolean);
+
+  agregarSeccionDetalle(contenedor, "Contacto", datosContacto);
+}
+
+function agregarFuenteDetalle(contenedor, servicio) {
+  if (!servicio.fuenteTitulo && !servicio.fuenteUrl) {
+    return;
+  }
+
+  const seccion = document.createElement("div");
+  seccion.className = "seccion-detalle fuente-detalle";
+
+  const subtitulo = document.createElement("h4");
+  subtitulo.textContent = "Fuente";
+  seccion.appendChild(subtitulo);
+
+  if (servicio.fuenteUrl) {
+    const enlace = document.createElement("a");
+    enlace.href = servicio.fuenteUrl;
+    enlace.target = "_blank";
+    enlace.rel = "noopener noreferrer";
+    enlace.textContent = servicio.fuenteTitulo || servicio.fuenteUrl;
+    seccion.appendChild(enlace);
+  } else {
+    const parrafo = document.createElement("p");
+    parrafo.textContent = servicio.fuenteTitulo;
+    seccion.appendChild(parrafo);
+  }
+
+  contenedor.appendChild(seccion);
+}
+
+function mostrarDetalleLugar(room) {
+  if (!detalleLugar || !detalleLugarTitulo || !detalleLugarCodigo || !detalleLugarContenido) {
+    return;
+  }
+
+  const servicios = serviciosDelLugar(room.id);
+  detalleLugarTitulo.textContent = room.name;
+  detalleLugarCodigo.textContent = room.code || "Planta baja";
+  detalleLugarContenido.innerHTML = "";
+
+  if (servicios.length === 0) {
+    const parrafo = document.createElement("p");
+    parrafo.textContent = "Este lugar todavía no tiene servicios cargados en el detalle.";
+    detalleLugarContenido.appendChild(parrafo);
+  }
+
+  servicios.forEach((servicio) => {
+    const bloqueServicio = document.createElement("article");
+    bloqueServicio.className = "detalle-servicio";
+
+    const titulo = document.createElement("h4");
+    titulo.textContent = servicio.name;
+    bloqueServicio.appendChild(titulo);
+
+    if (servicio.description) {
+      const descripcion = document.createElement("p");
+      descripcion.textContent = servicio.description;
+      bloqueServicio.appendChild(descripcion);
+    }
+
+    agregarSeccionDetalle(bloqueServicio, "Horario", servicio.horario);
+    agregarSeccionDetalle(bloqueServicio, "Forma de acceso", servicio.formaAcceso);
+    agregarSeccionDetalle(bloqueServicio, "Requisitos", servicio.requisitos);
+    agregarContactoDetalle(bloqueServicio, servicio.contacto);
+    agregarFuenteDetalle(bloqueServicio, servicio);
+
+    detalleLugarContenido.appendChild(bloqueServicio);
+  });
+
+  detalleLugar.classList.remove("oculto");
+  detalleLugar.focus();
 }
 
 function parsePoints(points) {
@@ -266,7 +422,8 @@ function createRoomShape(room) {
 }
 
 function requestRouteToRoom(room) {
-  sendMessage(room.name).catch((error) => {
+  mostrarDetalleLugar(room);
+  sendMessage(room.name, room.id).catch((error) => {
     addMessage("ai", `Error en la consulta: ${error.message}`);
   });
 }
@@ -377,12 +534,20 @@ function fillPlacesList(map) {
     .forEach((room) => {
       const li = document.createElement("li");
       li.className = "place-chip";
-      
+      li.setAttribute("role", "button");
+      li.setAttribute("tabindex", "0");
+
       // Mostramos Código - Nombre
       li.textContent = `${room.code} - ${room.name}`;
 
       li.addEventListener("click", () => {
         requestRouteToRoom(room);
+      });
+      li.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          requestRouteToRoom(room);
+        }
       });
 
       list.appendChild(li);
@@ -444,7 +609,7 @@ async function postJson(url, payload) {
   return response.json();
 }
 
-async function sendMessage(message) {
+async function sendMessage(message, targetRoomId = null) {
   addMessage("user", message);
   messageInput.value = "";
 
@@ -452,6 +617,7 @@ async function sendMessage(message) {
 
   const payload = {
     message,
+    targetRoomId,
     currentLocationId: state.pendingTargetRoomId ? null : "entrada",
     necesitaRampa: necesitaRampa,
     pendingTargetRoomId: state.pendingTargetRoomId
@@ -509,7 +675,20 @@ debugToggle.addEventListener("change", () => {
 clearRoute.addEventListener("click", () => {
   state.pendingTargetRoomId = null;
   clearRouteDisplay();
+  cerrarDetalleLugar();
 });
+
+if (detalleLugarCerrar) {
+  detalleLugarCerrar.addEventListener("click", cerrarDetalleLugar);
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    cerrarDetalleLugar();
+  }
+});
+
+document.addEventListener("click", cerrarDetalleConClickExterno);
 
 for (const button of document.querySelectorAll("[data-example]")) {
   button.addEventListener("click", () => {

@@ -1403,7 +1403,7 @@
       "id": "service_students",
       "name": "Trámites de alumnos",
       "roomId": "alumnos",
-      "description": "Para trámites de estudiantes, constancias, credencial, carnet, libreta, legajo o consultas de alumnos, ve a Alumnos.",
+      "description": "Para trámites de estudiantes, constancias, credencial, carnet, libreta, legajo o consultas de alumnos, ve a la Oficina de Alumnos.",
       "keywords": [
         "alumnos",
         "estudiantes",
@@ -1413,14 +1413,31 @@
         "credencial",
         "carnet",
         "student card",
-        "departamento de alumnos"
+        "departamento de alumnos",
+        "oficina de alumnos",
+        "oficina de enseñanza",
+        "ventanilla de alumnos",
+        "horario alumnos"
       ],
       "examples": [
         "tengo que hacer un tramite de alumno",
         "quiero hacer mi credencial",
         "necesito el carnet de estudiante",
-        "donde esta alumnos"
-      ]
+        "donde esta alumnos",
+        "horario de alumnos",
+        "contacto alumnos"
+      ],
+      "horario": "8.30 a 12 hs. y 14 a 17 hs.",
+      "formaAcceso": [
+        "Atención presencial por ventanilla de alumnos para trámites que lo requieran."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Oficina de Enseñanza - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/acceso-alumnos/oficina-alumnos-articulo/"
     },
     {
       "id": "service_entry",
@@ -1430,13 +1447,31 @@
       "keywords": [
         "mesa de entradas",
         "documentacion",
+        "documentación",
         "expediente",
-        "entregar papeles"
+        "expedientes",
+        "entregar papeles",
+        "notas",
+        "mesa entrada",
+        "recepcion"
       ],
       "examples": [
         "tengo que entregar papeles",
-        "mesa de entradas donde queda"
-      ]
+        "mesa de entradas donde queda",
+        "quiero presentar una nota",
+        "donde inicio un expediente"
+      ],
+      "horario": "8 a 19 hs.",
+      "formaAcceso": [
+        "Atención presencial para notas, documentación, expedientes y trámites generales."
+      ],
+      "contacto": {
+        "area": "Mesa de Entradas",
+        "email": "mesa_entrada@info.unlp.edu.ar",
+        "telefono": "(0221) 427-7270 | 427-7271 Int. 3080"
+      },
+      "fuenteTitulo": "Contacto - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/contacto/"
     },
     {
       "id": "service_finance",
@@ -1459,17 +1494,43 @@
       "id": "service_library",
       "name": "Biblioteca",
       "roomId": "biblioteca",
-      "description": "Para libros, lectura, consulta de material o biblioteca, ve a Biblioteca.",
+      "description": "Para consulta de material, lectura, préstamo de libros o servicios de biblioteca, ve a Biblioteca.",
       "keywords": [
         "biblioteca",
         "libros",
         "material",
-        "lectura"
+        "lectura",
+        "prestamo",
+        "préstamo",
+        "catalogo",
+        "catálogo",
+        "consulta en sala",
+        "referencia especializada"
       ],
       "examples": [
         "quiero ir a biblioteca",
-        "necesito buscar un libro"
-      ]
+        "necesito buscar un libro",
+        "necesito pedir un préstamo",
+        "horario biblioteca",
+        "contacto biblioteca"
+      ],
+      "horario": "Lunes a viernes de 8:00 a 19:00 horas.",
+      "formaAcceso": [
+        "Consulta en sala con DNI.",
+        "Préstamos para usuarios asociados.",
+        "Referencia especializada y búsquedas bibliográficas presenciales o por correo."
+      ],
+      "requisitos": [
+        "Para consulta en sala se debe presentar DNI.",
+        "Para préstamos se requiere ser socio/a de la biblioteca."
+      ],
+      "contacto": {
+        "area": "Biblioteca",
+        "email": "biblioteca@info.unlp.edu.ar",
+        "telefono": "+54 221 4230124 / Int. 3090"
+      },
+      "fuenteTitulo": "Biblioteca: contacto - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/biblioteca-contacto/"
     },
     {
       "id": "service_food",
@@ -1491,16 +1552,28 @@
       "id": "service_cefi",
       "name": "CEFI - Centro de Estudiantes",
       "roomId": "cefi",
-      "description": "Para actividades del centro de estudiantes, apuntes o consultas gremiales, ve al CEFI.",
+      "description": "Para actividades del centro de estudiantes, apuntes o contacto con agrupaciones estudiantiles, ve al CEFI.",
       "keywords": [
         "cefi",
         "centro de estudiantes",
-        "apuntes"
+        "apuntes",
+        "agrupaciones estudiantiles",
+        "franja morada",
+        "la fuente"
       ],
       "examples": [
         "donde esta el cefi",
-        "quiero ir al centro de estudiantes"
-      ]
+        "quiero ir al centro de estudiantes",
+        "contacto centro de estudiantes"
+      ],
+      "formaAcceso": [
+        "El sitio de la Facultad publica contactos de agrupaciones estudiantiles con representación en el HCD."
+      ],
+      "contacto": {
+        "area": "Centro de Estudiantes / agrupaciones estudiantiles"
+      },
+      "fuenteTitulo": "Contacto Centro de Estudiantes y agrupaciones - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/contacto-centro-de-estudiantes-y-agrupaciones-con-representacion-en-el-hcd/"
     },
     {
       "id": "service_maintenance",
@@ -1521,112 +1594,599 @@
       "name": "Aula 1 (PL/1)",
       "roomId": "aula_1",
       "description": "Para ir al Aula 1 (PL/1), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 1", "aula uno", "classroom 1", "pl/1", "pl1", "clase 1"],
-      "examples": ["quiero ir al aula 1", "donde esta el aula uno", "tengo clase en pl/1"]
+      "keywords": [
+        "aula 1",
+        "aula uno",
+        "classroom 1",
+        "pl/1",
+        "pl1",
+        "clase 1"
+      ],
+      "examples": [
+        "quiero ir al aula 1",
+        "donde esta el aula uno",
+        "tengo clase en pl/1"
+      ]
     },
     {
       "id": "service_aula_2",
       "name": "Aula 2 (APL)",
       "roomId": "aula_2",
       "description": "Para ir al Aula 2 (APL), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 2", "aula dos", "classroom 2", "apl", "clase 2"],
-      "examples": ["quiero ir al aula 2", "donde esta apl", "tengo clase en aula 2"]
+      "keywords": [
+        "aula 2",
+        "aula dos",
+        "classroom 2",
+        "apl",
+        "clase 2"
+      ],
+      "examples": [
+        "quiero ir al aula 2",
+        "donde esta apl",
+        "tengo clase en aula 2"
+      ]
     },
     {
       "id": "service_aula_3",
       "name": "Aula 3 (Cobol)",
       "roomId": "aula_3",
       "description": "Para ir al Aula 3 (Cobol), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 3", "aula tres", "classroom 3", "cobol", "clase 3"],
-      "examples": ["quiero ir al aula 3", "donde esta cobol", "tengo clase en aula 3"]
+      "keywords": [
+        "aula 3",
+        "aula tres",
+        "classroom 3",
+        "cobol",
+        "clase 3"
+      ],
+      "examples": [
+        "quiero ir al aula 3",
+        "donde esta cobol",
+        "tengo clase en aula 3"
+      ]
     },
     {
       "id": "service_aula_4",
       "name": "Aula 4 (Lisp)",
       "roomId": "aula_4",
       "description": "Para ir al Aula 4 (Lisp), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 4", "aula cuatro", "classroom 4", "lisp", "clase 4"],
-      "examples": ["quiero ir al aula 4", "donde esta lisp", "tengo clase en aula 4"]
+      "keywords": [
+        "aula 4",
+        "aula cuatro",
+        "classroom 4",
+        "lisp",
+        "clase 4"
+      ],
+      "examples": [
+        "quiero ir al aula 4",
+        "donde esta lisp",
+        "tengo clase en aula 4"
+      ]
     },
     {
       "id": "service_aula_5",
       "name": "Aula 5 (Fortran)",
       "roomId": "aula_5",
       "description": "Para ir al Aula 5 (Fortran), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 5", "aula cinco", "fortran", "clase 5"],
-      "examples": ["quiero ir al aula 5", "donde esta fortran", "tengo clase en aula 5"]
+      "keywords": [
+        "aula 5",
+        "aula cinco",
+        "fortran",
+        "clase 5"
+      ],
+      "examples": [
+        "quiero ir al aula 5",
+        "donde esta fortran",
+        "tengo clase en aula 5"
+      ]
     },
     {
       "id": "service_aula_6",
       "name": "Aula 6 (Smalltalk)",
       "roomId": "aula_6",
       "description": "Para ir al Aula 6 (Smalltalk), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 6", "aula seis", "smalltalk", "clase 6"],
-      "examples": ["quiero ir al aula 6", "donde esta smalltalk", "tengo clase en aula 6"]
+      "keywords": [
+        "aula 6",
+        "aula seis",
+        "smalltalk",
+        "clase 6"
+      ],
+      "examples": [
+        "quiero ir al aula 6",
+        "donde esta smalltalk",
+        "tengo clase en aula 6"
+      ]
     },
     {
       "id": "service_aula_7",
       "name": "Aula 7 (Pascal)",
       "roomId": "aula_7",
       "description": "Para ir al Aula 7 (Pascal), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 7", "aula siete", "pascal", "clase 7"],
-      "examples": ["quiero ir al aula 7", "donde esta pascal", "tengo clase en aula 7"]
+      "keywords": [
+        "aula 7",
+        "aula siete",
+        "pascal",
+        "clase 7"
+      ],
+      "examples": [
+        "quiero ir al aula 7",
+        "donde esta pascal",
+        "tengo clase en aula 7"
+      ]
     },
     {
       "id": "service_aula_8",
       "name": "Aula 8 (PHP)",
       "roomId": "aula_8",
       "description": "Para ir al Aula 8 (PHP), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 8", "aula ocho", "php", "clase 8"],
-      "examples": ["quiero ir al aula 8", "donde esta php", "tengo clase en aula 8"]
+      "keywords": [
+        "aula 8",
+        "aula ocho",
+        "php",
+        "clase 8"
+      ],
+      "examples": [
+        "quiero ir al aula 8",
+        "donde esta php",
+        "tengo clase en aula 8"
+      ]
     },
     {
       "id": "service_aula_9",
       "name": "Aula 9 (Python)",
       "roomId": "aula_9",
       "description": "Para ir al Aula 9 (Python), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 9", "aula nueve", "python", "clase 9"],
-      "examples": ["quiero ir al aula 9", "donde esta python", "tengo clase en aula 9"]
+      "keywords": [
+        "aula 9",
+        "aula nueve",
+        "python",
+        "clase 9"
+      ],
+      "examples": [
+        "quiero ir al aula 9",
+        "donde esta python",
+        "tengo clase en aula 9"
+      ]
     },
     {
       "id": "service_aula_10a",
       "name": "Aula 10A (Objective C)",
       "roomId": "aula_10a",
       "description": "Para ir al Aula 10A (Objective C), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 10", "aula 10a", "aula diez a", "objective c", "clase 10a"],
-      "examples": ["donde esta el aula 10a", "quiero ir a objective c", "tengo clase en aula 10"]
+      "keywords": [
+        "aula 10",
+        "aula 10a",
+        "aula diez a",
+        "objective c",
+        "clase 10a"
+      ],
+      "examples": [
+        "donde esta el aula 10a",
+        "quiero ir a objective c",
+        "tengo clase en aula 10"
+      ]
     },
     {
       "id": "service_aula_10b",
       "name": "Aula 10B (C)",
       "roomId": "aula_10b",
       "description": "Para ir al Aula 10B (C), dirígete al pasillo de aulas a la derecha.",
-      "keywords": ["aula 11", "aula 10b", "aula diez b", "lenguaje c", "c", "clase 10b"],
-      "examples": ["donde esta el aula 10b", "quiero ir a lenguaje c"]
+      "keywords": [
+        "aula 11",
+        "aula 10b",
+        "aula diez b",
+        "lenguaje c",
+        "c",
+        "clase 10b"
+      ],
+      "examples": [
+        "donde esta el aula 10b",
+        "quiero ir a lenguaje c"
+      ]
     },
     {
       "id": "service_aula_11",
       "name": "Aula 11 (Java)",
       "roomId": "aula_11",
       "description": "Para ir al Aula 11 (Java), dirígete al pasillo transversal.",
-      "keywords": ["aula 12", "aula 11", "aula once", "java", "clase 11"],
-      "examples": ["quiero ir al aula 11", "donde esta java"]
+      "keywords": [
+        "aula 12",
+        "aula 11",
+        "aula once",
+        "java",
+        "clase 11"
+      ],
+      "examples": [
+        "quiero ir al aula 11",
+        "donde esta java"
+      ]
     },
     {
       "id": "service_aula_14",
       "name": "Aula 14 (XML)",
       "roomId": "aula_14",
       "description": "Para ir al Aula 14 (XML), dirígete al pasillo central pasando la biblioteca.",
-      "keywords": ["aula 13", "aula 14", "aula catorce", "xml", "clase 14"],
-      "examples": ["quiero ir al aula 14", "donde esta xml"]
+      "keywords": [
+        "aula 13",
+        "aula 14",
+        "aula catorce",
+        "xml",
+        "clase 14"
+      ],
+      "examples": [
+        "quiero ir al aula 14",
+        "donde esta xml"
+      ]
     },
     {
       "id": "service_aula_15",
       "name": "Aula 15 (Ruby)",
       "roomId": "aula_15",
       "description": "Para ir al Aula 15 (Ruby), dirígete al pasillo central antes de la biblioteca.",
-      "keywords": ["aula 14", "aula 15", "aula quince", "ruby", "clase 15"],
-      "examples": ["quiero ir al aula 15", "donde esta ruby"]
+      "keywords": [
+        "aula 14",
+        "aula 15",
+        "aula quince",
+        "ruby",
+        "clase 15"
+      ],
+      "examples": [
+        "quiero ir al aula 15",
+        "donde esta ruby"
+      ]
+    },
+    {
+      "id": "service_siu_guarani",
+      "name": "SIU Guaraní Alumnos",
+      "roomId": "alumnos",
+      "description": "Para inscribirte a materias o finales, consultar historia académica y realizar trámites online, usa SIU Guaraní. Si no tienes usuario o contraseña, consulta en Oficina de Alumnos.",
+      "keywords": [
+        "siu",
+        "siu guarani",
+        "guaraní",
+        "guarani",
+        "autogestion",
+        "autogestión",
+        "inscripcion a materias",
+        "inscripción a materias",
+        "inscripcion a finales",
+        "historia academica",
+        "historia académica",
+        "usuario siu",
+        "contraseña siu"
+      ],
+      "examples": [
+        "necesito entrar al SIU",
+        "no tengo usuario de guarani",
+        "quiero inscribirme a materias",
+        "quiero consultar mi historia academica"
+      ],
+      "formaAcceso": [
+        "LI, LS, APU y ATIC usan SIU Guaraní Informática.",
+        "Ingeniería en Computación usa SIU Guaraní Facultad Virtual de Informática e Ingeniería."
+      ],
+      "requisitos": [
+        "Se necesita usuario y contraseña de SIU Guaraní.",
+        "Si no tienes acceso, debes dirigirte a Oficina de Alumnos."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "SIU Guaraní Alumnos - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/todos/siu-guarani-alumnos/"
+    },
+    {
+      "id": "service_regular_certificate",
+      "name": "Certificado de Alumno Regular",
+      "roomId": "alumnos",
+      "description": "Los alumnos pueden solicitar certificado de alumno regular.",
+      "keywords": [
+        "certificado alumno regular",
+        "alumno regular",
+        "regularidad",
+        "certificado de regularidad",
+        "constancia alumno regular",
+        "constancia de alumno regular"
+      ],
+      "examples": [
+        "necesito certificado de alumno regular",
+        "donde pido una constancia de alumno regular",
+        "quiero retirar certificado de regularidad"
+      ],
+      "formaAcceso": [
+        "Se puede pedir por SIU Guaraní o personalmente.",
+        "El certificado se retira en el momento por ventanilla de alumnos."
+      ],
+      "requisitos": [
+        "Es indispensable concurrir con DNI.",
+        "Ingresantes no pueden solicitarlo hasta completar todos los módulos del curso introductorio; se les otorga certificado de inscripción a carrera."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Certificado de Alumno Regular - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/certificado-de-alumno-regular/"
+    },
+    {
+      "id": "service_analytical_certificate",
+      "name": "Certificado Analítico",
+      "roomId": "alumnos",
+      "description": "Los alumnos pueden solicitar un certificado analítico con materias aprobadas, calificaciones y fechas de aprobación.",
+      "keywords": [
+        "certificado analitico",
+        "certificado analítico",
+        "analitico",
+        "analítico",
+        "materias aprobadas",
+        "calificaciones",
+        "historial academico",
+        "historial académico"
+      ],
+      "examples": [
+        "necesito un certificado analitico",
+        "donde pido mi analitico",
+        "quiero retirar certificado analítico"
+      ],
+      "formaAcceso": [
+        "Se solicita personalmente por ventanilla de alumnos."
+      ],
+      "requisitos": [
+        "Lo puede solicitar el interesado o un tercero.",
+        "Para retirarlo es indispensable que el interesado concurra con DNI."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Certificado Analítico - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/certificado-analitico/"
+    },
+    {
+      "id": "service_special_certifications",
+      "name": "Certificaciones Especiales y Legalizaciones",
+      "roomId": "alumnos",
+      "description": "Permite solicitar certificaciones especiales para equivalencias, homologación de título en el exterior y otros trámites.",
+      "keywords": [
+        "certificaciones especiales",
+        "legalizaciones",
+        "legalizacion",
+        "legalización",
+        "programas de materias",
+        "plan de estudios",
+        "carga horaria",
+        "escala de calificaciones",
+        "no sancion",
+        "no sanción",
+        "homologacion",
+        "homologación"
+      ],
+      "examples": [
+        "necesito legalizar programas",
+        "quiero pedir plan de estudios",
+        "necesito certificaciones especiales",
+        "como pido carga horaria"
+      ],
+      "formaAcceso": [
+        "Se solicitan personalmente por ventanilla de alumnos."
+      ],
+      "requisitos": [
+        "Completar una solicitud con datos del solicitante, certificaciones a incluir y ante quién serán presentadas.",
+        "La entrega demora de una semana a quince días, según la documentación solicitada.",
+        "Para retirar las certificaciones es indispensable concurrir con DNI."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Certificaciones Especiales - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/certificaciones-especiales/"
+    },
+    {
+      "id": "service_altas_pases",
+      "name": "Altas y Pases de Carrera",
+      "roomId": "alumnos",
+      "description": "La Facultad establece dos fechas al año, según calendario académico, para solicitar altas y pases de carrera.",
+      "keywords": [
+        "altas y pases",
+        "alta de carrera",
+        "pase de carrera",
+        "cambio de carrera",
+        "pase de plan",
+        "formulario de alta",
+        "planilla alta carrera"
+      ],
+      "examples": [
+        "quiero hacer pase de carrera",
+        "necesito alta de carrera",
+        "donde llevo la planilla de pase"
+      ],
+      "formaAcceso": [
+        "Se realiza personalmente por ventanilla de alumnos en el período habilitado."
+      ],
+      "requisitos": [
+        "Descargar la planilla correspondiente, completarla y acercarse a Oficina de Alumnos con DNI y la planilla impresa completa."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Altas y Pases de Carrera - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/altas-y-pases-de-carrera/"
+    },
+    {
+      "id": "service_equivalencias",
+      "name": "Solicitud de Equivalencias",
+      "roomId": "mesa_entradas",
+      "description": "Los alumnos pueden solicitar equivalencias con materias aprobadas en otra facultad o universidad.",
+      "keywords": [
+        "equivalencias",
+        "solicitud de equivalencias",
+        "materias aprobadas",
+        "equivalencia",
+        "programas aprobados",
+        "certificado analitico equivalencias"
+      ],
+      "examples": [
+        "quiero pedir equivalencias",
+        "donde presento equivalencias",
+        "tengo materias aprobadas de otra universidad"
+      ],
+      "formaAcceso": [
+        "Debe presentarse una nota dirigida a la Decana por Mesa de Entradas junto a la documentación correspondiente."
+      ],
+      "requisitos": [
+        "Sólo se puede solicitar equivalencias con materias aprobadas por examen final.",
+        "Presentar plan de estudios, certificado analítico y programas de las materias aprobadas, firmados por la institución correspondiente."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Solicitud de Equivalencias - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/solicitud-de-equivalencias/"
+    },
+    {
+      "id": "service_readmission",
+      "name": "Solicitud de Readmisión",
+      "roomId": "mesa_entradas",
+      "description": "Permite solicitar readmisión cuando se pierde la condición de alumno regular según la normativa de la Facultad.",
+      "keywords": [
+        "readmision",
+        "readmisión",
+        "reincorporacion",
+        "reincorporación",
+        "perdi regularidad",
+        "perdí regularidad",
+        "cancelado",
+        "resolucion 365"
+      ],
+      "examples": [
+        "necesito readmision",
+        "perdi la regularidad que hago",
+        "quiero pedir reincorporacion"
+      ],
+      "formaAcceso": [
+        "Se realiza personalmente por Mesa de Entradas."
+      ],
+      "requisitos": [
+        "Presentar una nota dirigida a la Decana por Mesa de Entradas."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Solicitud de Readmisión - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/solicitud-de-readmision/"
+    },
+    {
+      "id": "service_degree_processing",
+      "name": "Tramitación de título",
+      "roomId": "alumnos",
+      "description": "Al finalizar la carrera, los alumnos interesados deben iniciar el trámite de título en la Facultad.",
+      "keywords": [
+        "titulo",
+        "título",
+        "tramitacion de titulo",
+        "tramitación de título",
+        "solicitar titulo",
+        "solicitar título",
+        "graduado",
+        "libre deuda",
+        "encuesta graduados"
+      ],
+      "examples": [
+        "quiero tramitar mi titulo",
+        "como solicito el título",
+        "donde inicio la tramitacion de titulo"
+      ],
+      "formaAcceso": [
+        "Primero se solicita por SIU Guaraní en Trámites - Solicitar Títulos.",
+        "Después hay que dirigirse personalmente a Oficina de Alumnos."
+      ],
+      "requisitos": [
+        "Certificado de libre deuda de la Biblioteca Central.",
+        "Certificado de libre deuda de la Biblioteca de la Facultad.",
+        "Certificado sobre uso de bicicletas.",
+        "DNI en mano.",
+        "Certificado de encuesta online de graduados.",
+        "En algunos apellidos con artículos, preposiciones o apóstrofes se solicita copia de partida de nacimiento."
+      ],
+      "contacto": {
+        "area": "Oficina de Alumnos",
+        "email": "alumnos@info.unlp.edu.ar",
+        "telefono": "0221 427-7270 / 427-7271 Int. 3040"
+      },
+      "fuenteTitulo": "Tramitación de título - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/alumnos/tramitacion-de-titulo/"
+    },
+    {
+      "id": "service_library_catalog",
+      "name": "Catálogo de biblioteca",
+      "roomId": "biblioteca",
+      "description": "La Facultad ofrece un catálogo online para consultar documentos disponibles en la Biblioteca.",
+      "keywords": [
+        "catalogo biblioteca",
+        "catálogo biblioteca",
+        "catalogo de biblioteca",
+        "catálogo de biblioteca",
+        "buscar libro",
+        "documentos disponibles",
+        "koha"
+      ],
+      "examples": [
+        "quiero consultar el catalogo de biblioteca",
+        "donde busco libros disponibles",
+        "catalogo online biblioteca"
+      ],
+      "formaAcceso": [
+        "El catálogo se consulta online. Si necesitas ayuda, puedes acercarte a Biblioteca."
+      ],
+      "contacto": {
+        "area": "Biblioteca",
+        "email": "biblioteca@info.unlp.edu.ar",
+        "telefono": "+54 221 4230124 / Int. 3090"
+      },
+      "fuenteTitulo": "Catálogo de biblioteca - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/todos/catalogo-de-biblioteca/"
+    },
+    {
+      "id": "service_virtual_board",
+      "name": "Cartelera Virtual",
+      "roomId": null,
+      "description": "La Facultad pone a disposición de alumnos y docentes un sistema de cartelera virtual.",
+      "keywords": [
+        "cartelera virtual",
+        "cartelera",
+        "gestion docente",
+        "gestión docente",
+        "avisos",
+        "anuncios"
+      ],
+      "examples": [
+        "donde esta la cartelera virtual",
+        "quiero ver avisos de la facultad",
+        "necesito la cartelera"
+      ],
+      "formaAcceso": [
+        "Se accede mediante el Sistema de Gestión Docente - Cartelera Virtual."
+      ],
+      "requisitos": [
+        "No se informan requisitos específicos en el portal."
+      ],
+      "contacto": {
+        "area": "Dirección de Modernización de la Gestión",
+        "email": "sistemas@info.unlp.edu.ar"
+      },
+      "fuenteTitulo": "Cartelera Virtual - Portal de gestión administrativa",
+      "fuenteUrl": "https://portal.info.unlp.edu.ar/portal_info/todos/cartelera-virtual/"
     }
   ]
 }

@@ -92,6 +92,22 @@ function localScore(query, document) {
   return Math.min(1, exactBoost + tokenScore(query, document) * 0.35 + diceScore(query, document) * 0.3);
 }
 
+function obtenerTextos(valor) {
+  if (valor === undefined || valor === null) {
+    return [];
+  }
+
+  if (Array.isArray(valor)) {
+    return valor.flatMap(obtenerTextos);
+  }
+
+  if (typeof valor === "object") {
+    return Object.values(valor).flatMap(obtenerTextos);
+  }
+
+  return [String(valor)];
+}
+
 class SemanticSearch {
   constructor(mapData) {
     this.mapData = mapData;
@@ -107,8 +123,13 @@ class SemanticSearch {
       const textParts = [
         service.name,
         service.description,
+        service.horario,
+        service.fuenteTitulo,
         ...(service.examples || []),
         ...(service.keywords || []),
+        ...obtenerTextos(service.formaAcceso),
+        ...obtenerTextos(service.requisitos),
+        ...obtenerTextos(service.contacto),
         room?.name,
         room?.code,
         ...(room?.aliases || [])
@@ -116,12 +137,12 @@ class SemanticSearch {
 
       return {
         id: service.id,
-        roomId: service.roomId,
+        roomId: service.roomId || null,
         serviceName: service.name,
         text: textParts.join("。"),
         metadata: {
           serviceId: service.id,
-          roomId: service.roomId,
+          roomId: service.roomId || "",
           roomName: room?.name || "",
           roomCode: room?.code || ""
         }
@@ -174,10 +195,10 @@ class SemanticSearch {
         });
         const metadata = result.metadatas?.[0]?.[0];
         const distance = result.distances?.[0]?.[0] ?? 1;
-        if (metadata?.roomId) {
+        if (metadata?.serviceId) {
           return {
             serviceId: metadata.serviceId,
-            roomId: metadata.roomId,
+            roomId: metadata.roomId || null,
             serviceName: this.documents.find((doc) => doc.id === metadata.serviceId)?.serviceName || "",
             score: Math.max(0, Math.min(1, 1 - distance)),
             source: "chroma"
@@ -204,7 +225,7 @@ class SemanticSearch {
 
     return {
       serviceId: best.id,
-      roomId: best.roomId,
+      roomId: best.roomId || null,
       serviceName: best.serviceName,
       score: best.score,
       source: "local-fallback"
@@ -387,14 +408,14 @@ async function main() {
       let score = names.reduce((current, name) => {
         const normalized = normalizeText(name);
         if (!normalized) return current;
-        
+
         // 1. Coincidencia exacta 
         if (query === normalized) return Math.max(current, 2.0);
-        
+
         // 2. Coincidencia de palabra completa (Evita que "aula 1" pise a "aula 10")
         const regex = new RegExp(`\\b${normalized}\\b`);
         if (regex.test(query)) return Math.max(current, 1.2);
-        
+
         // 3. Coincidencia parcial (por tokens)
         return Math.max(current, sharedTokenScore(query, normalized));
       }, 0);
@@ -423,12 +444,12 @@ async function main() {
       const score = names.reduce((current, name) => {
         const normalized = normalizeText(name);
         if (!normalized) return current;
-        
+
         if (query === normalized) return Math.max(current, 2.0);
-        
+
         const regex = new RegExp(`\\b${normalized}\\b`);
         if (regex.test(query)) return Math.max(current, 1.2);
-        
+
         return Math.max(current, sharedTokenScore(query, normalized));
       }, 0);
 
@@ -438,6 +459,43 @@ async function main() {
     }
 
     return best && best.score >= 0.25 ? best : null;
+  }
+
+  function resolverServicio(message) {
+    const query = normalizeText(message);
+    let mejor = null;
+
+    for (const servicio of mapData.services) {
+      const nombres = [
+        servicio.name,
+        ...(servicio.keywords || []),
+        ...(servicio.examples || [])
+      ].filter(Boolean);
+
+      const score = nombres.reduce((actual, nombre) => {
+        const normalizado = normalizeText(nombre);
+        if (!normalizado) return actual;
+
+        if (query === normalizado) return Math.max(actual, 2.0);
+
+        const regex = new RegExp(`\\b${normalizado}\\b`);
+        if (regex.test(query)) return Math.max(actual, 1.4);
+
+        return Math.max(actual, sharedTokenScore(query, normalizado));
+      }, 0);
+
+      if (!mejor || score > mejor.score) {
+        mejor = {
+          serviceId: servicio.id,
+          roomId: servicio.roomId || null,
+          serviceName: servicio.name,
+          score,
+          source: "service-alias"
+        };
+      }
+    }
+
+    return mejor && mejor.score >= 0.55 ? mejor : null;
   }
 
   function buildRoute(startLocationId, targetRoomId, accessibleOnly = false) {
@@ -481,13 +539,23 @@ async function main() {
   function buildChatReply(targetRoom, match, necesitaRampa) {
     // 1. Buscamos el servicio por su ID, pero si fue un clic directo, lo buscamos por el roomId
     let servicioObj = mapData.services.find((s) => s.id === match.serviceId);
-    if (!servicioObj) {
+    if (!servicioObj && targetRoom) {
       servicioObj = mapData.services.find((s) => s.roomId === targetRoom.id);
     }
 
     let textoRespuesta = servicioObj
       ? `${servicioObj.description}\n\n`
       : `Para llegar a ${targetRoom.name} sigue la ruta trazada en el mapa.\n\n`;
+
+    const detalleServicio = armarDetalleServicio(servicioObj);
+    if (detalleServicio) {
+      textoRespuesta += `${detalleServicio}\n\n`;
+    }
+
+    if (!targetRoom) {
+      textoRespuesta += "Este servicio es principalmente online y no tiene un punto físico marcado en el mapa.";
+      return textoRespuesta.trim();
+    }
 
     const rutaPredefinida = mapData.rutas?.find(
       (r) => r.roomId === targetRoom.id || r.destino === targetRoom.id
@@ -514,7 +582,52 @@ async function main() {
     }
 
     return textoRespuesta.trim();
-  }  
+  }
+
+  function textoLista(valor) {
+    if (!valor) {
+      return "";
+    }
+
+    const valores = Array.isArray(valor) ? valor : [valor];
+    return valores.filter(Boolean).join("\n");
+  }
+
+  function armarContacto(contacto) {
+    if (!contacto) {
+      return "";
+    }
+
+    if (typeof contacto === "string") {
+      return contacto;
+    }
+
+    return [
+      contacto.area,
+      contacto.email ? `Mail: ${contacto.email}` : "",
+      contacto.telefono ? `Teléfono: ${contacto.telefono}` : ""
+    ].filter(Boolean).join("\n");
+  }
+
+  function armarDetalleServicio(servicio) {
+    if (!servicio) {
+      return "";
+    }
+
+    const secciones = [];
+    if (servicio.horario) secciones.push(`Horario:\n${servicio.horario}`);
+    if (servicio.formaAcceso) secciones.push(`Forma de acceso:\n${textoLista(servicio.formaAcceso)}`);
+    if (servicio.requisitos) secciones.push(`Requisitos:\n${textoLista(servicio.requisitos)}`);
+
+    const datosContacto = armarContacto(servicio.contacto);
+    if (datosContacto) secciones.push(`Contacto:\n${datosContacto}`);
+
+    if (servicio.fuenteTitulo || servicio.fuenteUrl) {
+      secciones.push(`Fuente:\n${[servicio.fuenteTitulo, servicio.fuenteUrl].filter(Boolean).join(" - ")}`);
+    }
+
+    return secciones.join("\n\n");
+  }
 
   async function handleChat(req, res) {
     const body = await readJsonBody(req);
@@ -544,7 +657,14 @@ async function main() {
       }
 
       const directTarget = resolveLocation(message);
-      if (directTarget?.type === "room" && directTarget.score >= 0.55) {
+      const servicioEncontrado = resolverServicio(message);
+
+      if (servicioEncontrado && (!directTarget || servicioEncontrado.score > directTarget.score)) {
+        if (servicioEncontrado.roomId) {
+          targetRoom = findRoom(servicioEncontrado.roomId);
+        }
+        match = servicioEncontrado;
+      } else if (directTarget?.type === "room" && directTarget.score >= 0.55) {
         targetRoom = findRoom(directTarget.id);
         match = {
           serviceId: "direct_room_match",
@@ -554,17 +674,29 @@ async function main() {
           source: "room-alias"
         };
       } else {
-        const searchResult = await semanticSearch.search(message);
+        const searchResult = servicioEncontrado || await semanticSearch.search(message);
         if (searchResult) {
-          targetRoom = findRoom(searchResult.roomId);
+          if (searchResult.roomId) {
+            targetRoom = findRoom(searchResult.roomId);
+          }
           match = searchResult;
         }
       }
     }
 
     if (!targetRoom) {
+      const servicioSinLugar = match ? mapData.services.find((servicio) => servicio.id === match.serviceId) : null;
+      if (servicioSinLugar) {
+        sendJson(res, 200, {
+          reply: buildChatReply(null, match, necesitaRampa),
+          match,
+          action: { type: "show_message" }
+        });
+        return;
+      }
+
       sendJson(res, 200, {
-        reply: "No encontré un destino relacionado. Puedes probar con “quiero ir al baño”, “aula 5”, “biblioteca” o “tengo que entregar papeles”.",
+        reply: "No encontré un destino relacionado. Puedes probar con “quiero ir al baño”, “aula 5”, “biblioteca”, “SIU Guaraní” o “certificado de alumno regular”.",
         action: { type: "show_message" }
       });
       return;

@@ -74,6 +74,22 @@ function localScore(query, document) {
   return Math.min(1, exactBoost + tokenScore(query, document) * 0.35 + diceScore(query, document) * 0.3);
 }
 
+function obtenerTextos(valor) {
+  if (!valor) {
+    return [];
+  }
+
+  if (Array.isArray(valor)) {
+    return valor.flatMap(obtenerTextos);
+  }
+
+  if (typeof valor === "object") {
+    return Object.values(valor).flatMap(obtenerTextos);
+  }
+
+  return [String(valor)];
+}
+
 class SemanticSearch {
   constructor(mapData) {
     this.mapData = mapData;
@@ -89,8 +105,13 @@ class SemanticSearch {
       const textParts = [
         service.name,
         service.description,
+        service.horario,
+        service.fuenteTitulo,
         ...(service.examples || []),
         ...(service.keywords || []),
+        ...obtenerTextos(service.formaAcceso),
+        ...obtenerTextos(service.requisitos),
+        ...obtenerTextos(service.contacto),
         room?.name,
         room?.code,
         ...(room?.aliases || [])
@@ -98,12 +119,12 @@ class SemanticSearch {
 
       return {
         id: service.id,
-        roomId: service.roomId,
+        roomId: service.roomId || null,
         serviceName: service.name,
         text: textParts.join("。"),
         metadata: {
           serviceId: service.id,
-          roomId: service.roomId,
+          roomId: service.roomId || "",
           roomName: room?.name || "",
           roomCode: room?.code || ""
         }
@@ -156,10 +177,10 @@ class SemanticSearch {
         });
         const metadata = result.metadatas?.[0]?.[0];
         const distance = result.distances?.[0]?.[0] ?? 1;
-        if (metadata?.roomId) {
+        if (metadata?.serviceId) {
           return {
             serviceId: metadata.serviceId,
-            roomId: metadata.roomId,
+            roomId: metadata.roomId || null,
             serviceName: this.documents.find((doc) => doc.id === metadata.serviceId)?.serviceName || "",
             score: Math.max(0, Math.min(1, 1 - distance)),
             source: "chroma"
@@ -186,7 +207,7 @@ class SemanticSearch {
 
     return {
       serviceId: best.id,
-      roomId: best.roomId,
+      roomId: best.roomId || null,
       serviceName: best.serviceName,
       score: best.score,
       source: "local-fallback"

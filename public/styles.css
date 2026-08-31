@@ -3,7 +3,7 @@
    ========================================== */
 :root {
   color-scheme: light;
-  
+
   /* Fondo general e interfaz */
   --bg-color: #c2c6ca;
   --text-color: #1e252c;
@@ -11,7 +11,8 @@
   --muted-text: #66717d;
   --border-line: #cfd8df;
   --shadow: 0 18px 45px rgba(31, 45, 61, 0.14);
-  --header-height: 64px; /* alto fijo de la seccion sup logo+título */
+  --header-height: 64px;
+  /* alto fijo de la seccion sup logo+título */
 
   /* Menu Accesibilidad */
   --sidebar-bg: #ffffff;
@@ -34,6 +35,11 @@
   /* Mensajes */
   --msg-user-bg: #dff3ef;
   --msg-ai-bg: #f0f3f6;
+  --msg-ultimo-usuario-bg: #cdeee5;
+  --msg-ultimo-asistente-bg: #fff4cf;
+  --msg-ultimo-borde: #0f9f8f;
+  --detalle-bg: #ffffff;
+  --detalle-acento: #0f9f8f;
 }
 
 /* --- MODO OSCURO --- */
@@ -63,6 +69,11 @@
 
   --msg-user-bg: #183e35;
   --msg-ai-bg: #21262d;
+  --msg-ultimo-usuario-bg: #1f5548;
+  --msg-ultimo-asistente-bg: #3a321c;
+  --msg-ultimo-borde: #56d4c6;
+  --detalle-bg: #161b22;
+  --detalle-acento: #56d4c6;
 }
 
 /* --- MODO DALTONISMO (Protanopía / Deuteranopía) --- */
@@ -92,6 +103,11 @@
 
   --msg-user-bg: #d0e2f5;
   --msg-ai-bg: #e6f0fa;
+  --msg-ultimo-usuario-bg: #bfd8f2;
+  --msg-ultimo-asistente-bg: #ffe4a8;
+  --msg-ultimo-borde: #005ab5;
+  --detalle-bg: #ffffff;
+  --detalle-acento: #005ab5;
 }
 
 /* --- MODO ALTA LEGIBILIDAD (Baja Visión) --- */
@@ -121,6 +137,11 @@
 
   --msg-user-bg: #111111;
   --msg-ai-bg: #222222;
+  --msg-ultimo-usuario-bg: #111111;
+  --msg-ultimo-asistente-bg: #111111;
+  --msg-ultimo-borde: #00ffff;
+  --detalle-bg: #000000;
+  --detalle-acento: #00ffff;
 }
 
 /* Filtros de la imagen SVG según el tema activo */
@@ -142,6 +163,7 @@
 * {
   box-sizing: border-box;
 }
+
 /* HEADER */
 header {
   display: flex;
@@ -149,9 +171,12 @@ header {
   gap: 14px;
   height: var(--header-height);
   min-height: var(--header-height);
-  flex-shrink: 0; /* tamaño fijo */
-  padding: 0 20px 0 76px; /* el botón ☰ sigue flotando */
-  background-color: var(--panel-bg); /* cambia con el tema */
+  flex-shrink: 0;
+  /* tamaño fijo */
+  padding: 0 20px 0 76px;
+  /* el botón ☰ sigue flotando */
+  background-color: var(--panel-bg);
+  /* cambia con el tema */
   border-bottom: 1px solid var(--border-line);
   box-shadow: var(--shadow);
   transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -164,7 +189,8 @@ header {
 }
 
 .logo img {
-  height: 44px;  /* tamaño fijo del logo */
+  height: 44px;
+  /* tamaño fijo del logo */
   width: auto;
   display: block;
 }
@@ -179,28 +205,57 @@ header {
 .buttonConf {
   position: fixed;
   top: 0.5rem;
-  left: 0.5rem;  
+  left: 0.5rem;
   z-index: 1000;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  :root { --header-height: 60px; }
-  header { padding-left: 64px; gap: 10px; }
-  .logo img { height: 34px; }
-  .header-title h1 { font-size: 1rem; }
-  .btn-abrir { font-size: 1.3rem; }
+  :root {
+    --header-height: 60px;
+  }
+
+  header {
+    padding-left: 64px;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 34px;
+  }
+
+  .header-title h1 {
+    font-size: 1rem;
+  }
+
+  .btn-abrir {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 480px) {
-  :root { --header-height: 54px; }
-  header { padding-left: 56px; gap: 8px; }
-  .logo img { height: 28px; }
-  .header-title h1 { font-size: 0.85rem; }
+  :root {
+    --header-height: 54px;
+  }
+
+  header {
+    padding-left: 56px;
+    gap: 8px;
+  }
+
+  .logo img {
+    height: 28px;
+  }
+
+  .header-title h1 {
+    font-size: 0.85rem;
+  }
 }
+
 /* FIN HEADER*/
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -210,16 +265,30 @@ html, body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button, input, select {
+button,
+input,
+select {
   font: inherit;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0;
 }
 
-h1 { font-size: 1.5rem; letter-spacing: 0; }
-.panel-header h2 { font-size: 1.25rem; margin-bottom: 6px; letter-spacing: 0; }
+h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+.panel-header h2 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  letter-spacing: 0;
+}
 
 .topbar p,
 .panel-header p,
@@ -236,9 +305,9 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   left: 12px;
   z-index: 9999;
   font-size: 22px;
-  display: inline-flex;      
-  align-items: center;       
-  justify-content: center;   
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--panel-bg);
   color: var(--text-color);
   border: 1px solid var(--border-line);
@@ -251,14 +320,14 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
 .icono-menu {
   width: 22px;
   height: 22px;
-  fill: var(--text-color); 
+  fill: var(--text-color);
 }
 
 .shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 18px;
-  height: calc(100vh - var(--header-height)); 
+  height: calc(100vh - var(--header-height));
   padding: 18px;
   overflow: hidden;
 }
@@ -272,7 +341,8 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: 0; /* imprescindible: permite que el overflow interno funcione dentro de un grid item */
+  min-height: 0;
+  /* imprescindible: permite que el overflow interno funcione dentro de un grid item */
   overflow: hidden;
 }
 
@@ -281,7 +351,8 @@ h1 { font-size: 1.5rem; letter-spacing: 0; }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 20px; /* mismo padding que .panel-header */
+  padding: 14px 20px;
+  /* mismo padding que .panel-header */
   border-bottom: 1px solid var(--border-line);
 }
 
@@ -314,7 +385,8 @@ button:hover {
   background: gray;
 }
 
-select, input {
+select,
+input {
   width: 100%;
   border: 1px solid var(--border-line);
   border-radius: 6px;
@@ -343,7 +415,7 @@ select, input {
 
 /* Fondo del mapa */
 #campusMap rect[fill="#f6f7f3"],
-#campusMap > rect:first-child {
+#campusMap>rect:first-child {
   fill: var(--map-bg) !important;
 }
 
@@ -497,7 +569,8 @@ select, input {
    5. PANEL LATERAL DE ASISTENTE Y CHAT
    ========================================== */
 .panel-header {
-  padding: 14px 20px; /* mismo padding que .topbar, para que ambos títulos queden a la misma altura */
+  padding: 14px 20px;
+  /* mismo padding que .topbar, para que ambos títulos queden a la misma altura */
   border-bottom: 1px solid var(--border-line);
 }
 
@@ -515,7 +588,1033 @@ select, input {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 0.9rem; /* Usa rem para accesibilidad */
+  font-size: 0.9rem;
+  /* Usa rem para accesibilidad */
+  font-weight: 600;
+  padding: 12px;
+  background-color: var(--btn-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-line);
+  color: var(--text-color);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.accessibility-label:hover {
+  background-color: var(--btn-hover);
+}
+
+.accessibility-checkbox {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.messages {
+  flex: 1;
+  min-height: 120px;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 88%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  line-height: 1.45;
+  font-size: 0.9rem;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--msg-user-bg);
+  color: var(--text-color);
+}
+
+.message.ai {
+  align-self: flex-start;
+  background: var(--msg-ai-bg);
+  color: var(--text-color);
+}
+
+.message.mensaje-ultimo-usuario,
+.message.mensaje-ultimo-asistente {
+  border-left: 5px solid var(--msg-ultimo-borde);
+  box-shadow: 0 8px 18px rgba(15, 159, 143, 0.16);
+}
+
+.message.mensaje-ultimo-usuario {
+  background: var(--msg-ultimo-usuario-bg);
+}
+
+.message.mensaje-ultimo-asistente {
+  background: var(--msg-ultimo-asistente-bg);
+}
+
+.detalle-lugar {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9000;
+  width: min(420px, calc(100vw - 32px));
+  max-height: min(70vh, 620px);
+  background: var(--detalle-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-line);
+  border-top: 5px solid var(--detalle-acento);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.detalle-lugar.oculto {
+  display: none;
+}
+
+.detalle-lugar-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.detalle-lugar-header h3 {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.detalle-lugar-codigo {
+  color: var(--muted-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+#detalleLugarCerrar {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+}
+
+.detalle-lugar-contenido {
+  overflow-y: auto;
+  padding: 14px 16px 16px;
+}
+
+.detalle-servicio {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.detalle-servicio:first-child {
+  padding-top: 0;
+}
+
+.detalle-servicio:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.detalle-servicio h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.detalle-servicio p,
+.detalle-servicio a {
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.seccion-detalle {
+  margin-top: 10px;
+}
+
+.seccion-detalle h4 {
+  color: var(--detalle-acento);
+  font-size: 0.82rem;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.fuente-detalle a {
+  color: var(--detalle-acento);
+  overflow-wrap: anywhere;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-line);
+}
+
+.chat-form button {
+  background: var(--route-color);
+  border-color: var(--route-color);
+  color: #ffffff;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.quick-actions button {
+  padding: 8px 10px;
+}
+
+.match-info {
+  border-bottom: 1px solid var(--border-line);
+  background-color: var(--msg-user-bg);
+  color: var(--text-color);
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 16px;
+  min-height: auto;
+}
+
+/* ==========================================
+   6. MENÚ LATERAL DE ACCESIBILIDAD (Sidebar)
+   ========================================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.oculto {
+  display: none;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-header .titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.sidebar-contenido {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.controles-fuente,
+.controles-contraste {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.control-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.btn-group,
+.btn-pair {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-group button,
+.btn-pair button {
+  flex: 1;
+  padding: 8px 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-group button:hover,
+.btn-pair button:hover {
+  background-color: var(--btn-hover);
+}
+
+.control-tema,
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label-tema {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.control-tema select,
+.select-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.leer,
+.voice-reader-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--sidebar-border);
+  padding-top: 14px;
+  width: 100%;
+}
+
+.leer_texto {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.btn-bloque,
+.btn-main-voice {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.btn-bloque:hover,
+.btn-main-voice:hover {
+  background-color: var(--btn-hover);
+}
+
+.controles-reproductor,
+.voice-controls-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.controles-reproductor button,
+.voice-controls-row button {
+  flex: 1;
+  padding: 8px 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border-line);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  text-align: center;
+  cursor: pointer;
+}
+
+.controles-reproductor button:hover,
+.voice-controls-row button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* ==========================================
+   7. RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 920px) {
+  .shell {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .map-area,
+  .assistant-panel {
+    overflow: visible;
+  }
+
+  .assistant-panel {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 620px) {
+  .shell {
+    padding: 10px;
+    padding-top: 60px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .map-frame {
+    min-height: 380px;
+    padding: 6px;
+  }
+
+  #campusMap {
+    min-height: 360px;
+  }
+
+  .detalle-lugar {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+    max-height: 58vh;
+  }
+}
+
+/* ==========================================
+   8. TOOLTIP PROPIO DEL MAPA (reemplaza al <title> nativo)
+   ========================================== */
+.map-tooltip {
+  position: fixed;
+  z-index: 10001;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: #1a1f26;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  max-width: 240px;
+  transition: opacity 80ms ease;
+}
+
+.map-tooltip[hidden] {
+  display: none;
+}
+
+/* ==========================================
+   1. VARIABLES DE TEMA (Mapa + Accesibilidad)
+   ========================================== */
+:root {
+  color-scheme: light;
+
+  /* Fondo general e interfaz */
+  --bg-color: #c2c6ca;
+  --text-color: #1e252c;
+  --panel-bg: #ffffff;
+  --muted-text: #66717d;
+  --border-line: #cfd8df;
+  --shadow: 0 18px 45px rgba(31, 45, 61, 0.14);
+  --header-height: 64px;
+  /* alto fijo de la seccion sup logo+título */
+
+  /* Menu Accesibilidad */
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #cfd8df;
+  --btn-bg: #f7fafc;
+  --btn-hover: #eef4f7;
+
+  /* Elementos del Mapa SVG */
+  --map-bg: #f7f9fb;
+  --map-shell: #e4e8c9;
+  --map-shell-stroke: #20252b;
+  --room-bg: #ffffff;
+  --room-stroke: #3f4b55;
+  --room-active: #00e5ff;
+  --corridor-bg: #b0b2ad;
+  --route-color: #0f9f8f;
+  --route-outline: #ffffff;
+  --node-color: #1f6feb;
+
+  /* Mensajes */
+  --msg-user-bg: #dff3ef;
+  --msg-ai-bg: #f0f3f6;
+}
+
+/* --- MODO OSCURO --- */
+[data-theme="oscuro"] {
+  --bg-color: #0f1419;
+  --text-color: #f0f6fc;
+  --panel-bg: #161b22;
+  --muted-text: #8b949e;
+  --border-line: #30363d;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+
+  --sidebar-bg: #161b22;
+  --sidebar-border: #30363d;
+  --btn-bg: #21262d;
+  --btn-hover: #30363d;
+
+  --map-bg: #090d12;
+  --map-shell: #1b222d;
+  --map-shell-stroke: #58a6ff;
+  --room-bg: #212832;
+  --room-stroke: #8b949e;
+  --room-active: #00e5ff;
+  --corridor-bg: #131920;
+  --route-color: #2ea043;
+  --route-outline: #0a0d11;
+  --node-color: #58a6ff;
+
+  --msg-user-bg: #183e35;
+  --msg-ai-bg: #21262d;
+}
+
+/* --- MODO DALTONISMO (Protanopía / Deuteranopía) --- */
+[data-theme="daltonismo"] {
+  --bg-color: #f0f4f8;
+  --text-color: #002244;
+  --panel-bg: #ffffff;
+  --muted-text: #4a607a;
+  --border-line: #b0c4de;
+  --shadow: 0 18px 45px rgba(0, 34, 68, 0.12);
+
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #b0c4de;
+  --btn-bg: #e6f0fa;
+  --btn-hover: #d0e2f5;
+
+  --map-bg: #eef5fc;
+  --map-shell: #d6e4f0;
+  --map-shell-stroke: #002244;
+  --room-bg: #ffffff;
+  --room-stroke: #003366;
+  --room-active: #f59e0b;
+  --corridor-bg: #b8d0e8;
+  --route-color: #7570b3;
+  --route-outline: #ffffff;
+  --node-color: #005ab5;
+
+  --msg-user-bg: #d0e2f5;
+  --msg-ai-bg: #e6f0fa;
+}
+
+/* --- MODO ALTA LEGIBILIDAD (Baja Visión) --- */
+[data-theme="baja-vision"] {
+  --bg-color: #000000;
+  --text-color: #ffff00;
+  --panel-bg: #000000;
+  --muted-text: #ffffff;
+  --border-line: #ffff00;
+  --shadow: none;
+
+  --sidebar-bg: #000000;
+  --sidebar-border: #ffff00;
+  --btn-bg: #000000;
+  --btn-hover: #222222;
+
+  --map-bg: #000000;
+  --map-shell: #111111;
+  --map-shell-stroke: #ffff00;
+  --room-bg: #1a1a1a;
+  --room-stroke: #ffff00;
+  --room-active: #00ffff;
+  --corridor-bg: #333333;
+  --route-color: #00ffff;
+  --route-outline: #ffff00;
+  --node-color: #ffff00;
+
+  --msg-user-bg: #111111;
+  --msg-ai-bg: #222222;
+}
+
+/* Filtros de la imagen SVG según el tema activo */
+[data-theme="oscuro"] #campusMap image {
+  filter: brightness(0.65) contrast(1.1);
+}
+
+[data-theme="baja-vision"] #campusMap image {
+  filter: grayscale(1) contrast(1.5) brightness(0.8);
+}
+
+[data-theme="daltonismo"] #campusMap image {
+  filter: none;
+}
+
+/* ==========================================
+   2. ESTILOS GENERALES Y ESTRUCTURA
+   ========================================== */
+* {
+  box-sizing: border-box;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: var(--header-height);
+  min-height: var(--header-height);
+  flex-shrink: 0;
+  /* tamaño fijo */
+  padding: 0 20px 0 76px;
+  /* el botón ☰ sigue flotando */
+  background-color: var(--panel-bg);
+  /* cambia con el tema */
+  border-bottom: 1px solid var(--border-line);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  height: 44px;
+  /* tamaño fijo del logo */
+  width: auto;
+  display: block;
+}
+
+.header-title h1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.4px;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+.buttonConf {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px;
+  }
+
+  header {
+    padding-left: 64px;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 34px;
+  }
+
+  .header-title h1 {
+    font-size: 1rem;
+  }
+
+  .btn-abrir {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-height: 54px;
+  }
+
+  header {
+    padding-left: 56px;
+    gap: 8px;
+  }
+
+  .logo img {
+    height: 28px;
+  }
+
+  .header-title h1 {
+    font-size: 0.85rem;
+  }
+}
+
+/* FIN HEADER*/
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+.panel-header h2 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  letter-spacing: 0;
+}
+
+.topbar p,
+.panel-header p,
+.match-info {
+  color: var(--muted-text);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+/* Botón flotante para menú accesibilidad */
+.btn-abrir {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-line);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icono-menu {
+  width: 22px;
+  height: 22px;
+  fill: var(--text-color);
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+  height: calc(100vh - var(--header-height));
+  padding: 18px;
+  overflow: hidden;
+}
+
+.map-area,
+.assistant-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-line);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  /* imprescindible: permite que el overflow interno funcione dentro de un grid item */
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  /* mismo padding que .panel-header */
+  border-bottom: 1px solid var(--border-line);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+/* Botones genéricos */
+button {
+  border: 1px solid var(--border-line);
+  background: var(--btn-bg);
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+button:hover {
+  background: gray;
+}
+
+select,
+input {
+  width: 100%;
+  border: 1px solid var(--border-line);
+  border-radius: 6px;
+  padding: 10px 11px;
+  color: var(--text-color);
+  background: var(--panel-bg);
+}
+
+/* ==========================================
+   3. ESTILOS DINÁMICOS DEL MAPA SVG
+   ========================================== */
+.map-frame {
+  flex: 1;
+  min-height: 240px;
+  padding: 14px;
+}
+
+#campusMap {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  border: 1px solid var(--border-line);
+  background-color: var(--map-bg) !important;
+  transition: background-color 0.3s;
+}
+
+/* Fondo del mapa */
+#campusMap rect[fill="#f6f7f3"],
+#campusMap>rect:first-child {
+  fill: var(--map-bg) !important;
+}
+
+.building-shell {
+  fill: var(--map-shell) !important;
+  stroke: var(--map-shell-stroke) !important;
+  stroke-width: 1.5;
+}
+
+.entry-ramp {
+  fill: #a5a7a3;
+  stroke: #20252b;
+  stroke-width: 1.1;
+}
+
+.corridor,
+.map-base {
+  fill: var(--corridor-bg) !important;
+  stroke: var(--map-shell-stroke) !important;
+  stroke-width: 1.2;
+}
+
+.room {
+  fill: var(--room-bg) !important;
+  stroke: var(--room-stroke) !important;
+  stroke-width: 1.5 !important;
+  transition: fill 180ms ease, stroke 180ms ease;
+  cursor: pointer;
+}
+
+#campusMap.uses-background-image .room {
+  fill: transparent !important;
+  stroke: transparent !important;
+}
+
+/* Resalta el bloque dejando ver el color de fondo */
+#campusMap.uses-background-image .room.active {
+  fill: var(--room-active) !important;
+  opacity: 0.85;
+}
+
+.room.active {
+  fill: var(--room-active) !important;
+  stroke: var(--room-active) !important;
+  stroke-width: 3px !important;
+}
+
+.room:focus-visible {
+  outline: 3px solid var(--node-color);
+  outline-offset: 2px;
+}
+
+.room:focus {
+  outline: none;
+}
+
+.route-line {
+  fill: none;
+  stroke: var(--route-color) !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 6;
+  opacity: 1;
+}
+
+/* Ahora es el CONTORNO sólido de la ruta (se dibuja debajo de .route-line,
+   más ancho, en un color de alto contraste por tema) en vez de un glow difuso. */
+.route-glow {
+  fill: none;
+  stroke: var(--route-outline) !important;
+  opacity: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 10;
+}
+
+.route-point {
+  fill: var(--panel-bg) !important;
+  stroke: var(--route-color) !important;
+  stroke-width: 2.5;
+}
+
+.debug-edge {
+  stroke: var(--node-color);
+  stroke-dasharray: 7 7;
+  stroke-width: 2;
+  opacity: 0;
+}
+
+.debug-node {
+  fill: var(--node-color);
+  stroke: var(--panel-bg);
+  stroke-width: 2;
+  opacity: 0;
+}
+
+.show-debug .debug-edge,
+.show-debug .debug-node {
+  opacity: 1;
+}
+
+/* ==========================================
+   4. DIRECTORIO RÁPIDO INFERIOR
+   ========================================== */
+.places-panel {
+  margin-top: 20px;
+  background: var(--panel-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.places-panel h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+#placesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  /* Crea columnas automáticas que miden mínimo 140px */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.place-chip {
+  background-color: var(--msg-user-bg);
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-line);
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.place-chip:hover {
+  background-color: var(--route-color);
+  color: #ffffff;
+  border-color: var(--route-color);
+}
+
+/* ==========================================
+   5. PANEL LATERAL DE ASISTENTE Y CHAT
+   ========================================== */
+.panel-header {
+  padding: 14px 20px;
+  /* mismo padding que .topbar, para que ambos títulos queden a la misma altura */
+  border-bottom: 1px solid var(--border-line);
+}
+
+.match-info {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.accessibility-picker {
+  display: flex;
+  align-items: center;
+}
+
+.accessibility-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  /* Usa rem para accesibilidad */
   font-weight: 600;
   padding: 12px;
   background-color: var(--btn-bg);
@@ -592,11 +1691,11 @@ select, input {
 }
 
 .match-info {
-  border-bottom: 1px solid var(--border-line); 
+  border-bottom: 1px solid var(--border-line);
   background-color: var(--msg-user-bg);
   color: var(--text-color);
-  font-weight: 600; 
-  text-align: center; 
+  font-weight: 600;
+  text-align: center;
   padding: 12px 16px;
   min-height: auto;
 }
@@ -850,4 +1949,3 @@ select, input {
 .map-tooltip[hidden] {
   display: none;
 }
-
