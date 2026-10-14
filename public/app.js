@@ -522,6 +522,26 @@ function drawMap(map) {
   state.routeLayer = svgElement("g", { class: "route-layer" });
   mapSvg.appendChild(state.routeLayer);
 }
+//funcion para nuevos botones de info
+function setupInfoDialog(buttonId, dialogId) {
+  const button = document.getElementById(buttonId);
+  const dialog = document.getElementById(dialogId);
+  if (!button || !dialog) return;
+
+  button.addEventListener("click", () => dialog.showModal());
+
+  dialog.querySelector("[data-close-dialog]")?.addEventListener("click", () => dialog.close());
+
+  // Cerrar al hacer clic en el fondo oscuro
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+}
+
+setupInfoDialog("btnAyuda", "dialogAyuda");
+setupInfoDialog("btnNosotros", "dialogNosotros");
+
+//fin 
 
 function fillPlacesList(map) {
   const list = document.getElementById("placesList");
@@ -540,13 +560,16 @@ function fillPlacesList(map) {
       // Mostramos Código - Nombre
       li.textContent = `${room.code} - ${room.name}`;
 
-      li.addEventListener("click", () => {
+      const selectRoom = () => {
         requestRouteToRoom(room);
-      });
+        setDirectoryOpen(false); //cierro el listado una vez que selecciono un lugar
+      };
+
+      li.addEventListener("click", selectRoom);
       li.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          requestRouteToRoom(room);
+          selectRoom();
         }
       });
 
@@ -700,4 +723,44 @@ for (const button of document.querySelectorAll("[data-example]")) {
 
 init().catch((error) => {
   addMessage("ai", `No se pudo cargar el mapa: ${error.message}`);
+});
+
+//Boton deplegable de listado de lugares
+
+const directoryToggle = document.getElementById("directoryToggle");
+const directoryContent = document.getElementById("directoryContent");
+
+function setDirectoryOpen(open) {
+  directoryToggle.setAttribute("aria-expanded", String(open));
+  directoryContent.hidden = !open;
+}
+
+directoryToggle.addEventListener("click", () => {
+  setDirectoryOpen(directoryContent.hidden);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") setDirectoryOpen(false);
+});
+
+//Boton flotante de asistente de chat
+
+const assistantToggle = document.getElementById("assistantToggle");
+const assistantPanel = document.getElementById("assistantPanel");
+
+function setAssistantOpen(open) {
+  if (!assistantToggle || !assistantPanel) return;
+  assistantPanel.hidden = !open;
+  assistantToggle.setAttribute("aria-expanded", String(open));
+  assistantToggle.setAttribute("aria-label", open ? "Cerrar asistente" : "Abrir asistente");
+  assistantToggle.textContent = open ? "✕" : "💬";
+  if (open) document.getElementById("messageInput")?.focus();
+}
+
+assistantToggle?.addEventListener("click", () => {
+  setAssistantOpen(assistantPanel.hidden);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") setAssistantOpen(false);
 });

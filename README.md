@@ -8,7 +8,6 @@ El plano SVG (externo e interno) está calcado sobre el plano a escala real de l
 
 ## Grupo 5
 
-- Abi Sequeiros
 - Brenda Morinigo
 - Lizbeth Sanchez
 - Matias Miyawaki
