@@ -144,7 +144,6 @@ const detalleLugar = document.querySelector("#detalleLugar");
 const detalleLugarTitulo = document.querySelector("#detalleLugarTitulo");
 const detalleLugarCodigo = document.querySelector("#detalleLugarCodigo");
 const detalleLugarContenido = document.querySelector("#detalleLugarContenido");
-const detalleLugarCerrar = document.querySelector("#detalleLugarCerrar");
 
 const mapTooltip = document.createElement("div");
 mapTooltip.className = "map-tooltip";
@@ -226,30 +225,14 @@ function serviciosDelLugar(roomId) {
   return state.map.services.filter((servicio) => servicio.roomId === roomId);
 }
 
-function cerrarDetalleLugar() {
-  if (detalleLugar) {
-    detalleLugar.classList.add("oculto");
-  }
-}
-
-function clickDentroDelDetalle(event) {
-  if (!detalleLugar || detalleLugar.classList.contains("oculto")) {
-    return false;
-  }
-
-  return detalleLugar.contains(event.target);
-}
-
-function clickEnOtroLugarDelMapa(event) {
-  return Boolean(event.target.closest(".room, .place-chip"));
-}
-
-function cerrarDetalleConClickExterno(event) {
-  if (clickDentroDelDetalle(event) || clickEnOtroLugarDelMapa(event)) {
-    return;
-  }
-
-  cerrarDetalleLugar();
+function reiniciarDetalleLugar() {
+  if (!detalleLugarTitulo || !detalleLugarCodigo || !detalleLugarContenido) return;
+  detalleLugarTitulo.textContent = "Información del lugar";
+  detalleLugarCodigo.textContent = "";
+  detalleLugarContenido.innerHTML = "";
+  const parrafo = document.createElement("p");
+  parrafo.textContent = "Elegi un destino para ver su información.";
+  detalleLugarContenido.appendChild(parrafo);
 }
 
 function agregarSeccionDetalle(contenedor, titulo, valor) {
@@ -333,7 +316,7 @@ function mostrarDetalleLugar(room) {
 
   if (servicios.length === 0) {
     const parrafo = document.createElement("p");
-    parrafo.textContent = "Este lugar todavía no tiene servicios cargados en el detalle.";
+    parrafo.textContent = "Sin información adicional.";
     detalleLugarContenido.appendChild(parrafo);
   }
 
@@ -341,11 +324,22 @@ function mostrarDetalleLugar(room) {
     const bloqueServicio = document.createElement("article");
     bloqueServicio.className = "detalle-servicio";
 
-    const titulo = document.createElement("h4");
-    titulo.textContent = servicio.name;
-    bloqueServicio.appendChild(titulo);
+    // ¿El nombre del servicio repite el nombre del lugar? (ej: "Aula 2 (APL)" en "Aula 2")
+      const nombreServicioBase = sinTildes(servicio.name.replace(/\(.*\)/, ""));
+      const esRedundante = nombreServicioBase.trim() === sinTildes(room.name)
+          || sinTildes(servicio.name) === sinTildes(`oficina de ${room.name}`);    
+      const alias = servicio.name.match(/\(([^)]+)\)/)?.[1];
 
-    if (servicio.description) {
+    if (!esRedundante) {
+      const titulo = document.createElement("h4");
+      titulo.textContent = servicio.name;
+      bloqueServicio.appendChild(titulo);
+    }
+
+    if (esRedundante && alias) {
+      // Aulas: en vez de repetir el nombre, mostramos el otro nombre
+      agregarSeccionDetalle(bloqueServicio, "También conocida como", alias);
+    } else if (servicio.description) {
       const descripcion = document.createElement("p");
       descripcion.textContent = servicio.description;
       bloqueServicio.appendChild(descripcion);
@@ -359,9 +353,6 @@ function mostrarDetalleLugar(room) {
 
     detalleLugarContenido.appendChild(bloqueServicio);
   });
-
-  detalleLugar.classList.remove("oculto");
-  detalleLugar.focus();
 }
 
 function parsePoints(points) {
@@ -562,7 +553,7 @@ function fillPlacesList(map) {
 
       const selectRoom = () => {
         requestRouteToRoom(room);
-        setDirectoryOpen(false); //cierro el listado una vez que selecciono un lugar
+        if (window.matchMedia("(max-width: 620px)").matches) setDirectoryOpen(false);
       };
 
       li.addEventListener("click", selectRoom);
@@ -677,6 +668,7 @@ async function init() {
   state.map = await response.json();
   drawMap(state.map);
   fillPlacesList(state.map);
+  reiniciarDetalleLugar();
 }
 
 chatForm.addEventListener("submit", async (event) => {
@@ -698,20 +690,8 @@ debugToggle.addEventListener("change", () => {
 clearRoute.addEventListener("click", () => {
   state.pendingTargetRoomId = null;
   clearRouteDisplay();
-  cerrarDetalleLugar();
+  reiniciarDetalleLugar();
 });
-
-if (detalleLugarCerrar) {
-  detalleLugarCerrar.addEventListener("click", cerrarDetalleLugar);
-}
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    cerrarDetalleLugar();
-  }
-});
-
-document.addEventListener("click", cerrarDetalleConClickExterno);
 
 for (const button of document.querySelectorAll("[data-example]")) {
   button.addEventListener("click", () => {
@@ -725,22 +705,34 @@ init().catch((error) => {
   addMessage("ai", `No se pudo cargar el mapa: ${error.message}`);
 });
 
-//Boton deplegable de listado de lugares
+//Botones desplegables: lugares e información
 
 const directoryToggle = document.getElementById("directoryToggle");
 const directoryContent = document.getElementById("directoryContent");
+const infoToggle = document.getElementById("infoToggle");
+const infoPanel = document.getElementById("infoPanel");
+
+function setInfoOpen(open) {
+  infoToggle.setAttribute("aria-expanded", String(open));
+  infoPanel.hidden = !open;
+  if (open) setDirectoryOpen(false);
+}
 
 function setDirectoryOpen(open) {
   directoryToggle.setAttribute("aria-expanded", String(open));
   directoryContent.hidden = !open;
+  if (open) setInfoOpen(false);
 }
 
-directoryToggle.addEventListener("click", () => {
-  setDirectoryOpen(directoryContent.hidden);
-});
+directoryToggle.addEventListener("click", () => setDirectoryOpen(directoryContent.hidden));
+infoToggle.addEventListener("click", () => setInfoOpen(infoPanel.hidden));
+document.getElementById("cerrarInfo")?.addEventListener("click", () => setInfoOpen(false));
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") setDirectoryOpen(false);
+  if (event.key === "Escape") {
+    setDirectoryOpen(false);
+    setInfoOpen(false);
+  }
 });
 
 //Boton flotante de asistente de chat
@@ -754,7 +746,11 @@ function setAssistantOpen(open) {
   assistantToggle.setAttribute("aria-expanded", String(open));
   assistantToggle.setAttribute("aria-label", open ? "Cerrar asistente" : "Abrir asistente");
   assistantToggle.textContent = open ? "✕" : "💬";
-  if (open) document.getElementById("messageInput")?.focus();
+  if (open) {
+    const mensajes = document.getElementById("messages");
+    if (mensajes) mensajes.scrollTop = mensajes.scrollHeight;
+    document.getElementById("messageInput")?.focus();
+  }
 }
 
 assistantToggle?.addEventListener("click", () => {
@@ -763,4 +759,16 @@ assistantToggle?.addEventListener("click", () => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") setAssistantOpen(false);
+});
+
+document.getElementById("cerrarLugares")?.addEventListener("click", () => setDirectoryOpen(false));
+
+const buscarLugar = document.getElementById("buscarLugar");
+const sinTildes = (texto) => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+
+buscarLugar?.addEventListener("input", () => {
+  const consulta = sinTildes(buscarLugar.value);
+  document.querySelectorAll("#placesList .place-chip").forEach((item) => {
+    item.hidden = !sinTildes(item.textContent).includes(consulta);
+  });
 });

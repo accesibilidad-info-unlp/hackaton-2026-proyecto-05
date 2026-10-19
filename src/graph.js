@@ -2,7 +2,7 @@ function euclidean(a, b) {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-function findShortestPath(nodes, edges, startNodeId, targetNodeId) {
+function findShortestPath(nodes, edges, startNodeId, targetNodeId, accessibleOnly = false) {
   const nodeById = new Map(nodes.map((node) => [node.id, node]));
   if (!nodeById.has(startNodeId) || !nodeById.has(targetNodeId)) {
     return null;
@@ -10,13 +10,14 @@ function findShortestPath(nodes, edges, startNodeId, targetNodeId) {
 
   const adjacency = new Map(nodes.map((node) => [node.id, []]));
   for (const edge of edges) {
+    if (accessibleOnly && edge.accesible === false) continue;
+
     const from = nodeById.get(edge.from);
     const to = nodeById.get(edge.to);
     if (!from || !to) continue;
 
     const weight = Number(edge.weight || euclidean(from, to));
     adjacency.get(edge.from).push({ nodeId: edge.to, weight });
-    adjacency.get(edge.to).push({ nodeId: edge.from, weight });
   }
 
   const distances = new Map(nodes.map((node) => [node.id, Infinity]));

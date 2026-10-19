@@ -3,6 +3,9 @@ const { readFile } = require("node:fs/promises");
 const { existsSync } = require("node:fs");
 const path = require("node:path");
 
+const { findShortestPath } = require("./src/graph");
+const { SemanticSearch, normalizeText } = require("./src/semantic-search");
+
 const rootDir = process.cwd();
 const publicDir = path.join(rootDir, "public");
 const mapPath = path.join(rootDir, "data", "map.json");
@@ -14,301 +17,6 @@ const mimeTypes = {
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".svg": "image/svg+xml; charset=utf-8"
-};
-
-function normalizeText(value) {
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^\p{Letter}\p{Number}]+/gu, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function characterBigrams(value) {
-  const compact = normalizeText(value).replace(/\s+/g, "");
-  if (compact.length < 2) {
-    return compact ? [compact] : [];
-  }
-
-  const grams = [];
-  for (let index = 0; index < compact.length - 1; index += 1) {
-    grams.push(compact.slice(index, index + 2));
-  }
-  return grams;
-}
-
-function diceScore(a, b) {
-  const aGrams = characterBigrams(a);
-  const bGrams = characterBigrams(b);
-  if (!aGrams.length || !bGrams.length) {
-    return 0;
-  }
-
-  const counts = new Map();
-  for (const gram of aGrams) {
-    counts.set(gram, (counts.get(gram) || 0) + 1);
-  }
-
-  let overlap = 0;
-  for (const gram of bGrams) {
-    const count = counts.get(gram) || 0;
-    if (count > 0) {
-      overlap += 1;
-      counts.set(gram, count - 1);
-    }
-  }
-
-  return (2 * overlap) / (aGrams.length + bGrams.length);
-}
-
-function tokenScore(a, b) {
-  const queryTokens = normalizeText(a).split(/\s+/).filter(Boolean);
-  const docTokens = new Set(normalizeText(b).split(/\s+/).filter(Boolean));
-  if (!queryTokens.length || !docTokens.size) {
-    return 0;
-  }
-
-  let hits = 0;
-  for (const token of queryTokens) {
-    if (docTokens.has(token)) hits += 1;
-  }
-  return hits / queryTokens.length;
-}
-
-function localScore(query, document) {
-  const normalizedQuery = normalizeText(query);
-  const normalizedDocument = normalizeText(document);
-  if (!normalizedQuery || !normalizedDocument) {
-    return 0;
-  }
-
-  const exactBoost =
-    normalizedDocument.includes(normalizedQuery) || normalizedQuery.includes(normalizedDocument)
-      ? 0.35
-      : 0;
-
-  return Math.min(1, exactBoost + tokenScore(query, document) * 0.35 + diceScore(query, document) * 0.3);
-}
-
-function obtenerTextos(valor) {
-  if (valor === undefined || valor === null) {
-    return [];
-  }
-
-  if (Array.isArray(valor)) {
-    return valor.flatMap(obtenerTextos);
-  }
-
-  if (typeof valor === "object") {
-    return Object.values(valor).flatMap(obtenerTextos);
-  }
-
-  return [String(valor)];
-}
-
-class SemanticSearch {
-  constructor(mapData) {
-    this.mapData = mapData;
-    this.documents = this.buildDocuments();
-    this.collection = null;
-    this.mode = "local-fallback";
-    this.detail = "Chroma client not loaded";
-  }
-
-  buildDocuments() {
-    return this.mapData.services.map((service) => {
-      const room = this.mapData.rooms.find((candidate) => candidate.id === service.roomId);
-      const textParts = [
-        service.name,
-        service.description,
-        service.horario,
-        service.fuenteTitulo,
-        ...(service.examples || []),
-        ...(service.keywords || []),
-        ...obtenerTextos(service.formaAcceso),
-        ...obtenerTextos(service.requisitos),
-        ...obtenerTextos(service.contacto),
-        room?.name,
-        room?.code,
-        ...(room?.aliases || [])
-      ].filter(Boolean);
-
-      return {
-        id: service.id,
-        roomId: service.roomId || null,
-        serviceName: service.name,
-        text: textParts.join("。"),
-        metadata: {
-          serviceId: service.id,
-          roomId: service.roomId || "",
-          roomName: room?.name || "",
-          roomCode: room?.code || ""
-        }
-      };
-    });
-  }
-
-  async init() {
-    if (process.env.CHROMA_DISABLED === "1") {
-      this.detail = "CHROMA_DISABLED=1";
-      return;
-    }
-
-    try {
-      const chroma = await import("chromadb");
-      const client = new chroma.ChromaClient({
-        path: process.env.CHROMA_URL || "http://localhost:8000"
-      });
-      this.collection = await client.getOrCreateCollection({
-        name: process.env.CHROMA_COLLECTION || "campus_services"
-      });
-      await this.collection.upsert({
-        ids: this.documents.map((doc) => doc.id),
-        documents: this.documents.map((doc) => doc.text),
-        metadatas: this.documents.map((doc) => doc.metadata)
-      });
-      this.mode = "chroma";
-      this.detail = process.env.CHROMA_URL || "http://localhost:8000";
-    } catch (error) {
-      this.collection = null;
-      this.mode = "local-fallback";
-      this.detail = `Using built-in matcher because Chroma is unavailable: ${error.message}`;
-    }
-  }
-
-  status() {
-    return {
-      mode: this.mode,
-      detail: this.detail,
-      documents: this.documents.length
-    };
-  }
-
-  async search(query) {
-    if (this.collection) {
-      try {
-        const result = await this.collection.query({
-          queryTexts: [query],
-          nResults: 1
-        });
-        const metadata = result.metadatas?.[0]?.[0];
-        const distance = result.distances?.[0]?.[0] ?? 1;
-        if (metadata?.serviceId) {
-          return {
-            serviceId: metadata.serviceId,
-            roomId: metadata.roomId || null,
-            serviceName: this.documents.find((doc) => doc.id === metadata.serviceId)?.serviceName || "",
-            score: Math.max(0, Math.min(1, 1 - distance)),
-            source: "chroma"
-          };
-        }
-      } catch (error) {
-        this.mode = "local-fallback";
-        this.detail = `Chroma query failed, switched to built-in matcher: ${error.message}`;
-        this.collection = null;
-      }
-    }
-
-    const ranked = this.documents
-      .map((document) => ({
-        ...document,
-        score: localScore(query, document.text)
-      }))
-      .sort((a, b) => b.score - a.score);
-
-    const best = ranked[0];
-    if (!best || best.score < 0.18) {
-      return null;
-    }
-
-    return {
-      serviceId: best.id,
-      roomId: best.roomId || null,
-      serviceName: best.serviceName,
-      score: best.score,
-      source: "local-fallback"
-    };
-  }
-}
-
-function euclidean(a, b) {
-  return Math.hypot(a.x - b.x, a.y - b.y);
-}
-
-function findShortestPath(nodes, edges, startNodeId, targetNodeId, accessibleOnly = false) {
-  const nodeById = new Map(nodes.map((node) => [node.id, node]));
-  if (!nodeById.has(startNodeId) || !nodeById.has(targetNodeId)) {
-    return null;
-  }
-
-  const adjacency = new Map(nodes.map((node) => [node.id, []]));
-  for (const edge of edges) {
-    if (accessibleOnly && edge.accesible === false) continue;
-
-    const from = nodeById.get(edge.from);
-    const to = nodeById.get(edge.to);
-    if (!from || !to) continue;
-
-    const weight = Number(edge.weight || euclidean(from, to));
-    adjacency.get(edge.from).push({ nodeId: edge.to, weight });
-    adjacency.get(edge.to).push({ nodeId: edge.from, weight });
-  }
-
-  const distances = new Map(nodes.map((node) => [node.id, Infinity]));
-  const previous = new Map();
-  const unvisited = new Set(nodes.map((node) => node.id));
-  distances.set(startNodeId, 0);
-
-  while (unvisited.size) {
-    let current = null;
-    let currentDistance = Infinity;
-
-    for (const nodeId of unvisited) {
-      const distance = distances.get(nodeId);
-      if (distance < currentDistance) {
-        current = nodeId;
-        currentDistance = distance;
-      }
-    }
-
-    if (current === null || currentDistance === Infinity) {
-      break;
-    }
-
-    if (current === targetNodeId) {
-      break;
-    }
-
-    unvisited.delete(current);
-
-    for (const next of adjacency.get(current)) {
-      if (!unvisited.has(next.nodeId)) continue;
-
-      const candidate = currentDistance + next.weight;
-      if (candidate < distances.get(next.nodeId)) {
-        distances.set(next.nodeId, candidate);
-        previous.set(next.nodeId, current);
-      }
-    }
-  }
-
-  if (distances.get(targetNodeId) === Infinity) {
-    return null;
-  }
-
-  const nodeIds = [];
-  let current = targetNodeId;
-  while (current) {
-    nodeIds.unshift(current);
-    current = previous.get(current);
-  }
-
-  return {
-    distance: distances.get(targetNodeId),
-    nodeIds
-  };
 }
 
 function sendJson(res, status, payload) {
@@ -460,6 +168,72 @@ async function main() {
 
     return best && best.score >= 0.25 ? best : null;
   }
+
+  // Consultas demasiado vagas: en vez de adivinar, pedimos precisión.
+    const palabrasRelleno = new Set([
+      "quiero", "quisiera", "ir", "al", "a", "la", "el", "un", "una", "los", "las", "de", "del",
+      "donde", "esta", "queda", "hay", "necesito", "busco", "buscar", "llevame", "en",
+      "tengo", "que", "puedo", "me", "mi", "para", "por", "favor", "ver"
+    ]);
+
+    const gruposAmbiguos = [
+      {
+        terminos: ["aula", "aulas", "clase", "salon"],
+        titulo: "Hay muchas aulas. ¿A cuál querés ir?",
+        filtro: (room) => room.id.startsWith("aula_")
+      },
+      {
+        terminos: ["bano", "banos", "banio", "banios", "sanitario", "sanitarios", "wc", "toilet", "toilette"],
+        titulo: "Hay varios baños. ¿A cuál querés ir?",
+        filtro: (room) => room.id.startsWith("banio")
+      },
+      {
+        terminos: ["oficina", "oficinas"],
+        titulo: "Hay varias oficinas. ¿A cuál querés ir?",
+        filtro: (room) => [
+          "mantenimiento", "area_rendiciones", "sala_profesores_grado", "despacho", "personal",
+          "secretaria_administrativa", "compras_inventario", "contable", "economico_financiera",
+          "alumnos", "mesa_entradas", "intendencia"
+        ].includes(room.id)
+      }
+    ];
+
+    function resolverConsultaAmbigua(message) {
+      const consulta = normalizeText(message)
+        .split(/\s+/)
+        .filter((token) => token && !palabrasRelleno.has(token))
+        .join(" ");
+      if (!consulta) return null;
+
+      const armar = (titulo, rooms) => ({
+        reply: `${titulo}\n${rooms.map((room) => `• ${room.name}`).join("\n")}\n\nTocá una opción o escribí el nombre completo, por ejemplo "${rooms[0].name}".`,
+        options: rooms.map((room) => ({ id: room.id, name: room.name }))
+      });
+
+      // Grupos genéricos: "aula", "baño", "oficina"
+      for (const grupo of gruposAmbiguos) {
+        if (grupo.terminos.includes(consulta)) {
+          return armar(grupo.titulo, mapData.rooms.filter(grupo.filtro));
+        }
+      }
+
+      // Solo un número: "1", "10", "11"
+      if (/^\d+[ab]?$/.test(consulta)) {
+        const candidatos = mapData.rooms.filter((room) => {
+          const m = normalizeText(room.name).match(/^aula (\d+[ab]?)$/);
+          return m && (m[1] === consulta || m[1].replace(/[ab]$/, "") === consulta);
+        });
+        if (candidatos.length) {
+          return armar(`Con "${consulta}" no me queda claro qué lugar buscás.`, candidatos);
+        }
+        return {
+          reply: `No encontré un lugar con el número "${consulta}". Probá con "aula 5", "biblioteca" o "baño de mujeres".`,
+          options: []
+        };
+      }
+
+      return null;
+    }
 
   function resolverServicio(message) {
     const query = normalizeText(message);
@@ -653,6 +427,15 @@ async function main() {
       const message = String(body.message || "").trim();
       if (!message) {
         sendJson(res, 400, { error: "message is required" });
+        return;
+      }
+
+      const aclaracion = resolverConsultaAmbigua(message);
+      if (aclaracion) {
+        sendJson(res, 200, {
+          reply: aclaracion.reply,
+          action: { type: "disambiguate", options: aclaracion.options }
+        });
         return;
       }
 
