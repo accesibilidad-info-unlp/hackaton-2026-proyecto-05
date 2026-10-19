@@ -439,6 +439,30 @@ h1 {
   outline: 3px solid var(--node-color);
   outline-offset: 3px;
 }
+.assistant-fab[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: #1a1f26;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.assistant-fab[data-tooltip]:hover::after,
+.assistant-fab[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
 
 /* estilos btn asistente */
 .map-area,
@@ -1416,4 +1440,43 @@ body {
 .map-frame {
   min-width: 0;
   max-width: 100%;
+}
+
+.tool-btn {
+  position: relative;
+}
+
+.tool-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: #1a1f26;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 30;
+}
+
+.tool-btn[data-tooltip]:hover::after,
+.tool-btn[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
+
+/* En móvil la barra queda arriba del mapa: el tooltip va debajo */
+@media (max-width: 620px) {
+  .tool-btn[data-tooltip]::after {
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translateX(-50%);
+  }
 }

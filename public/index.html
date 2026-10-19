@@ -35,26 +35,26 @@
         <svg id="campusMap" role="img" aria-label="Mapa de planta baja"></svg>
 
         <nav class="map-toolbar" aria-label="Herramientas del mapa">
-          <button id="clearRoute" class="tool-btn" type="button" aria-label="Limpiar ruta" title="Limpiar ruta">↺</button>
+          <button id="clearRoute" class="tool-btn" type="button" aria-label="Limpiar ruta" data-tooltip="Limpiar ruta">↺</button>
 
-          <button id="miBoton" class="tool-btn" type="button" aria-label="Abrir menú de accesibilidad" title="Accesibilidad">
+          <button id="miBoton" class="tool-btn" type="button" aria-label="Abrir menú de accesibilidad" data-tooltip="Accesibilidad">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
               <circle cx="256" cy="56" r="56" />
               <path d="M437,128H75a27,27,0,0,0,0,54H176.88c6.91,0,15,3.09,19.58,15,5.35,13.83,2.73,40.54-.57,61.23l-4.32,24.45a.42.42,0,0,1-.12.35l-34.6,196.81A27.43,27.43,0,0,0,179,511.58a27.06,27.06,0,0,0,31.42-22.29l23.91-136.8S242,320,256,320c14.23,0,21.74,32.49,21.74,32.49l23.91,136.92a27.24,27.24,0,1,0,53.62-9.6L320.66,283a.45.45,0,0,0-.11-.35l-4.33-24.45c-3.3-20.69-5.92-47.4-.57-61.23,4.56-11.88,12.91-15,19.28-15H437a27,27,0,0,0,0-54Z" />
             </svg>
           </button>
 
-          <button id="btnAyuda" class="tool-btn" type="button" aria-label="Cómo usar el mapa" title="Cómo usar el mapa" aria-haspopup="dialog">?</button>
+          <button id="btnAyuda" class="tool-btn" type="button" aria-label="Cómo usar el mapa" data-tooltip="Cómo usar el mapa" aria-haspopup="dialog">?</button>
 
-          <button id="btnNosotros" class="tool-btn" type="button" aria-label="Sobre nosotros" title="Sobre nosotros" aria-haspopup="dialog">👥</button>
+          <button id="btnNosotros" class="tool-btn" type="button" aria-label="Sobre nosotros" data-tooltip="Sobre nosotros" aria-haspopup="dialog">👥</button>
 
           <button id="directoryToggle" class="tool-btn" type="button" aria-expanded="false"
-            aria-controls="directoryContent" aria-label="Lugares e información" title="Lugares e información">
+            aria-controls="directoryContent" aria-label="Lugares e información" data-tooltip="Lugares e información">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" /></svg>
           </button>
 
           <button id="infoToggle" class="tool-btn" type="button" aria-expanded="false"
-            aria-controls="infoPanel" aria-label="Información del lugar" title="Información del lugar">i
+            aria-controls="infoPanel" aria-label="Información del lugar" data-tooltip="Información del lugar">i
           </button>
 
 
@@ -182,8 +182,8 @@
     </div>
     <div class="info-dialog-body">
       <ol>
-        <li>Elegí tu destino clickeandolo en el mapa, desde el <strong>Directorio de Lugares</strong> (5to boton), escribiéndolo en el chat o con los botones
-          rápidos (TAB, fechlas, enter).</li>
+        <li>Seleccioná tu destino clickeandolo en el mapa, desde el <strong>Directorio de Lugares</strong> (5to boton), escribiéndolo en el chat o con los botones
+          rápidos (TAB, fechas, enter).</li>
         <li>El mapa tiene como punto de inicio 2 opciones: con gradas o sin gradas.</li>
         <li>Activá <strong>Rutas accesibles</strong> ♿️ si necesitás evitar las gradas.</li>
         <li>Abrí <strong>Información</strong> (6to botón) para ver la info de tu destino.</li>
@@ -200,14 +200,16 @@
       <button type="button" class="info-dialog-cerrar" data-close-dialog aria-label="Cerrar">✕</button>
     </div>
     <div class="info-dialog-body">
-      <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p> Es un plano interactivo e inteligente diseñado para facilitar la orientación y navegación dentro del edificio de la facultad.
+Permite encontrar aulas, departamentos, servicios y rutas de accesibilidad de forma rápida mediante búsquedas semánticas y la integración de grafos de navegación.
+</p>
     </div>
   </dialog>
   <!-- fin del codigo de prueba de dialogos de informacion -->
 
   <!-- boton de asistente -->
   <button id="assistantToggle" class="assistant-fab" type="button"
-  aria-label="Abrir asistente" aria-expanded="false" aria-controls="assistantPanel">💬</button>
+  aria-label="Abrir asistente" aria-expanded="false" aria-controls="assistantPanel" data-tooltip="Abrir asistente">💬</button>
   <!-- fin del boton de asistente -->
   <script type="module" src="/app.js"></script>
 </body>
