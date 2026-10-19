@@ -21,7 +21,7 @@
   --btn-hover: #eef4f7;
 
   /* Elementos del Mapa SVG */
-  --map-bg: #f7f9fb;
+  --map-bg: #ffffff;
   --map-shell: #e4e8c9;
   --map-shell-stroke: #20252b;
   --room-bg: #ffffff;
@@ -173,7 +173,7 @@ header {
   min-height: var(--header-height);
   flex-shrink: 0;
   /* tamaño fijo */
-  padding: 0 20px 0 76px;
+  padding: 0 20px;
   /* el botón ☰ sigue flotando */
   background-color: var(--panel-bg);
   /* cambia con el tema */
@@ -438,12 +438,6 @@ h1 {
 .assistant-fab:focus-visible {
   outline: 3px solid var(--node-color);
   outline-offset: 3px;
-}
-
-
-.detalle-lugar {
-  right: auto;
-  left: 22px;
 }
 
 /* estilos btn asistente */
@@ -791,6 +785,7 @@ input {
   border-radius: 8px;
   line-height: 1.45;
   font-size: 0.9rem;
+  white-space: pre-line;
 }
 
 .message.user {
@@ -819,28 +814,6 @@ input {
   background: var(--msg-ultimo-asistente-bg);
 }
 
-.detalle-lugar {
-  position: fixed;
-  left: 22px;
-  bottom: 22px;
-  z-index: 9000;
-  width: min(420px, calc(100vw - 32px));
-  max-height: min(70vh, 620px);
-  background: var(--detalle-bg);
-  color: var(--text-color);
-  border: 1px solid var(--border-line);
-  border-top: 5px solid var(--detalle-acento);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.detalle-lugar.oculto {
-  display: none;
-}
-
 .detalle-lugar-header {
   display: flex;
   align-items: flex-start;
@@ -861,13 +834,6 @@ input {
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 4px;
-}
-
-#detalleLugarCerrar {
-  flex: 0 0 auto;
-  width: 36px;
-  height: 36px;
-  padding: 0;
 }
 
 .detalle-lugar-contenido {
@@ -1135,43 +1101,45 @@ input {
 }
 
 @media (max-width: 620px) {
-  .shell {
-    padding: 10px;
-  }
-
-  .topbar {
-    align-items: flex-start;
+  .map-frame {
+    display: flex;
     flex-direction: column;
   }
 
-  .controls {
-    width: 100%;
-    justify-content: space-between;
+  .map-toolbar {
+    position: relative;
+    order: -1;               /* queda arriba del mapa */
+    top: auto;
+    left: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 8px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border-line);
   }
 
-  #placesList {
-    grid-template-columns: 1fr;
+  .tool-btn {
+    width: 44px;
+    height: 44px;
   }
 
-  .map-frame {
-    min-height: 380px;
-    padding: 6px;
+  .tool-group {
+    position: static;        /* el directorio se ancla a la barra, no al botón */
+  }
+
+  .tool-group .directory-content {
+    top: calc(100% + 4px);
+    left: 8px;
+    right: 8px;
+    width: auto;
   }
 
   #campusMap {
+    flex: 1;
+    height: auto;
     min-height: 360px;
-  }
-
-  .assistant-panel {
-    right: 10px;
-    width: calc(100vw - 20px);
-  }
-
-  .detalle-lugar {
-    left: 10px;
-    bottom: 10px;
-    width: calc(100vw - 20px);
-    max-height: 58vh;
   }
 }
 
@@ -1197,4 +1165,255 @@ input {
 
 .map-tooltip[hidden] {
   display: none;
+}
+
+/* Mapa pegado a los bordes a la sección superior */
+.shell {
+  padding: 0;
+  gap: 0;
+}
+
+.map-area {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.map-frame {
+  padding: 0;
+}
+
+#campusMap {
+  border: none;
+}
+
+/* COLUMNA FLOTANTE DE BOTONES */
+:root {
+  --tool-bg: #8b2223;      /* guindo del logo */
+  --tool-hover: #6b1a1b;
+  --tool-fg: #ffffff;
+  --tool-border: transparent;
+}
+
+[data-theme="oscuro"] {
+  --tool-bg: #a3272b;
+  --tool-hover: #c23a3e;
+  --tool-fg: #ffffff;
+  --tool-border: transparent;
+}
+
+[data-theme="daltonismo"] {
+  --tool-bg: #005ab5;
+  --tool-hover: #0a74e0;
+  --tool-fg: #ffffff;
+  --tool-border: transparent;
+}
+
+[data-theme="baja-vision"] {
+  --tool-bg: #000000;
+  --tool-hover: #222222;
+  --tool-fg: #ffff00;
+  --tool-border: #ffff00;
+}
+
+.map-frame {
+  position: relative;
+}
+
+.map-toolbar {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tool-group {
+  position: relative;
+}
+
+.tool-btn {
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tool-bg);
+  color: var(--tool-fg);
+  border: 2px solid var(--tool-border);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.tool-btn:hover {
+  background: var(--tool-hover);
+}
+
+.tool-btn:focus-visible {
+  outline: 3px solid var(--node-color);
+  outline-offset: 2px;
+}
+
+.tool-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* El directorio se abre a la derecha del botón */
+.tool-group .directory-content {
+  top: 0;
+  left: calc(100% + 10px);
+}
+
+@media (max-width: 620px) {
+  .map-toolbar {
+    top: 8px;
+    left: 8px;
+    gap: 8px;
+  }
+
+  .tool-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tool-group .directory-content {
+    width: min(300px, calc(100vw - 80px));
+  }
+}
+
+.tool-btn {
+  box-shadow: 0 0 0 3px var(--panel-bg), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Panel de lugares e información ===== */
+.lugares-panel {
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 72px;
+  z-index: 15;
+  width: min(380px, calc(100% - 90px));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-line);
+  border-top: 5px solid var(--detalle-acento);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.lugares-panel[hidden] {
+  display: none;
+}
+
+.lugares-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lugares-header h2 {
+  font-size: 1.1rem;
+}
+
+.lugares-cerrar {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+}
+
+.lugares-panel #placesList {
+  flex: 1 1 0;
+  min-height: 90px;
+  overflow-y: auto;
+  grid-template-columns: 1fr;
+  align-content: start;
+}
+
+.lugares-panel .place-chip {
+  text-align: left;
+  padding: 8px 10px;
+}
+
+.detalle-lugar-panel {
+  flex: 0 0 auto;
+  max-height: 45%;
+  overflow-y: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-line);
+}
+
+@media (max-width: 620px) {
+  .lugares-panel {
+    top: 72px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+}
+
+.detalle-lugar-panel h3 {
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.detalle-lugar-panel .detalle-lugar-contenido {
+  padding: 0;
+  overflow: visible;
+}
+
+/* ===== Panel de información (nuevo) ===== */
+#infoPanel .detalle-lugar-panel {
+  flex: 1 1 0;
+  max-height: none;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.detalle-lugar-panel h3 {
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.detalle-lugar-panel .detalle-lugar-contenido {
+  padding: 0;
+  overflow: visible;
+}
+
+/* Evita que la página se ensanche más que la pantalla */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Deja que el título se achique o se parta en vez de empujar el ancho */
+.header-title {
+  min-width: 0;
+}
+
+.header-title h1 {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Los contenedores del mapa no pueden pasarse del ancho disponible */
+.shell,
+.map-area,
+.map-frame {
+  min-width: 0;
+  max-width: 100%;
 }

@@ -63,12 +63,12 @@ Las tres vías construyen la ruta con el mismo criterio: desde el punto de entra
 
 ## Accesibilidad y punto de partida de la ruta
 
-El origen de cualquier ruta ya no lo elige el usuario manualmente: se define con el checkbox **"Activar rutas accesibles (sin gradas)"** del panel lateral.
+El origen de cualquier ruta no lo elige el usuario: se define con el checkbox **"Rutas accesibles (sin gradas)"** de la sección superior.
 
 - Checkbox **desmarcado** → el recorrido arranca en `gradas-0` (entrada por gradas).
 - Checkbox **marcado** → el recorrido arranca en `rampa-0` (entrada por rampa) y el cálculo de ruta filtra las aristas marcadas como `accesible: false`, garantizando un camino apto para silla de ruedas.
 
-El grafo de `edges` es **dirigido** (cada arista tiene un único sentido `from → to`); las conexiones que deben transitarse en ambos sentidos están declaradas dos veces, una por cada dirección.
+El grafo de `edges` es **dirigido**: cada arista tiene un único sentido `from → to`, y todas están escritas en sentido desde la entrada hacia los destinos. Como el origen siempre es `gradas-0` o `rampa-0`, no hace falta declarar los caminos de vuelta. Al agregar salas o nodos nuevos, el `from` de la arista debe ser el nodo más cercano a la entrada y el `to` el nodo nuevo; si se escribe al revés, esa sala queda inalcanzable.
 
 ## Estructura principal
 

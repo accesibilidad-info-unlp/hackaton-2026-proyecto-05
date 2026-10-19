@@ -1401,7 +1401,7 @@
     },
     {
       "id": "service_students",
-      "name": "Trámites de alumnos",
+      "name": "Oficina de alumnos",
       "roomId": "alumnos",
       "description": "Para trámites de estudiantes, constancias, credencial, carnet, libreta, legajo o consultas de alumnos, ve a la Oficina de Alumnos.",
       "keywords": [
@@ -1475,7 +1475,7 @@
     },
     {
       "id": "service_finance",
-      "name": "Consultas económicas",
+      "name": "Dir. Económico Financiera",
       "roomId": "economico_financiera",
       "description": "Para pagos, consultas económicas o temas financieros, ve a Dirección Económico Financiera.",
       "keywords": [

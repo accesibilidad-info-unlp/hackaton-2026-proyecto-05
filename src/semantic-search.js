@@ -75,7 +75,7 @@ function localScore(query, document) {
 }
 
 function obtenerTextos(valor) {
-  if (!valor) {
+  if (valor === undefined || valor === null) {
     return [];
   }
 
@@ -178,13 +178,16 @@ class SemanticSearch {
         const metadata = result.metadatas?.[0]?.[0];
         const distance = result.distances?.[0]?.[0] ?? 1;
         if (metadata?.serviceId) {
-          return {
-            serviceId: metadata.serviceId,
-            roomId: metadata.roomId || null,
-            serviceName: this.documents.find((doc) => doc.id === metadata.serviceId)?.serviceName || "",
-            score: Math.max(0, Math.min(1, 1 - distance)),
-            source: "chroma"
-          };
+          const score = Math.max(0, Math.min(1, 1 - distance));
+          if (score >= 0.5) {
+            return {
+              serviceId: metadata.serviceId,
+              roomId: metadata.roomId || null,
+              serviceName: this.documents.find((doc) => doc.id === metadata.serviceId)?.serviceName || "",
+              score,
+              source: "chroma"
+            };
+          }
         }
       } catch (error) {
         this.mode = "local-fallback";
@@ -201,7 +204,7 @@ class SemanticSearch {
       .sort((a, b) => b.score - a.score);
 
     const best = ranked[0];
-    if (!best || best.score < 0.18) {
+    if (!best || best.score < 0.3) {
       return null;
     }
 
