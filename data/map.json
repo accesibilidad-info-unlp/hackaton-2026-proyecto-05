@@ -1387,7 +1387,17 @@
       "id": "service_copies",
       "name": "Fotocopias e impresiones",
       "roomId": "fotocopiadora",
-      "description": "Para hacer fotocopias, imprimir apuntes o sacar copias, ve a la Fotocopiadora.",
+      "horario": " Lunes a viernes de 8:00 a 20:00 hs.",
+      "formaAcceso":[
+        " Posee, asimismo, becas para estudiantes de la facultad que necesiten trabajar."
+      ],
+      "description": "La Fotocopiadora ofrece servicios de copias y anillado, venta de productos de librería y carga de tarjetas prepagas y SUBE.",
+      "contacto": {
+        "area": "Centro de Estudiantes / agrupaciones estudiantiles"
+      },
+      "fuenteTitulo": "Contacto Centro de Estudiantes y agrupaciones - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/contacto-centro-de-estudiantes-y-agrupaciones-con-representacion-en-el-hcd/",
+
       "keywords": [
         "fotocopia",
         "copias",
@@ -1536,7 +1546,8 @@
       "id": "service_food",
       "name": "Buffet",
       "roomId": "buffet",
-      "description": "Para comprar comida, café o descansar, ve al Buffet.",
+      "horario": " Lunes a viernes de 8:00 a 20:00 hs.",
+      "description": "El Buffet es el espacio ideal para comer, tomar un café o descansar. Gestionado por el Centro de Estudiantes, ofrece servicio de cafetería, agua caliente gratuita y préstamo de equipos de mate.",
       "keywords": [
         "buffet",
         "comida",
@@ -1546,7 +1557,11 @@
       "examples": [
         "quiero comprar comida",
         "donde hay cafe"
-      ]
+      ], "contacto": {
+        "area": "Centro de Estudiantes / agrupaciones estudiantiles"
+      },
+      "fuenteTitulo": "Contacto Centro de Estudiantes y agrupaciones - Facultad de Informática UNLP",
+      "fuenteUrl": "https://www.info.unlp.edu.ar/contacto-centro-de-estudiantes-y-agrupaciones-con-representacion-en-el-hcd/"
     },
     {
       "id": "service_cefi",

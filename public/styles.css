@@ -256,7 +256,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: Arial, "Microsoft YaHei", sans-serif;
@@ -390,7 +390,7 @@ h1 {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 18px;
-  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   padding: 18px;
   overflow: hidden;
 }
@@ -403,7 +403,7 @@ h1 {
   /* deja libre el botón flotante */
   z-index: 8000;
   width: min(380px, calc(100vw - 32px));
-  height: min(600px, calc(100vh - 120px));
+  height: min(600px, calc(100dvh - 120px));
 }
 
 /* Necesario: .assistant-panel define display:flex y pisaría al atributo hidden */
@@ -438,6 +438,30 @@ h1 {
 .assistant-fab:focus-visible {
   outline: 3px solid var(--node-color);
   outline-offset: 3px;
+}
+.assistant-fab[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: #1a1f26;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.assistant-fab[data-tooltip]:hover::after,
+.assistant-fab[data-tooltip]:focus-visible::after {
+  opacity: 1;
 }
 
 /* estilos btn asistente */
@@ -916,7 +940,7 @@ input {
   left: 0;
   width: 320px;
   max-width: 85vw;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border);
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
@@ -1091,17 +1115,22 @@ input {
 @media (max-width: 920px) {
   .shell {
     grid-template-columns: 1fr;
-    height: auto;
-    overflow: visible;
+    height: calc(100dvh - var(--header-height));
+    overflow: hidden;
   }
 
   .map-area {
-    overflow: visible;
+    overflow: hidden;
   }
 }
 
 @media (max-width: 620px) {
+  .map-area {
+    flex: 1;
+  }
+
   .map-frame {
+    flex: 1;
     display: flex;
     flex-direction: column;
   }
@@ -1139,7 +1168,7 @@ input {
   #campusMap {
     flex: 1;
     height: auto;
-    min-height: 360px;
+    min-height: 0;
   }
 }
 
@@ -1417,3 +1446,208 @@ body {
   min-width: 0;
   max-width: 100%;
 }
+
+.tool-btn {
+  position: relative;
+}
+
+.tool-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: #1a1f26;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 30;
+}
+
+.tool-btn[data-tooltip]:hover::after,
+.tool-btn[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
+
+/* En celular la barra queda arriba del mapa: el tooltip va debajo */
+@media (max-width: 620px) {
+  .tool-btn[data-tooltip]::after {
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translateX(-50%);
+  }
+}
+
+/* Título centrado y sin la línea extra */
+.topbar {
+  justify-content: center;
+}
+
+.topbar .panel-header {
+  padding: 0;
+  border-bottom: 0;
+  text-align: center;
+}
+
+.topbar .panel-header h2 {
+  margin: 0;
+}
+
+/* Botón de rutas accesibles dentro de la columna */
+.tool-toggle {
+  position: relative;
+  cursor: pointer;
+}
+
+.tool-toggle input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  z-index: 2;
+}
+
+.tool-toggle > span {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.tool-toggle:has(input:checked) {
+  background: var(--route-color);
+  color: var(--panel-bg);
+}
+
+.tool-toggle:has(input:focus-visible) {
+  outline: 3px solid var(--node-color);
+  outline-offset: 2px;
+}
+/* En pantallas táctiles no hay hover: los tooltips no sirven */
+@media (hover: none) {
+  .tool-btn[data-tooltip]::after,
+  .assistant-fab[data-tooltip]::after {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+
+  /* ---------- 1. Barra de botones: una sola fila, más chicos ---------- */
+  .map-toolbar {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: -1;
+    flex-direction: row;
+    flex-wrap: nowrap;            /* nunca baja a una 2da fila */
+    justify-content: space-evenly;
+    gap: 6px;
+    padding: 8px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .tool-btn {
+    flex: 1 1 0;                  /* se reparten el ancho disponible */
+    min-width: 0;
+    max-width: 38px;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;              /* siempre cuadrados */
+    border-radius: 8px;
+    font-size: 1.05rem;
+    box-shadow: 0 0 0 2px var(--panel-bg), 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  .tool-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .tool-toggle > span {
+    font-size: 1.05rem;
+  }
+
+  /* En celular los tooltips no sirven */
+  .tool-btn[data-tooltip]::after {
+    display: none;
+  }
+
+  /* ---------- 2. Lugares e Información: panel flotante centrado ---------- */
+  .lugares-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: min(480px, calc(100vw - 32px));
+    height: min(560px, calc(100dvh - 32px));
+    z-index: 9000;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);   /* fondo oscuro */
+  }
+
+  /* ---------- 3. Menú de accesibilidad: también flotante ---------- */
+  .sidebar {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, calc(100vw - 32px));
+    max-width: none;
+    height: auto;
+    max-height: calc(100dvh - 32px);
+    border: 1px solid var(--sidebar-border);
+    border-top: 5px solid var(--detalle-acento);
+    border-radius: 12px;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar-contenido {
+    min-height: 0;                /* permite el scroll interno */
+  }
+}
+
+/* SOBRE NOSOTROS AJUSTES DE TEXTO */
+.info-dialog {
+  margin: auto;/* centra el diálogo en pantalla */
+  width: min(560px, calc(100vw - 32px));
+}
+
+.info-dialog-body p {
+  margin: 0 0 14px;
+  line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.info-dialog-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Titulo en version pc y celular */
+.pb-corto { display: none; text-decoration: none; }
+
+@media (max-width: 480px) {
+  .pb-largo { display: none; }
+  .pb-corto { display: inline; }
+}
+
