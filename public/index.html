@@ -16,18 +16,19 @@
       <img src="img/images.png" alt="Logo UNLP">
     </div>
     <div class="header-title">
-      <h1>Mapa interactivo - Planta Baja</h1>
+      <h1>
+        Mapa interactivo -
+        <span class="pb-largo">Planta Baja</span>
+        <abbr class="pb-corto" title="Planta Baja" aria-label="Planta Baja">PB</abbr>
+      </h1>
     </div>
   </header>
 
   <main class="shell">
     <section class="map-area" aria-label="Mapa inteligente">
-      <div class="topbar">
-        <div class="accessibility-picker">
-          <label class="accessibility-label">
-            <input type="checkbox" id="check-accesibilidad" class="accessibility-checkbox">
-            ♿️ Rutas accesibles (sin gradas)
-          </label>
+        <div class="topbar">
+          <div class="panel-header">
+          <h2 id="panelTitle">¿A dónde quieres ir?</h2>
         </div>
       </div>
 
@@ -35,8 +36,11 @@
         <svg id="campusMap" role="img" aria-label="Mapa de planta baja"></svg>
 
         <nav class="map-toolbar" aria-label="Herramientas del mapa">
+          <label class="tool-btn tool-toggle" data-tooltip="Rutas accesibles (sin gradas)">
+            <input type="checkbox" id="check-accesibilidad" aria-label="Rutas accesibles (sin gradas)">
+            <span aria-hidden="true">♿️&#xFE0E;</span>
+          </label>
           <button id="clearRoute" class="tool-btn" type="button" aria-label="Limpiar ruta" data-tooltip="Limpiar ruta">↺</button>
-
           <button id="miBoton" class="tool-btn" type="button" aria-label="Abrir menú de accesibilidad" data-tooltip="Accesibilidad">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
               <circle cx="256" cy="56" r="56" />
@@ -44,12 +48,12 @@
             </svg>
           </button>
 
-          <button id="btnAyuda" class="tool-btn" type="button" aria-label="Cómo usar el mapa" data-tooltip="Cómo usar el mapa" aria-haspopup="dialog">?</button>
+          <button id="btnAyuda" class="tool-btn" type="button" aria-label="Como usar el mapa" data-tooltip="Como usar el mapa" aria-haspopup="dialog">?</button>
 
           <button id="btnNosotros" class="tool-btn" type="button" aria-label="Sobre nosotros" data-tooltip="Sobre nosotros" aria-haspopup="dialog">👥</button>
 
           <button id="directoryToggle" class="tool-btn" type="button" aria-expanded="false"
-            aria-controls="directoryContent" aria-label="Lugares e información" data-tooltip="Lugares e información">
+            aria-controls="directoryContent" aria-label="Directorio de lugares" data-tooltip="Directorio de lugares">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" /></svg>
           </button>
 
@@ -59,9 +63,9 @@
 
 
         </nav>
-          <aside id="directoryContent" class="lugares-panel" aria-label="Lugares e información" hidden>
+          <aside id="directoryContent" class="lugares-panel" aria-label="Directorio de lugares" hidden>
             <div class="lugares-header">
-              <h2>Lugares</h2>
+              <h2>Directorio de lugares</h2>
               <button id="cerrarLugares" type="button" class="lugares-cerrar" aria-label="Cerrar panel de lugares">✕</button>
             </div>
 
@@ -88,11 +92,6 @@
     </section>
 
     <aside id="assistantPanel" class="assistant-panel" aria-label="Asistente de mapa" hidden>
-      <div class="panel-header">
-        <h2 id="panelTitle">¿A dónde quieres ir?</h2>
-      </div>
-
-
 
       <div id="messages" class="messages" aria-live="polite">
         <div class="message ai">Hola, soy tu asistente. ¿En qué te puedo ayudar?</div>
@@ -157,7 +156,7 @@
         <p class="control-label">Mapa:</p>
         <label class="accessibility-label">
           <input type="checkbox" id="debugToggle" class="accessibility-checkbox">
-          Ver nodos y pasillos ocultos
+          Ver nodos ocultos
         </label>
       </div>
 
@@ -177,17 +176,17 @@
   <!-- prueba de dialogos de informacion -->
   <dialog id="dialogAyuda" class="info-dialog" aria-labelledby="dialogAyudaTitulo">
     <div class="info-dialog-header">
-      <h3 id="dialogAyudaTitulo">Cómo usar el mapa</h3>
+      <h3 id="dialogAyudaTitulo">Como usar el mapa</h3>
       <button type="button" class="info-dialog-cerrar" data-close-dialog aria-label="Cerrar">✕</button>
     </div>
     <div class="info-dialog-body">
       <ol>
-        <li>Seleccioná tu destino clickeandolo en el mapa, desde el <strong>Directorio de Lugares</strong> (5to boton), escribiéndolo en el chat o con los botones
+        <li>Seleccioná tu destino clickeandolo en el mapa, desde el <strong>Directorio de Lugares</strong> (6to boton), escribiéndolo en el chat o con los botones
           rápidos (TAB, fechas, enter).</li>
         <li>El mapa tiene como punto de inicio 2 opciones: con gradas o sin gradas.</li>
         <li>Activá <strong>Rutas accesibles</strong> ♿️ si necesitás evitar las gradas.</li>
-        <li>Abrí <strong>Información</strong> (6to botón) para ver la info de tu destino.</li>
-        <li>Clickea <strong>Limpiar ruta (1er botón)</strong> para empezar de nuevo.</li>
+        <li>Abrí <strong>Información</strong> para ver la info de tu destino.</li>
+        <li>Clickea <strong>Limpiar ruta</strong> (2do botón) para empezar de nuevo.</li>
         <li>Abrí el menú de accesibilidad para cambiar el tamaño de letra, el contraste y el modo de color, y activar el
           lector de voz.</li>
       </ol>
@@ -200,16 +199,22 @@
       <button type="button" class="info-dialog-cerrar" data-close-dialog aria-label="Cerrar">✕</button>
     </div>
     <div class="info-dialog-body">
-      <p> Es un plano interactivo e inteligente diseñado para facilitar la orientación y navegación dentro del edificio de la facultad.
-Permite encontrar aulas, departamentos, servicios y rutas de accesibilidad de forma rápida mediante búsquedas semánticas y la integración de grafos de navegación.
-</p>
+      <p>Somos un equipo de cuatro estudiantes de 2do año que comenzó a desarrollar el Mapa durante una hackatón. 
+        Lo que empezó como un desafío se convirtió en un proyecto que nos motivó a seguir creciendo, mejorando y explorando nuevas 
+        ideas.</p>
+
+      <p>Este camino nos llevó a participar en la 12.ª Expo Ciencia y Tecnología. 
+        A lo largo del desarrollo, comprendimos mejor la importancia de la accesibilidad y los desafíos que enfrentan las personas 
+        con discapacidad visual o motriz al desenvolverse en distintos espacios. Esta experiencia también nos permitió crecer 
+        académicamente, fortalecer el trabajo en equipo y descubrir todo lo que podemos construir cuando compartimos ideas y 
+        objetivos.</p>
     </div>
   </dialog>
   <!-- fin del codigo de prueba de dialogos de informacion -->
 
   <!-- boton de asistente -->
   <button id="assistantToggle" class="assistant-fab" type="button"
-  aria-label="Abrir asistente" aria-expanded="false" aria-controls="assistantPanel" data-tooltip="Abrir asistente">💬</button>
+  aria-label="Abrir asistente" aria-expanded="false" aria-controls="assistantPanel" data-tooltip="Asistente">💬</button>
   <!-- fin del boton de asistente -->
   <script type="module" src="/app.js"></script>
 </body>
