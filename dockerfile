@@ -9,7 +9,5 @@ EXPOSE 3000
 
 USER node
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s \
-  CMD wget -qO- http://127.0.0.1:3000/api/map > /dev/null || exit 1
-
 CMD ["npm", "start"]
+
